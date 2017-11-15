@@ -1,0 +1,11 @@
+.jpix-title {
+
+  h1 {
+    margin: 0;
+  }
+
+  &__link {
+    @include logo-link('./assets/img/title-logo.png', 360px, 222px);
+    max-width: 100%;
+  }
+}

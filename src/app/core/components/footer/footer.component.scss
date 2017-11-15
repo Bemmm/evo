@@ -1,0 +1,59 @@
+.jpix-footer {
+  background-color: $jpix-blue-dark-night;
+
+  &__content {
+    padding-top: rem(20px);
+    position: relative;
+  }
+
+  &__logo {
+    width: rem(67px);
+    height: rem(36px);
+    background: url(./assets/img/jostens-logo.png) 50% 50% no-repeat;
+    background-size: contain;
+    margin-bottom: rem(12px);
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  &__label {
+    @include font($primary-font-family, rem(8px));
+    color: $jpix-white;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .jpix-footer__content {
+    display: flex;
+  }
+  
+  .jpix-footer-navigation-my-orders {
+    right: 0;
+    position: absolute;
+  
+    h4 {
+        margin-top: 0;
+    }
+
+    a {
+      color: $jpix-white;
+    }
+  }
+  
+}
+
+@media (min-width: $screen-sm-min) {
+  .jpix-footer {
+    background-color: $jpix-blue-dark-night;
+
+    &__content {
+      padding-bottom: rem(57px);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .jpix-footer {
+    .container {
+      padding: 0;
+    }
+  }
+}

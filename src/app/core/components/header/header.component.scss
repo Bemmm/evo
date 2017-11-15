@@ -1,0 +1,60 @@
+.jpix-header {
+  background-color: $jpix-blue-dark-night;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: rem(15px);
+    padding-bottom: rem(12px);
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo,
+  &__cart,
+  &__help {
+    display: block;
+    text-indent: -9999px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+  }
+
+  &__logo {
+    width: rem(94px);
+    height: rem(38px);
+    background-image: url(./assets/img/jpix-white-logo.png);
+  }
+
+  &__help {
+    width: rem(20px);
+    height: rem(20px);
+    background-image: url(./assets/img/help-icon.png);
+    margin-right: rem(12px);
+  }
+
+  &__search {
+    font-size: rem(12px);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $jpix-white;
+    margin-right: 30px;
+    cursor: pointer;
+  }
+
+  &__mobile-menu {
+    font-size: rem(17px);
+    color: $jpix-white;
+  }
+
+  &__user-info {
+    font-size: rem(12px);
+    color: $jpix-white;
+    margin-right: rem(12px);
+  }
+}

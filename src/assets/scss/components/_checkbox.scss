@@ -1,0 +1,39 @@
+.jpix-checkbox {
+  display: none;
+
+  &+label {
+    cursor: pointer;
+    span {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin: -1px 10px 0 0;
+      vertical-align: middle;
+      cursor: pointer;
+      border: 1px solid $jpix-grey;
+      border-radius: 2px;
+      background-color: $jpix-bg-ultralight;
+    }
+  }
+
+  &:checked+label span {
+    background: url(checkbox-checked.png) 50% 50% no-repeat;
+  }
+
+  &--small {
+    &+label span {
+      width: 25px;
+      height: 25px;
+    }
+
+    &:checked+label span {
+      background-color: $jpix-white;
+      background-size: 14px;
+    }
+  }
+
+  &.disabled+label {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}

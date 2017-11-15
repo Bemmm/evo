@@ -1,0 +1,24 @@
+.jpix-mobile-nav {
+  position: absolute;
+  z-index: 100000;
+  height: 100%;
+  left: -#{$jpix-mobile-nav-width};
+  width: $jpix-mobile-nav-width;
+  background: $jpix-blue-primary-dark;
+
+  &__list {
+    padding: 3px 0 0;
+  }
+
+  &__link {
+    color: $jpix-grey-ultralight;
+    font-size: rem(14px);
+    display: block;
+    padding: rem(10px);
+    background: $jpix-grey-primary-dark;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    border-top: 1px solid $jpix-blue-dark-night;
+    border-bottom: 1px solid $jpix-blue-dark-night;
+  }
+}

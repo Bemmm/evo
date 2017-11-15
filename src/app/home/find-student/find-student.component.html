@@ -1,0 +1,47 @@
+<div class="jpix-find-student">
+    <div class="jpix-find-student__input-data-section">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-md-offset-2">
+                <jpix-subheader>
+                    <span class="jpix-subheader-title">Search for your student</span>
+                    <span class="jpix-subheader-description">Specify their complete first and last name</span>
+                </jpix-subheader>  
+                <div class="text-right jpix-find-student-actions">
+                    <button class="jpix-button jpix-button--default jpix-button--small"
+                        (click)="onViewPhotos()">Your photos</button>
+                </div>
+                <jpix-find-student-form (result)="onSearchResults($event)"></jpix-find-student-form>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="data"
+         class="jpix-find-student__results-section">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-md-offset-2">
+                <div class="jpix-line-gray-1"></div>
+                <jpix-custom-table *ngIf="tableData"
+                                   [options]="tableOptions"
+                                   [data]="tableData"
+                                   (action)="onAction($event)">
+                </jpix-custom-table>
+                <div *ngIf="!data.items.length"
+                     class="text-center jpix-find-student-message jpix-font-sm">
+                    <div *ngIf="data.success">
+                        We were not able to match you to your student.<br/> If your student registered with the school late, it is possible that their name was not on the list provided by the school. Please check back a few days after picture day when
+                        photos become available. You should be able to locate their photos at that point.<br/> If your student did not register late, please contact Jostens Pix at 1-877-515-1447 for assistance.
+                    </div>
+                    <div *ngIf="data.errorType === STUDENT_ALREADY_ADDED">
+                        The event photos for this student are already linked to your account and should display in the gallery.
+                        <br/> Please contact Jostens Pix at 1-877-515-1447 for assistance.
+                    </div>
+                    <div *ngIf="data.errorType === EVENT_CODE_NOT_FOUND">
+                        This event code was not found.
+                    </div>
+                    <div *ngIf="data.errorType === EVENT_CODE_NOT_ACTIVE">
+                        This event is not active until {{getEffectiveStartDateOfEvent()}}.<br/>Once active, you will be able to locate your student.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

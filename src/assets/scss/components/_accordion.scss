@@ -1,0 +1,55 @@
+$padding: 30px;
+
+.jpix-accordion {
+  &__panel {
+    .jpix-h3 {
+      margin: rem(16px) 0;
+    }
+  }
+
+  .card-header {
+    position: relative;
+    padding: 1rem $padding;
+    border-bottom: 1px solid $jpix-grey;
+
+    .jpix-h3 {
+      margin: 0;
+    }
+
+    a {
+      outline: none;
+    }
+
+    &::after {
+      content: "\F077";
+      font-family: "FontAwesome";
+      font-size: 1rem;
+      position: absolute;
+      right: $padding;
+      top: .75rem;
+      color: $jpix-grey-night;
+      pointer-events: none;
+    }
+
+    &.active {
+      border-bottom: none;
+
+      &::after {
+        content: "\F078";
+      }
+    }
+
+    a:focus {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .card-block {
+    padding: 0 $padding rem($padding);
+    border-bottom: 1px solid $jpix-grey;
+  }
+}

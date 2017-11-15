@@ -1,0 +1,22 @@
+.jpix-free-digital-download-banner {
+  width: 12rem;
+  height: 12rem;
+  margin: 0 auto;
+  background-image: url(./../../img/fdd-banner.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+#free-digital-download-header {
+  display: none;
+}
+
+#free-digital-download {
+  padding-bottom: 0;
+
+  .jpix-h3 {
+    color: $jpix-salad;
+    margin: 1rem 0;
+  }
+}

@@ -1,0 +1,30 @@
+.jpix-link {
+  color: $jpix-blue-primary-dark;
+  font-family: $primary-font-family;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &--warning {
+    color: $jpix-orange-accent;
+
+    &:hover, &:focus, &:active  {
+      color: $jpix-orange-accent;
+    }
+  }
+}
+
+.jpix-secondary-link {
+  color: $jpix-orange;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.jpix-action-link {
+  color: $jpix-orange-accent;
+  &:hover {
+    text-decoration: none;
+  }
+}

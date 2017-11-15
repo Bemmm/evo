@@ -1,0 +1,40 @@
+:host {
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    li {
+      display: inline-block;
+      &:after {
+        content: '|';
+      }
+
+      &:last-child:after {
+        content: '';
+      }
+
+      a {
+        margin: 0 rem(10px);
+        font-size: rem(12px);
+        text-transform: uppercase;
+        color: $jpix-grey-night;
+
+        &.disabled,
+        &.active {
+          pointer-events: none;
+          cursor: default;
+          text-decoration: none;
+        }
+
+        &.disabled, &.active.disabled {
+          color: $jpix-grey;
+        }
+
+        &.active {
+          color: $jpix-orange-accent;
+        }
+      }
+    }
+  }
+}

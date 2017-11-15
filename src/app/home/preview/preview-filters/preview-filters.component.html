@@ -1,0 +1,23 @@
+<div class="jpix-preview-filters">
+    <div class="jpix-preview-filters__group jpix-preview-filters-event">
+        <label for="eventOptions">Choose</label>
+        <div class="jpix-select__wrapper">
+            <jpix-select [options]="defaultEventOptions"
+                            id="eventOptions"
+                            [selected]="selectedFiltersValues[filterKeys.EVENT_KEY]"
+                            (selectChange)="onFilterChange({ key: filterKeys.EVENT_KEY, selected: $event.target.value })"
+                            [disabled]="disabled"></jpix-select>
+        </div>
+    </div>
+    <div class="jpix-preview-filters__group">
+        <label for="studentOptions">Sort by</label>
+        <div class="jpix-select__wrapper">
+            <jpix-select [options]="defaultStudentOptions"
+                         id="studentOptions"
+                         [selected]="selectedFiltersValues[filterKeys.STUDENT_KEY]"
+                         (selectChange)="onFilterChange({ key: filterKeys.STUDENT_KEY, selected: $event.target.value })"
+                         [disabled]="disabled"></jpix-select>
+        </div>
+
+    </div>
+</div>

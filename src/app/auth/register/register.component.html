@@ -1,0 +1,78 @@
+<div class="jpix-register">
+    <div class="jpix-h2">CREATE YOUR ACCOUNT</div>
+    <div class="jpix-auth__description">Register your free account for access to a complete set of your student's school photos!</div>
+    <form class="jpix-register__form jpix-form"
+          novalidate
+          *ngIf="!showSuccessMessage"
+          [formGroup]="registerForm"
+          (ngSubmit)="onSubmit()">
+        <jpix-error-message *ngFor="let errorMessage of errorMessages"
+                            [shown]="formSubmitted"
+                            [message]="errorMessage.text"></jpix-error-message>
+        <div class="form-group">
+            <input formControlName="firstName"
+                   class="form-control jpix-input jpix-input--large"
+                   type="text"
+                   placeholder="first name">
+        </div>
+        <jpix-error-message [shown]="registerForm.get('firstName').hasError('required') && formSubmitted"
+                            message="first name is required."></jpix-error-message>
+        <div class="form-group">
+            <input formControlName="lastName"
+                   class="form-control jpix-input jpix-input--large"
+                   type="text"
+                   placeholder="last name">
+        </div>
+        <jpix-error-message [shown]="registerForm.get('lastName').hasError('required') && formSubmitted"
+                            message="last name is required."></jpix-error-message>
+        <div class="form-group">
+            <input formControlName="username"
+                   class="form-control jpix-input jpix-input--large"
+                   type="email"
+                   placeholder="email address">
+        </div>
+        <jpix-error-message [shown]="registerForm.get('username').hasError('required') && formSubmitted"
+                            message="email is required."></jpix-error-message>
+        <div class="form-group">
+            <input formControlName="usernameConfirm"
+                   class="form-control jpix-input jpix-input--large"
+                   type="email"
+                   placeholder="confirm email address">
+        </div>
+        <jpix-error-message [shown]="registerForm.get('usernameConfirm').hasError('usenameMatchError') && formSubmitted"
+                            message="email mismatch."></jpix-error-message>
+        <div class="form-group">
+            <input formControlName="password"
+                   class="form-control jpix-input jpix-input--large"
+                   type="password"
+                   placeholder="password">
+        </div>
+        <jpix-error-message [shown]="registerForm.get('password').hasError('required') && formSubmitted"
+                            message="password is required."></jpix-error-message>
+        <div class="form-group">
+            <input formControlName="passwordConfirm"
+                   class="form-control jpix-input jpix-input--large"
+                   type="password"
+                   placeholder="confirm password">
+        </div>
+        <jpix-error-message [shown]="registerForm.get('passwordConfirm').hasError('passwordMatchError') && formSubmitted"
+                            message="password mismatch."></jpix-error-message>
+        <div class="form-group">
+            <button class="form-control jpix-button jpix-button--warning"
+                    type="submit">Register</button>
+        </div>
+    </form>
+    <div class="alert alert-success"
+         *ngIf="showSuccessMessage"
+         [innerHTML]="successRegistrationMsg">
+    </div>
+    <div>
+        <a class="jpix-link jpix-link--warning"
+           title="Sign in"
+           routerLink="/login">Sign in</a>
+    </div>
+    <div class="alert alert-info jpix-register__assistance-msg"
+         *ngIf="showSuccessMessage"
+         [innerHTML]="assistanceMessage">
+    </div>
+</div>

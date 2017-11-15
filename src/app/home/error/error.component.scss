@@ -1,0 +1,27 @@
+.jpix-error {
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .panel {
+    border-radius: 0;
+
+    &-heading {
+      font-size: rem(14px);
+    }
+
+    &-body {
+      font-size: rem(12px);
+    }
+  }
+}
+
+@media screen and (min-height: 600px) {
+  .jpix-error {
+    &__container {
+      min-height: 300px;
+    }
+  }
+}

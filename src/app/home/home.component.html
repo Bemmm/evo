@@ -1,0 +1,25 @@
+<div class="jpix-home jpix-mobile-nav-wrapper"
+     [ngClass]="{ 'jpix-mobile-nav-wrapper--open': showMobileNav }">
+    <jpix-mobile-nav [hasSearchLink]="hasSearchLink"
+                     [isLogged]="isLogged"
+                     (hideMobileNav)="hideMobileNav()"></jpix-mobile-nav>
+
+    <header>
+        <jpix-header [hasSearchLink]="hasSearchLink"
+                     [isLogged]="isLogged"
+                     (toggleMobileNav)="onToggleMobileNav()"></jpix-header>
+    </header>
+    <div class="jpix-home-content jpix-home-mobile-content">
+        <main (click)="hideMobileNav()">
+            <div class="container">
+                <section class="jpix-home__container">
+                    <router-outlet></router-outlet>
+                </section>
+            </div>
+        </main>
+        <footer (click)="hideMobileNav()">
+            <jpix-footer [isLogged]="isLogged"></jpix-footer>
+        </footer>
+    </div>
+    
+</div>

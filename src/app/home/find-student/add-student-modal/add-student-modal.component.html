@@ -1,0 +1,47 @@
+<div class="jpix-modal jpix-add-student-modal">
+    <div class="modal-header">
+        <h3 class="jpix-h3 modal-title">Add student: {{data.firstName}} {{data.lastName}}</h3>
+        <button type="button"
+            class="close"
+            aria-label="Close"
+            (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 jpix-font-sm text-center">
+                <div [hidden]="result">
+                    Enter the street number of the student’s home address:
+                    <br/>
+                    <br/>
+                    <input
+                        class="form-control jpix-input jpix-input--primary"
+                        type="text"
+                        maxlength="8"
+                        [(ngModel)]="streetNumber">
+                </div>
+                <div [hidden]="!result || result.success">
+                    We were not able to match you to your student.<br/>Please contact Jostens Pix at 1-877-515-1447 for assistance.
+                </div>
+                <div [hidden]="!result || !result.success">
+                    Your student’s photos have been added for this event.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button"
+                [hidden]="!result || !result.success"
+                class="jpix-button jpix-button--small jpix-button--warning"
+                (click)="onViewPhotos()">view your photos</button>
+        <button type="button"
+            class="jpix-button jpix-button--small jpix-button--default"
+            (click)="close()">close</button>
+        <button type="button"
+                [hidden]="result"
+                [disabled]="!streetNumber"
+                class="jpix-button jpix-button--small jpix-button--warning"
+                (click)="onSubmit()">add</button>
+    </div>
+</div>

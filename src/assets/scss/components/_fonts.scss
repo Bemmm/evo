@@ -1,0 +1,106 @@
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~assets/fonts/OpenSans-Bold.eot');
+	src: url('~assets/fonts/OpenSans-Bold.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/OpenSans-Bold.woff') format('woff'),
+		url('~assets/fonts/OpenSans-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~assets/fonts/OpenSans-Light.eot');
+	src: url('~assets/fonts/OpenSans-Light.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/OpenSans-Light.woff') format('woff'),
+		url('~assets/fonts/OpenSans-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~assets/fonts/OpenSans-SemiboldItalic.eot');
+	src: url('~assets/fonts/OpenSans-SemiboldItalic.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/OpenSans-SemiboldItalic.woff') format('woff'),
+		url('~assets/fonts/OpenSans-SemiboldItalic.ttf') format('truetype');
+	font-weight: 600;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~assets/fonts/OpenSans.eot');
+	src: url('~assets/fonts/OpenSans.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/OpenSans.woff') format('woff'),
+		url('~assets/fonts/OpenSans.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~assets/fonts/OpenSans-Semibold.eot');
+	src: url('~assets/fonts/OpenSans-Semibold.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/OpenSans-Semibold.woff') format('woff'),
+		url('~assets/fonts/OpenSans-Semibold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~assets/fonts/OpenSansLight-Italic.eot');
+	src: url('~assets/fonts/OpenSansLight-Italic.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/OpenSansLight-Italic.woff') format('woff'),
+		url('~assets/fonts/OpenSansLight-Italic.ttf') format('truetype');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~assets/fonts/OpenSans-BoldItalic.eot');
+	src: url('~assets/fonts/OpenSans-BoldItalic.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/OpenSans-BoldItalic.woff') format('woff'),
+		url('~assets/fonts/OpenSans-BoldItalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~assets/fonts/OpenSans-Italic.eot');
+	src: url('~assets/fonts/OpenSans-Italic.eot?#iefix') format('embedded-opentype'),
+		url('~assets/fonts/OpenSans-Italic.woff') format('woff'),
+		url('~assets/fonts/OpenSans-Italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+
+.jpix-text-bold {
+  font-weight: bold;
+}
+
+.jpix-title, .jpix-subtitle {
+  color: $jpix-blue-dark;
+  font-weight: 400;
+  margin: 0;
+}
+
+.jpix-title {
+  font-size: rem(28px);
+}
+
+.jpix-subtitle {
+  font-size: rem(14px);
+}
+
+.jpix-section-title {
+  color: $jpix-orange;
+  font-weight: 700;
+  margin: rem(20px) 0;
+  font-size: rem(18px);
+}
+

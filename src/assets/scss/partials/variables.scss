@@ -1,0 +1,85 @@
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
+@import "functions";
+
+//colors
+$jpix-white: #fff;
+$jpix-blue-dark: #031d40;
+$jpix-gold: #c6aa76;
+$jpix-silver-metallic: #887777;
+$jpix-silver: #c9c9c9;
+$jpix-silver-black: #333f48;
+$jpix-blue-light: #d5e3e9;
+$jpix-blue-sky: #e8f0f3;
+$jpix-blue-grey-sky: #e0ebef;
+$jpix-blue: #346571;
+$jpix-blue-accent: #6399ae;
+$jpix-blue-accent-light: #c0d6df;
+$jpix-blue-dirty: #adc1cc;
+$jpix-blue-blackberry: #586f86;
+$jpix-orange: #be531c;
+$jpix-cream-light: #f8eee8;
+$jpix-dark: #333;
+$jpix-grey-soft: #a5a7ab;
+$jpix-grey-dark: #797979;
+$jpix-grey-accent: #666;
+$jpix-grey-primary: #ccc;
+$jpix-grey-wet: #a9a9a9;
+$jpix-tomato: #A6192E;
+$jpix-table-header: #6b9cc6;
+$jpix-error: #ff0000;
+
+//v2
+$jpix-blue-sky: #337ab7;
+$jpix-blue-primary: #2a335d;
+$jpix-blue-primary-dark: #071e41;
+$jpix-blue-dark-night: #000a3e;
+$jpix-grey-ultralight: #eee;
+$jpix-grey-light: #ccc;
+$jpix-grey: #959595;
+$jpix-grey-font: #777;
+$jpix-grey-primary: #676767;
+$jpix-grey-primary-dark: #585858;
+$jpix-grey-night: #262626;
+$jpix-orange-accent: #f26725;
+$jpix-bg-light: #f2f2f2;
+$jpix-bg-ultralight: #f0f0f0;
+$jpix-black: #000;
+$jpix-salad: #aeae35;
+$jpix-disabled:#dedede;
+
+
+//fonts
+$body-font-base: 16;
+$primary-font-family: 'Open Sans', Arial, sans-serif;
+
+$currency-symbol: '$';
+
+$jpix-table-header: #6b9cc6;
+$jpix-table-head: #9bbdcc;
+$jpix-table-body: #b2ccd7;
+
+$jpix-font-size-xs: rem(10px);
+$jpix-font-size-s: rem(12px);
+$jpix-font-size-sm: rem(14px);
+$jpix-font-size-m: rem(16px);
+
+$jpix-photo-item-side-margin: 1.875rem;
+
+$jpix-photo-item-width-xs: 5.375rem;
+$jpix-photo-item-height-xs: 7.875rem;
+
+$jpix-photo-item-width-xs--landscape: $jpix-photo-item-width-xs * 2 + $jpix-photo-item-side-margin;
+
+$jpix-photo-item-width-md: 8.25rem;
+$jpix-photo-item-height-md: 12rem;
+
+$jpix-photo-item-width-md--landscape:  $jpix-photo-item-width-md * 2 + $jpix-photo-item-side-margin;
+
+$jpix-mobile-nav-width: 250px;
+
+//screens
+$jpix-screen-m-max: 991px;
+$jpix-screen-m-min: 539px;
+$jpix-screen-s-max: 479px;
+$jpix-screen-ultra-sm-max: 359px;
+$jpix-screen-ultra-sm-min: 320px;

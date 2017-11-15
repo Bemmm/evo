@@ -1,0 +1,21 @@
+<div class="jpix-footer-navigation">
+    <div class="jpix-footer-navigation-col"
+        *ngFor="let item of items">
+        <h4 class="jpix-h4 text-uppercase">
+            <span>{{item.title}}</span>
+        </h4>
+        <ul *ngIf="item.links">
+            <li *ngFor="let linkItem of item.links">
+                <a *ngIf="linkItem.url"
+                    href="{{linkItem.url}}"
+                    [attr.target]="linkItem.target ? linkItem.target : null"
+                    title="{{linkItem.title}}">
+                    {{linkItem.title}}
+                </a>
+                <a *ngIf="!linkItem.url"
+                    [routerLink]="linkItem.link"
+                    title="{{linkItem.title}}">{{linkItem.title}}</a>
+            </li>
+        </ul>
+    </div>
+</div>

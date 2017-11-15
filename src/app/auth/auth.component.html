@@ -1,0 +1,35 @@
+<header></header>
+<main>
+    <div class="container">
+        <div class="jpix-auth">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="jpix-auth__logo"></div>
+                </div>
+            </div>
+            <div class="row jpix-auth__container">
+                <div class="hidden-xs col-sm-6 col-md-7 jpix-auth__banner">
+                    <div class="jpix-auth__banner-title jpix-h1">
+                        Your portraits. Your way.
+                    </div>
+                    <div class="jpix-auth__slider">
+                        <swiper [config]="sliderOptions">
+                            <div *ngFor="let sliderItem of sliderItems">
+                                <div class="jpix-auth__slider-item"
+                                     [ngStyle]="{ 'background-image': 'url(' + sliderItem.url + ')' }"></div>
+                            </div>
+                        </swiper>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-5 jpix-auth__content-wrapper">
+                    <div class="jpix-auth__content">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <jpix-footer [hideOrdersLink]="true"></jpix-footer>
+</footer>

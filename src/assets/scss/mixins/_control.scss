@@ -1,0 +1,7 @@
+@mixin default-control-styles($bg-color:$jpix-white, $border-color:$jpix-grey-wet) {
+  background-color: $bg-color;
+  color: $jpix-blue-accent;
+  border: 1px solid $border-color;
+  padding-left: 2px;
+  padding-right: 2px;
+}

@@ -1,0 +1,58 @@
+@mixin bp($device, $orientation: 'all') {
+  // iPhone 5 & 5S by default
+  $min-device-width: 320px;
+  $max-device-width: 568px;
+  $min-resolution: 2;
+
+  @if ($device=='iphone6') {
+    $min-device-width: 375px;
+    $max-device-width: 667px;
+    $min-resolution: 2;
+  }
+
+  @if ($device=='iphone6+') {
+    $min-device-width: 414px;
+    $max-device-width: 736px;
+    $min-resolution: 3;
+  }
+
+  @if ($device=='ipad') {
+    $min-device-width: 768px;
+    $max-device-width: 1024px;
+    $min-resolution: 3;
+  }
+
+  @if ($device=='ipad-retina') {
+    $min-device-width: 768px;
+    $max-device-width: 1024px;
+    $min-resolution: 2;
+  }
+
+  @if ($device=='ipad-pro') {
+    $min-device-width: 1024px;
+    $max-device-width: 1366px;
+    $min-resolution: 1.5;
+  }
+
+   @if ($device=='galaxy') {
+    $min-device-width: 800px;
+    $max-device-width: 1280px;
+    $min-resolution: 3;
+  }
+
+  @if $orientation=='portrait' {
+    @media only screen and (min-device-width: $min-device-width) and (max-device-width: $max-device-width) and (orientation: portrait) and (min-resolution: '#{$min-resolution}dppx') {
+      @content;
+    }
+  }
+  @else if $orientation=='landscape' {
+    @media only screen and (min-device-width: $min-device-width) and (max-device-width: $max-device-width) and (orientation: landscape) and (min-resolution:'#{$min-resolution}dppx') {
+      @content;
+    }
+  }
+  @else {
+    @media only screen and (min-device-width: $min-device-width) and (max-device-width: $max-device-width) and (min-resolution: '#{$min-resolution}dppx') and (-webkit-min-device-pixel-ratio: $min-resolution) {
+      @content;
+    }
+  }
+}

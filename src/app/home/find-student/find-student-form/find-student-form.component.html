@@ -1,0 +1,51 @@
+<form class="jpix-form jpix-search-form jpix-find-student-form"
+      [formGroup]="searchForm"
+      (submit)="onSearchStudent()"
+      (reset)="onReset()">
+    <div class="jpix-find-student-form__controls-wrapper ">
+        <div class="row form-group">
+            <div class="col-xs-12 col-sm-9 col-md-9">
+                <label>School Name</label>
+                <div class="jpix-dropdown">
+                    <jpix-input-typeahead
+                                          (select)="onSchoolSelect($event)"
+                                          (beforeSearch)="onSchoolSearch($event)"
+                                          placeholder="School Name"></jpix-input-typeahead>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <label>Event Code</label>
+                <input class="form-control jpix-input jpix-input--primary"
+                       formControlName="eventCode"
+                       type="text"
+                       placeholder="Event Code">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-12 col-sm-6  col-md-6">
+                <label>First Name</label>
+                <input class="form-control jpix-input jpix-input--primary"
+                       formControlName="firstName"
+                       type="text"
+                       placeholder="First Name">
+            </div>
+            <div class="col-xs-12 col-sm-6  col-md-6">
+                <label>Last Name</label>
+                <input class="form-control jpix-input jpix-input--primary"
+                       formControlName="lastName"
+                       type="text"
+                       placeholder="Last Name">
+            </div>
+        </div>
+        <div class="row jpix-find-student-form-actions">
+            <div class="col-xs-6 col-md-6">
+                <button class="jpix-button jpix-button--default"
+                        type="reset">Clear</button></div>
+            <div class="col-xs-6 col-md-6 text-right">
+                <button class="jpix-button jpix-button--warning"
+                        [disabled]="searchForm.invalid"
+                        type="submit">Search</button>
+            </div>
+        </div>
+    </div>
+</form>

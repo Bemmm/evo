@@ -1,0 +1,94 @@
+$base-width: rem(280px);
+$base-height: rem(50px);
+
+.jpix-button {
+  width: $base-width;
+  height: $base-height;
+  max-width: 100%;
+  color: $jpix-grey-font;
+  border-radius: 0;
+  border: 1px solid $jpix-grey;
+  font-family: $primary-font-family;
+
+  font-weight: bold;
+  cursor: pointer;
+
+  &:focus {
+    box-shadow: none;
+    border: 1px solid $jpix-grey;
+  }
+
+  &--info {
+    color: $jpix-white;
+    background-color: $jpix-blue-dark;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &--primary {
+    color: $jpix-white;
+    background-color: $jpix-blue-accent;
+  }
+
+  &--action {
+    color: $jpix-white;
+    background-color: $jpix-blue;
+  }
+
+  &--blackberry {
+    color: $jpix-white;
+    background-color: $jpix-blue-blackberry;
+  } //v2
+  &--warning {
+    color: $jpix-white;
+    background-color: $jpix-orange-accent;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: rem(16px);
+    &[disabled] {
+      background-color: $jpix-disabled;
+    }
+  }
+
+  &--default {
+    color: $jpix-orange-accent;
+    background-color: $jpix-white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: rem(16px);
+    border: 1px solid $jpix-orange-accent;
+    &[disabled] {
+      background-color: $jpix-disabled;
+      border: 1px solid $jpix-grey;
+      color: $jpix-white;
+    }
+  }
+
+  &--small {
+    width: rem(150px);
+    height: rem(36px);
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: $jpix-screen-ultra-sm-max) {
+  .jpix-button {
+    font-size: $jpix-font-size-sm;
+    &--warning, &--default {
+      font-size: $jpix-font-size-sm;
+    }
+  }
+}
+
+@media (max-width: $jpix-screen-ultra-sm-min) {
+  .jpix-button {
+    font-size: $jpix-font-size-s;
+    &--warning, &--default {
+      font-size: $jpix-font-size-s;
+    }
+  }
+}

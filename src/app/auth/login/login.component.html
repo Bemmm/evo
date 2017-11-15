@@ -1,0 +1,97 @@
+<div class="jpix-login">
+
+    <jpix-modal #forgotPasswordModal
+                title="Forgot your password"
+                [hideFooter]="hideForgotPasswordFooter">
+        <div class="jpix-forgot-password-modal">
+            {{forgotPasswordMessage}}
+            <jpix-error-message *ngFor="let message of forgotPasswordErrorMessages"
+                                [message]="message.text">
+            </jpix-error-message>
+            <form *ngIf="!forgotPasswordComplete"
+                  class="jpix-forgot-password-form"
+                  (submit)="onForgotPassword()">
+                <input [(ngModel)]="emailValue"
+                       name="emailValue"
+                       class="form-control jpix-input jpix-input--primary"
+                       type="email"
+                       placeholder="email address" />
+                <button [disabled]="emailValue ? null : 'true'"
+                        class="jpix-button jpix-button--small jpix-button--default"
+                        type="submit">Submit</button>
+            </form>
+            <div class="jpix-font-s jpix-forgot-password-comment">
+                If you've forgotten your password, and no longer have access to that email, you can close this box and create a new account.
+            </div>
+        </div>
+    </jpix-modal>
+
+    <jpix-modal #whyDoINeedAccountModal
+                title="Why do I need an account?"
+                [hideFooter]="hideForgotPasswordFooter">
+        <div class="jpix-why-i-need-account-modal">
+            <p>You need to create an account in order to view your student's photos. Creating an account is free, easy, and gives you access to their photos year after year.</p>
+            <p>Register your free account using the email address you have on file with your school and photos will automatically display in the Gallery!<br/>
+            If you use another email account, go to 'Find Your Student?' to associate your student's photos with this other account.</p>
+        </div>
+    </jpix-modal>
+
+    <jpix-modal #activateAccountModal
+                title="Activate your account"
+                [hideFooter]="true">
+
+        <ng-container *ngFor="let messsage of activateAccountErrorMessages">
+            <jpix-error-message [message]="messsage.text"></jpix-error-message>
+        </ng-container>
+
+        <p class="text-success"
+           *ngIf="!activateAccountErrorMessages.length">{{accountHasBeenActivatedMessage}}</p>
+    </jpix-modal>
+
+    <div class="jpix-h2">TIME TO ORDER YOUR STUDENT'S PHOTOS!</div>
+    <div class="jpix-auth__description">Register your free account or sign in to see your student's school pictures.</div>
+    <jpix-error-message *ngFor="let errorMessage of errorMessages"
+                        [shown]="formSubmitted"
+                        [message]="errorMessage.text"></jpix-error-message>
+    <form class="jpix-login__form jpix-form"
+          [ngClass]="{ 'jpix-form--submitted': formSubmitted }"
+          novalidate
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <input formControlName="username"
+                   class="form-control jpix-input jpix-input--large"
+                   type="text"
+                   placeholder="email address" />
+        </div>
+        <jpix-error-message [shown]="loginForm.get('username').hasError('required') && formSubmitted"
+                            message="Username is required."></jpix-error-message>
+        <div class="form-group">
+            <input formControlName="password"
+                   class="form-control jpix-input jpix-input--large"
+                   type="password"
+                   placeholder="password" />
+        </div>
+        <jpix-error-message [shown]="loginForm.get('password').hasError('required') && formSubmitted"
+                            message="Password is required."></jpix-error-message>
+        <div class="form-group">
+            <button class="form-control jpix-button jpix-button--warning"
+                    type="submit">Sign in</button>
+        </div>
+    </form>
+    <div class="jpix-link__wrapper">
+        <a class="jpix-link"
+           title="Forgot Password?"
+           (click)="openForgotPasswordDialog()">Forgot Password?</a>
+    </div>
+    <div>
+        <a class="jpix-link jpix-link--warning"
+           title="First Time? Create Account"
+           routerLink="/register">First Time? Create free Account</a>
+    </div>
+    <div>
+        <a class="jpix-link jpix-link--warning"
+           title="Why do I need an account?"
+           (click)="openWhyDoINeedAccountDialog()">Why do I need an account?</a>
+    </div>    
+</div>

@@ -1,0 +1,19 @@
+.jpix-find-student {
+  .jpix-find-student-message {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+  .jpix-table {
+    font-size: $jpix-font-size-sm;
+  }
+  .jpix-table-th-1,
+  .jpix-table-td-1,
+  .jpix-table-th-2,
+  .jpix-table-td-2 {
+    text-align: center;
+  }
+
+  .jpix-dropdown .dropdown-item {
+    white-space: normal;
+  }
+}

@@ -1,0 +1,11 @@
+@media print {
+  header,
+  footer,
+  jpix-mobile-nav {
+    display: none;
+  }
+
+  body {
+    margin-left: 2cm;
+  }
+}

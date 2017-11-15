@@ -1,0 +1,12 @@
+<div class="jpix-venues"
+     *ngIf="venuesKeys.length > 0">
+    <div class="jpix-venues__group"
+         *ngFor="let venuesKey of venuesKeys">
+        <ng-container *ngIf="venuesMap[venuesKey].venues.length > 0">
+            <p class="jpix-venues__title">{{venuesMap[venuesKey].schoolName}} Photo Days</p>
+            <p class="jpix-venues__venue"
+               *ngFor="let venue of venuesMap[venuesKey].venues">
+                {{getVenueMessage(venue)}}</p>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,150 @@
+$banner-bg-color: rgba(42, 51, 93, .9);
+$main-blocks-height: rem(575px);
+
+.jpix-auth {
+  &__banner {
+    height: $main-blocks-height;
+    position: relative;
+  }
+
+  &__banner-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1.2rem;
+    padding: 1.2rem .2rem;
+    background-color: $banner-bg-color;
+    color: $jpix-white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .8rem;
+    letter-spacing: .4rem;
+    z-index: 10;
+  }
+
+  &__slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  &__slider-item {
+    height: rem(575px);
+    background-size: cover;
+    background-position: 50% 25%;
+    background-repeat: no-repeat;
+  }
+
+  &__form {
+    padding-bottom: rem(7px);
+    border-bottom: 1px solid $jpix-blue-dark;
+  }
+
+  &__content {
+    border: 1px solid $jpix-grey;
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: $jpix-white;
+    margin: 0 5px;
+  }
+
+  &__logo {
+    width: rem(150px);
+    height: rem(61px);
+    background: url(./assets/img/auth-logo.png) 50% 50% no-repeat;
+    background-size: cover;
+    margin: rem(24px) auto rem(16px);
+  }
+
+  &__description {
+    font-size: rem(18px);
+    color: $jpix-grey-font;
+    margin-bottom: rem(37px);
+  }
+
+  &__content-wrapper {
+    background: linear-gradient(to bottom, $jpix-grey-ultralight 20%, $jpix-blue-primary 20%, $jpix-blue-primary 80%, $jpix-grey-ultralight 80%);
+    padding-bottom: rem(20px);
+  }
+
+  .jpix-link {
+    font-weight: bold;
+    font-size: rem(12px);
+  }
+
+  .jpix-input {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .jpix-button {
+    margin: 0 auto;
+  }
+
+  .jpix-h2 {
+    margin: rem(20px) 0;
+  }
+
+  .form-group {
+    margin-bottom: rem(22px);
+  }
+}
+
+@media (min-width: $screen-xs-min) {}
+
+@media (min-width: $screen-sm-min) {
+  .jpix-auth {
+    padding-bottom: rem(40px);
+
+    &__container {
+      margin-left: 15px;
+    }
+
+    &__content-wrapper {
+      background: none;
+      padding-bottom: 0;
+    }
+
+    &__content {
+      min-height: $main-blocks-height;
+      padding: 1.5rem 1rem;
+    }
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .jpix-auth {
+    &__logo {
+      margin: rem(40px) auto;
+    }
+
+    &__banner {
+      margin-bottom: 0;
+    }
+
+    &__banner-title {
+      font-size: 1.6rem;
+      bottom: 2.4rem;
+    }
+
+    &__content {
+      margin-left: rem(15px);
+      min-height: $main-blocks-height;
+    }
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .jpix-auth {
+    &__banner-title {
+      font-size: 2rem;
+    }
+
+    &__content {
+      padding: rem(40px) rem(28px) rem(38px);
+  }
+  }
+}

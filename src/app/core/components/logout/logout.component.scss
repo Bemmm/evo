@@ -1,0 +1,16 @@
+.jpix-logout {
+  margin-left: 10px;
+
+  &__button {
+    color: $jpix-white;
+    font-size: rem(14px);
+    padding: .2rem;
+    display: inline-block;
+    background: none;
+    border: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

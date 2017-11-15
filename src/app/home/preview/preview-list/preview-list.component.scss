@@ -1,0 +1,33 @@
+:host {
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: -$jpix-photo-item-side-margin;
+    margin-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      margin-bottom: rem(25px);
+      margin-left: $jpix-photo-item-side-margin;
+    }
+  }
+}
+
+@media (max-width: $screen-sm-min - 1) {
+  :host {
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, $jpix-photo-item-width-xs +$jpix-photo-item-side-margin);
+      justify-content: center;
+    }
+
+    ul.jpix-preview-list-composite {
+      li {
+        grid-column: span 2;
+      }
+    }
+  }
+}

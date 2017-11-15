@@ -1,0 +1,32 @@
+<nav class="jpix-mobile-nav visible-xs visible-sm">
+    <ul class="jpix-mobile-nav__list">
+
+        <ng-container *ngIf="isLogged">
+            <li class="jpix-mobile-nav__item"
+                *ngIf="hasSearchLink">
+                <a class="jpix-mobile-nav__link"
+                   href="javascript:void(0)"
+                   routerLink="/find-student"
+                   (click)="hideMobileNav.emit()">Find your Student?</a>
+            </li>
+            <li class="jpix-mobile-nav__item">
+                <a class="jpix-mobile-nav__link"
+                   href="javascript:void(0)"
+                   routerLink="/order-by-account"
+                   (click)="hideMobileNav.emit()">My Orders</a>
+            </li>
+        </ng-container>
+
+        <li class="jpix-mobile-nav__item">
+            <a class="jpix-mobile-nav__link"
+               href="javascript:void(0)"
+               routerLink="/faqs"
+               (click)="hideMobileNav.emit()">Help</a>
+        </li>
+        <li class="jpix-mobile-nav__item">
+            <a class="jpix-mobile-nav__link"
+               href="javascript:void(0)"
+               (click)="onLogoutClick()">Logout</a>
+        </li>
+    </ul>
+</nav>
