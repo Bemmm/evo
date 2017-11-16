@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { FilterValue } from './preview-filters/preview-filters.component';
 
 @Component({
-    selector: 'jpix-preview',
+    selector: 'evo-preview',
     templateUrl: './preview.component.html',
     styleUrls: ['./preview.component.scss'],
     encapsulation: ViewEncapsulation.None
@@ -58,24 +58,24 @@ export class PreviewComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit () {
-        let el = document.querySelector('.jpix-home-mobile-content');
+        let el = document.querySelector('.evo-home-mobile-content');
         el.addEventListener('scroll', this.onScroll);
         window.addEventListener('resize', this.onScroll);
     }
 
     ngOnDestroy() {
-        let el = document.querySelector('.jpix-home-mobile-content');
+        let el = document.querySelector('.evo-home-mobile-content');
         el.removeEventListener('scroll', this.onScroll);
         window.removeEventListener('resize', this.onScroll);
         this.subscriptions.forEach(subscription => subscription.unsubscribe());
     }
 
     onScroll () {
-        let buttonsEl: any = document.querySelector('.jpix-panel-mobile-actions');
+        let buttonsEl: any = document.querySelector('.evo-panel-mobile-actions');
         if (!buttonsEl.offsetParent) return;
-        let containerEl: any = document.querySelector('.jpix-home-mobile-content');
-        if (containerEl.scrollTop + containerEl.clientHeight + containerEl.offsetTop < buttonsEl.offsetTop + buttonsEl.clientHeight) containerEl.classList.add('jpix-fixed-elements')    
-            else containerEl.classList.remove('jpix-fixed-elements')   
+        let containerEl: any = document.querySelector('.evo-home-mobile-content');
+        if (containerEl.scrollTop + containerEl.clientHeight + containerEl.offsetTop < buttonsEl.offsetTop + buttonsEl.clientHeight) containerEl.classList.add('evo-fixed-elements')    
+            else containerEl.classList.remove('evo-fixed-elements')   
     }
 
     setLoading(state: boolean) {

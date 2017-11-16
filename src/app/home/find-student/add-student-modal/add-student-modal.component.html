@@ -1,6 +1,6 @@
-<div class="jpix-modal jpix-add-student-modal">
+<div class="evo-modal evo-add-student-modal">
     <div class="modal-header">
-        <h3 class="jpix-h3 modal-title">Add student: {{data.firstName}} {{data.lastName}}</h3>
+        <h3 class="evo-h3 modal-title">Add student: {{data.firstName}} {{data.lastName}}</h3>
         <button type="button"
             class="close"
             aria-label="Close"
@@ -10,13 +10,13 @@
     </div>
     <div class="modal-body">
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 jpix-font-sm text-center">
+            <div class="col-xs-10 col-xs-offset-1 evo-font-sm text-center">
                 <div [hidden]="result">
                     Enter the street number of the student’s home address:
                     <br/>
                     <br/>
                     <input
-                        class="form-control jpix-input jpix-input--primary"
+                        class="form-control evo-input evo-input--primary"
                         type="text"
                         maxlength="8"
                         [(ngModel)]="streetNumber">
@@ -33,15 +33,15 @@
     <div class="modal-footer">
         <button type="button"
                 [hidden]="!result || !result.success"
-                class="jpix-button jpix-button--small jpix-button--warning"
+                class="evo-button evo-button--small evo-button--warning"
                 (click)="onViewPhotos()">view your photos</button>
         <button type="button"
-            class="jpix-button jpix-button--small jpix-button--default"
+            class="evo-button evo-button--small evo-button--default"
             (click)="close()">close</button>
         <button type="button"
                 [hidden]="result"
                 [disabled]="!streetNumber"
-                class="jpix-button jpix-button--small jpix-button--warning"
+                class="evo-button evo-button--small evo-button--warning"
                 (click)="onSubmit()">add</button>
     </div>
 </div>

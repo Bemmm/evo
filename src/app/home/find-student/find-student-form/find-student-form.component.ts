@@ -9,7 +9,7 @@ import { SearchStudentModel, SchoolSearchModel } from './search.model';
 import { SchoolService, StudentService } from 'app/core/services';
 
 @Component({
-    selector: 'jpix-find-student-form',
+    selector: 'evo-find-student-form',
     templateUrl: './find-student-form.component.html',
     styleUrls: ['./find-student-form.component.scss']
 })

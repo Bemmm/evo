@@ -1,9 +1,4 @@
-export * from './title/title.component';
-export * from './navigation/navigation.component';
 export * from './footer/footer.component';
-export * from './footer-navigation/footer-navigation.component';
 export * from './header/header.component';
-export * from './cart-count/cart-count.component';
 export * from './logout/logout.component';
-export * from './subheader/subheader.component';
-export * from './mobile-nav/mobile-nav.component';
+

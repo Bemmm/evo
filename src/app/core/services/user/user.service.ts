@@ -9,7 +9,7 @@ import { userRoles } from 'app/shared/constants';
 
 @Injectable()
 export class UserService {
-    private storageKey = 'jpix-u';
+    private storageKey = 'evo-u';
 
     constructor(
         private store: Store<AppState>,

@@ -6,7 +6,7 @@ import { SelectedPhotosService, PoseService, UserService, PhotoSizesService } fr
 import { PhotoCard } from 'app/shared/models';
 
 @Component({
-    selector: 'jpix-preview-list-item',
+    selector: 'evo-preview-list-item',
     templateUrl: './preview-list-item.component.html',
     styleUrls: ['./preview-list-item.component.scss'],
     encapsulation: ViewEncapsulation.None
@@ -48,7 +48,7 @@ export class PreviewListItemComponent implements OnChanges, OnDestroy {
     }
 
     onSelect($event: any, item: PhotoCard) {
-        if (this.loading || $event.target.className === 'jpix-photo-zoom__target') {
+        if (this.loading || $event.target.className === 'evo-photo-zoom__target') {
             return;
         }
 

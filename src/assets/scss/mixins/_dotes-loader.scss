@@ -1,16 +1,16 @@
-@mixin jpix-dotes-loader($duration: 2.5s) {
-  .jpix-dotes-loader span {
+@mixin evo-dotes-loader($duration: 2.5s) {
+  .evo-dotes-loader span {
     animation-name: blink;
     animation-duration: $duration;
     animation-iteration-count: infinite;
     animation-fill-mode: both;
   }
 
-  .jpix-dotes-loader span:nth-child(2) {
+  .evo-dotes-loader span:nth-child(2) {
     animation-delay: .2s;
   }
 
-  .jpix-dotes-loader span:nth-child(3) {
+  .evo-dotes-loader span:nth-child(3) {
     animation-delay: .4s;
   }
 

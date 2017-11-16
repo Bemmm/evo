@@ -4,7 +4,7 @@ import { User } from 'app/shared/models';
 import { UserService } from 'app/core/services';
 
 @Component({
-    selector: 'jpix-header',
+    selector: 'evo-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })

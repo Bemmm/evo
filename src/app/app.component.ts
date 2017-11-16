@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, ViewContainerRef } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
-    selector: 'jpix-app',
+    selector: 'evo-app',
     templateUrl: './app.component.html',
     styleUrls: [
         './app.component.scss',

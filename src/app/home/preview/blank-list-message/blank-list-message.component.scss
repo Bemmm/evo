@@ -1,10 +1,10 @@
-.jpix-blank-list-message {
+.evo-blank-list-message {
   text-align: center;
   padding-top: 1rem;
 
   &__message {
-    .jpix-link {
-      color: $jpix-blue-sky;
+    .evo-link {
+      color: $evo-blue-sky;
       text-decoration: underline;
     }
   }
@@ -17,7 +17,7 @@
 }
 
 @media (min-width: $screen-sm-min) {
-  .jpix-blank-list-message {
+  .evo-blank-list-message {
     padding-top: 3rem;
   }
 }

@@ -1,16 +1,16 @@
-.jpix-preview {
+.evo-preview {
   &__list-wrapper {
     border-bottom: 2px solid #000;
   }
 
   &__list-title {
     font-size: rem(14px);
-    color: $jpix-blue-dark-night;
+    color: $evo-blue-dark-night;
     text-transform: uppercase;
     margin-top: rem(6px);
   }
 
-  .jpix-select__wrapper {
+  .evo-select__wrapper {
     position: relative;
     display: inline-block;
 
@@ -19,29 +19,29 @@
       content: "\f078";
       font-family: "FontAwesome";
       font-size: rem(14px);
-      color: $jpix-orange-accent;
+      color: $evo-orange-accent;
       top: rem(5px);
       right: 8px;
       pointer-events: none;
     }
   }
 
-  .jpix-select {
+  .evo-select {
     width: rem(156px);
     height: rem(29px);
     padding-left: 10px;
     padding-right: 27px;
     font-size: rem(14px);
     text-transform: capitalize;
-    color: $jpix-grey-primary;
-    border-color: $jpix-grey-primary-dark;
+    color: $evo-grey-primary;
+    border-color: $evo-grey-primary-dark;
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
 
     &:focus {
       outline: none;
-      border-color: $jpix-grey-primary-dark;
+      border-color: $evo-grey-primary-dark;
     }
 
     &::-ms-expand {
@@ -61,7 +61,7 @@
     }
   }
 
-  .jpix-preview-list {
+  .evo-preview-list {
     list-style-type: none;
     padding-left: 0;
 
@@ -73,13 +73,13 @@
     }
   }
 
-  .jpix-loader {
+  .evo-loader {
     height: 20rem;
     display: flex;
     align-items: center;
   }
 
-  .jpix-panel {
+  .evo-panel {
     &-mobile-actions, &__events-link {
       display: none;
     }
@@ -87,7 +87,7 @@
 }
 
 @media (min-width: $screen-sm-min) {
-  .jpix-preview {
+  .evo-preview {
     &__list-container {
       max-height: rem(650px);
       overflow-y: auto;
@@ -99,30 +99,30 @@
       padding-top: rem(25px);
     }
 
-    .jpix-loader {
+    .evo-loader {
       height: 28rem;
     }
   }
 }
 
 @media (max-width: $screen-sm-max) {
-  .jpix-preview {
-    .jpix-h2 {
+  .evo-preview {
+    .evo-h2 {
       font-size: 2rem;
     }
   }
 }
 
 @media (max-width: $screen-xs-max) {
-  .jpix-preview {
-    .jpix-preview-content {
+  .evo-preview {
+    .evo-preview-content {
       display: flex;
       flex-direction: column-reverse;
-      .jpix-panel-mobile-actions {
+      .evo-panel-mobile-actions {
         height: 4rem;
       }
-      .jpix-panel {
-        .jpix-h2 {
+      .evo-panel {
+        .evo-h2 {
           font-size: 1.25rem;
         }
         &__header, &__body {
@@ -145,7 +145,7 @@
           height: 4rem;
           align-items: center;
           white-space: nowrap;
-          .jpix-button {
+          .evo-button {
             width: 100%;
             &:first-child {
               margin-right: 1rem; 
@@ -154,12 +154,12 @@
         }
         &__events-link {
           display: inline;
-          color: $jpix-grey-night;
+          color: $evo-grey-night;
           &:hover, &:focus {
             text-decoration: none; 
           }
         }
-        jpix-venues {
+        evo-venues {
           display: none;
           font-size: rem(14px);
           &.active {
@@ -169,14 +169,14 @@
       }
     }
   }
-  .jpix-home {
-    .jpix-home-mobile-content.jpix-fixed-elements {
-      .jpix-preview {
-        .jpix-panel {
+  .evo-home {
+    .evo-home-mobile-content.evo-fixed-elements {
+      .evo-preview {
+        .evo-panel {
           &__actions-mobile {
             position: absolute;
             bottom: 0;
-            background-color: $jpix-white;
+            background-color: $evo-white;
             z-index: 100;
           }
           &__actions-mobile-space {
@@ -188,8 +188,8 @@
   }
 }
 
-@media (max-width: $jpix-screen-s-max) {
-  .jpix-preview .jpix-panel__actions-mobile .jpix-button {
+@media (max-width: $evo-screen-s-max) {
+  .evo-preview .evo-panel__actions-mobile .evo-button {
     font-size: 0.75rem;
   }
 }

@@ -1,6 +1,6 @@
 @mixin primary-border {
-  $border-top-left: 2px solid $jpix-grey;
-  $border-bottom-right: 2px solid $jpix-grey-light;
+  $border-top-left: 2px solid $evo-grey;
+  $border-bottom-right: 2px solid $evo-grey-light;
   border-top: $border-top-left;
   border-left: $border-top-left;
   border-bottom: $border-bottom-right;
@@ -8,7 +8,7 @@
 }
 
 @mixin primary-error-border {
-  $error-border: 1px solid $jpix-error;
+  $error-border: 1px solid $evo-error;
   border-top: $error-border;
   border-left: $error-border;
   border-bottom: $error-border;

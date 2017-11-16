@@ -1,5 +1,5 @@
-.jpix-header {
-  background-color: $jpix-blue-dark-night;
+.evo-header {
+  background-color: $evo-blue-dark-night;
 
   &__content {
     display: flex;
@@ -28,7 +28,7 @@
   &__logo {
     width: rem(94px);
     height: rem(38px);
-    background-image: url(./assets/img/jpix-white-logo.png);
+    background-image: url(./assets/img/evo-white-logo.png);
   }
 
   &__help {
@@ -42,19 +42,19 @@
     font-size: rem(12px);
     font-weight: bold;
     text-transform: uppercase;
-    color: $jpix-white;
+    color: $evo-white;
     margin-right: 30px;
     cursor: pointer;
   }
 
   &__mobile-menu {
     font-size: rem(17px);
-    color: $jpix-white;
+    color: $evo-white;
   }
 
   &__user-info {
     font-size: rem(12px);
-    color: $jpix-white;
+    color: $evo-white;
     margin-right: rem(12px);
   }
 }

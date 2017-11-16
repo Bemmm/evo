@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { AuthService } from 'app/core/services';
 
 @Component({
-    selector: 'jpix-logout',
+    selector: 'evo-logout',
     templateUrl: './logout.component.html',
     styleUrls: ['./logout.component.scss']
 })

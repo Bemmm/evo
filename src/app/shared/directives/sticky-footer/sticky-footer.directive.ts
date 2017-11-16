@@ -3,7 +3,7 @@ import { FooterComponent } from 'app/core/components';
 import { Subject } from 'rxjs/Subject';
 
 @Directive({
-    selector: '[jpixStickyFooter]'
+    selector: '[evoStickyFooter]'
 })
 export class StickyFooterDirective implements AfterViewChecked {
     @HostListener('window:resize') onWindowResize() {
@@ -23,14 +23,14 @@ export class StickyFooterDirective implements AfterViewChecked {
     }
 
     toggleFooterPostion() {
-        const hasClass = this.el.nativeElement.classList.contains('jpix-fixed--to-bottom');
+        const hasClass = this.el.nativeElement.classList.contains('evo-fixed--to-bottom');
         const needToFix = ((document.body.offsetHeight + this.el.nativeElement.offsetHeight) < window.innerHeight) && hasClass ||
             (document.body.offsetHeight < window.innerHeight) && !hasClass;
 
         if (needToFix) {
-            this.el.nativeElement.classList.add('jpix-fixed--to-bottom');
+            this.el.nativeElement.classList.add('evo-fixed--to-bottom');
         } else {
-            this.el.nativeElement.classList.remove('jpix-fixed--to-bottom');
+            this.el.nativeElement.classList.remove('evo-fixed--to-bottom');
         }
     }
 

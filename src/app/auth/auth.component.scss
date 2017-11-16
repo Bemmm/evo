@@ -1,7 +1,7 @@
 $banner-bg-color: rgba(42, 51, 93, .9);
 $main-blocks-height: rem(575px);
 
-.jpix-auth {
+.evo-auth {
   &__banner {
     height: $main-blocks-height;
     position: relative;
@@ -14,7 +14,7 @@ $main-blocks-height: rem(575px);
     bottom: 1.2rem;
     padding: 1.2rem .2rem;
     background-color: $banner-bg-color;
-    color: $jpix-white;
+    color: $evo-white;
     text-align: center;
     text-transform: uppercase;
     font-size: .8rem;
@@ -40,14 +40,14 @@ $main-blocks-height: rem(575px);
 
   &__form {
     padding-bottom: rem(7px);
-    border-bottom: 1px solid $jpix-blue-dark;
+    border-bottom: 1px solid $evo-blue-dark;
   }
 
   &__content {
-    border: 1px solid $jpix-grey;
+    border: 1px solid $evo-grey;
     padding: 2rem 1rem;
     text-align: center;
-    background-color: $jpix-white;
+    background-color: $evo-white;
     margin: 0 5px;
   }
 
@@ -61,30 +61,30 @@ $main-blocks-height: rem(575px);
 
   &__description {
     font-size: rem(18px);
-    color: $jpix-grey-font;
+    color: $evo-grey-font;
     margin-bottom: rem(37px);
   }
 
   &__content-wrapper {
-    background: linear-gradient(to bottom, $jpix-grey-ultralight 20%, $jpix-blue-primary 20%, $jpix-blue-primary 80%, $jpix-grey-ultralight 80%);
+    background: linear-gradient(to bottom, $evo-grey-ultralight 20%, $evo-blue-primary 20%, $evo-blue-primary 80%, $evo-grey-ultralight 80%);
     padding-bottom: rem(20px);
   }
 
-  .jpix-link {
+  .evo-link {
     font-weight: bold;
     font-size: rem(12px);
   }
 
-  .jpix-input {
+  .evo-input {
     text-align: center;
     margin: 0 auto;
   }
 
-  .jpix-button {
+  .evo-button {
     margin: 0 auto;
   }
 
-  .jpix-h2 {
+  .evo-h2 {
     margin: rem(20px) 0;
   }
 
@@ -96,7 +96,7 @@ $main-blocks-height: rem(575px);
 @media (min-width: $screen-xs-min) {}
 
 @media (min-width: $screen-sm-min) {
-  .jpix-auth {
+  .evo-auth {
     padding-bottom: rem(40px);
 
     &__container {
@@ -116,7 +116,7 @@ $main-blocks-height: rem(575px);
 }
 
 @media (min-width: $screen-md-min) {
-  .jpix-auth {
+  .evo-auth {
     &__logo {
       margin: rem(40px) auto;
     }
@@ -138,7 +138,7 @@ $main-blocks-height: rem(575px);
 }
 
 @media (min-width: $screen-lg-min) {
-  .jpix-auth {
+  .evo-auth {
     &__banner-title {
       font-size: 2rem;
     }

@@ -1,27 +1,27 @@
 $padding-top: rem(33px);
 $padding-bottom: rem(30px);
 
-.jpix-home {
+.evo-home {
   &__container {
     padding-top: $padding-top;
     padding-bottom: $padding-bottom;
   }
 
-  .jpix-mobile-content {
+  .evo-mobile-content {
     overflow-y: initial;
   }
 
-  &.jpix-mobile-nav-wrapper {
+  &.evo-mobile-nav-wrapper {
     position: relative;
     right: 0;
     transition: right 250ms linear;
 
     &--open {
-      right: -#{$jpix-mobile-nav-width};
+      right: -#{$evo-mobile-nav-width};
     }
   }
-  // JPIX-849 - revert
-  /*.jpix-home-content {
+  // evo-849 - revert
+  /*.evo-home-content {
     @include calc(min-height, '100vh - 65px');
     display: flex;
     flex-direction: column;
@@ -30,8 +30,8 @@ $padding-bottom: rem(30px);
 }
 
 @media (min-width: $screen-sm-min) {
-  .jpix-home {
-    &.jpix-mobile-nav-wrapper {
+  .evo-home {
+    &.evo-mobile-nav-wrapper {
       &--open {
         right: 0;
       }
@@ -39,19 +39,19 @@ $padding-bottom: rem(30px);
   }
 }
 @media (max-width: $screen-xs-max) {
-  .jpix-home {
+  .evo-home {
     &__container {
       padding-top: 1rem;
       padding-bottom: 1rem;
     }
-    &.jpix-mobile-nav-wrapper {
+    &.evo-mobile-nav-wrapper {
       position: fixed;
     }
     height: 100%;
     display: flex;
     flex-direction: column;
     width: 100%;
-    .jpix-home-mobile-content {
+    .evo-home-mobile-content {
       overflow-y: auto;
       flex: 1;
     }

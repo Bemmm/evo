@@ -1,5 +1,5 @@
-@mixin jpix-loader-icon($color: $jpix-blue-primary-dark, $scale: 0.3, $time: 1.2s) {
-  .jpix-loader-icon {
+@mixin evo-loader-icon($color: $evo-blue-primary-dark, $scale: 0.3, $time: 1.2s) {
+  .evo-loader-icon {
     transform: scale($scale);
     background: none;
     position: relative;
@@ -7,7 +7,7 @@
     height: 200px;
   }
 
-  @-webkit-keyframes jpix-loader-icon {
+  @-webkit-keyframes evo-loader-icon {
     0% {
       opacity: 1;
       -webkit-transform: scale(1.5);
@@ -20,7 +20,7 @@
     }
   }
 
-  @-moz-keyframes jpix-loader-icon {
+  @-moz-keyframes evo-loader-icon {
     0% {
       opacity: 1;
       -webkit-transform: scale(1.5);
@@ -33,7 +33,7 @@
     }
   }
 
-  @-webkit-keyframes jpix-loader-icon {
+  @-webkit-keyframes evo-loader-icon {
     0% {
       opacity: 1;
       -webkit-transform: scale(1.5);
@@ -46,7 +46,7 @@
     }
   }
 
-  @-o-keyframes jpix-loader-icon {
+  @-o-keyframes evo-loader-icon {
     0% {
       opacity: 1;
       -webkit-transform: scale(1.5);
@@ -59,7 +59,7 @@
     }
   }
 
-  @keyframes jpix-loader-icon {
+  @keyframes evo-loader-icon {
     0% {
       opacity: 1;
       -webkit-transform: scale(1.5);
@@ -72,7 +72,7 @@
     }
   }
 
-  .jpix-loader-icon>div {
+  .evo-loader-icon>div {
     width: 24px;
     height: 24px;
     margin-left: 4px;
@@ -80,105 +80,105 @@
     position: absolute;
   }
 
-  .jpix-loader-icon>div>div {
+  .evo-loader-icon>div>div {
     width: 100%;
     height: 100%;
     border-radius: 100px;
     background: $color;
   }
 
-  .jpix-loader-icon>div:nth-of-type(1)>div {
-    -webkit-animation: jpix-loader-icon $time linear infinite;
-    animation: jpix-loader-icon $time linear infinite;
+  .evo-loader-icon>div:nth-of-type(1)>div {
+    -webkit-animation: evo-loader-icon $time linear infinite;
+    animation: evo-loader-icon $time linear infinite;
     -webkit-animation-delay: -1.05s;
     animation-delay: -1.05s;
   }
 
-  .jpix-loader-icon>div:nth-of-type(1) {
+  .evo-loader-icon>div:nth-of-type(1) {
     -webkit-transform: translate(84px, 84px) rotate(45deg) translate(70px, 0);
     transform: translate(84px, 84px) rotate(45deg) translate(70px, 0);
   }
 
-  .jpix-loader-icon>div:nth-of-type(2)>div {
-    -webkit-animation: jpix-loader-icon $time linear infinite;
-    animation: jpix-loader-icon $time linear infinite;
+  .evo-loader-icon>div:nth-of-type(2)>div {
+    -webkit-animation: evo-loader-icon $time linear infinite;
+    animation: evo-loader-icon $time linear infinite;
     -webkit-animation-delay: -0.89s;
     animation-delay: -0.89s;
   }
 
-  .jpix-loader-icon>div:nth-of-type(2) {
+  .evo-loader-icon>div:nth-of-type(2) {
     -webkit-transform: translate(84px, 84px) rotate(90deg) translate(70px, 0);
     transform: translate(84px, 84px) rotate(90deg) translate(70px, 0);
   }
 
-  .jpix-loader-icon>div:nth-of-type(3)>div {
-    -webkit-animation: jpix-loader-icon $time linear infinite;
-    animation: jpix-loader-icon $time linear infinite;
+  .evo-loader-icon>div:nth-of-type(3)>div {
+    -webkit-animation: evo-loader-icon $time linear infinite;
+    animation: evo-loader-icon $time linear infinite;
     -webkit-animation-delay: -0.75s;
     animation-delay: -0.75s;
   }
 
-  .jpix-loader-icon>div:nth-of-type(3) {
+  .evo-loader-icon>div:nth-of-type(3) {
     -webkit-transform: translate(84px, 84px) rotate(135deg) translate(70px, 0);
     transform: translate(84px, 84px) rotate(135deg) translate(70px, 0);
   }
 
-  .jpix-loader-icon>div:nth-of-type(4)>div {
-    -webkit-animation: jpix-loader-icon $time linear infinite;
-    animation: jpix-loader-icon $time linear infinite;
+  .evo-loader-icon>div:nth-of-type(4)>div {
+    -webkit-animation: evo-loader-icon $time linear infinite;
+    animation: evo-loader-icon $time linear infinite;
     -webkit-animation-delay: -0.6s;
     animation-delay: -0.6s;
   }
 
-  .jpix-loader-icon>div:nth-of-type(4) {
+  .evo-loader-icon>div:nth-of-type(4) {
     -webkit-transform: translate(84px, 84px) rotate(180deg) translate(70px, 0);
     transform: translate(84px, 84px) rotate(180deg) translate(70px, 0);
   }
 
-  .jpix-loader-icon>div:nth-of-type(5)>div {
-    -webkit-animation: jpix-loader-icon $time linear infinite;
-    animation: jpix-loader-icon $time linear infinite;
+  .evo-loader-icon>div:nth-of-type(5)>div {
+    -webkit-animation: evo-loader-icon $time linear infinite;
+    animation: evo-loader-icon $time linear infinite;
     -webkit-animation-delay: -0.44s;
     animation-delay: -0.44s;
   }
 
-  .jpix-loader-icon>div:nth-of-type(5) {
+  .evo-loader-icon>div:nth-of-type(5) {
     -webkit-transform: translate(84px, 84px) rotate(225deg) translate(70px, 0);
     transform: translate(84px, 84px) rotate(225deg) translate(70px, 0);
   }
 
-  .jpix-loader-icon>div:nth-of-type(6)>div {
-    -webkit-animation: jpix-loader-icon $time linear infinite;
-    animation: jpix-loader-icon $time linear infinite;
+  .evo-loader-icon>div:nth-of-type(6)>div {
+    -webkit-animation: evo-loader-icon $time linear infinite;
+    animation: evo-loader-icon $time linear infinite;
     -webkit-animation-delay: -0.3s;
     animation-delay: -0.3s;
   }
 
-  .jpix-loader-icon>div:nth-of-type(6) {
+  .evo-loader-icon>div:nth-of-type(6) {
     -webkit-transform: translate(84px, 84px) rotate(270deg) translate(70px, 0);
     transform: translate(84px, 84px) rotate(270deg) translate(70px, 0);
   }
 
-  .jpix-loader-icon>div:nth-of-type(7)>div {
-    -webkit-animation: jpix-loader-icon $time linear infinite;
-    animation: jpix-loader-icon $time linear infinite;
+  .evo-loader-icon>div:nth-of-type(7)>div {
+    -webkit-animation: evo-loader-icon $time linear infinite;
+    animation: evo-loader-icon $time linear infinite;
     -webkit-animation-delay: -0.15s;
     animation-delay: -0.15s;
   }
 
-  .jpix-loader-icon>div:nth-of-type(7) {
+  .evo-loader-icon>div:nth-of-type(7) {
     -webkit-transform: translate(84px, 84px) rotate(315deg) translate(70px, 0);
     transform: translate(84px, 84px) rotate(315deg) translate(70px, 0);
   }
 
-  .jpix-loader-icon>div:nth-of-type(8)>div {
-    -webkit-animation: jpix-loader-icon $time linear infinite;
-    animation: jpix-loader-icon $time linear infinite;
+  .evo-loader-icon>div:nth-of-type(8)>div {
+    -webkit-animation: evo-loader-icon $time linear infinite;
+    animation: evo-loader-icon $time linear infinite;
     -webkit-animation-delay: -0s;
     animation-delay: -0s;
   }
 
-  .jpix-loader-icon>div:nth-of-type(8) {
+  .evo-loader-icon>div:nth-of-type(8) {
     -webkit-transform: translate(84px, 84px) rotate(360deg) translate(70px, 0);
     transform: translate(84px, 84px) rotate(360deg) translate(70px, 0);
   }

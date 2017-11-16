@@ -1,5 +1,5 @@
-.jpix-footer {
-  background-color: $jpix-blue-dark-night;
+.evo-footer {
+  background-color: $evo-blue-dark-night;
 
   &__content {
     padding-top: rem(20px);
@@ -17,15 +17,15 @@
 
   &__label {
     @include font($primary-font-family, rem(8px));
-    color: $jpix-white;
+    color: $evo-white;
     white-space: nowrap;
     text-align: center;
   }
-  .jpix-footer__content {
+  .evo-footer__content {
     display: flex;
   }
   
-  .jpix-footer-navigation-my-orders {
+  .evo-footer-navigation-my-orders {
     right: 0;
     position: absolute;
   
@@ -34,15 +34,15 @@
     }
 
     a {
-      color: $jpix-white;
+      color: $evo-white;
     }
   }
   
 }
 
 @media (min-width: $screen-sm-min) {
-  .jpix-footer {
-    background-color: $jpix-blue-dark-night;
+  .evo-footer {
+    background-color: $evo-blue-dark-night;
 
     &__content {
       padding-bottom: rem(57px);
@@ -51,7 +51,7 @@
 }
 
 @media (max-width: 480px) {
-  .jpix-footer {
+  .evo-footer {
     .container {
       padding: 0;
     }

@@ -5,7 +5,7 @@ import { photoTypes } from 'app/shared/constants';
 import { PhotoTypesService } from 'app/core/services';
 
 @Component({
-    selector: 'jpix-preview-list',
+    selector: 'evo-preview-list',
     templateUrl: './preview-list.component.html',
     styleUrls: ['./preview-list.component.scss']
 })

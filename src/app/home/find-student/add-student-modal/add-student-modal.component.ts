@@ -4,7 +4,7 @@ import { ApiService } from 'app/core/services';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'jpix-add-student-modal',
+    selector: 'evo-add-student-modal',
     templateUrl: './add-student-modal.component.html',
     styleUrls: ['./add-student-modal.component.scss']
 })

@@ -1,28 +1,28 @@
-<div class="jpix-preview-list-item"
+<div class="evo-preview-list-item"
      *ngIf="item"
-[ngClass]="{ 'jpix-preview-list-item--landscape': isComposite }"
+[ngClass]="{ 'evo-preview-list-item--landscape': isComposite }"
      (click)="onSelect($event, item)">
 
-    <div class="jpix-preview-list-item__yearbook-label"
+    <div class="evo-preview-list-item__yearbook-label"
          *ngIf="isYearbookPhoto">Yearbook</div>
 
-    <jpix-photo-checker [photo]="item"
+    <evo-photo-checker [photo]="item"
                         [isComposite]="isComposite"
                         (check)="setLoading(false)">
         <ng-template>
-            <div class="jpix-preview-list-item__photo"
-                 jpixImageLoader
+            <div class="evo-preview-list-item__photo"
+                 evoImageLoader
                  [imgSrc]="item.url"
-                 imgClassName="jpix-preview-list-item__image"
+                 imgClassName="evo-preview-list-item__image"
                  [imgAlt]="item.studentName"
                  (load)="setLoading(false)">
             </div>
 
-            <jpix-photo-zoom [src]="getImageLinkForZoom(item.url)"></jpix-photo-zoom>
+            <evo-photo-zoom [src]="getImageLinkForZoom(item.url)"></evo-photo-zoom>
         </ng-template>
-    </jpix-photo-checker>
+    </evo-photo-checker>
 
     <div *ngIf="!loading"
-         [ngClass]="{ 'jpix-check': true, 'active': isSelected(item) }"></div>
+         [ngClass]="{ 'evo-check': true, 'active': isSelected(item) }"></div>
 
 </div>

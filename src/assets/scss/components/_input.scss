@@ -1,10 +1,10 @@
 $base-width: rem(280px);
 $base-height: rem(50px);
 
-.jpix-input {
-  color: $jpix-grey-font;
+.evo-input {
+  color: $evo-grey-font;
   border-radius: 0;
-  border: 1px solid $jpix-grey;
+  border: 1px solid $evo-grey;
   font-family: $primary-font-family;
   max-width: 100%;
 
@@ -50,11 +50,11 @@ $base-height: rem(50px);
   &.disabled,
   &[disabled] {
     cursor: not-allowed;
-    background-color: $jpix-grey-ultralight;
+    background-color: $evo-grey-ultralight;
   }
 }
 
-.jpix-input-btn-group {
+.evo-input-btn-group {
   margin-bottom: rem(30px);
 
   input {
@@ -66,8 +66,8 @@ $base-height: rem(50px);
   }
 }
 
-.jpix-form--submitted {
-  .jpix-input.ng-invalid {
+.evo-form--submitted {
+  .evo-input.ng-invalid {
     @include primary-error-border;
   }
 }

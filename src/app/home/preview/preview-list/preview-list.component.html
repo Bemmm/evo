@@ -1,14 +1,14 @@
 <ul *ngIf="sortedItems.exludingComposite.length > 0">
     <li *ngFor="let item of sortedItems.exludingComposite; trackBy: trackItem">
-        <jpix-preview-list-item [item]="item"
-                                [selectedId]="selectedId"></jpix-preview-list-item>
+        <evo-preview-list-item [item]="item"
+                                [selectedId]="selectedId"></evo-preview-list-item>
     </li>
 </ul>
 <ul *ngIf="sortedItems[compositePhotoType].length > 0"
-    class="jpix-preview-list-composite">
+    class="evo-preview-list-composite">
     <li *ngFor="let item of sortedItems[compositePhotoType]; trackBy: trackItem">
-        <jpix-preview-list-item [item]="item"
+        <evo-preview-list-item [item]="item"
                                 [selectedId]="selectedId"
-                                [isComposite]="true"></jpix-preview-list-item>
+                                [isComposite]="true"></evo-preview-list-item>
     </li>
 </ul>

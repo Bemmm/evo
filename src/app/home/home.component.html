@@ -1,24 +1,24 @@
-<div class="jpix-home jpix-mobile-nav-wrapper"
-     [ngClass]="{ 'jpix-mobile-nav-wrapper--open': showMobileNav }">
-    <jpix-mobile-nav [hasSearchLink]="hasSearchLink"
+<div class="evo-home evo-mobile-nav-wrapper"
+     [ngClass]="{ 'evo-mobile-nav-wrapper--open': showMobileNav }">
+    <evo-mobile-nav [hasSearchLink]="hasSearchLink"
                      [isLogged]="isLogged"
-                     (hideMobileNav)="hideMobileNav()"></jpix-mobile-nav>
+                     (hideMobileNav)="hideMobileNav()"></evo-mobile-nav>
 
     <header>
-        <jpix-header [hasSearchLink]="hasSearchLink"
+        <evo-header [hasSearchLink]="hasSearchLink"
                      [isLogged]="isLogged"
-                     (toggleMobileNav)="onToggleMobileNav()"></jpix-header>
+                     (toggleMobileNav)="onToggleMobileNav()"></evo-header>
     </header>
-    <div class="jpix-home-content jpix-home-mobile-content">
+    <div class="evo-home-content evo-home-mobile-content">
         <main (click)="hideMobileNav()">
             <div class="container">
-                <section class="jpix-home__container">
+                <section class="evo-home__container">
                     <router-outlet></router-outlet>
                 </section>
             </div>
         </main>
         <footer (click)="hideMobileNav()">
-            <jpix-footer [isLogged]="isLogged"></jpix-footer>
+            <evo-footer [isLogged]="isLogged"></evo-footer>
         </footer>
     </div>
     

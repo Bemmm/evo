@@ -26,7 +26,7 @@ const tableOptions: CustomTableOptions = {
 };
 
 @Component({
-    selector: 'jpix-find-student',
+    selector: 'evo-find-student',
     templateUrl: './find-student.component.html',
     styleUrls: ['./find-student.component.scss'],
     encapsulation: ViewEncapsulation.None

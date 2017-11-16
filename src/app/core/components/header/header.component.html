@@ -1,39 +1,39 @@
-<div class="jpix-header">
+<div class="evo-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-12 jpix-header__content">
+                        <div class="col-xs-12 evo-header__content">
                             <a *ngIf="isLogged"
-                                class="jpix-header__mobile-menu visible-xs"
+                                class="evo-header__mobile-menu visible-xs"
                                (click)="toggleMobileNav.emit()">
                                 <i class="fa fa-bars"
                                    aria-hidden="true"></i>
                             </a>
-                            <a class="jpix-header__logo"
+                            <a class="evo-header__logo"
                                title="Jostens PIX"
                                [routerLink]="getLogoLink()">
                                 <h1>Jostens PIX</h1>
                             </a>
-                            <div class="jpix-header__info">
+                            <div class="evo-header__info">
 
                                 <ng-container *ngIf="isLogged">
-                                    <span class="jpix-header__user-info"
+                                    <span class="evo-header__user-info"
                                           *ngIf="user.isConsumerCare()">Logged in as {{user.username}}</span>
-                                    <a class="jpix-header__search hidden-xs"
+                                    <a class="evo-header__search hidden-xs"
                                        title="Find your Student?"
                                        *ngIf="hasSearchLink"
                                        routerLink="/find-student">Find your Student?</a>
                                 </ng-container>
 
-                                <a class="jpix-header__help hidden-xs"
+                                <a class="evo-header__help hidden-xs"
                                    title="Need Help?"
                                    routerLink="/faqs">Help</a>
 
                                 <ng-container *ngIf="isLogged">
-                                    <jpix-cart-count></jpix-cart-count>
-                                    <jpix-logout></jpix-logout>
+                                    <evo-cart-count></evo-cart-count>
+                                    <evo-logout></evo-logout>
                                 </ng-container>
 
                             </div>

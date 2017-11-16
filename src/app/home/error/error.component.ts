@@ -6,7 +6,7 @@ import { Error } from './error.model';
 import { ErrorService } from './error.service';
 
 @Component({
-    selector: 'jpix-error',
+    selector: 'evo-error',
     templateUrl: './error.component.html',
     styleUrls: ['./error.component.scss'],
     providers: [ErrorService]

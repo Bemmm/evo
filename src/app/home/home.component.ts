@@ -6,7 +6,7 @@ import { UserService } from 'app/core/services';
 import { SelectedPhotosService } from 'app/core/services';
 
 @Component({
-    selector: 'jpix-home',
+    selector: 'evo-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })

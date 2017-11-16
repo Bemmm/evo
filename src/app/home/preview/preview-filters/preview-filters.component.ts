@@ -9,7 +9,7 @@ export interface FilterValue {
 }
 
 @Component({
-    selector: 'jpix-preview-filters',
+    selector: 'evo-preview-filters',
     templateUrl: './preview-filters.component.html',
     styleUrls: ['./preview-filters.component.scss']
 })

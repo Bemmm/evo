@@ -1,31 +1,31 @@
-<div class="jpix-find-student">
-    <div class="jpix-find-student__input-data-section">
+<div class="evo-find-student">
+    <div class="evo-find-student__input-data-section">
         <div class="row">
             <div class="col-sm-12 col-md-8 col-md-offset-2">
-                <jpix-subheader>
-                    <span class="jpix-subheader-title">Search for your student</span>
-                    <span class="jpix-subheader-description">Specify their complete first and last name</span>
-                </jpix-subheader>  
-                <div class="text-right jpix-find-student-actions">
-                    <button class="jpix-button jpix-button--default jpix-button--small"
+                <evo-subheader>
+                    <span class="evo-subheader-title">Search for your student</span>
+                    <span class="evo-subheader-description">Specify their complete first and last name</span>
+                </evo-subheader>  
+                <div class="text-right evo-find-student-actions">
+                    <button class="evo-button evo-button--default evo-button--small"
                         (click)="onViewPhotos()">Your photos</button>
                 </div>
-                <jpix-find-student-form (result)="onSearchResults($event)"></jpix-find-student-form>
+                <evo-find-student-form (result)="onSearchResults($event)"></evo-find-student-form>
             </div>
         </div>
     </div>
     <div *ngIf="data"
-         class="jpix-find-student__results-section">
+         class="evo-find-student__results-section">
         <div class="row">
             <div class="col-sm-12 col-md-8 col-md-offset-2">
-                <div class="jpix-line-gray-1"></div>
-                <jpix-custom-table *ngIf="tableData"
+                <div class="evo-line-gray-1"></div>
+                <evo-custom-table *ngIf="tableData"
                                    [options]="tableOptions"
                                    [data]="tableData"
                                    (action)="onAction($event)">
-                </jpix-custom-table>
+                </evo-custom-table>
                 <div *ngIf="!data.items.length"
-                     class="text-center jpix-find-student-message jpix-font-sm">
+                     class="text-center evo-find-student-message evo-font-sm">
                     <div *ngIf="data.success">
                         We were not able to match you to your student.<br/> If your student registered with the school late, it is possible that their name was not on the list provided by the school. Please check back a few days after picture day when
                         photos become available. You should be able to locate their photos at that point.<br/> If your student did not register late, please contact Jostens Pix at 1-877-515-1447 for assistance.

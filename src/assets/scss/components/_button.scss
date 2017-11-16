@@ -1,13 +1,13 @@
 $base-width: rem(280px);
 $base-height: rem(50px);
 
-.jpix-button {
+.evo-button {
   width: $base-width;
   height: $base-height;
   max-width: 100%;
-  color: $jpix-grey-font;
+  color: $evo-grey-font;
   border-radius: 0;
-  border: 1px solid $jpix-grey;
+  border: 1px solid $evo-grey;
   font-family: $primary-font-family;
 
   font-weight: bold;
@@ -15,52 +15,52 @@ $base-height: rem(50px);
 
   &:focus {
     box-shadow: none;
-    border: 1px solid $jpix-grey;
+    border: 1px solid $evo-grey;
   }
 
   &--info {
-    color: $jpix-white;
-    background-color: $jpix-blue-dark;
+    color: $evo-white;
+    background-color: $evo-blue-dark;
     font-weight: 700;
     text-transform: uppercase;
   }
 
   &--primary {
-    color: $jpix-white;
-    background-color: $jpix-blue-accent;
+    color: $evo-white;
+    background-color: $evo-blue-accent;
   }
 
   &--action {
-    color: $jpix-white;
-    background-color: $jpix-blue;
+    color: $evo-white;
+    background-color: $evo-blue;
   }
 
   &--blackberry {
-    color: $jpix-white;
-    background-color: $jpix-blue-blackberry;
+    color: $evo-white;
+    background-color: $evo-blue-blackberry;
   } //v2
   &--warning {
-    color: $jpix-white;
-    background-color: $jpix-orange-accent;
+    color: $evo-white;
+    background-color: $evo-orange-accent;
     text-transform: uppercase;
     font-weight: bold;
     font-size: rem(16px);
     &[disabled] {
-      background-color: $jpix-disabled;
+      background-color: $evo-disabled;
     }
   }
 
   &--default {
-    color: $jpix-orange-accent;
-    background-color: $jpix-white;
+    color: $evo-orange-accent;
+    background-color: $evo-white;
     text-transform: uppercase;
     font-weight: bold;
     font-size: rem(16px);
-    border: 1px solid $jpix-orange-accent;
+    border: 1px solid $evo-orange-accent;
     &[disabled] {
-      background-color: $jpix-disabled;
-      border: 1px solid $jpix-grey;
-      color: $jpix-white;
+      background-color: $evo-disabled;
+      border: 1px solid $evo-grey;
+      color: $evo-white;
     }
   }
 
@@ -75,20 +75,20 @@ $base-height: rem(50px);
   }
 }
 
-@media (max-width: $jpix-screen-ultra-sm-max) {
-  .jpix-button {
-    font-size: $jpix-font-size-sm;
+@media (max-width: $evo-screen-ultra-sm-max) {
+  .evo-button {
+    font-size: $evo-font-size-sm;
     &--warning, &--default {
-      font-size: $jpix-font-size-sm;
+      font-size: $evo-font-size-sm;
     }
   }
 }
 
-@media (max-width: $jpix-screen-ultra-sm-min) {
-  .jpix-button {
-    font-size: $jpix-font-size-s;
+@media (max-width: $evo-screen-ultra-sm-min) {
+  .evo-button {
+    font-size: $evo-font-size-s;
     &--warning, &--default {
-      font-size: $jpix-font-size-s;
+      font-size: $evo-font-size-s;
     }
   }
 }

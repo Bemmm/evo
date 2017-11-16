@@ -1,4 +1,4 @@
-      .jpix-radio {
+      .evo-radio {
         display: none;
 
         &+label {
@@ -8,7 +8,7 @@
 
           span {
             display: inline-block;
-            border: 1px solid $jpix-grey;
+            border: 1px solid $evo-grey;
             border-radius: 50%;
             background: none;
             cursor: pointer;
@@ -24,7 +24,7 @@
 
           &:checked+label {
             span {
-              background-color: $jpix-orange-accent;
+              background-color: $evo-orange-accent;
               background-image: url(check-white.png);
               background-position: 50% 50%;
               background-size: 20px;
@@ -35,12 +35,12 @@
 
           &:disabled+label,
           &.disabled+label {
-            color: $jpix-grey;
+            color: $evo-grey;
             pointer-events: none;
 
             span {
               cursor: not-allowed;
-              border-color: $jpix-grey-light;
+              border-color: $evo-grey-light;
             }
           }
         }
@@ -53,9 +53,9 @@
 
           &:checked+label {
             span {
-              background-color: $jpix-orange-accent;
-              border: 4px solid $jpix-white;
-              box-shadow: 0 0 0 1px $jpix-grey;
+              background-color: $evo-orange-accent;
+              border: 4px solid $evo-white;
+              box-shadow: 0 0 0 1px $evo-grey;
             }
           }
         }

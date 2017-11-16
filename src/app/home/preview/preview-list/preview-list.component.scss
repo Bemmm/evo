@@ -3,14 +3,14 @@
   ul {
     list-style-type: none;
     padding-left: 0;
-    margin-left: -$jpix-photo-item-side-margin;
+    margin-left: -$evo-photo-item-side-margin;
     margin-bottom: 0;
     display: flex;
     flex-wrap: wrap;
 
     li {
       margin-bottom: rem(25px);
-      margin-left: $jpix-photo-item-side-margin;
+      margin-left: $evo-photo-item-side-margin;
     }
   }
 }
@@ -20,11 +20,11 @@
 
     ul {
       display: grid;
-      grid-template-columns: repeat(auto-fill, $jpix-photo-item-width-xs +$jpix-photo-item-side-margin);
+      grid-template-columns: repeat(auto-fill, $evo-photo-item-width-xs +$evo-photo-item-side-margin);
       justify-content: center;
     }
 
-    ul.jpix-preview-list-composite {
+    ul.evo-preview-list-composite {
       li {
         grid-column: span 2;
       }

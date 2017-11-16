@@ -12,12 +12,12 @@ const TRIM_VALUE_ACCESSOR: any = {
 };
 
 @Directive({
-    selector: `input[jpixInputMask]:not([type=checkbox])[formControlName],
-    textarea[jpixInputMask][formControlName],
-    input[jpixInputMask]:not([type=checkbox])[formControl],
-    textarea[jpixInputMask][formControl],
-    input[jpixInputMask]:not([type=checkbox])[ngModel],
-    textarea[jpixInputMask][ngModel],[ngDefaultControl]`,
+    selector: `input[evoInputMask]:not([type=checkbox])[formControlName],
+    textarea[evoInputMask][formControlName],
+    input[evoInputMask]:not([type=checkbox])[formControl],
+    textarea[evoInputMask][formControl],
+    input[evoInputMask]:not([type=checkbox])[ngModel],
+    textarea[evoInputMask][ngModel],[ngDefaultControl]`,
     providers: [TRIM_VALUE_ACCESSOR]
 })
 export class TrimValueAccessorDirective implements ControlValueAccessor, OnInit {

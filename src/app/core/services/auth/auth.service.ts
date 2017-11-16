@@ -42,7 +42,7 @@ export class AuthService {
     }
 
     logout() {
-        const prefix = GLOBAL_ENV && GLOBAL_ENV.BASE_HREF || '/jpix-ecommerce-core/';
+        const prefix = GLOBAL_ENV && GLOBAL_ENV.BASE_HREF || '/evo-ecommerce-core/';
         const logoutLink = `${prefix}logout`;
 
         this.userService.remove();

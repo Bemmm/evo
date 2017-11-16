@@ -1,17 +1,17 @@
-<div class="jpix-preview">
+<div class="evo-preview">
     <div class="row">
-        <div class="jpix-preview-content">
-            <div class="jpix-panel-mobile-actions">
-                <div class="col-xs-12 text-center jpix-panel__actions-mobile">
+        <div class="evo-preview-content">
+            <div class="evo-panel-mobile-actions">
+                <div class="col-xs-12 text-center evo-panel__actions-mobile">
                     <button *ngIf="isShowPersonalizeButton()"
-                        class="jpix-button jpix-button--small"
-                        [ngClass]="{ 'jpix-button--default disabled': isPersonalizeDisabled(), 'jpix-button--warning': !isPersonalizeDisabled() }"
+                        class="evo-button evo-button--small"
+                        [ngClass]="{ 'evo-button--default disabled': isPersonalizeDisabled(), 'evo-button--warning': !isPersonalizeDisabled() }"
                         [disabled]="isPersonalizeDisabled()"
                         (click)="navigateToPersonalize()">Personalize photos</button>
 
                     <button *ngIf="isShowOrderPrintsButton()"
-                    class="jpix-button jpix-button--small"
-                        [ngClass]="{ 'jpix-button--default disabled': isOrderPrintsDisabled(), 'jpix-button--warning': !isOrderPrintsDisabled() }"
+                    class="evo-button evo-button--small"
+                        [ngClass]="{ 'evo-button--default disabled': isOrderPrintsDisabled(), 'evo-button--warning': !isOrderPrintsDisabled() }"
                         [disabled]="isOrderPrintsDisabled()"
                         (click)="onOrderPrintsClick()">Order prints</button>
                 </div>
@@ -19,28 +19,28 @@
             <div class="col-xs-12 col-sm-7">
 
                 <div class="hidden-xs">
-                    <jpix-preview-filters [eventOptions]="eventOptions"
+                    <evo-preview-filters [eventOptions]="eventOptions"
                                         [studentOptions]="studentOptions"
                                         [filterKeys]="filterKeys"
                                         [selectedFiltersValues]="selectedFiltersValues"
                                         [disabled]="loading || isGuestMode || showBlankMessage"
-                                        (change)="filterPhotos($event)"></jpix-preview-filters>
+                                        (change)="filterPhotos($event)"></evo-preview-filters>
                 </div>
 
-                <jpix-loader *ngIf="loading"></jpix-loader>
+                <evo-loader *ngIf="loading"></evo-loader>
 
-                <jpix-blank-list-message *ngIf="showBlankMessage"
-                                        [effectiveStartDate]="effectiveStartDate"></jpix-blank-list-message>
+                <evo-blank-list-message *ngIf="showBlankMessage"
+                                        [effectiveStartDate]="effectiveStartDate"></evo-blank-list-message>
 
-                <div class="jpix-preview__list-container"
+                <div class="evo-preview__list-container"
                     *ngIf="!loading && !showBlankMessage">
-                    <div class="jpix-preview__list"
+                    <div class="evo-preview__list"
                         *ngFor="let event of groupedByEventsPhotos">
-                        <div class="jpix-preview__list-wrapper"
+                        <div class="evo-preview__list-wrapper"
                             *ngIf="event.photos.length">
-                            <h3 class="jpix-preview__list-title">{{event.title}}</h3>
-                            <jpix-preview-list [items]="event.photos"
-                                            [selectedId]="selectedPhotoCardId"></jpix-preview-list>
+                            <h3 class="evo-preview__list-title">{{event.title}}</h3>
+                            <evo-preview-list [items]="event.photos"
+                                            [selectedId]="selectedPhotoCardId"></evo-preview-list>
                         </div>
                     </div>
                 </div>
@@ -48,38 +48,38 @@
             </div>
 
             <div class="col-xs-12 col-sm-5">
-                <div class="jpix-preview__panel jpix-panel jpix-panel--center">
-                    <div class="jpix-panel__header">
-                        <h2 class="jpix-h2">Your photos</h2>
+                <div class="evo-preview__panel evo-panel evo-panel--center">
+                    <div class="evo-panel__header">
+                        <h2 class="evo-h2">Your photos</h2>
                     </div>
-                    <div class="jpix-panel__body">
-                        <p class="jpix-panel__text">
+                    <div class="evo-panel__body">
+                        <p class="evo-panel__text">
                             Select your favorite photo, personalize, order prints and pay.
                         </p>
                         <p *ngIf="freeDigitalDownloadOrderThreshold && !isGuestMode"
-                        class="jpix-panel__text jpix-panel__text--warning">
+                        class="evo-panel__text evo-panel__text--warning">
                             Order ${{freeDigitalDownloadOrderThreshold}} or more and receive free hi-res digital downloads of your portraits.
                         </p>
 
-                        <a class="jpix-panel__events-link jpix-h3"
+                        <a class="evo-panel__events-link evo-h3"
                             [ngClass]="{'hidden': mobileShowEvents || isVenuesEmpty}"
                             (click)="mobileShowEvents = true">
                             <span>
                                 Show Upcoming Events
                             </span>
                         </a>
-                        <jpix-venues 
+                        <evo-venues 
                             [ngClass]="{'active': mobileShowEvents}"
-                            [venuesMap]="venues"></jpix-venues>
+                            [venuesMap]="venues"></evo-venues>
 
-                        <div class="jpix-panel__actions">
+                        <div class="evo-panel__actions">
                             <button *ngIf="isShowPersonalizeButton()"
-                                    [ngClass]="{ 'jpix-button': true, 'jpix-button--default disabled': isPersonalizeDisabled(), 'jpix-button--warning': !isPersonalizeDisabled() }"
+                                    [ngClass]="{ 'evo-button': true, 'evo-button--default disabled': isPersonalizeDisabled(), 'evo-button--warning': !isPersonalizeDisabled() }"
                                     [disabled]="isPersonalizeDisabled()"
                                     (click)="navigateToPersonalize()">Personalize photos</button>
 
                             <button *ngIf="isShowOrderPrintsButton()"
-                                    [ngClass]="{ 'jpix-button': true, 'jpix-button--default disabled': isOrderPrintsDisabled(), 'jpix-button--warning': !isOrderPrintsDisabled() }"
+                                    [ngClass]="{ 'evo-button': true, 'evo-button--default disabled': isOrderPrintsDisabled(), 'evo-button--warning': !isOrderPrintsDisabled() }"
                                     [disabled]="isOrderPrintsDisabled()"
                                     (click)="onOrderPrintsClick()">Order prints</button>
                         </div>

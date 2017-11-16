@@ -1,13 +1,13 @@
-  .jpix-preview-list-item {
+  .evo-preview-list-item {
     position: relative;
     user-select: none;
     cursor: pointer;
-    width: $jpix-photo-item-width-xs;
-    height: $jpix-photo-item-height-xs;
+    width: $evo-photo-item-width-xs;
+    height: $evo-photo-item-height-xs;
 
     &__photo {
-      width: $jpix-photo-item-width-xs;
-      height: $jpix-photo-item-height-xs;
+      width: $evo-photo-item-width-xs;
+      height: $evo-photo-item-height-xs;
       overflow: hidden;
       cursor: pointer;
       display: flex;
@@ -32,41 +32,41 @@
     }
 
     &--landscape {
-      width: $jpix-photo-item-width-xs--landscape;
+      width: $evo-photo-item-width-xs--landscape;
 
-      .jpix-preview-list-item__photo {
-        width: $jpix-photo-item-width-xs--landscape;
+      .evo-preview-list-item__photo {
+        width: $evo-photo-item-width-xs--landscape;
       }
 
-      .jpix-check {
+      .evo-check {
         bottom: 0.9rem;
         right: 5.75rem;
       }
     }
-    .jpix-photo-placeholder--composite {
+    .evo-photo-placeholder--composite {
       background-position: 50% 65%;
     }
 
   }
 
   @media (min-width: $screen-md-min) {
-    .jpix-preview-list-item {
-      width: $jpix-photo-item-width-md;
-      height: $jpix-photo-item-height-md;
+    .evo-preview-list-item {
+      width: $evo-photo-item-width-md;
+      height: $evo-photo-item-height-md;
 
       &__photo {
-        width: $jpix-photo-item-width-md;
-        height: $jpix-photo-item-height-md;
+        width: $evo-photo-item-width-md;
+        height: $evo-photo-item-height-md;
       }
 
       &--landscape {
-        width: $jpix-photo-item-width-md--landscape;
+        width: $evo-photo-item-width-md--landscape;
 
-        .jpix-preview-list-item__photo {
-          width: $jpix-photo-item-width-md--landscape;
+        .evo-preview-list-item__photo {
+          width: $evo-photo-item-width-md--landscape;
         }
 
-        .jpix-check {
+        .evo-check {
           right: 8.5rem;
         }
       }

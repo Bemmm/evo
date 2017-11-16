@@ -6,10 +6,10 @@ import { Subscription } from 'rxjs/Subscription';
 import { User, UserLoginResponse, Error } from 'app/shared/models';
 import { matchValidatorCreate } from 'app/shared/validators';
 import { AuthService, AuthErrorsService, UserService } from 'app/core/services';
-import { successRegistration, assistanceMessage, successRegistrationWithoutEmailActivation } from 'app/shared/constants/messages';
+import { successRegistration } from 'app/shared/constants/messages';
 
 @Component({
-    selector: 'jpix-register',
+    selector: 'evo-register',
     templateUrl: 'register.component.html',
     styleUrls: ['register.component.scss']
 })
@@ -28,9 +28,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     };
     showSuccessMessage: boolean = false;
     successRegistrationMsg = '';
-    successRegistrationEmailActivationMsg = successRegistration;
-    successRegistrationWithoutEmailActivationMsg = successRegistrationWithoutEmailActivation;
-    assistanceMessage = assistanceMessage;
+    successRegistration = successRegistration;
 
     subscriptions: Subscription[] = [];
 
@@ -93,8 +91,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
                     return;
                 }
 
-                // this.successRegistrationMsg = res.emailActivationUsed ? this.successRegistrationEmailActivationMsg : this.successRegistrationWithoutEmailActivationMsg;
-                res.emailActivationUsed ? this.successRegistrationMsg = this.successRegistrationEmailActivationMsg : this.login(username, password);
+                // this.successRegistrationMsg = res.emailActivationUsed ? this.successRegistration : this.successRegistrationWithoutEmailActivationMsg;
+                res.emailActivationUsed ? this.successRegistrationMsg = this.successRegistration : this.login(username, password);
                 // this.showSuccessMessage = true;
             },
             errorRes => {
@@ -112,32 +110,4 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.subscriptions.push(subscription);
     }
 
-    login(username: any, password: any) {
-        const loginSubscription = this.auth.login(username, password).subscribe(
-            (res: UserLoginResponse) => {
-                this.auth.onAuth(res);
-
-                const isConsumerCare = this.userService.isConsumerCare(res.logedUser && res.logedUser.roles);
-
-                if (isConsumerCare) {
-                    this.router.navigate(['consumer-care']);
-                } else {
-                    this.router.navigate(['preview']);
-                }
-            },
-            errorRes => {
-                this.showError = true;
-
-                const error = errorRes.json();
-
-                if (!error.messages) {
-                    return;
-                }
-
-                this.errorMessages = error.messages;
-            });
-
-        this.subscriptions.push(loginSubscription);
-
-    }
 }

@@ -1,5 +1,5 @@
-.jpix-add-student-modal {
-    .jpix-input--primary {
+.evo-add-student-modal {
+    .evo-input--primary {
       width: rem(128px);
       display: inline-block;
     }
@@ -12,14 +12,14 @@
     margin-top: 10px;
   }
   h3 {
-    font-size: $jpix-font-size-sm;
+    font-size: $evo-font-size-sm;
     font-weight: bold;
     text-transform: uppercase;
-    color: $jpix-grey-night;
+    color: $evo-grey-night;
     margin: 10px 0;
   }
   .modal-body {
-    font-size: $jpix-font-size-sm;
+    font-size: $evo-font-size-sm;
     h4 {
       padding: rem(10px) 0;
       text-transform: uppercase;
@@ -27,7 +27,7 @@
     }
   }
   .modal-footer {
-    .jpix-button {
+    .evo-button {
       margin-left: rem(10px);
       &:first-child {
         margin-left: 0;
@@ -36,16 +36,16 @@
       &--small {
         width: auto;
         min-width: rem(120px);
-        font-size: $jpix-font-size-s;
+        font-size: $evo-font-size-s;
       }
     }
   }
 }
 
 @media (min-width: $screen-sm-min) {
-  .jpix-add-student-modal {
+  .evo-add-student-modal {
     .modal-footer {
-      .jpix-button {
+      .evo-button {
         &--small {
           min-width: rem(150px);
         }
@@ -54,11 +54,11 @@
   }
 }
 
-@media (max-width: $jpix-screen-ultra-sm-max) {
-  .jpix-add-student-modal {
+@media (max-width: $evo-screen-ultra-sm-max) {
+  .evo-add-student-modal {
     .modal-footer {
       text-align: center;
-      .jpix-button {
+      .evo-button {
           &--small {
             min-width: auto;
             padding-left: 1rem; 

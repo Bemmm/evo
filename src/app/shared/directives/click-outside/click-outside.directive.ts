@@ -1,7 +1,7 @@
 import {Directive, ElementRef, Output, EventEmitter, HostListener} from '@angular/core';
  
 @Directive({
-    selector: '[jpixClickOutside]'
+    selector: '[evoClickOutside]'
 })
 export class ClickOutsideDirective {
     constructor(private _elementRef : ElementRef) {

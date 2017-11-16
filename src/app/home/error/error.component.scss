@@ -1,4 +1,4 @@
-.jpix-error {
+.evo-error {
   &__container {
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@
 }
 
 @media screen and (min-height: 600px) {
-  .jpix-error {
+  .evo-error {
     &__container {
       min-height: 300px;
     }

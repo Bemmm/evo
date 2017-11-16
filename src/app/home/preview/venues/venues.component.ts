@@ -3,7 +3,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { VenuesService } from 'app/core/services';
 
 @Component({
-    selector: 'jpix-venues',
+    selector: 'evo-venues',
     templateUrl: './venues.component.html',
     styleUrls: ['./venues.component.scss'],
 })

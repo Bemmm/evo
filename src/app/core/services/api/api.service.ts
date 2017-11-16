@@ -9,7 +9,6 @@ import 'rxjs/Rx';
 import 'rxjs/add/observable/throw';
 
 import { objectToURLSearchParams } from 'app/shared/helpers';
-import { ErrorHandlerService } from 'app/core/services';
 
 @Injectable()
 export class ApiService {
@@ -23,14 +22,11 @@ export class ApiService {
     });
     private errorHandler: (err: Response) => any;
     private unauthorizedHandler: (err: Response) => any;
-    api_url: string = GLOBAL_ENV && GLOBAL_ENV.API_URL || '/jpix-ecommerce-core/api/';
+    api_url: string = GLOBAL_ENV && GLOBAL_ENV.API_URL || '/evo-ecommerce-core/api/';
 
     constructor(
-        private http: Http,
-        private errorHandlerService: ErrorHandlerService
+        private http: Http
     ) {
-        this.errorHandler = this.errorHandlerService.errorHandler.bind(this.errorHandlerService);
-        this.unauthorizedHandler = this.errorHandlerService.unauthorizedHandler.bind(this.errorHandlerService);
     }
 
     private getJson(resp: Response) {
@@ -84,7 +80,7 @@ export class ApiService {
         return this.http.post(`${this.api_url}${path}`, body, {
             responseType: ResponseContentType.Blob
         })
-            .catch(this.unauthorizedHandler); // TODO: use here `this.errorHandler` instead when will provide personalization server errors handler
+            // .catch(this.unauthorizedHandler); // TODO: use here `this.errorHandler` instead when will provide personalization server errors handler
     }
 
     put(path: string, body: any): Observable<any> {

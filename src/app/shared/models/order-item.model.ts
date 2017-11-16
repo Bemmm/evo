@@ -24,9 +24,9 @@ export class OrderItem {
         type: string;
         name: string;
     };
-    jpixItemCode: string;
-    jpixItemName: string;
-    jpixPrice: {
+    evoItemCode: string;
+    evoItemName: string;
+    evoPrice: {
         key: string;
         type: string;
     };
@@ -37,7 +37,7 @@ export class OrderItem {
         id: string;
         thumbnail: string;
     };
-    jpixItemTotalAmount: {
+    evoItemTotalAmount: {
         unitPrice: number;
         usaTax: {
             total: number;
@@ -65,7 +65,7 @@ export class OrderItem {
     paymentRefs: PaymentReference[];
     paymentsBillToContact: any;
     payments: PaymentItem[];
-    jpixShipments: ShipmentItem[];
+    evoShipments: ShipmentItem[];
     photos: Photo[];
     comments: Comment[];
     fulfillmentStatus?: string;
@@ -81,9 +81,9 @@ export class Comment {
 }
 
 export interface PaymentItem {
-    jpixOrderBillToContact: {
-        jpixAddress: AddressItem,
-        jpixContact: ContactItem
+    evoOrderBillToContact: {
+        evoAddress: AddressItem,
+        evoContact: ContactItem
     }
     paymentDate?: string,
     paymentDetails?: {
@@ -114,11 +114,11 @@ export interface ContactItem {
 }
 
 export interface ShipmentItem {
-    jpixOrderShipToContact: {
-        jpixAddress: AddressItem,
-        jpixContact: ContactItem
+    evoOrderShipToContact: {
+        evoAddress: AddressItem,
+        evoContact: ContactItem
     },
-    jpixShipmentMethod: ShipmentMethod
+    evoShipmentMethod: ShipmentMethod
 }
 
 export interface ShipmentMethod {

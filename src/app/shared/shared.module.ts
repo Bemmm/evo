@@ -16,8 +16,7 @@ import { SelectedPhotosActions } from './store/selected-photos';
 import { CartActions } from './store/cart';
 import { UserActions } from './store/user';
 
-import * as components from './components';
-import { DatepickerService } from './components/datepicker/datepicker.service';
+// import * as components from './components';
 import * as directives from './directives';
 import * as validators from './validators';
 import { mapObjectToArray } from './helpers';
@@ -40,11 +39,10 @@ import { mapObjectToArray } from './helpers';
         DropdownModule
     ],
     declarations: [
-        mapObjectToArray(components),
+        // mapObjectToArray(components),
         mapObjectToArray(directives),
     ],
     providers: [
-        DatepickerService,
         SelectedPhotosActions,
         CartActions,
         UserActions
@@ -56,7 +54,7 @@ import { mapObjectToArray } from './helpers';
         NgbModule,
         RouterModule,
         SwiperModule,
-        mapObjectToArray(components),
+        // mapObjectToArray(components),
         mapObjectToArray(directives),
         Ng2CompleterModule
     ]

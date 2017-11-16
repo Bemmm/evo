@@ -22,13 +22,13 @@ const isNumber = (value: number) => {
 }
 
 const encrypt = (value: string) => {
-    const secret = '_jpix-app_';
+    const secret = '_evo-app_';
 
     return CryptoJS.AES.encrypt(value, secret);
 };
 
 const decrypt = (value: string) => {
-    const secret = '_jpix-app_';
+    const secret = '_evo-app_';
     const bytes =  CryptoJS.AES.decrypt(value, secret);
 
     return bytes.toString(CryptoJS.enc.Utf8);

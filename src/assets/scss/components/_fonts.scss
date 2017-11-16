@@ -79,26 +79,26 @@
 }
 
 
-.jpix-text-bold {
+.evo-text-bold {
   font-weight: bold;
 }
 
-.jpix-title, .jpix-subtitle {
-  color: $jpix-blue-dark;
+.evo-title, .evo-subtitle {
+  color: $evo-blue-dark;
   font-weight: 400;
   margin: 0;
 }
 
-.jpix-title {
+.evo-title {
   font-size: rem(28px);
 }
 
-.jpix-subtitle {
+.evo-subtitle {
   font-size: rem(14px);
 }
 
-.jpix-section-title {
-  color: $jpix-orange;
+.evo-section-title {
+  color: $evo-orange;
   font-weight: 700;
   margin: rem(20px) 0;
   font-size: rem(18px);

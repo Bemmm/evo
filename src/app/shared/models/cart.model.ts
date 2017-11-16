@@ -1,7 +1,7 @@
 export interface CartOrderItemModel {
     quantity: string | number,
-    jpixItemCode: string,
-    jpixPrice: {
+    evoItemCode: string,
+    evoPrice: {
         key: string,
         type: string,
         value: string
@@ -23,7 +23,7 @@ export interface CartItemModel {
             backgroundKey?: string
         }
     }],
-    jpixOrderItems: CartOrderItemModel[]
+    evoOrderItems: CartOrderItemModel[]
 }
 
 export interface CartFormConfig {

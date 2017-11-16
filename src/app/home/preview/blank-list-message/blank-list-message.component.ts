@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DatesService } from 'app/core/services';
 
 @Component({
-    selector: 'jpix-blank-list-message',
+    selector: 'evo-blank-list-message',
     templateUrl: './blank-list-message.component.html',
     styleUrls: ['./blank-list-message.component.scss']
 })

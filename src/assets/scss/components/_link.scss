@@ -1,5 +1,5 @@
-.jpix-link {
-  color: $jpix-blue-primary-dark;
+.evo-link {
+  color: $evo-blue-primary-dark;
   font-family: $primary-font-family;
   cursor: pointer;
 
@@ -8,22 +8,22 @@
   }
 
   &--warning {
-    color: $jpix-orange-accent;
+    color: $evo-orange-accent;
 
     &:hover, &:focus, &:active  {
-      color: $jpix-orange-accent;
+      color: $evo-orange-accent;
     }
   }
 }
 
-.jpix-secondary-link {
-  color: $jpix-orange;
+.evo-secondary-link {
+  color: $evo-orange;
   text-decoration: underline;
   cursor: pointer;
 }
 
-.jpix-action-link {
-  color: $jpix-orange-accent;
+.evo-action-link {
+  color: $evo-orange-accent;
   &:hover {
     text-decoration: none;
   }

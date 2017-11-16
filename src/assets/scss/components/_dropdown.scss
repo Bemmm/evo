@@ -1,4 +1,4 @@
-.jpix-dropdown {
+.evo-dropdown {
     position: relative;
     .dropdown-menu {
         width: 100%;
@@ -13,8 +13,8 @@
         border: 0;
         text-align: left;
         &.active {
-            background-color: $jpix-orange-accent;
-            color: $jpix-white;
+            background-color: $evo-orange-accent;
+            color: $evo-white;
         }
     }
     .ngb-highlight {
