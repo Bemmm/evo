@@ -1,4 +1,4 @@
-.evo-footer {
+  .evo-footer {
   background-color: $evo-blue-dark-night;
 
   &__content {
@@ -9,7 +9,7 @@
   &__logo {
     width: rem(67px);
     height: rem(36px);
-    background: url(./assets/img/jostens-logo.png) 50% 50% no-repeat;
+    // background: url(./assets/img/jostens-logo.png) 50% 50% no-repeat;
     background-size: contain;
     margin-bottom: rem(12px);
     image-rendering: -webkit-optimize-contrast;

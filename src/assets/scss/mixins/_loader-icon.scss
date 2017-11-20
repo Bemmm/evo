@@ -1,3 +1,4 @@
+  /* stylelint-disable */
 @mixin evo-loader-icon($color: $evo-blue-primary-dark, $scale: 0.3, $time: 1.2s) {
   .evo-loader-icon {
     transform: scale($scale);

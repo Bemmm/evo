@@ -1,5 +1,7 @@
-.evo-register {
-  &__assistance-msg {
-    margin-top: 2rem;
-  }
+.registration{
+    &__step{
+        &--button{
+            width:20px;
+        }
+    }
 }

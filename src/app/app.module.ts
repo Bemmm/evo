@@ -3,7 +3,6 @@ import { DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,8 +23,7 @@ import { AppComponent } from './app.component';
         AppRoutingModule,
         HomeModule,
         AuthModule,
-        SharedModule,
-        ToastModule.forRoot()
+        SharedModule
     ],
     declarations: [
         AppComponent

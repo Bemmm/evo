@@ -1,78 +1,78 @@
 <div class="evo-register">
-    <div class="evo-h2">CREATE YOUR ACCOUNT</div>
-    <div class="evo-auth__description">Register your free account for access to a complete set of your student's school photos!</div>
-    <form class="evo-register__form evo-form"
-          novalidate
-          *ngIf="!showSuccessMessage"
-          [formGroup]="registerForm"
-          (ngSubmit)="onSubmit()">
-        <evo-error-message *ngFor="let errorMessage of errorMessages"
-                            [shown]="formSubmitted"
-                            [message]="errorMessage.text"></evo-error-message>
-        <div class="form-group">
-            <input formControlName="firstName"
-                   class="form-control evo-input evo-input--large"
-                   type="text"
-                   placeholder="first name">
+  <div class="evo-h2">CREATE YOUR ACCOUNT</div>
+  <form class="evo-register__form evo-form" novalidate *ngIf="!showSuccessMessage" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="registration__step">
+      <div class="row">
+
+      
+      <div class="col-md-12">
+        <h1 class="registration__step--title">Реєстрація</h1>
+      </div>
+      
+        <div class="col-md-6 text-center">
+          <button class="registration__step--button">Я хочу користуватись сервісом</button>
         </div>
-        <evo-error-message [shown]="registerForm.get('firstName').hasError('required') && formSubmitted"
-                            message="first name is required."></evo-error-message>
-        <div class="form-group">
-            <input formControlName="lastName"
-                   class="form-control evo-input evo-input--large"
-                   type="text"
-                   placeholder="last name">
+
+        <div class="col-md-6 text-center">
+          <button class="registration__step--button">Я хочу надавати послуги евакуатора</button>
         </div>
-        <evo-error-message [shown]="registerForm.get('lastName').hasError('required') && formSubmitted"
-                            message="last name is required."></evo-error-message>
-        <div class="form-group">
-            <input formControlName="username"
-                   class="form-control evo-input evo-input--large"
-                   type="email"
-                   placeholder="email address">
-        </div>
-        <evo-error-message [shown]="registerForm.get('username').hasError('required') && formSubmitted"
-                            message="email is required."></evo-error-message>
-        <div class="form-group">
-            <input formControlName="usernameConfirm"
-                   class="form-control evo-input evo-input--large"
-                   type="email"
-                   placeholder="confirm email address">
-        </div>
-        <evo-error-message [shown]="registerForm.get('usernameConfirm').hasError('usenameMatchError') && formSubmitted"
-                            message="email mismatch."></evo-error-message>
-        <div class="form-group">
-            <input formControlName="password"
-                   class="form-control evo-input evo-input--large"
-                   type="password"
-                   placeholder="password">
-        </div>
-        <evo-error-message [shown]="registerForm.get('password').hasError('required') && formSubmitted"
-                            message="password is required."></evo-error-message>
-        <div class="form-group">
-            <input formControlName="passwordConfirm"
-                   class="form-control evo-input evo-input--large"
-                   type="password"
-                   placeholder="confirm password">
-        </div>
-        <evo-error-message [shown]="registerForm.get('passwordConfirm').hasError('passwordMatchError') && formSubmitted"
-                            message="password mismatch."></evo-error-message>
-        <div class="form-group">
-            <button class="form-control evo-button evo-button--warning"
-                    type="submit">Register</button>
-        </div>
-    </form>
-    <div class="alert alert-success"
-         *ngIf="showSuccessMessage"
-         [innerHTML]="successRegistrationMsg">
+
+      </div>
+
     </div>
-    <div>
-        <a class="evo-link evo-link--warning"
-           title="Sign in"
-           routerLink="/login">Sign in</a>
+
+    <div class="registration__step">
+      <div class="row">
+      
+      <div class="col-md-12">
+        <h1 class="registration__step--title">Ви надаєте послуги як?</h1>
+      </div>
+      
+      <div class="col-md-6 text-center">
+        <button class="registration__step--button">Власник евакуатора</button>
+      </div>
+    <div class="col-md-6 text-center">
+            <button class="registration__step--bgit sutton">Евакуаторна служба</button>
+      </div>
     </div>
-    <div class="alert alert-info evo-register__assistance-msg"
-         *ngIf="showSuccessMessage"
-         [innerHTML]="assistanceMessage">
     </div>
+
+    <div class="registration__step">
+      <div class="row"> 
+        <div class="col-md-offset-6 col-md-6 text-center">
+          <div class="form-group">
+            <input formControlName="firstname" class="form-control evo-input evo-input--large" type="text" placeholder="first name">
+          </div>
+          <div class="form-group">
+            <input formControlName="phoneNumber" class="form-control evo-input evo-input--large" type="text" placeholder="phone">
+          </div>
+          <div class="form-group">
+            <input formControlName="email" class="form-control evo-input evo-input--large" type="text" placeholder="email">
+          </div>                                      
+        </div>
+      </div>
+    </div>
+
+    <div class="registration__step">
+        <div class="row"> 
+          <div class="col-md-offset-6 col-md-6 text-center">
+            <div class="form-group">
+              <input formControlName="firstname" class="form-control evo-input evo-input--large" type="text" placeholder="first name">
+            </div>
+            <div class="form-group">
+              <input formControlName="phoneNumber" class="form-control evo-input evo-input--large" type="text" placeholder="phone">
+            </div>
+            <div class="form-group">
+              <input formControlName="email" class="form-control evo-input evo-input--large" type="text" placeholder="email">
+            </div>                                      
+          </div>
+        </div>
+      </div>    
+
+  </form>
+  <div class="alert alert-success" *ngIf="showSuccessMessage" [innerHTML]="successRegistrationMsg">
+  </div>
+  <div>
+    <a class="evo-link evo-link--warning" title="Sign in" routerLink="/login">Sign in</a>
+  </div>
 </div>

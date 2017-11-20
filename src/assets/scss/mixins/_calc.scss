@@ -1,4 +1,5 @@
-@mixin calc($prop, $val) {
+  /* stylelint-disable */
+  @mixin calc($prop, $val) {
   @each $pre in -webkit-, -moz-, -o- {
     #{$prop}: $pre + calc(#{$val});
   } #{$prop}: calc(#{$val});

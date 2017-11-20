@@ -1,4 +1,5 @@
-@mixin primary-border {
+  /* stylelint-disable */
+  @mixin primary-border {
   $border-top-left: 2px solid $evo-grey;
   $border-bottom-right: 2px solid $evo-grey-light;
   border-top: $border-top-left;

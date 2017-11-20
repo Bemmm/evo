@@ -1,21 +1,17 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import { AuthSliderService } from './auth-slider.service';
-
 @Component({
     selector: 'evo-auth',
     templateUrl: './auth.component.html',
     styleUrls: ['./auth.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    providers: [AuthSliderService]
+    encapsulation: ViewEncapsulation.None
 })
 export class AuthComponent {
     sliderOptions: any;
     sliderItems: any[];
 
-    constructor(private authSliderService: AuthSliderService) {
-        this.sliderOptions = this.authSliderService.getOptions();
-        this.sliderItems = this.authSliderService.getItems();
+    constructor() {
+
     }
 
 }

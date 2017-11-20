@@ -1,4 +1,5 @@
-.evo-header {
+  /* stylelint-disable */
+  .evo-header {
   background-color: $evo-blue-dark-night;
 
   &__content {
@@ -28,13 +29,13 @@
   &__logo {
     width: rem(94px);
     height: rem(38px);
-    background-image: url(./assets/img/evo-white-logo.png);
+    // background-image: url(./assets/img/evo-white-logo.png);
   }
 
   &__help {
     width: rem(20px);
     height: rem(20px);
-    background-image: url(./assets/img/help-icon.png);
+    // background-image: url(./assets/img/help-icon.png);
     margin-right: rem(12px);
   }
 

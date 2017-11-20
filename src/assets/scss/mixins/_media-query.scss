@@ -1,4 +1,6 @@
-@mixin bp($device, $orientation: 'all') {
+
+  /* stylelint-disable */
+  @mixin bp($device, $orientation: 'all') {
   // iPhone 5 & 5S by default
   $min-device-width: 320px;
   $max-device-width: 568px;

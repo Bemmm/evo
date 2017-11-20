@@ -3,7 +3,6 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from 'app/core/services';
 
-import { SelectedPhotosService } from 'app/core/services';
 
 @Component({
     selector: 'evo-home',
@@ -21,11 +20,9 @@ export class HomeComponent implements OnDestroy {
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private selectedPhotosService: SelectedPhotosService,
         private userService: UserService
     ) {
         this.subscribeRouter();
-        this.loadSelectedPhotos();
         this.subscribeUserService();
     }
 
@@ -42,10 +39,6 @@ export class HomeComponent implements OnDestroy {
             });
 
         this.subscriptions.push(routerSubscription);
-    }
-
-    loadSelectedPhotos() {
-        this.selectedPhotosService.load();
     }
 
     subscribeUserService() {

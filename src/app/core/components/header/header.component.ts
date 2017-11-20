@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { User } from 'app/shared/models';
 import { UserService } from 'app/core/services';
 
 @Component({
@@ -12,11 +11,11 @@ export class HeaderComponent {
     @Input() hasSearchLink: boolean = false;
     @Input() isLogged: boolean = false;
     @Output() toggleMobileNav = new EventEmitter();
-    user: User;
+    user: any;
 
     constructor(private userService: UserService) {
         this.userService.get()
-            .subscribe((user: User) => {
+            .subscribe((user: any) => {
                 this.user = user;
             })
     }

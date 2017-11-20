@@ -1,4 +1,5 @@
-@function rem($pixels, $context: $body-font-base) {
+  /* stylelint-disable */
+  @function rem($pixels, $context: $body-font-base) {
   $val: parseInt($pixels);
   @if ($val <=4) {
     @return $val*1px;

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-
-import { AppState, User } from 'app/shared/models';
 import { createAction } from './../createAction';
 
 @Injectable()
@@ -11,10 +9,10 @@ export class UserActions {
     static REMOVE = 'user/REMOVE';
 
     constructor(
-        private store: Store<AppState>,
+        private store: Store<any>,
     ) { }
 
-    add(user: User) {
+    add(user: any) {
         this.store.dispatch(createAction(UserActions.ADD, user));
     }
 

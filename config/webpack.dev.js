@@ -3,38 +3,32 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
 const argv = require('yargs').argv;
+const config = require('./config').getConfig(argv.env && argv.env.mode);
 
-const prodProxy = argv.env && argv.env.prodProxy;
-
-const devServerProxy = !prodProxy ? {
-    "/api": {
-        target: "http://localhost:8080",
-        secure: false
-    },    
-} : {
-    "/api": {
-        target: "http://localhost:8080",
-        secure: false
-    }            
-};
+const devServerProxy = {
+  "/jpix-admin-services/api": {
+    target: "http://localhost:8081",
+    secure: false
+  },
+}
 
 module.exports = webpackMerge(commonConfig, {
-    devtool: 'cheap-module-eval-source-map',
+  devtool: config.sourceMap,
 
-    output: {
-        path: helpers.root('dist'),
-        publicPath: prodProxy ? 'http://localhost:3000/' : 'http://app.evo.com:3000/',
-        filename: '[name].js',
-        chunkFilename: '[id].chunk.js'
-    },
+  output: {
+    path: helpers.root('dist'),
+    publicPath: '/',
+    filename: '[name].js',
+    chunkFilename: '[id].chunk.js'
+  },
 
-    plugins: [
-        new ExtractTextPlugin('[name].css')
-    ],
+  plugins: [
+    new ExtractTextPlugin(`${config.baseHref.replace('/', '')}assets/[name].css`)
+  ],
 
-    devServer: {
-        historyApiFallback: true,
-        stats: 'minimal',
-        proxy: devServerProxy
-    }
+  devServer: {
+    historyApiFallback: true,
+    stats: 'minimal',
+    proxy: devServerProxy,
+  }
 });

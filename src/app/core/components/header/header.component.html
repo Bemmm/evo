@@ -14,7 +14,7 @@
                             <a class="evo-header__logo"
                                title="Jostens PIX"
                                [routerLink]="getLogoLink()">
-                                <h1>Jostens PIX</h1>
+                                <h1>EVO evo-header__search</h1>
                             </a>
                             <div class="evo-header__info">
 
@@ -24,7 +24,7 @@
                                     <a class="evo-header__search hidden-xs"
                                        title="Find your Student?"
                                        *ngIf="hasSearchLink"
-                                       routerLink="/find-student">Find your Student?</a>
+                                       routerLink="/find-student">Find your track?</a>
                                 </ng-container>
 
                                 <a class="evo-header__help hidden-xs"
@@ -32,7 +32,6 @@
                                    routerLink="/faqs">Help</a>
 
                                 <ng-container *ngIf="isLogged">
-                                    <evo-cart-count></evo-cart-count>
                                     <evo-logout></evo-logout>
                                 </ng-container>
 

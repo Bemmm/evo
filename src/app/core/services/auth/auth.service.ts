@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { User, UserLoginResponse, UserActivateParams } from 'app/shared/models';
-import { ApiService, UserService, SelectedPhotosService, PreviewParamsService } from 'app/core/services';
+import { ApiService, UserService } from 'app/core/services';
 
 @Injectable()
 export class AuthService {
@@ -14,9 +13,7 @@ export class AuthService {
 
     constructor(
         private api: ApiService,
-        private userService: UserService,
-        private selectedPhotosService: SelectedPhotosService,
-        private previewParamsService: PreviewParamsService
+        private userService: UserService
     ) { }
 
     login(username: string, password: string): Observable<any> {
@@ -27,18 +24,16 @@ export class AuthService {
         return this.api.post(`${this.registerUrl}`, { firstName, lastName, email, password });
     }
 
-    onAuth(res: UserLoginResponse) {
+    onAuth(res: any) {
         const userInfo = res.logedUser;
-        const user = new User(
-            userInfo.firstname,
-            userInfo.lastname,
-            userInfo.username,
-            userInfo.roles,
-            true
-        );
-        this.userService.save(user);
-        this.selectedPhotosService.clear();
-        this.previewParamsService.clear();
+        // const user = new User(
+        //     userInfo.firstname,
+        //     userInfo.lastname,
+        //     userInfo.username,
+        //     userInfo.roles,
+        //     true
+        // );
+        // this.userService.save(user);
     }
 
     logout() {
@@ -46,8 +41,6 @@ export class AuthService {
         const logoutLink = `${prefix}logout`;
 
         this.userService.remove();
-        this.selectedPhotosService.clear();
-        this.previewParamsService.clear();
         window.location.href = logoutLink;
     }
 
@@ -59,7 +52,7 @@ export class AuthService {
         return this.api.post(this.passwordResetUrl, params);
     }
 
-    activateAccount(params: UserActivateParams): Observable<any> {
+    activateAccount(params: any): Observable<any> {
         return this.api.post(this.activateAccountUrl, params);
     }
 

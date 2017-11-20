@@ -1,9 +1,10 @@
+import { CompanyModel } from './../../shared/models/user.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { User, UserLoginResponse, Error } from 'app/shared/models';
+import { UserModel, CompanyModel } from 'app/shared/models';
 import { matchValidatorCreate } from 'app/shared/validators';
 import { AuthService, AuthErrorsService, UserService } from 'app/core/services';
 import { successRegistration } from 'app/shared/constants/messages';
@@ -17,15 +18,29 @@ export class RegisterComponent implements OnInit, OnDestroy {
     registerForm: FormGroup;
     errorMessages: Error[] = [];
     formSubmitted: boolean = false;
-    showError: boolean = false;
-    registerData = {
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        username: ['', Validators.required],
-        usernameConfirm: [''],
-        password: ['', Validators.required],
-        passwordConfirm: ['']
+    userData = {
+        name: ['', Validators.required],
+        phone: [''],
+        password: [''],
+        password_confirmation: [''],
+        email: [''],
+        car: [''],
+        role: [''],
     };
+    companyData = {
+        title: ['', Validators.required],
+        ownership: ['', Validators.required],
+        zkpo: ['', Validators.required],
+        tax_form: [''],
+        official_address: ['', Validators.required],
+        manager_name: [''],
+        manager_phone: [''],
+        physical_address: [''],
+        liable_name: [''],
+        liable_phone: [''],
+        additional_info: [''],
+        phone: ['']
+    };    
     showSuccessMessage: boolean = false;
     successRegistrationMsg = '';
     successRegistration = successRegistration;
@@ -41,7 +56,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.buildForm();
+        // this.buildForm();
     }
 
     ngOnDestroy() {
@@ -59,7 +74,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
             confirmControlName: 'passwordConfirm',
             matchErrorKey: 'passwordMatchError'
         };
-
         this.registerForm = this.fb.group(this.registerData,
             {
                 validator: matchValidatorCreate([usernameMatchModel, passwordMatchModel])
@@ -68,7 +82,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     onSubmit(): void {
         this.formSubmitted = true;
-        this.showError = false;
         this.showSuccessMessage = false;
 
         if (this.registerForm.invalid) {
@@ -86,17 +99,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
                 }
 
                 if (res.messages) {
-                    this.showError = true;
                     this.errorMessages = res.messages;
                     return;
                 }
 
                 // this.successRegistrationMsg = res.emailActivationUsed ? this.successRegistration : this.successRegistrationWithoutEmailActivationMsg;
-                res.emailActivationUsed ? this.successRegistrationMsg = this.successRegistration : this.login(username, password);
+                // res.emailActivationUsed ? this.successRegistrationMsg = this.successRegistration : this.login(username, password);
                 // this.showSuccessMessage = true;
             },
             errorRes => {
-                this.showError = true;
 
                 const error = errorRes.json();
 

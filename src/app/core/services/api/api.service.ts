@@ -22,7 +22,7 @@ export class ApiService {
     });
     private errorHandler: (err: Response) => any;
     private unauthorizedHandler: (err: Response) => any;
-    api_url: string = GLOBAL_ENV && GLOBAL_ENV.API_URL || '/evo-ecommerce-core/api/';
+    api_url: string = GLOBAL_ENV && GLOBAL_ENV.API_URL || '/api/';
 
     constructor(
         private http: Http
