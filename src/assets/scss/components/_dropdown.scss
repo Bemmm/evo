@@ -1,25 +1,18 @@
   /* stylelint-disable */
-  .evo-dropdown {
-    position: relative;
-    .dropdown-menu {
-        width: 100%;
+.ui-dropdown {
+    border-bottom: 1px solid #bbbbbb;
+    width:100% !important;
+    .ui-dropdown-label{
+        text-align:left;
     }
-
-    .dropdown-item {
-        width: 100%;
-        padding: rem(8px);
-        clear: both;
-        white-space: nowrap;
-        background: none;
-        border: 0;
-        text-align: left;
-        &.active {
-            background-color: $evo-orange-accent;
-            color: $evo-white;
+    .ui-dropdown-panel{
+        background:#fff;
+        .ui-dropdown-item{
+            padding:5px;
+            &:hover{
+                background-color:$evo-blue-dark;
+                color:#fff
+            }
         }
-    }
-    .ngb-highlight {
-        text-decoration: underline;
-        font-weight: normal; 
     }
 }

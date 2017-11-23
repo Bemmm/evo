@@ -1,7 +1,56 @@
-.registration{
-    &__step{
+.evo-register{
+    font-family: 'Roboto';
+    height:100%;
+    .registration__step{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height:100%;
+        &--title{
+            font-weight: 300;
+            margin-bottom:50px;
+        }
         &--button{
-            width:20px;
+            @include evo-primary-gradient;
+            cursor: pointer;
+            border-width: 1px;
+            border-style: solid;
+            border-color: transparent;
+            border-radius: 3px;
+            font-weight: 300;
+            font-size: 15px;
+            color:#fff;
+            padding: 15px;
+            &:hover{
+                @include evo-primary-reverse;            
+            }
+        }
+    }
+    &__form{
+        display:flex;
+        height:100%;
+        align-items:center;
+        justify-content:center;
+        .form-group{
+            margin-top:25px;
+        }
+        &--submit{
+            @include evo-primary-gradient;
+            cursor: pointer;
+            border-width: 1px;
+            border-style: solid;
+            border-color: transparent;
+            border-radius: 3px;
+            font-weight: 300;
+            font-size: 15px;
+            color:#fff;
+            padding: 15px;
+            width:$base-width;
+            &:hover{
+                @include evo-primary-reverse;            
+            }            
         }
     }
 }

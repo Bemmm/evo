@@ -1,0 +1,18 @@
+@mixin evo-primary-gradient {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#4aa7d3+0,80cadd+100 */
+  background: #4aa7d3;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #4aa7d3 0%, #80cadd 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #4aa7d3 0%, #80cadd 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #4aa7d3 0%, #80cadd 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4aa7d3', endColorstr='#80cadd', GradientType=1);
+  /* IE6-9 */
+}
+@mixin evo-primary-reverse {
+  border-color: #50b1cd;
+  background: #fff;
+  color: #50b1cd;
+}

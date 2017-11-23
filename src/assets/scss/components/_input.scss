@@ -1,74 +1,13 @@
   /* stylelint-disable */
-  $base-width: rem(280px);
-$base-height: rem(50px);
+  $base-width: rem(500px);
 
-.evo-input {
-  color: $evo-grey-font;
-  border-radius: 0;
-  border: 1px solid $evo-grey;
-  font-family: $primary-font-family;
-  max-width: 100%;
-
-  &--large {
-    width: $base-width;
-    height: $base-height;
-    font-size: rem(18px);
-  }
-
-  &--primary {
-    border-radius: 2px;
-    height: rem(36px);
-  }
-
-  &--default {
-    @include default-control-styles;
-  }
-
-  &--quantity {
-    width: 30px;
-    height: 30px;
-    border-radius: 3px;
-    border: 1px solid #959595;
-    font-size: 12px;
-    text-align: center;
-    -moz-appearance: textfield;
-
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    &::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-  }
-  
-  &--error {
-    border: 1px solid #ff0000;
-  }
-
-  &.disabled,
-  &[disabled] {
-    cursor: not-allowed;
-    background-color: $evo-grey-ultralight;
-  }
-}
-
-.evo-input-btn-group {
-  margin-bottom: rem(30px);
-
-  input {
-    height: 40px;
-  }
-
-  button {
-    height: rem(40px);
-  }
-}
-
-.evo-form--submitted {
-  .evo-input.ng-invalid {
-    @include primary-error-border;
+.ui-float-label{
+  width:$base-width;
+  margin:auto;
+  .evo-input {
+    border:0;
+    border-bottom:1px solid #bbbbbb;
+    border-radius:0;
+    box-shadow:none;
   }
 }

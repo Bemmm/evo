@@ -1,4 +1,3 @@
-import { CompanyModel } from './../../shared/models/user.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -18,6 +17,27 @@ export class RegisterComponent implements OnInit, OnDestroy {
     registerForm: FormGroup;
     errorMessages: Error[] = [];
     formSubmitted: boolean = false;
+    helperModel: any = {
+        ownership: null,
+        userRoles:[
+            {label: 'customer', value: 'Клієнт'},
+            {label: 'driver', value: 'Водій'},
+            {label: 'service', value: 'Сервіс'}            
+        ],
+        brand: [
+            {label: 'Оберіть авто', value: null},
+            {label: 'Audi', value: 'Audi'},
+            {label: 'BMW', value: 'BMW'},
+            {label: 'Fiat', value: 'Fiat'},
+            {label: 'Ford', value: 'Ford'},
+            {label: 'Honda', value: 'Honda'},
+            {label: 'Jaguar', value: 'Jaguar'},
+            {label: 'Mercedes', value: 'Mercedes'},
+            {label: 'Renault', value: 'Renault'},
+            {label: 'VW', value: 'VW'},
+            {label: 'Volvo', value: 'Volvo'},
+        ]
+    };
     userData = {
         name: ['', Validators.required],
         phone: [''],
@@ -53,7 +73,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
         private authErrors: AuthErrorsService,
         private router: Router,
         private userService: UserService,
-    ) { }
+    ) {
+    }
 
     ngOnInit() {
         // this.buildForm();
@@ -62,60 +83,30 @@ export class RegisterComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.subscriptions.forEach(subscription => subscription.unsubscribe());
     }
-
-    buildForm() {
-        const usernameMatchModel = {
-            controlName: 'username',
-            confirmControlName: 'usernameConfirm',
-            matchErrorKey: 'usenameMatchError'
-        };
-        const passwordMatchModel = {
-            controlName: 'password',
-            confirmControlName: 'passwordConfirm',
-            matchErrorKey: 'passwordMatchError'
-        };
-        this.registerForm = this.fb.group(this.registerData,
-            {
-                validator: matchValidatorCreate([usernameMatchModel, passwordMatchModel])
-            });
+    changeOwnership(type:string){
+        this.helperModel.ownership = type;
+        if(type == 'company'){
+            this.buildForm('companyData');
+        } else if(type == 'users'){
+            this.buildForm('userData');
+        }
     }
 
-    onSubmit(): void {
+    buildForm(key:string) {
+        this.registerForm = this.fb.group(this[key]);
+    }
+
+    onSubmit() {
         this.formSubmitted = true;
-        this.showSuccessMessage = false;
 
-        if (this.registerForm.invalid) {
-            return;
-        }
-
-        let { firstName, lastName, username, password } = this.registerForm.value;
-        username = username.toString().trim();
-
-        const subscription = this.auth.register(firstName, lastName, username, password).subscribe(
+        const subscription = this.auth.register(this.helperModel.ownership, this.registerForm.value).subscribe(
             res => {
-                if (!res.success) {
-
-                    return;
-                }
-
-                if (res.messages) {
-                    this.errorMessages = res.messages;
-                    return;
-                }
-
                 // this.successRegistrationMsg = res.emailActivationUsed ? this.successRegistration : this.successRegistrationWithoutEmailActivationMsg;
                 // res.emailActivationUsed ? this.successRegistrationMsg = this.successRegistration : this.login(username, password);
                 // this.showSuccessMessage = true;
             },
             errorRes => {
-
-                const error = errorRes.json();
-
-                if (!error.messages) {
-                    return;
-                }
-
-                this.errorMessages = error.messages;
+            console.log(errorRes);
             });
 
         this.subscriptions.push(subscription);

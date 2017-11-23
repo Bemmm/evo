@@ -1,78 +1,137 @@
 <div class="evo-register">
-  <div class="evo-h2">CREATE YOUR ACCOUNT</div>
-  <form class="evo-register__form evo-form" novalidate *ngIf="!showSuccessMessage" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="registration__step">
-      <div class="row">
+  <div class="registration__step" *ngIf="!helperModel.ownership">
+    <div class="row">
 
-      
+
       <div class="col-md-12">
         <h1 class="registration__step--title">Реєстрація</h1>
       </div>
-      
-        <div class="col-md-6 text-center">
-          <button class="registration__step--button">Я хочу користуватись сервісом</button>
-        </div>
 
-        <div class="col-md-6 text-center">
-          <button class="registration__step--button">Я хочу надавати послуги евакуатора</button>
-        </div>
+      <div class="col-md-6 text-center">
+        <button class="registration__step--button" (click)="changeOwnership('users')">Я хочу користуватись сервісом</button>
+      </div>
 
+      <div class="col-md-6 text-center">
+        <button class="registration__step--button" (click)="changeOwnership('corporate')">Я хочу надавати послуги евакуатора</button>
       </div>
 
     </div>
 
-    <div class="registration__step">
-      <div class="row">
-      
+  </div>
+
+  <div class="registration__step" *ngIf="helperModel.ownership == 'corporate'">
+    <div class="row">
+
       <div class="col-md-12">
         <h1 class="registration__step--title">Ви надаєте послуги як?</h1>
       </div>
-      
+
       <div class="col-md-6 text-center">
-        <button class="registration__step--button">Власник евакуатора</button>
+        <button class="registration__step--button" (click)="changeOwnership('driver')">Власник евакуатора</button>
       </div>
-    <div class="col-md-6 text-center">
-            <button class="registration__step--bgit sutton">Евакуаторна служба</button>
+      <div class="col-md-6 text-center">
+        <button class="registration__step--button" (click)="changeOwnership('company')">Евакуаторна служба</button>
       </div>
     </div>
-    </div>
+  </div>
 
-    <div class="registration__step">
-      <div class="row"> 
-        <div class="col-md-offset-6 col-md-6 text-center">
+  <form class="evo-register__form evo-form" novalidate *ngIf="helperModel.ownership == 'users'" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    
+      <div class="row">
+        <div class="col-md-12 text-center">
           <div class="form-group">
-            <input formControlName="firstname" class="form-control evo-input evo-input--large" type="text" placeholder="first name">
+            <span class="ui-float-label">  
+              <input id="name" formControlName="name" class="form-control evo-input" type="text" >
+              <label for="name">Ім'я</label>
+            </span>
           </div>
           <div class="form-group">
-            <input formControlName="phoneNumber" class="form-control evo-input evo-input--large" type="text" placeholder="phone">
+            <span class="ui-float-label">  
+              <input id="phone" formControlName="phone" class="form-control evo-input" type="text" >
+              <label for="phone">Телефон</label>
+            </span>
           </div>
           <div class="form-group">
-            <input formControlName="email" class="form-control evo-input evo-input--large" type="text" placeholder="email">
-          </div>                                      
+            <span class="ui-float-label">  
+              <input id="email" formControlName="email" class="form-control evo-input" type="text" >
+              <label for="email">Email</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <span class="ui-float-label">  
+              <input id="password" formControlName="password" class="form-control evo-input" type="text" >
+              <label for="password">Пароль</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <span class="ui-float-label">  
+              <input id="password_confirmation" formControlName="password_confirmation" class="form-control evo-input" type="text" >
+              <label for="password_confirmation">Підтвердіть пароль</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <p-dropdown [options]="helperModel.brand" formControlName="car" [filter]="true"></p-dropdown>
+          </div>
+          <div class="form-group">
+            <span class="ui-float-label">  
+              <p-dropdown [options]="helperModel.userRoles" formControlName="role"></p-dropdown>              
+            </span>
+          </div>
+          <div class="form-group">
+            <button class="evo-register__form--submit" type="submit">Підтвердити</button>  
+          </div>                                                                
         </div>
       </div>
-    </div>
-
-    <div class="registration__step">
-        <div class="row"> 
-          <div class="col-md-offset-6 col-md-6 text-center">
-            <div class="form-group">
-              <input formControlName="firstname" class="form-control evo-input evo-input--large" type="text" placeholder="first name">
-            </div>
-            <div class="form-group">
-              <input formControlName="phoneNumber" class="form-control evo-input evo-input--large" type="text" placeholder="phone">
-            </div>
-            <div class="form-group">
-              <input formControlName="email" class="form-control evo-input evo-input--large" type="text" placeholder="email">
-            </div>                                      
-          </div>
-        </div>
-      </div>    
-
   </form>
-  <div class="alert alert-success" *ngIf="showSuccessMessage" [innerHTML]="successRegistrationMsg">
-  </div>
-  <div>
-    <a class="evo-link evo-link--warning" title="Sign in" routerLink="/login">Sign in</a>
-  </div>
+
+  <form class="evo-register__form evo-form" novalidate *ngIf="helperModel.ownership == 'company'" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="form-group">
+            <span class="ui-float-label">  
+              <input id="title" formControlName="title" class="form-control evo-input" type="text" >
+              <label for="title">title</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <span class="ui-float-label">  
+              <input id="ownership" formControlName="ownership" class="form-control evo-input" type="text" >
+              <label for="ownership">ownership</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <span class="ui-float-label">  
+              <input id="zkpo" formControlName="zkpo" class="form-control evo-input" type="text" >
+              <label for="zkpo">zkpo</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <span class="ui-float-label">  
+              <input id="password" formControlName="password" class="form-control evo-input" type="text" >
+              <label for="password">password</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <span class="ui-float-label">  
+              <input id="password_confirmation" formControlName="password_confirmation" class="form-control evo-input" type="text" >
+              <label for="password_confirmation">password_confirmation</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <span class="ui-float-label">  
+              <input id="car" formControlName="car" class="form-control evo-input" type="text" >
+              <label for="car">car</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <span class="ui-float-label">  
+              <input id="role" formControlName="role" class="form-control evo-input" type="text" >
+              <label for="role">role</label>
+            </span>
+          </div>                                                  
+        </div>
+      </div>
+    
+  </form>
+
 </div>

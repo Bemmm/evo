@@ -6,7 +6,7 @@ import { ApiService, UserService } from 'app/core/services';
 @Injectable()
 export class AuthService {
     private loginUrl: string = 'loginUser';
-    private registerUrl: string = 'createAccount';
+    private registerUrl: string = 'registrations';
     private passwordResetStartUrl: string = 'passwordResetStart';
     private passwordResetUrl: string = 'passwordReset';
     private activateAccountUrl: string = 'activateAccount';
@@ -20,20 +20,14 @@ export class AuthService {
         return this.api.post(`${this.loginUrl}`, { username, password });
     }
 
-    register(firstName: string, lastName: string, email: string, password: string): Observable<any> {
-        return this.api.post(`${this.registerUrl}`, { firstName, lastName, email, password });
+    register(type: string, model:Object): Observable<any> {
+        let body = {};
+        body[type] = model;
+        return this.api.post(`${type}/${this.registerUrl}`, body);
     }
 
     onAuth(res: any) {
         const userInfo = res.logedUser;
-        // const user = new User(
-        //     userInfo.firstname,
-        //     userInfo.lastname,
-        //     userInfo.username,
-        //     userInfo.roles,
-        //     true
-        // );
-        // this.userService.save(user);
     }
 
     logout() {

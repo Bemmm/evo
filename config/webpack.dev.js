@@ -6,8 +6,8 @@ const argv = require('yargs').argv;
 const config = require('./config').getConfig(argv.env && argv.env.mode);
 
 const devServerProxy = {
-  "/jpix-admin-services/api": {
-    target: "http://localhost:8081",
+  "/api": {
+    target: "https://evo-staging.herokuapp.com",
     secure: false
   },
 }

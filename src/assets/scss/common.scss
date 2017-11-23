@@ -1,6 +1,10 @@
-@import "~font-awesome/scss/font-awesome";
+@import "bootstrap-custom";
 @import "partials/variables";
 @import "partials/functions";
 @import "partials/mixins";
 @import "components";
+
+html,body, evo-app, evo-auth, main{
+    height: 100%;
+}
 

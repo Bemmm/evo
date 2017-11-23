@@ -132,9 +132,9 @@ module.exports = {
           }
         }, 'sass-loader?' + JSON.stringify({
           sourceMap: true,
-          data: '@import "variables";@import "functions";@import "mixins";',
+          data: '@import "common";',
           includePaths: [
-            helpers.root('src', 'assets', 'scss', 'partials')
+              helpers.root('src', 'assets', 'scss')
           ]
         })]
       },
