@@ -7,6 +7,7 @@ import { mapObjectToArray } from 'app/shared/helpers';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { RegisterComponent } from './register/register.component';
     ],
     declarations: [
         AuthComponent,
-        RegisterComponent
+        RegisterComponent,
+        LoginComponent
     ],
     exports: [
         AuthComponent

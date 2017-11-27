@@ -30,7 +30,7 @@
         <button class="registration__step--button" (click)="changeOwnership('driver')">Власник евакуатора</button>
       </div>
       <div class="col-md-6 text-center">
-        <button class="registration__step--button" (click)="changeOwnership('company')">Евакуаторна служба</button>
+        <button class="registration__step--button" (click)="changeOwnership('companies')">Евакуаторна служба</button>
       </div>
     </div>
   </div>
@@ -41,31 +41,31 @@
         <div class="col-md-12 text-center">
           <div class="form-group">
             <span class="ui-float-label">  
-              <input id="name" formControlName="name" class="form-control evo-input" type="text" >
+              <input pInputText id="name" formControlName="name" class="form-control evo-input" type="text" >
               <label for="name">Ім'я</label>
             </span>
           </div>
           <div class="form-group">
             <span class="ui-float-label">  
-              <input id="phone" formControlName="phone" class="form-control evo-input" type="text" >
+              <input pInputText id="phone" formControlName="phone" class="form-control evo-input" type="text" >
               <label for="phone">Телефон</label>
             </span>
           </div>
           <div class="form-group">
             <span class="ui-float-label">  
-              <input id="email" formControlName="email" class="form-control evo-input" type="text" >
+              <input pInputText id="email" formControlName="email" class="form-control evo-input" type="text" >
               <label for="email">Email</label>
             </span>
           </div>
           <div class="form-group">
             <span class="ui-float-label">  
-              <input id="password" formControlName="password" class="form-control evo-input" type="text" >
+              <input pInputText id="password" formControlName="password" class="form-control evo-input" type="text" >
               <label for="password">Пароль</label>
             </span>
           </div>
           <div class="form-group">
             <span class="ui-float-label">  
-              <input id="password_confirmation" formControlName="password_confirmation" class="form-control evo-input" type="text" >
+              <input pInputText id="password_confirmation" formControlName="password_confirmation" class="form-control evo-input" type="text" >
               <label for="password_confirmation">Підтвердіть пароль</label>
             </span>
           </div>
@@ -73,62 +73,99 @@
             <p-dropdown [options]="helperModel.brand" formControlName="car" [filter]="true"></p-dropdown>
           </div>
           <div class="form-group">
-            <span class="ui-float-label">  
               <p-dropdown [options]="helperModel.userRoles" formControlName="role"></p-dropdown>              
-            </span>
           </div>
           <div class="form-group">
             <button class="evo-register__form--submit" type="submit">Підтвердити</button>  
-          </div>                                                                
+          </div>
+          <div class="form-group">
+            або <a [routerLink]="['/login']"> увійдіть в аккаунт</a>
+          </div>                                                                      
         </div>
       </div>
   </form>
 
-  <form class="evo-register__form evo-form" novalidate *ngIf="helperModel.ownership == 'company'" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form class="evo-register__form evo-form" novalidate *ngIf="helperModel.ownership == 'companies'" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-md-12 text-center">
           <div class="form-group">
             <span class="ui-float-label">  
-              <input id="title" formControlName="title" class="form-control evo-input" type="text" >
-              <label for="title">title</label>
+              <input pInputText id="title" formControlName="title" class="form-control evo-input" type="text" >
+              <label for="title">Назва компанії</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <p-dropdown [options]="helperModel.ownershipTypes" formControlName="ownership"></p-dropdown>              
+        </div>          
+        <div class="form-group">
+          <span class="ui-float-label">  
+            <input pInputText id="zkpo" formControlName="zkpo" class="form-control evo-input" type="text" >
+            <label for="zkpo">Код ЗКПО</label>
+          </span>
+        </div>
+        <div class="form-group">
+          <span class="ui-float-label">  
+            <input pInputText id="official_address" formControlName="official_address" class="form-control evo-input" type="text" >
+            <label for="official_address">Юридична адреса</label>
+          </span>
+        </div>
+        <div class="form-group">
+          <span class="ui-float-label">  
+            <input pInputText id="physical_address" formControlName="physical_address" class="form-control evo-input" type="text" >
+            <label for="physical_address">Фізична адреса</label>
+          </span>
+        </div>
+        <div class="form-group">
+          <span class="ui-float-label">  
+            <input pInputText id="manager_name" formControlName="manager_name" class="form-control evo-input" type="text" >
+            <label for="manager_name">ФІО директора</label>
+          </span>
+        </div>
+        <div class="form-group">
+          <span class="ui-float-label">  
+            <input pInputText id="manager_phone" formControlName="manager_phone" class="form-control evo-input" type="text" >
+            <label for="manager_phone">Телефон директора</label>
+          </span>
+        </div>
+        <div class="form-group">
+          <span class="ui-float-label">  
+            <input pInputText id="liable_name" formControlName="liable_name" class="form-control evo-input" type="text" >
+            <label for="liable_name">ФІО відповідальної особи</label>
+          </span>
+        </div>
+        <div class="form-group">
+          <span class="ui-float-label">  
+            <input pInputText id="liable_phone" formControlName="liable_phone" class="form-control evo-input" type="text" >
+            <label for="liable_phone">Телефон відповідальної особи</label>
+          </span>
+        </div>   
+        <div class="form-group">
+          <span class="ui-float-label">  
+            <input pInputText id="phone" formControlName="phone" class="form-control evo-input" type="text" >
+            <label for="phone">Стаціонарний Телефон</label>
+          </span>
+        </div>                                                            
+          <div class="form-group">
+            <span class="ui-float-label">  
+              <input pInputText id="password" formControlName="password" class="form-control evo-input" type="text" >
+              <label for="password">Пароль</label>
             </span>
           </div>
           <div class="form-group">
             <span class="ui-float-label">  
-              <input id="ownership" formControlName="ownership" class="form-control evo-input" type="text" >
-              <label for="ownership">ownership</label>
+              <input pInputText id="password_confirmation" formControlName="password_confirmation" class="form-control evo-input" type="text" >
+              <label for="password_confirmation">Підтвердіть пароль</label>
             </span>
           </div>
           <div class="form-group">
-            <span class="ui-float-label">  
-              <input id="zkpo" formControlName="zkpo" class="form-control evo-input" type="text" >
-              <label for="zkpo">zkpo</label>
-            </span>
-          </div>
+            <p-dropdown [options]="helperModel.taxFromTypes" formControlName="tax_form"></p-dropdown>              
+        </div>
+        <div class="form-group">
+          <button class="evo-register__form--submit" type="submit">Підтвердити</button>  
+        </div>                    
           <div class="form-group">
-            <span class="ui-float-label">  
-              <input id="password" formControlName="password" class="form-control evo-input" type="text" >
-              <label for="password">password</label>
-            </span>
-          </div>
-          <div class="form-group">
-            <span class="ui-float-label">  
-              <input id="password_confirmation" formControlName="password_confirmation" class="form-control evo-input" type="text" >
-              <label for="password_confirmation">password_confirmation</label>
-            </span>
-          </div>
-          <div class="form-group">
-            <span class="ui-float-label">  
-              <input id="car" formControlName="car" class="form-control evo-input" type="text" >
-              <label for="car">car</label>
-            </span>
-          </div>
-          <div class="form-group">
-            <span class="ui-float-label">  
-              <input id="role" formControlName="role" class="form-control evo-input" type="text" >
-              <label for="role">role</label>
-            </span>
-          </div>                                                  
+            або <a [routerLink]="['/login']"> увійдіть в аккаунт</a>
+          </div>                                                               
         </div>
       </div>
     

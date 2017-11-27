@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from "@angular/router";
 import { StoreModule } from '@ngrx/store';
-import { DropdownModule } from 'primeng/primeng';
+import { InputTextModule, DropdownModule } from 'primeng/primeng';
 import { rootReducer } from './store/rootReducer';
 
 import { UserActions } from './store/user';
@@ -22,6 +22,7 @@ import { mapObjectToArray } from './helpers';
         ReactiveFormsModule,
         NgbModule,
         RouterModule,
+        InputTextModule,
         DropdownModule,
         StoreModule.forRoot(rootReducer, {}),
     ],
@@ -38,6 +39,7 @@ import { mapObjectToArray } from './helpers';
         ReactiveFormsModule,
         NgbModule,
         RouterModule,
+        InputTextModule,
         DropdownModule,        
         StoreModule,        
         // mapObjectToArray(components),

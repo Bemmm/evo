@@ -14,7 +14,8 @@ import { objectToURLSearchParams } from 'app/shared/helpers';
 export class ApiService {
     private headers: Headers = new Headers({
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        Accept: 'application/json',
+        crossDomain: true,
     });
     private options: RequestOptions = new RequestOptions({
         headers: this.headers,
@@ -22,7 +23,7 @@ export class ApiService {
     });
     private errorHandler: (err: Response) => any;
     private unauthorizedHandler: (err: Response) => any;
-    api_url: string = GLOBAL_ENV && GLOBAL_ENV.API_URL || '/api/v1/';
+    api_url: string = GLOBAL_ENV && GLOBAL_ENV.API_URL || 'https://evo-staging.herokuapp.com/api/v1/';
 
     constructor(
         private http: Http

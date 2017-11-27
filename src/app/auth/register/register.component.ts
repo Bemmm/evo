@@ -20,10 +20,20 @@ export class RegisterComponent implements OnInit, OnDestroy {
     helperModel: any = {
         ownership: null,
         userRoles:[
-            {label: 'customer', value: 'Клієнт'},
-            {label: 'driver', value: 'Водій'},
-            {label: 'service', value: 'Сервіс'}            
+            {label: 'Клієнт', value: 'customer'},
+            {label: 'Водій', value: 'driver'},
+            {label: 'Сервіс', value: 'service'}            
         ],
+        taxFromTypes:[
+            {label: 'Форма оплати податку', value: null},
+            {label: 'ПДВ', value: 'simple'},
+            {label: 'Єдиний податок', value: 'vat'}             
+        ],
+        ownershipTypes:[
+            {label: 'limited', value: 'limited'},
+            {label: 'PE', value: 'pe'},
+            {label: 'Інше', value: 'other'}            
+        ],                
         brand: [
             {label: 'Оберіть авто', value: null},
             {label: 'Audi', value: 'Audi'},
@@ -49,17 +59,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
     };
     companyData = {
         title: ['', Validators.required],
-        ownership: ['', Validators.required],
         zkpo: ['', Validators.required],
-        tax_form: [''],
+        ownership: ['', Validators.required],
+        tax_form: ['', Validators.required],
         official_address: ['', Validators.required],
-        manager_name: [''],
-        manager_phone: [''],
-        physical_address: [''],
-        liable_name: [''],
-        liable_phone: [''],
+        physical_address: ['', Validators.required],
+        manager_name: ['', Validators.required],
+        manager_phone: ['', Validators.required],
+        liable_name: ['', Validators.required],
+        liable_phone: ['', Validators.required],
         additional_info: [''],
-        phone: ['']
+        phone: [''],
+        password: ['', Validators.required],
+        password_confirmation: ['', Validators.required],
     };    
     showSuccessMessage: boolean = false;
     successRegistrationMsg = '';
@@ -85,7 +97,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
     changeOwnership(type:string){
         this.helperModel.ownership = type;
-        if(type == 'company'){
+        if(type == 'companies'){
             this.buildForm('companyData');
         } else if(type == 'users'){
             this.buildForm('userData');

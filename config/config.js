@@ -1,13 +1,13 @@
 const configs = {
   local: {
     baseHref: '/',
-    apiUrl: '/api/v1/',
+    apiUrl: 'https://evo-staging.herokuapp.com/api/v1/',
     googleAnalyticsTag: '-',
     sourceMap: 'nosources-source-map'
   },
   dev: {
     baseHref: '/',
-    apiUrl: '/api/v1/',
+    apiUrl: 'https://evo-staging.herokuapp.com/api/v1/',
     googleAnalyticsTag: '-',
     sourceMap: 'nosources-source-map'
   },
