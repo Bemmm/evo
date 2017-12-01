@@ -1,3 +1,4 @@
+import { userRoles } from './../../../shared/constants/user-roles';
 import {
   Injectable
 } from '@angular/core';
@@ -32,10 +33,21 @@ export class AuthService {
     });
   }
 
-  register(type: string, model: Object): Observable < any > {
+  register(model: any): Observable < any > {
+    let type = '';
     let body = {};
-    body[type] = model;
-    console.log(body, `${type}/${this.registerUrl}`);
+    switch (model.role){
+      case 'customer':
+        body = {user:model};
+        type = 'users'
+        break;
+      case 'companie':
+        body = {company:model};    
+        type = 'companies'        
+      break;        
+    };
+    console.log('BEM body :: body', body);
+    console.log('BEM type :: type', type);
     return this.api.post(`${type}/${this.registerUrl}`, body);
   }
 

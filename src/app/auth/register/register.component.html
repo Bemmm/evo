@@ -1,5 +1,5 @@
 <div class="evo-register">
-  <div class="registration__step" *ngIf="!helperModel.ownership">
+  <!-- <div class="registration__step" *ngIf="!helperModel.ownership">
     <div class="row">
 
 
@@ -17,8 +17,8 @@
 
     </div>
 
-  </div>
-
+  </div> -->
+<!-- 
   <div class="registration__step" *ngIf="helperModel.ownership == 'corporate'">
     <div class="row">
 
@@ -33,9 +33,9 @@
         <button class="registration__step--button" (click)="changeOwnership('companies')">Евакуаторна служба</button>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <form class="evo-register__form evo-form" novalidate *ngIf="helperModel.ownership == 'users'" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form class="evo-register__form evo-form" novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     
       <div class="row">
         <div class="col-md-12 text-center">
@@ -85,7 +85,7 @@
       </div>
   </form>
 
-  <form class="evo-register__form evo-form" novalidate *ngIf="helperModel.ownership == 'companies'" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <!-- <form class="evo-register__form evo-form" novalidate *ngIf="helperModel.ownership == 'companies'" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-md-12 text-center">
           <div class="form-group">
@@ -169,6 +169,6 @@
         </div>
       </div>
     
-  </form>
+  </form> -->
 
 </div>

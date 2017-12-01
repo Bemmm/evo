@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         password_confirmation: [''],
         email: [''],
         car: [''],
-        role: [''],
+        role: ['customer'],
     };
     companyData = {
         title: ['', Validators.required],
@@ -89,7 +89,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        // this.buildForm();
+        this.buildForm('userData');
     }
 
     ngOnDestroy() {
@@ -111,7 +111,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     onSubmit() {
         this.formSubmitted = true;
 
-        const subscription = this.auth.register(this.helperModel.ownership, this.registerForm.value).subscribe(
+        const subscription = this.auth.register(this.registerForm.value).subscribe(
             res => {
                 // this.successRegistrationMsg = res.emailActivationUsed ? this.successRegistration : this.successRegistrationWithoutEmailActivationMsg;
                 // res.emailActivationUsed ? this.successRegistrationMsg = this.successRegistration : this.login(username, password);

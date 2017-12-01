@@ -14,8 +14,7 @@ import { objectToURLSearchParams } from 'app/shared/helpers';
 export class ApiService {
     private headers: Headers = new Headers({
         'Content-Type': 'application/json',
-        Accept: 'application/json',
-        crossDomain: true,
+        Accept: 'application/json'
     });
     private options: RequestOptions = new RequestOptions({
         headers: this.headers,
