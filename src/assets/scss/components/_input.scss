@@ -8,6 +8,19 @@
    color:#4ba9d5;
    font-weight:200;
   }  
+  &.icon{
+    .fa{
+      position: absolute;
+      color: #4eaed4;
+      left:.25em;
+      top: 50%;
+      margin-top: -.5em;
+      font-size: 20px;      
+    }
+        label{
+          left:1.5em;
+        }
+  }
   .evo-input {
     border:0;
     border-bottom:1px solid #4ba9d5;
@@ -16,4 +29,5 @@
     background: transparent;
     color:#4ba9d5;
   }
+
 }

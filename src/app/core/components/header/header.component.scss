@@ -1,6 +1,6 @@
   /* stylelint-disable */
   .evo-header {
-  background-color: $evo-blue-dark-night;
+  background-color: $evo-blue-dark;
 
   &__content {
     display: flex;
@@ -13,6 +13,15 @@
   &__info {
     display: flex;
     align-items: center;
+    &--button{
+      margin: 0 10px;
+      &.back{
+        font-size: 30px;
+      }
+      a{
+        color: #fff;
+      }
+    }
   }
 
   &__logo,
@@ -25,11 +34,18 @@
     background-position: 50% 50%;
     background-size: cover;
   }
-
+  &__brand{
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
+    margin: 0 10px;
+    font-family: Roboto;
+  }   
   &__logo {
-    width: rem(94px);
-    height: rem(38px);
-    // background-image: url(./assets/img/evo-white-logo.png);
+    width: rem(84px);
+    height: rem(84px);
+    background-image: url(./assets/logo.svg);
   }
 
   &__help {

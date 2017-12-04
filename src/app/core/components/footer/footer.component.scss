@@ -1,5 +1,5 @@
   .evo-footer {
-  background-color: $evo-blue-dark-night;
+  background-color: $evo-blue-dark;
 
   &__content {
     padding-top: rem(20px);
@@ -42,7 +42,7 @@
 
 @media (min-width: $screen-sm-min) {
   .evo-footer {
-    background-color: $evo-blue-dark-night;
+    background-color: $evo-blue-dark;
 
     &__content {
       padding-bottom: rem(57px);

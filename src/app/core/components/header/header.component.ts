@@ -10,6 +10,7 @@ import { UserService } from 'app/core/services';
 export class HeaderComponent {
     @Input() hasSearchLink: boolean = false;
     @Input() isLogged: boolean = false;
+    @Input() headerStyle: any = '';
     @Output() toggleMobileNav = new EventEmitter();
     user: any;
 

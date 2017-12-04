@@ -1,6 +1,5 @@
-<header></header>
+<evo-header [hasSearchLink]="hasSearchLink" [isLogged]="isLogged" [headerStyle]="'back'" (toggleMobileNav)="onToggleMobileNav()"></evo-header>    
 <main>
-
   <div class="evo-auth__content">
     <router-outlet></router-outlet>
   </div>

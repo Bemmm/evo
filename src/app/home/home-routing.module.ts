@@ -6,6 +6,7 @@ import { CanActivateGuest, IsUserLoggedIn } from 'app/core/services';
 
 import { HomeComponent } from './home.component';
 import { ErrorComponent } from './error/error.component';
+import { MapComponent } from './map/map.component';
 
 const homeRoutes: Routes = [
     {
@@ -15,7 +16,11 @@ const homeRoutes: Routes = [
     {
         path: 'error/:code',
         component: ErrorComponent
-    }
+    },
+    {
+        path: 'home',
+        component: MapComponent
+    }    
 ];
 
 @NgModule({

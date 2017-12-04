@@ -1,0 +1,48 @@
+<div class="evo-map">
+  <agm-map [styles]="styles" [latitude]="lat" [longitude]="lng" [zoom]="12">
+    <agm-marker [latitude]="lat" [longitude]="lng">
+      <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+        <ng-template>
+          My first Snazzy Info Window!
+        </ng-template>
+      </agm-snazzy-info-window>
+    </agm-marker>
+  </agm-map>
+
+  <div class="evo-map__search">
+    <form class="evo-map__search--form evo-form" novalidate [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <h1 class="title">Пошук</h1>
+      <div class="col-md-12 text-center">
+        <div class="form-group">
+          <span class="ui-float-label icon">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <input pInputText id="from" formControlName="from" class="form-control evo-input" type="text">
+            <label for="from">Звідки?</label>
+          </span>
+        </div>
+        <div class="form-group">
+          <span class="ui-float-label icon">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <input pInputText id="where" formControlName="where" class="form-control evo-input" type="text">
+            <label for="where">Куди?</label>
+          </span>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <p-dropdown [options]="helperModel.price('min')" formControlName="minPrice"></p-dropdown>
+            </div>
+            <div class="col-md-6">
+              <p-dropdown [options]="helperModel.price('max')" formControlName="maxPrice"></p-dropdown>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="evo-map__search--form--submit" type="submit">Підтвердити</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="clearfix"></div>
+</div>

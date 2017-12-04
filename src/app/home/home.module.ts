@@ -6,6 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { mapObjectToArray } from 'app/shared/helpers';
 
 import { HomeComponent } from './home.component';
+import { MapComponent } from './map/map.component';
 import { ErrorComponent } from './error/error.component';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ErrorComponent } from './error/error.component';
     ],
     declarations: [
         HomeComponent,
+        MapComponent,
         ErrorComponent
     ],
     entryComponents: [

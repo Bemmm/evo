@@ -15,3 +15,4 @@ import 'rxjs';
 // You can import js, ts, css, sass, ...
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import '../node_modules/primeng/resources/primeng.min.css';
+import '../node_modules/snazzy-info-window/dist/snazzy-info-window.css';

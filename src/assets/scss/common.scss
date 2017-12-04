@@ -4,7 +4,16 @@
 @import "partials/mixins";
 @import "components";
 
-html,body, evo-app, evo-auth, main{
+html,body, evo-app, evo-auth, evo-home, main{
     height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
-
+.flex-row{
+    display:flex;
+    flex-direction:row;
+    &.center-center{
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -2,43 +2,40 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <div class="container">
                     <div class="row">
-                        <div class="col-xs-12 evo-header__content">
-                            <a *ngIf="isLogged"
-                                class="evo-header__mobile-menu visible-xs"
-                               (click)="toggleMobileNav.emit()">
-                                <i class="fa fa-bars"
-                                   aria-hidden="true"></i>
-                            </a>
-                            <a class="evo-header__logo"
-                               title="Jostens PIX"
-                               [routerLink]="getLogoLink()">
-                                <h1>EVO evo-header__search</h1>
-                            </a>
+                        <div class="col-xs-12 evo-header__content" *ngIf="headerStyle === 'menu' ">
+                            <div class="flex-row center-center">
+                                <a class="evo-header__logo"
+                                title="EVO"
+                                [routerLink]="getLogoLink()">
+                                </a>
+                                <a class="evo-header__brand"
+                                [routerLink]="getLogoLink()" >
+                                    EVO
+                                </a>
+                            </div>                            
                             <div class="evo-header__info">
-
-                                <ng-container *ngIf="isLogged">
-                                    <span class="evo-header__user-info"
-                                          *ngIf="user.isConsumerCare()">Logged in as {{user.username}}</span>
-                                    <a class="evo-header__search hidden-xs"
-                                       title="Find your Student?"
-                                       *ngIf="hasSearchLink"
-                                       routerLink="/find-student">Find your track?</a>
+                                <ng-container *ngIf="!isLogged">
+                                        <div class="evo-header__info--button"><a [routerLink]="['/login']" >Увійти</a></div>
                                 </ng-container>
-
-                                <a class="evo-header__help hidden-xs"
-                                   title="Need Help?"
-                                   routerLink="/faqs">Help</a>
-
+                                <ng-container *ngIf="!isLogged">
+                                        <div class="evo-header__info--button"><a [routerLink]="['/register']">Реєстрація</a></div>
+                                </ng-container>                                
                                 <ng-container *ngIf="isLogged">
                                     <evo-logout></evo-logout>
                                 </ng-container>
 
                             </div>
                         </div>
+                        <div class="col-xs-12 evo-header__content" *ngIf="headerStyle === 'back' ">                          
+                                <div class="evo-header__info">
+                                    <ng-container>
+                                            <div class="evo-header__info--button back"><a [routerLink]="['/home']" ><i class="fa fa-chevron-left" aria-hidden="true"></i></a></div>
+                                    </ng-container>
+      
+                                </div>
+                            </div>                        
                     </div>
-                </div>
             </div>
         </div>
     </div>

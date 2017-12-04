@@ -1,2 +1,15 @@
-<router-outlet>
-</router-outlet>
+<div class="evo-home">
+  <header>
+    <evo-header [hasSearchLink]="hasSearchLink" [isLogged]="isLogged" [headerStyle]="'menu'" (toggleMobileNav)="onToggleMobileNav()"></evo-header>
+  </header>
+  <div class="evo-home-content evo-home-mobile-content">
+    <main>
+        <section class="evo-home__container">
+          <router-outlet></router-outlet>
+        </section>
+    </main>
+  </div>
+  <footer>
+    <evo-footer [isLogged]="isLogged"></evo-footer>
+  </footer>
+</div>
