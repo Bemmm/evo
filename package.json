@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --port 3000",
+    "start": "npm install && webpack-dev-server --inline --progress --port 3000",
     "dev-with-prod-proxy": "webpack-dev-server --inline --progress --port 3000 --env.prodProxy --env.mode=dev",
     "test": "karma start karma.conf.js",
     "test:dev": "karma start karma.conf.js --auto-watch --no-single-run",
