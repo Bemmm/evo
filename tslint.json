@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "codelyzer"
+  ],
+  "rulesDirectory": [
+    "node_modules/codelyzer"
+  ],
+  "rules": {
+  }
+}

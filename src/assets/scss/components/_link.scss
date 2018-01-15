@@ -1,0 +1,31 @@
+  /* stylelint-disable */
+  .evo-link {
+  color: $evo-blue-primary-dark;
+  font-family: $primary-font-family;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &--warning {
+    color: $evo-orange-accent;
+
+    &:hover, &:focus, &:active  {
+      color: $evo-orange-accent;
+    }
+  }
+}
+
+.evo-secondary-link {
+  color: $evo-orange;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.evo-action-link {
+  color: $evo-orange-accent;
+  &:hover {
+    text-decoration: none;
+  }
+}

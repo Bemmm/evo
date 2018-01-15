@@ -1,0 +1,8 @@
+  /* stylelint-disable */
+@mixin default-control-styles($bg-color:$evo-white, $border-color:$evo-grey-wet) {
+  background-color: $bg-color;
+  color: $evo-blue-accent;
+  border: 1px solid $border-color;
+  padding-left: 2px;
+  padding-right: 2px;
+}

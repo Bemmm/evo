@@ -1,0 +1,89 @@
+  /* stylelint-disable */
+
+  .ui-float-label input:focus~label,
+  .ui-float-label input.ui-state-filled~label,
+  .ui-float-label .ui-inputwrapper-focus~label,
+  .ui-float-label .ui-inputwrapper-filled~label {
+    top: -.30em;
+  }
+
+  $base-width: rem(300px);
+  .ui-float-label {
+    max-width: 200px;
+    margin: auto;
+    p-inputmask, p-calendar{
+      .ui-calendar{
+        position: static;
+        .ui-datepicker{
+          background-color: #fff;
+        }
+      }
+      input{
+        position: relative;
+        width: 100%;
+        left: 0;
+        top:0;
+        background: transparent;
+        border: 0;
+        height: 28px;
+        bottom: 0;
+      }
+    }
+    &.blue {
+      label {
+        color: $evo-blue-dark;
+        font-weight: 200;
+      }
+      &.icon {
+        .fa {
+          position: absolute;
+          color: $evo-blue-dark;
+          left: .25em;
+          top: 50%;
+          margin-top: -.5em;
+          font-size: 20px;
+        }
+        label {
+          left: 1.5em;
+        }
+      }
+      .evo-input {
+        border: 0;
+        border-bottom: 1px solid $evo-blue-dark;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+        color: $evo-blue-dark;
+      }
+    }
+    &.grey {
+      label {
+        color: $evo-grey-dark;
+        font-weight: 200;
+      }
+      &.icon {
+        .fa {
+          position: absolute;
+          color: $evo-blue-dark;
+          left: .25em;
+          top: 50%;
+          margin-top: -.5em;
+          font-size: 20px;
+        }
+        label {
+          left: 1.5em;
+        }
+        .evo-input {
+          padding-left: 20px;
+        }
+      }
+      .evo-input {
+        border: 0;
+        border-bottom: 1px solid $evo-grey-dark;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+        color: $evo-grey-dark;
+      }
+    }
+  }

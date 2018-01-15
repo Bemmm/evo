@@ -1,0 +1,16 @@
+<div class="evo-error"
+     *ngIf="error">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <div class="evo-error__container">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        {{error.errorTitle}}
+                    </div>
+                    <div class="panel-body"
+                         [innerHtml]="error.errorMessage"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

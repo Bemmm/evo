@@ -1,0 +1,28 @@
+@import "bootstrap-custom";
+@import "partials/variables";
+@import "partials/functions";
+@import "partials/mixins";
+@import "components";
+
+html,body, evo-app, evo-auth, evo-home, main{
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-family: 'Roboto';
+}
+.form-group{
+    margin-bottom: 20px;
+}
+.flex-row{
+    display:flex;
+    flex-direction:row;
+    &.center-center{
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.center-between{
+        align-items: center;
+        justify-content: space-between;
+    }
+}

@@ -1,0 +1,29 @@
+<div class="evo-login">
+
+  <form class="evo-login__form evo-form" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h1 class="title">Вхід</h1>      
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="form-group">
+            <span class="ui-float-label blue">  
+              <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control evo-input"></p-inputMask>
+              <label for="phone">Телефон</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <span class="ui-float-label blue">  
+              <input pInputText id="password" formControlName="password" class="form-control evo-input" type="password" >
+              <label for="password">Пароль</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <button class="evo-login__form--submit" type="submit">Увійти</button>  
+          </div>
+          <div class="form-group">
+            або <a [routerLink]="['/auth/register']"> створіть аккаунт</a>
+          </div>                                                                                     
+        </div>
+      </div>
+  </form>
+
+</div>
