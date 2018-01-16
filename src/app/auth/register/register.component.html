@@ -9,27 +9,32 @@
             <input pInputText id="name" formControlName="name" class="form-control evo-input" type="text">
             <label for="name">Ім'я</label>
           </span>
+          <validation-messages [control]="registerForm.controls.name"></validation-messages> 
         </div>
         <div class="form-group">
           <span class="ui-float-label blue">
             <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control evo-input"></p-inputMask>
             <label for="phone">Телефон</label>
           </span>
+          <validation-messages [control]="registerForm.controls.phone"></validation-messages>          
         </div>
         <div class="form-group">
           <span class="ui-float-label blue">
             <input pInputText id="password" formControlName="password" class="form-control evo-input" type="password">
             <label for="password">Пароль</label>
           </span>
+          <validation-messages [control]="registerForm.controls.password"></validation-messages>
         </div>
         <div class="form-group">
           <span class="ui-float-label blue">
             <input pInputText id="password_confirmation" formControlName="password_confirmation" class="form-control evo-input" type="password">
             <label for="password_confirmation">Підтвердіть пароль</label>
           </span>
+          <div class="rb-error" style="color: #f00; text-align: left; font-size: 12px;" *ngIf="registerForm.controls.password.value && registerForm.controls.password_confirmation.value && registerForm.controls.password.value !== registerForm.controls.password_confirmation.value">Паролі не співпадають</div>
+          <validation-messages [control]="registerForm.controls.password_confirmation"></validation-messages>          
         </div>
         <div class="form-group">
-          <button class="evo-register__form--submit" type="submit">Підтвердити</button>
+          <button [disabled]="registerForm.invalid" class="evo-register__form--submit" type="submit">Підтвердити</button>
         </div>
         <div class="form-group">
           або
@@ -71,13 +76,15 @@
             <input pInputText id="email" formControlName="email" class="form-control evo-input" type="text">
             <label for="email">Email</label>
           </span>
+          <validation-messages [control]="registerForm.controls.email"></validation-messages>                    
         </div>
-        <div class="form-group" formGroupName="address">          
+        <div class="form-group" formGroupName="address">
+          {{citiesOptions.type}}          
           <span class="ui-float-label blue">
               <input type="text" 
               formControlName= "label"
-              class="form-control evo-input" 
-              [options]='addressOptions'
+              class="form-control evo-input"
+              [options]='citiesOptions'
               (FormatAddress)="getFormattedAddress($event, 'address')"
               (street_number) = 'street_number=$event'
               (street)= 'street=$event'
@@ -102,6 +109,8 @@
               angularGooglePlace
               pInputText/>            
             <label for="city">Місто</label>
+            <validation-messages [control]="registerForm.controls.address.controls.label"></validation-messages>          
+
           </span>
         </div>
         <div formGroupName="car_attributes">
@@ -110,12 +119,16 @@
                 <p-radioButton (click)="categoryChange(transport.value)" name="transportCategorie" value="{{transport.value}}" formControlName="category"></p-radioButton>
                 <span>{{transport.name}}</span>
               </div>
+            <validation-messages [control]="registerForm.controls.car_attributes.controls.category"></validation-messages>                        
           </div>
           <div class="form-group">
             <p-dropdown class="dropdown__blue" [options]="brand" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)" optionLabel="name"></p-dropdown>
+            <validation-messages [control]="registerForm.controls.car_attributes.controls.brand"></validation-messages>          
+          
           </div>
           <div class="form-group">
             <p-dropdown class="dropdown__blue" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
+            <validation-messages [control]="registerForm.controls.car_attributes.controls.model"></validation-messages>          
           </div>
         </div>
         <div class="form-group">

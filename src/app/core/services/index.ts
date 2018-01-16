@@ -3,6 +3,7 @@ export * from './storage/session-storage.service';
 export * from './user/user.service';
 export * from './api/api.service';
 export * from './auth';
+export * from './validation/validation.service';
 export * from './warning/warning.service';
 export * from './guard/guest-guard.service';
 export * from './guard/login-guard.service';

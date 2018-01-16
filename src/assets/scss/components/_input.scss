@@ -4,7 +4,7 @@
   .ui-float-label input.ui-state-filled~label,
   .ui-float-label .ui-inputwrapper-focus~label,
   .ui-float-label .ui-inputwrapper-filled~label {
-    top: -.30em;
+    top: -.10em;
   }
 
   $base-width: rem(300px);
@@ -28,6 +28,7 @@
         height: 28px;
         bottom: 0;
       }
+
     }
     &.blue {
       label {
@@ -84,6 +85,9 @@
         box-shadow: none;
         background: transparent;
         color: $evo-grey-dark;
+        &.ng-invalid{
+          color: $evo-error;
+        }
       }
     }
   }

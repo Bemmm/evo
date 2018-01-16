@@ -49,10 +49,12 @@
             color: $evo-blue-dark;
             text-shadow: 0 3px 6px #b0b0b09a;
         }
-        .form-group{
-            margin: 25px 10px;
-        }
         &--submit{
+            &[disabled]{
+                background: #d9d9d9;
+                border-color: #868686;
+                color: #868686;
+            }
             @include evo-primary-gradient;
             cursor: pointer;
             border-width: 1px;

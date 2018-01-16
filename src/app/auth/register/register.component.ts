@@ -29,7 +29,8 @@ import {
   AuthService,
   AuthErrorsService,
   UserService,
-  ApiService
+  ApiService,
+  ValidationService
 } from 'app/core/services';
 import {
   successRegistration
@@ -37,10 +38,12 @@ import {
 import {
   MapsAPILoader
 } from '@agm/core/services/maps-api-loader/maps-api-loader';
-import { Address } from 'angular-google-place';
+import {
+  Address
+} from 'angular-google-place';
 interface brand {
-    name: string;
-    value: number;
+  name: string;
+  value: number;
 }
 
 interface models {
@@ -56,7 +59,18 @@ interface models {
 
 
 export class RegisterComponent implements OnInit, OnDestroy {
-
+  addressOptions = {
+    type: 'address',
+    componentRestrictions: {
+      country: 'UA'
+    }
+  };
+  citiesOptions = {
+    type: '(cities)',
+    componentRestrictions: {
+      country: 'UA',
+    }
+  };   
   brand: brand[] = [];
   models: models[] = [];
   registerForm: FormGroup;
@@ -80,107 +94,107 @@ export class RegisterComponent implements OnInit, OnDestroy {
     transportCategories: [],
     ownership: null,
     userRoles: [{
-      label: 'Клієнт',
-      value: 'customer'
-    },
-    {
-      label: 'Водій',
-      value: 'driver'
-    },
-    {
-      label: 'Сервіс',
-      value: 'service'
-    }
+        label: 'Клієнт',
+        value: 'customer'
+      },
+      {
+        label: 'Водій',
+        value: 'driver'
+      },
+      {
+        label: 'Сервіс',
+        value: 'service'
+      }
     ],
     taxFromTypes: [{
-      label: 'Форма оплати податку',
-      value: null
-    },
-    {
-      label: 'ПДВ',
-      value: 'pdv'
-    },
-    {
-      label: 'Єдиний податок',
-      value: 'ep'
-    }
+        label: 'Форма оплати податку',
+        value: null
+      },
+      {
+        label: 'ПДВ',
+        value: 'pdv'
+      },
+      {
+        label: 'Єдиний податок',
+        value: 'ep'
+      }
     ],
     ownershipTypes: [{
-      label: 'ТОВ',
-      value: 'TOV'
-    },
-    {
-      label: 'ПП',
-      value: 'PP'
-    },
-    {
-      label: 'ФОП',
-      value: 'FOP'
-    },    
-    {
-      label: 'Інше',
-      value: 'OTHER'
-    }
+        label: 'ТОВ',
+        value: 'TOV'
+      },
+      {
+        label: 'ПП',
+        value: 'PP'
+      },
+      {
+        label: 'ФОП',
+        value: 'FOP'
+      },
+      {
+        label: 'Інше',
+        value: 'OTHER'
+      }
     ]
   };
   userData = {
-    name: ['', Validators.required],
-    phone: [''],
-    password: [''],
-    password_confirmation: [''],
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+    phone: ['', Validators.required],
+    password: ['', [Validators.required, ValidationService.passwordValidator]],
+    password_confirmation: ['', [Validators.required]],
   };
   userOther = {
-      email: ['', Validators.required],
-      role: ['user'],      
-      address: this.fb.group({
-        label: [''],
-        lat: [''],
-        lng: [''],
-      }),
-      car_attributes: this.fb.group({
-        brand: [''],
-        model: [''],
-        category: ['']
-      })
+    email: ['', [ValidationService.emailValidator]],
+    role: ['user'],
+    address: this.fb.group({
+      label: ['', [Validators.required]],
+      lat: [''],
+      lng: [''],
+    }),
+    car_attributes: this.fb.group({
+      brand: ['', [Validators.required]],
+      model: ['', [Validators.required]],
+      category: ['']
+    })
   };
   driverData = {
-      email: ['', Validators.required],
-      passport: ['', Validators.required],
-      birthday: ['', Validators.required],
-      role: ['driver'],
-      address: this.fb.group({
-        label:[''],
-        lat:[''],
-        lng:[''],
-      }),
+    email: ['', [Validators.required]],
+    passport: ['', [Validators.required]],
+    birthday: ['', [Validators.required]],
+    role: ['driver'],
+    address: this.fb.group({
+      label: ['', [Validators.required]],
+      lat: [''],
+      lng: [''],
+    }),
   }
   companyData = {
-      title:[''],
-      ownership:['TOV'],
-      other_ownership:[''],      
-      id_code:[''],
-      zkpo:[''],
-      tax_form:[''],
-      official_address: this.fb.group({ 
-          label:[''],
-          lat:[''],
-          lng:['']
-      }),
-      physical_address: this.fb.group({ 
-        label:[''],
-        lat:[''],
-        lng:['']
-      }),
-      director:this.fb.group({
-        name:[''],
-        phone:[''],
-      }),            
-      liable:this.fb.group({
-          name:[''],
-          phone:[''],
-      }),
-      static_phone:[''],
-      role:['company'],
+    title: [''],
+    ownership: ['TOV'],
+    other_ownership: [''],
+    id_code: [''],
+    zkpo: [''],
+    tax_form: [''],
+    official_address: this.fb.group({
+      label: [''],
+      lat: [''],
+      lng: ['']
+    }),
+    physical_address: this.fb.group({
+      label: [''],
+      lat: [''],
+      lng: ['']
+    }),
+    director: this.fb.group({
+      name: [''],
+      phone: [''],
+    }),
+    liable: this.fb.group({
+      name: [''],
+      phone: [''],
+    }),
+    static_phone: [''],
+    role: ['company'],
   };
   showSuccessMessage: boolean = false;
   successRegistrationMsg = '';
@@ -201,7 +215,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ) {
     this.getCategories()
   }
-  getCategories(){
+  getCategories() {
     const subscription = this.auth.getCategories().subscribe(
       res => {
         this.helperModel.transportCategories = res;
@@ -211,11 +225,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
         console.log(errorRes);
       });
 
-    this.subscriptions.push(subscription);    
+    this.subscriptions.push(subscription);
   }
   ngOnInit() {
     this.buildForm('userData');
-    
+
   }
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
@@ -235,6 +249,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   buildForm(key: string) {
     this.registerForm = this.fb.group(this[key]);
+    console.log(this.registerForm);
   }
 
   carChanged(event: any) {
@@ -270,7 +285,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     const subscription = this.auth.register(this.registerForm.value).subscribe(
       res => {
         this.registeredUser = res;
-        
+
       },
       errorRes => {
         console.log(errorRes);
@@ -278,7 +293,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(subscription);
   }
-  categoryChange(event: any){
+  categoryChange(event: any) {
     console.log(event);
     const subscription = this.auth.getMarks(this.registerForm.get('car_attributes').get('category').value).subscribe(
       res => {
@@ -291,26 +306,41 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(subscription);
   }
-  setTestData(){
-    this.registerForm.patchValue({title:"TEST COMPANY",
-      ownership:"TOV",
-      other_ownership:"",
-      id_code:"",
-      zkpo:"12345678",
-      tax_form:"EP",
-      official_address:{label:"TEST",lat:"123",lng:"123"},
-      physical_address:{label:"test2",lat:"321",lng:"321"},
-      director:{name:"ahaha",phone:"380989422971"},
-      liable:{name:"adada",phone:"380989422971"},
-      static_phone:"123123123123",
-      role:"company"});
-      console.log(this.registerForm.value);
+  setTestData() {
+    this.registerForm.patchValue({
+      title: "TEST COMPANY",
+      ownership: "TOV",
+      other_ownership: "",
+      id_code: "",
+      zkpo: "12345678",
+      tax_form: "EP",
+      official_address: {
+        label: "TEST",
+        lat: "123",
+        lng: "123"
+      },
+      physical_address: {
+        label: "test2",
+        lat: "321",
+        lng: "321"
+      },
+      director: {
+        name: "ahaha",
+        phone: "380989422971"
+      },
+      liable: {
+        name: "adada",
+        phone: "380989422971"
+      },
+      static_phone: "123123123123",
+      role: "company"
+    });
+    console.log(this.registerForm.value);
+  } 
+  getFormattedAddress(event: any, formcontrol: string) {
+    this.registerForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
+    this.registerForm.get(formcontrol).get('lat').setValue(event.lat);
+    this.registerForm.get(formcontrol).get('lng').setValue(event.lng);
+    console.log(this.registerForm);
   }
-  public addressOptions = {type : 'address', componentRestrictions: { country: 'UA' }};
-  getFormattedAddress(event: any, formcontrol:string) {
-        this.registerForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
-        this.registerForm.get(formcontrol).get('lat').setValue(event.lat);
-        this.registerForm.get(formcontrol).get('lng').setValue(event.lng);
-        console.log(this.registerForm);
-     }  
 }
