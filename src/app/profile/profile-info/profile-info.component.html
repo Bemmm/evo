@@ -1,0 +1,66 @@
+<p-tabView>
+  <p-tabPanel header="Мої замовлення" [selected]="loggedUser.role === 'user'" *ngIf="loggedUser.role === 'user'">
+    <p-dataTable [value]="orders">
+        <p-column field="id" header="id"></p-column>
+        <p-column field="date" header="Дата/час"></p-column>
+        <p-column field="driver.name" header="Водій"></p-column>
+        <p-column field="from.label" header="Звідки"></p-column>
+        <p-column field="number" header="Номер"></p-column>
+        <p-column field="status" header="Статус"></p-column>
+        <p-column field="mark" header="Оцінка"></p-column>
+    </p-dataTable>
+  </p-tabPanel>
+
+
+
+  <p-tabPanel header="Мій профіль">
+    <form autocomplete="off" class="" novalidate [formGroup]="userInfoForm" (ngSubmit)="updateUser()">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="form-group">
+          <span class="ui-float-label blue">
+            <input pInputText id="name" formControlName="name" class="form-control evo-input" type="text">
+            <label for="name">Ім'я</label>
+          </span>
+          <validation-messages [control]="userInfoForm.controls.name"></validation-messages> 
+        </div>
+        <div class="form-group">
+          <span class="ui-float-label blue">
+            <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control evo-input"></p-inputMask>
+            <label for="phone">Телефон</label>
+          </span>
+          <validation-messages [control]="userInfoForm.controls.phone"></validation-messages>          
+        </div>
+        <div class="form-group">
+            <span class="ui-float-label blue">
+              <input pInputText id="email" formControlName="email" class="form-control evo-input" type="text">
+              <label for="email">Email</label>
+            </span>
+            <validation-messages [control]="userInfoForm.controls.email"></validation-messages>                    
+          </div>        
+        <div formGroupName="car_attributes">
+            <div class="form-group flex-row evo-register__form--transport">
+                <div *ngFor="let transport of transportCategories" class="evo-register__form--transport-item">
+                  <p-radioButton  (click)="categoryChange(transport.value)" name="transportCategorie" value="{{transport.value}}" formControlName="category"></p-radioButton>
+                  <span>{{transport.name}}</span>
+                </div>
+              <validation-messages [control]="userInfoForm.controls.car_attributes.controls.category"></validation-messages>                        
+            </div>
+            <div class="form-group">
+              <p-dropdown class="dropdown__blue" [options]="brand" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)" optionLabel="name"></p-dropdown>
+              <validation-messages [control]="userInfoForm.controls.car_attributes.controls.brand"></validation-messages>          
+            
+            </div>
+            <div class="form-group">
+              <p-dropdown class="dropdown__blue" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
+              <validation-messages [control]="userInfoForm.controls.car_attributes.controls.model"></validation-messages>          
+            </div>
+          </div>
+        <div class="form-group">
+          <button [disabled]="userInfoForm.invalid" class="evo-register__form--submit" type="submit">Підтвердити</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  </p-tabPanel>
+</p-tabView>

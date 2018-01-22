@@ -2,56 +2,16 @@ $padding-top: rem(33px);
 $padding-bottom: rem(30px);
 
 .evo-home {
-  &__container {
-  }
-
-  .evo-mobile-content {
-    overflow-y: initial;
-  }
-
-  &.evo-mobile-nav-wrapper {
-    position: relative;
-    right: 0;
-    transition: right 250ms linear;
-
-    &--open {
-      right: -#{$evo-mobile-nav-width};
-    }
-  }
-  // evo-849 - revert
-  /*.evo-home-content {
-    @include calc(min-height, '100vh - 65px');
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  min-height: 100%;
 }
 
 @media (min-width: $screen-sm-min) {
-  .evo-home {
-    &.evo-mobile-nav-wrapper {
-      &--open {
-        right: 0;
-      }
-    }
-  }
+
 }
 @media (max-width: $screen-xs-max) {
-  .evo-home {
-    &__container {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
-    &.evo-mobile-nav-wrapper {
-      position: fixed;
-    }
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    .evo-home-mobile-content {
-      overflow-y: auto;
-      flex: 1;
-    }
-  }
+
 }

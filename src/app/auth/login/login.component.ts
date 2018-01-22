@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     const subscription = this.auth.login(this.loginForm.value.phone, this.loginForm.value.password).subscribe(
       res => {
         this.auth.onAuth(res);
-        this.router.navigate(['/']);
+        this.router.navigate(['/profile', res._id]);
       },
       errorRes => {
         console.log('error');

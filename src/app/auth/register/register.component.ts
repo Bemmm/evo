@@ -271,9 +271,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
   onSubmitAdditionals() {
     const subscription = this.auth.registerAdditionals(this.registerForm.value, this.registeredUser._id + '', this.registeredUser['x-access-token']).subscribe(
       res => {
-        this.registeredUser = res;
         this.auth.onAuth(res);
-        this.router.navigate(['/']);
+        this.registeredUser = res;
+        this.router.navigate(['/profile', res._id]);
       },
       errorRes => {
         console.log(errorRes);
@@ -285,7 +285,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     const subscription = this.auth.register(this.registerForm.value).subscribe(
       res => {
         this.registeredUser = res;
-
+        // this.router.navigate(['/profile', res._id]);
       },
       errorRes => {
         console.log(errorRes);
