@@ -1,9 +1,9 @@
 <div class="evo-register">
-  <form autocomplete="off" class="evo-register__form evo-form" novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit()"
+  <form autocomplete="off" class="evo-register__form small evo-form" novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit()"
     *ngIf="!registeredUser">
     <h1 class="title">Реєстрація</h1>
     <div class="row">
-      <div class="col-md-12 text-center">
+      <div class="text-center">
         <div class="form-group">
           <span class="ui-float-label blue">
             <input pInputText id="name" formControlName="name" class="form-control evo-input" type="text">
@@ -66,7 +66,7 @@
   </div>
 
 
-  <form autocomplete="off" class="evo-register__form evo-form" novalidate [formGroup]="registerForm" (ngSubmit)="onSubmitAdditionals()"
+  <form autocomplete="off" class="evo-register__form small evo-form" novalidate [formGroup]="registerForm" (ngSubmit)="onSubmitAdditionals()"
     *ngIf="registeredUser && helperModel.ownership === 'users'">
     <h1 class="title">Реєстрація користувача</h1>
     <div class="row">
@@ -79,7 +79,6 @@
           <validation-messages [control]="registerForm.controls.email"></validation-messages>                    
         </div>
         <div class="form-group" formGroupName="address">
-          {{citiesOptions.type}}          
           <span class="ui-float-label blue">
               <input type="text" 
               formControlName= "label"
@@ -116,7 +115,7 @@
         <div formGroupName="car_attributes">
           <div class="form-group flex-row evo-register__form--transport">
               <div *ngFor="let transport of helperModel.transportCategories" class="evo-register__form--transport-item">
-                <p-radioButton (click)="categoryChange(transport.value)" name="transportCategorie" value="{{transport.value}}" formControlName="category"></p-radioButton>
+                <p-radioButton class="transport type__{{transport.value}}" (click)="categoryChange(transport.value)" name="transportCategorie" value="{{transport.value}}" formControlName="category"></p-radioButton>
                 <span>{{transport.name}}</span>
               </div>
             <validation-messages [control]="registerForm.controls.car_attributes.controls.category"></validation-messages>                        
@@ -159,7 +158,7 @@
   </div>
 
 
-  <form autocomplete="off" class="evo-register__form evo-form" novalidate *ngIf="helperModel.ownership == 'drivers'" [formGroup]="registerForm"
+  <form autocomplete="off" class="evo-register__form small evo-form" novalidate *ngIf="helperModel.ownership == 'drivers'" [formGroup]="registerForm"
     (ngSubmit)="onSubmitAdditionals('drivers')">
     <h1 class="title">Реєстрація водія</h1>
     <div class="row">
@@ -228,7 +227,7 @@
 
   </form>
 
-  <form autocomplete="off" class="evo-register__form evo-form" novalidate *ngIf="helperModel.ownership == 'companies'" [formGroup]="registerForm"
+  <form autocomplete="off" class="evo-register__form big evo-form" novalidate *ngIf="helperModel.ownership == 'companies'" [formGroup]="registerForm"
     (ngSubmit)="onSubmitAdditionals('companies')">
     <h1 class="title">Реєстрація компанії</h1>
     <div class="row">

@@ -4,6 +4,7 @@
   &__blue {
     .ui-dropdown {
       border-bottom: 1px solid $evo-blue-dark;
+      max-width: 100% ;
       width: 100% !important;
       .ui-dropdown-trigger {
         color: $evo-grey-dark;

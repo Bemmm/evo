@@ -13,7 +13,7 @@
     "test:coverage": "karma start karma.conf.js --env.coverage",
     "test:ci": "karma start ./config/ci.karma.conf.js",
     "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
-    "build": "rm -rf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
+    "build": "webpack --config config/webpack.prod.js --progress --profile --bail",
     "build-dev": "rm -rf dist && webpack --config config/webpack.prod.js --progress --profile --bail --env.mode=dev",
     "build-prod": "rm -rf dist && webpack --config config/webpack.prod.js --progress --profile --bail --env.mode=prod"
   },

@@ -1,50 +1,62 @@
-  /* stylelint-disable */
+/* stylelint-disable */
+
   $base-width: rem(280px);
-$base-height: rem(50px);
-.evo-register__form--transport-item{
-  p-radiobutton{
-    width: 50px;
-    height: 50px;
-    background-color: #d9d9d9;
-    position: relative;
-    .ui-radiobutton, .ui-radiobutton-label{
-    width:100%;
-    height:100%;
-     .ui-radiobutton-box{
+  $base-height: rem(50px);
+  .evo-register__form--transport-item,
+  .updateForm--transport-item {
+    p-radiobutton {
+      position: relative;
+      .ui-radiobutton,
+      .ui-radiobutton-label {
         width: 100%;
         height: 100%;
-        position: relative;
-        span{
-          position: absolute;
-          width:100%;
-          height:100%;
-          left:0;
-          top: 0;
-          &.fa-circle:before {
-            content: '';
-            background: rgba(82, 180, 207, 0.48);
+        .ui-radiobutton-box {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          span {
             position: absolute;
             width: 100%;
             height: 100%;
             left: 0;
             top: 0;
-        }
+            &.fa-circle:before {
+              content: '';
+              background: rgba(195, 195, 195, 0.48);
+              position: absolute;
+              width: 110%;
+              height: 115%;
+              left: -5%;
+              top: 0;
+              border-radius: 3px;
+              border: 1px solid #cbcbcb;
+            }
+          }
         }
       }
     }
-}
-}
-.evo-button {
-  width: $base-width;
-  height: $base-height;
-  max-width: 100%;
-  color: $evo-grey-font;
-  border-radius: 0;
-  border: 1px solid $evo-grey;
-  font-family: $primary-font-family;
+  }
 
-  font-weight: bold;
-  cursor: pointer;
+  .evo-button {
+    &[disabled] {
+      background: #d9d9d9;
+      border-color: #868686;
+      color: #868686;
+    }
+    @include evo-primary-gradient;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 3px;
+    font-weight: 300;
+    font-size: 15px;
+    color:#fff;
+    padding: 15px;
+    width:$base-width;
+    &:hover {
+      @include evo-primary-reverse;
+    }
 
   &:focus {
     box-shadow: none;
@@ -107,20 +119,20 @@ $base-height: rem(50px);
     pointer-events: none;
   }
 }
-
 @media (max-width: $evo-screen-ultra-sm-max) {
   .evo-button {
     font-size: $evo-font-size-sm;
-    &--warning, &--default {
+    &--warning,
+    &--default {
       font-size: $evo-font-size-sm;
     }
   }
 }
-
 @media (max-width: $evo-screen-ultra-sm-min) {
   .evo-button {
     font-size: $evo-font-size-s;
-    &--warning, &--default {
+    &--warning,
+    &--default {
       font-size: $evo-font-size-s;
     }
   }

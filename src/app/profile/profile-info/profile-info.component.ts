@@ -8,9 +8,11 @@ import { ValidationService, UserService, AuthService } from 'app/core/services';
     styleUrls: ['profile-info.component.scss']
 })
 export class ProfileInfoComponent {
+    transportDialog: boolean = false; 
     loggedUser: any = null;
     userInfoForm: any = null;
     transportCategories: any = null;
+    brand:any = null;
     orders = [
         {
             id: 12123,
@@ -50,16 +52,16 @@ export class ProfileInfoComponent {
         this.getCategories();
         let userModel = {
             name: ['', [Validators.required]],
-            email: [this.loggedUser.email, [ValidationService.emailValidator]],
             phone: [this.loggedUser.phone, [Validators.required]],
+            email: [this.loggedUser.email, [ValidationService.emailValidator]],
             address: this.fb.group({
               label: [this.loggedUser.address.label, [Validators.required]],
               lat: [this.loggedUser.address.lat],
               lng: [this.loggedUser.address.lng],
             }),
             car_attributes: this.fb.group({
-              brand: [this.loggedUser.car_attributes.brand, [Validators.required]],
-              model: [this.loggedUser.car_attributes.model, [Validators.required]],
+              brand: [this.loggedUser.car_attributes.brand],
+              model: [this.loggedUser.car_attributes.model],
               category: [this.loggedUser.car_attributes.category]
             })
           };
@@ -75,5 +77,20 @@ export class ProfileInfoComponent {
           errorRes => {
             console.log(errorRes);
           });
+      }
+      categoryChange(event: any) {
+        this.auth.getMarks(this.userInfoForm.get('car_attributes').get('category').value).subscribe(
+          res => {
+            this.brand = res;
+            this.transportDialog = !this.transportDialog;
+            
+          },
+          errorRes => {
+            console.log(errorRes);
+          });
+      }
+      showTransportDialog(){
+        this.transportDialog = !this.transportDialog;
+          
       }
 }

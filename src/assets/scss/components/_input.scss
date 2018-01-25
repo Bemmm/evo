@@ -9,7 +9,8 @@
 
   $base-width: rem(300px);
   .ui-float-label {
-    max-width: 200px;
+    max-width: 100%;
+    width: 100%;
     margin: auto;
     p-inputmask, p-calendar{
       .ui-calendar{

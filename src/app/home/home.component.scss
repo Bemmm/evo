@@ -7,6 +7,9 @@ $padding-bottom: rem(30px);
   justify-content: space-between;
   align-items: stretch;
   min-height: 100%;
+  &-content{
+    flex:1 1;
+  }
 }
 
 @media (min-width: $screen-sm-min) {
