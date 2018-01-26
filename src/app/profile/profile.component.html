@@ -1,1 +1,8 @@
-<evo-profile-info></evo-profile-info>
+<p-tabView>
+  <p-tabPanel header="Мої замовлення" [selected]="loggedUser.role === 'user'" *ngIf="loggedUser.role === 'user'">
+    <evo-profile-orders></evo-profile-orders>
+  </p-tabPanel>
+  <p-tabPanel header="Мій профіль">
+    <evo-profile-info></evo-profile-info>
+  </p-tabPanel>
+</p-tabView>

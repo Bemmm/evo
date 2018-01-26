@@ -53,6 +53,11 @@ export class AuthService {
     let body: any = model;
     return this.api.put(`${this.user+'/'+id}`, body, token);
   }
+
+  updateUser(model: any, id: string, token?:string): Observable < any > {
+    let body: any = model;
+    return this.api.put(`${this.user+'/'+id}`, body, token);
+  }
   onAuth(user: any) {
     this.userService.save(user);
   }
