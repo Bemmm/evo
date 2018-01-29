@@ -4,6 +4,7 @@ import { SharedModule } from 'app/shared/shared.module';
 import { ProfileComponent } from 'app/profile/profile.component';
 import { ProfileInfoComponent } from 'app/profile/profile-info/profile-info.component';
 import { ProfileOrdersComponent } from 'app/profile/profile-orders/profile-orders.component';
+import { ProfileTrucksComponent } from 'app/profile/profile-trucks/profile-trucks.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { ProfileOrdersComponent } from 'app/profile/profile-orders/profile-order
   declarations: [
     ProfileComponent,
     ProfileInfoComponent,
-    ProfileOrdersComponent
+    ProfileOrdersComponent,
+    ProfileTrucksComponent
   ],
   providers: [
   ]

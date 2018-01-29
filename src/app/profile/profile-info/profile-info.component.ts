@@ -2,7 +2,12 @@ import { Component, Input } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { ValidationService, UserService, AuthService } from 'app/core/services';
 import { Router } from '@angular/router';
-
+import {
+    MapsAPILoader
+} from '@agm/core/services/maps-api-loader/maps-api-loader';
+import {
+    Address
+} from 'angular-google-place';
 @Component({
     selector: 'evo-profile-info',
     templateUrl: 'profile-info.component.html',
@@ -15,46 +20,87 @@ export class ProfileInfoComponent {
     transportCategories: any = null;
     brand: any = null;
     models: any = null;
+    addressOptions = {
+        type: 'address',
+        componentRestrictions: {
+          country: 'UA'
+        }
+      };
+    ua = {
+        firstDayOfWeek: 1,
+        dayNames: ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "Пятниця", "Субота"],
+        dayNamesShort: ["Нед", "Пон", "Вівт", "Сер", "Четв", "Пят", "Суб"],
+        dayNamesMin: ["Нд", "Пн", "Вв", "Ср", "Чт", "Пт", "Сб"],
+        monthNames: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
+        monthNamesShort: ['Січ', 'Лют', 'Берез', 'Квіт', 'Трав', 'Черв', 'Лип', 'Серп', 'Верес', 'Жовт', 'Листоп', 'Груд'],
+        today: 'Сьогодні',
+        clear: 'Очистити'
+      }
 
-    constructor(private fb: FormBuilder, private userService: UserService, private auth: AuthService, private router: Router) {
+    constructor(private fb: FormBuilder, private userService: UserService, private auth: AuthService, private router: Router, private mapsAPILoader: MapsAPILoader) {
         this.getCategories();
         this.userService.get()
             .subscribe((user: any) => {
                 this.loggedUser = user;
-                this.buildUserForm()
-                this.setUserBrand();
+                this.buildUserForm(user.role)
+                if (user.role == 'user') {
+                    this.setUserBrand();
+                }
 
-            })
+            });
+
     }
-    updateUser(){
+
+    getFormattedAddress(event: any, formcontrol: string) {
+        this.userInfoForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
+        this.userInfoForm.get(formcontrol).get('lat').setValue(event.lat);
+        this.userInfoForm.get(formcontrol).get('lng').setValue(event.lng);
+        console.log(this.userInfoForm);
+    }
+
+    updateUser() {
         this.auth.updateUser(this.userInfoForm.value, this.loggedUser._id + '', this.userInfoForm['x-access-token']).subscribe(
             res => {
-              this.auth.onAuth(res);
-              this.loggedUser = res;
-              this.userInfoForm.touched = false;
+                this.auth.onAuth(res);
+                this.loggedUser = res;
+                this.userInfoForm.touched = false;
             },
             errorRes => {
-              console.log(errorRes);
+                console.log(errorRes);
             });
     }
-    buildUserForm() {
-        let userModel = {
-            name: ['', [Validators.required]],
-            phone: [this.loggedUser.phone, [Validators.required]],
-            email: [this.loggedUser.email, [ValidationService.emailValidator]],
-            address: this.fb.group({
-                label: [this.loggedUser.address.label, [Validators.required]],
-                lat: [this.loggedUser.address.lat],
-                lng: [this.loggedUser.address.lng],
-            }),
-            car_attributes: this.fb.group({
-                brand: [this.brand],
-                model: [this.models],
-                category: [this.loggedUser.car_attributes.category]
-            })
+    buildUserForm(type: string) {
+        let formTypes = {
+            user: {
+                name: ['', [Validators.required]],
+                phone: ['', [Validators.required]],
+                email: ['', [ValidationService.emailValidator]],
+                car_attributes: this.fb.group({
+                    category: [''],
+                    brand: [''],
+                    model: ['']
+                }),
+                address: this.fb.group({
+                    label: ['', [Validators.required]],
+                    lat: [''],
+                    lng: [''],
+                })
+            },
+            driver: {
+                name: ['', [Validators.required]],
+                phone: ['', [Validators.required]],                                
+                email: ['', [ValidationService.emailValidator]],
+                passport: ['', [Validators.required]],
+                birthday: ['', [Validators.required]],
+                address: this.fb.group({
+                    label: ['', [Validators.required]],
+                    lat: [''],
+                    lng: [''],
+                }),
+            }
         };
-        this.userInfoForm = this.fb.group(userModel);
-
+        this.userInfoForm = this.fb.group(formTypes[type]);
+        this.userInfoForm.patchValue(this.loggedUser)
     }
 
     getCategories() {
@@ -67,6 +113,7 @@ export class ProfileInfoComponent {
                 console.log(errorRes);
             });
     }
+
     setUserBrand() {
         this.auth.getMarks(this.loggedUser.car_attributes.category).subscribe(
             res => {
@@ -78,17 +125,17 @@ export class ProfileInfoComponent {
                 console.log(errorRes);
             });
     }
-    setUserModel(){
+    setUserModel() {
         this.auth.getModels(this.loggedUser.car_attributes.category, this.loggedUser.car_attributes.brand.value).subscribe(
             res => {
-              this.models = res;
-              this.userInfoForm.get('car_attributes').get('model').setValue(this.loggedUser.car_attributes.model);
-              
+                this.models = res;
+                this.userInfoForm.get('car_attributes').get('model').setValue(this.loggedUser.car_attributes.model);
+
             },
             errorRes => {
-              console.log(errorRes);
+                console.log(errorRes);
             });
-      
+
     }
     categoryChange() {
         this.brand = null;

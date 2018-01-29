@@ -1,0 +1,9 @@
+<p-dataTable [value]="trucks">
+    <p-column field="photo" header="Фото"></p-column>
+    <p-column field="number" header="Номерний знак"></p-column>
+    <p-column field="car_attributes.brand" header="Марка"></p-column>
+    <p-column field="car_attributes.model" header="Модель"></p-column>
+    <p-column field="car_attributes.max_size" header="Вантажопідйомність"></p-column>
+    <p-column field="car_attributes.car_types" header="Типи"></p-column>
+    <p-column field="address.label" header="Місцезнаходження"></p-column>
+  </p-dataTable>

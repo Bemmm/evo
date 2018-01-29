@@ -1,5 +1,6 @@
 <div class="col-md-4">
-<form autocomplete="off" class="updateForm small" novalidate [formGroup]="userInfoForm" (ngSubmit)="updateUser()">
+  <form *ngIf="loggedUser.role == 'user'" autocomplete="off" class="updateForm small" novalidate [formGroup]="userInfoForm"
+    (ngSubmit)="updateUser()">
     <div class="row">
       <div class="col-md-12 text-center">
         <div class="form-group">
@@ -67,5 +68,92 @@
     </div>
 
   </form>
+
+
+  <!-- ___________________________________________________________ -->
+
+
+  <form *ngIf="loggedUser.role == 'driver'" autocomplete="off" class="updateForm small" novalidate [formGroup]="userInfoForm"
+  (ngSubmit)="updateUser()">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <div class="form-group">
+        <span class="ui-float-label blue">
+          <input pInputText id="name" formControlName="name" class="form-control evo-input" type="text">
+          <label for="name">ФІО</label>
+        </span>
+        <validation-messages [control]="userInfoForm.controls.name"></validation-messages>
+      </div>
+
+      <div class="form-group">
+        <span class="ui-float-label blue">
+          <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control evo-input"></p-inputMask>
+          <label for="phone">Телефон</label>
+        </span>
+        <validation-messages [control]="userInfoForm.controls.phone"></validation-messages>
+      </div>
+
+      <div class="form-group">
+        <span class="ui-float-label blue">
+          <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="1920:2018" [locale]="ua" formControlName="birthday" dateFormat="@" class="form-control evo-input"></p-calendar>
+          <label for="birthday">Дата народження</label>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <span class="ui-float-label blue">
+          <input pInputText id="passport" formControlName="passport" class="form-control evo-input" type="text">
+          <label for="passport">Серія та номер паспорту</label>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <span class="ui-float-label blue">
+          <input pInputText id="email" formControlName="email" class="form-control evo-input" type="text">
+          <label for="email">Email</label>
+        </span>
+        <validation-messages [control]="userInfoForm.controls.email"></validation-messages>
+      </div>
+
+      <div class="form-group" formGroupName="address">
+        <span class="ui-float-label blue">
+            <input type="text" 
+            formControlName= "label"
+            class="form-control evo-input" 
+            [options]='addressOptions'
+            (FormatAddress)="getFormattedAddress($event, 'address')"
+            (street_number) = 'street_number=$event'
+            (street)= 'street=$event'
+            (city)= 'city=$event'
+            (state)='state=$event'
+            (district)='district=$event'
+            (country)='country=$event'
+            (postal_code)='postal_code=$event'
+            (lat)='lat=$event' 
+            (lng)='lng=$event' 
+            (adr_address)='adr_address=$event' 
+            (name)='name=$event' 
+            (place_id)='place_id=$event' 
+            (types)='types=$event' 
+            (url)='url=$event'  
+            (utc_offset)='utc_offset=$event' 
+            (vicinity)='vicinity=$event' 
+            (photos)='photos=$event' 
+            (CountryCodes)='CountryCodes=$event'
+            placeholder=" "
+            id="address"
+            angularGooglePlace
+            pInputText/>  
+            <label for="address">Фізична адреса</label>
+        </span>
+      </div>
+
+      <div class="form-group text-center">
+        <button *ngIf="userInfoForm.touched" class="evo-button" type="submit">Зберегти</button>
+      </div>
+    </div>
+  </div>
+
+</form>
 </div>
 <div class="clearfix"></div>

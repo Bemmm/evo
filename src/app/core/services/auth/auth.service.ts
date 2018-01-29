@@ -32,7 +32,7 @@ export class AuthService {
 
   login(phone: string, password: string): Observable < any > {
     return this.api.post(`${this.loginUrl}`, {
-        phone: phone,
+        phone: '+'+phone,
         password: password
     });
   }
@@ -63,7 +63,7 @@ export class AuthService {
   }
 
   logout() {
-    const prefix = GLOBAL_ENV && GLOBAL_ENV.BASE_HREF || '/evo-ecommerce-core/';
+    const prefix = GLOBAL_ENV && GLOBAL_ENV.BASE_HREF || '/api/';
     const logoutLink = `${prefix}logout`;
 
     this.userService.remove();

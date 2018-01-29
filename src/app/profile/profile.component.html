@@ -1,8 +1,11 @@
 <p-tabView>
-  <p-tabPanel header="Мої замовлення" [selected]="loggedUser.role === 'user'" *ngIf="loggedUser.role === 'user'">
+  <p-tabPanel header="Мої замовлення" [selected]="loggedUser.role === 'user'">
     <evo-profile-orders></evo-profile-orders>
   </p-tabPanel>
   <p-tabPanel header="Мій профіль">
     <evo-profile-info></evo-profile-info>
+  </p-tabPanel>
+  <p-tabPanel header="Мої евакуатори" *ngIf="loggedUser.role=== 'driver' ">
+    <evo-profile-trucks></evo-profile-trucks>
   </p-tabPanel>
 </p-tabView>
