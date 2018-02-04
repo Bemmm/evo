@@ -1,5 +1,13 @@
-export const userRoles = {
-    CONSUMER: 'APPLICATION-JOSTENS-USER',
-    CONSUMER_CARE: 'APPLICATION-evo-CONSUMER_CARE',
-    SUPERVISER: 'APPLICATION-evo-SUPERVISER',    
-};
+export const USER_ROLES = [{
+    label: 'Клієнт',
+    value: 'customer'
+  },
+  {
+    label: 'Водій',
+    value: 'driver'
+  },
+  {
+    label: 'Сервіс',
+    value: 'service'
+  }
+  ];

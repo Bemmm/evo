@@ -45,7 +45,7 @@ export class ProfileInfoComponent {
                 this.buildUserForm(user.role)
                 if (user.role == 'user') {
                     this.setUserBrand();
-                }
+                }         
 
             });
 
@@ -59,11 +59,13 @@ export class ProfileInfoComponent {
     }
 
     updateUser() {
-        this.auth.updateUser(this.userInfoForm.value, this.loggedUser._id + '', this.userInfoForm['x-access-token']).subscribe(
+        this.auth.updateUser(this.userInfoForm.value, this.loggedUser._id + '', this.loggedUser['x-access-token']).subscribe(
             res => {
                 this.auth.onAuth(res);
                 this.loggedUser = res;
+                this.userInfoForm.patchValue(this.loggedUser);
                 this.userInfoForm.touched = false;
+                
             },
             errorRes => {
                 console.log(errorRes);
@@ -84,7 +86,8 @@ export class ProfileInfoComponent {
                     label: ['', [Validators.required]],
                     lat: [''],
                     lng: [''],
-                })
+                }),
+                role:['user']
             },
             driver: {
                 name: ['', [Validators.required]],
@@ -97,9 +100,44 @@ export class ProfileInfoComponent {
                     lat: [''],
                     lng: [''],
                 }),
-            }
+                role:['driver']                
+            },
+            company: {
+                name: ['', [Validators.required]],
+                phone: ['', [Validators.required]],                                
+                email: ['', [ValidationService.emailValidator]],                
+                title: [''],
+                ownership: ['TOV'],
+                other_ownership: [''],
+                id_code: [''],
+                zkpo: [''],
+                tax_form: [''],
+                official_address: this.fb.group({
+                  label: [''],
+                  lat: [''],
+                  lng: ['']
+                }),
+                physical_address: this.fb.group({
+                  label: [''],
+                  lat: [''],
+                  lng: ['']
+                }),
+                director: this.fb.group({
+                  name: [''],
+                  phone: [''],
+                }),
+                liable: this.fb.group({
+                  name: [''],
+                  phone: [''],
+                }),
+                static_phone: [''],
+                role: ['company'],
+              }
         };
         this.userInfoForm = this.fb.group(formTypes[type]);
+        if(this.loggedUser.birthday){
+            this.loggedUser.birthday = new Date(this.loggedUser.birthday);
+        }
         this.userInfoForm.patchValue(this.loggedUser)
     }
 

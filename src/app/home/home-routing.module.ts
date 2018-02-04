@@ -8,7 +8,7 @@ import { HomeComponent } from './home.component';
 import { ErrorComponent } from './error/error.component';
 import { MapComponent } from './map/map.component';
 import { ProfileComponent } from 'app/profile/profile.component';
-
+import { LogoutComponent } from 'app/core/components/logout/logout.component';
 const homeRoutes: Routes = [
     {
         path: '',
@@ -25,7 +25,11 @@ const homeRoutes: Routes = [
     {
         path: 'profile/:id',
         component: ProfileComponent
-    },           
+    }, 
+    {
+        path: 'logout',
+        component: LogoutComponent
+    },               
 ];
 
 @NgModule({

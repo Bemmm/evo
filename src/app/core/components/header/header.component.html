@@ -22,7 +22,7 @@
                             </ng-container>
                             <ng-container *ngIf="user">
                                 <div ngbDropdown>
-                                    <div class="evo-header__info--button" id="userDropdown" ngbDropdownToggle>user.name</div>
+                                    <div class="evo-header__info--button" id="userDropdown" ngbDropdownToggle>{{user.name || user.title }}</div>
                                     <ul ngbDropdownMenu aria-labelledby="userDropdown">
                                         <li class="dropdown-item">Особистий кабінет</li>
                                         <li class="dropdown-item"><evo-logout></evo-logout></li>

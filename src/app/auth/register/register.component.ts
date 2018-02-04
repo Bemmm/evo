@@ -41,6 +41,7 @@ import {
 import {
   Address
 } from 'angular-google-place';
+import {OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES} from 'app/shared/constants/';
 interface brand {
   name: string;
   value: number;
@@ -70,72 +71,22 @@ export class RegisterComponent implements OnInit, OnDestroy {
     componentRestrictions: {
       country: 'UA',
     }
-  };   
+  };
   brand: brand[] = [];
   models: models[] = [];
   registerForm: FormGroup;
   registeredUser: any = null;
   errorMessages: Error[] = [];
   helperModel: any = {
-    ua: {
-      firstDayOfWeek: 1,
-      dayNames: ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "Пятниця", "Субота"],
-      dayNamesShort: ["Нед", "Пон", "Вівт", "Сер", "Четв", "Пят", "Суб"],
-      dayNamesMin: ["Нд", "Пн", "Вв", "Ср", "Чт", "Пт", "Сб"],
-      monthNames: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
-      monthNamesShort: ['Січ', 'Лют', 'Берез', 'Квіт', 'Трав', 'Черв', 'Лип', 'Серп', 'Верес', 'Жовт', 'Листоп', 'Груд'],
-      today: 'Сьогодні',
-      clear: 'Очистити'
-    },
     selectedCar: [{
       label: 'Оберіть модель',
       value: null
     }],
     transportCategories: [],
     ownership: null,
-    userRoles: [{
-        label: 'Клієнт',
-        value: 'customer'
-      },
-      {
-        label: 'Водій',
-        value: 'driver'
-      },
-      {
-        label: 'Сервіс',
-        value: 'service'
-      }
-    ],
-    taxFromTypes: [{
-        label: 'Форма оплати податку',
-        value: null
-      },
-      {
-        label: 'ПДВ',
-        value: 'pdv'
-      },
-      {
-        label: 'Єдиний податок',
-        value: 'ep'
-      }
-    ],
-    ownershipTypes: [{
-        label: 'ТОВ',
-        value: 'TOV'
-      },
-      {
-        label: 'ПП',
-        value: 'PP'
-      },
-      {
-        label: 'ФОП',
-        value: 'FOP'
-      },
-      {
-        label: 'Інше',
-        value: 'OTHER'
-      }
-    ]
+    taxFormTypes: null,
+    ownershipTypes: null,
+    ua: null
   };
   userData = {
     name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
@@ -210,9 +161,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    private api: ApiService
-
+    private api: ApiService,
   ) {
+    this.helperModel.ownershipTypes = OWNERSHIP_TYPES;
+    this.helperModel.taxFormTypes = TAX_FORM_TYPES;
+    this.helperModel.ua = UA;
+
     this.getCategories()
   }
   getCategories() {
@@ -282,6 +236,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.subscriptions.push(subscription);
   }
   onSubmit() {
+    this.registerForm.value.phone = this.registerForm.value.phone.replace(/[+-]/g, '');
     const subscription = this.auth.register(this.registerForm.value).subscribe(
       res => {
         this.registeredUser = res;
@@ -335,7 +290,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       role: "company"
     });
     console.log(this.registerForm.value);
-  } 
+  }
   getFormattedAddress(event: any, formcontrol: string) {
     this.registerForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
     this.registerForm.get(formcontrol).get('lat').setValue(event.lat);
