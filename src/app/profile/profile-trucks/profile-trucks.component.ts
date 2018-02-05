@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { UserService, CarsService } from 'app/core/services';
+import { TransportCategoryModel, BrandModel, ModelModel} from 'app/shared/models'
 
 @Component({
     selector: 'evo-profile-trucks',
@@ -12,7 +13,9 @@ export class ProfileTrucksComponent {
     truckDialog: boolean = false;
     truckForm: any = null;
     loggedUser: null;
-    transportCategories: null;
+    transportCategories: TransportCategoryModel[] = null;
+    brands: BrandModel[] = null;
+    models: ModelModel[] = null;
     trucks = [
         {
             photo: '',
@@ -47,18 +50,6 @@ export class ProfileTrucksComponent {
             }
         }
     ]
-    truckData = {
-        name: ['', [Validators.required]],
-        phone: ['', [Validators.required]],
-        passport: ['', [Validators.required]],
-        birthday: ['', [Validators.required]],
-        address: this.fb.group({
-            label: ['', [Validators.required]],
-            lat: [''],
-            lng: [''],
-        }),
-        role: ['driver']
-    }
     constructor(private fb: FormBuilder,
         private userService: UserService,
         private carsService: CarsService) {
@@ -68,20 +59,44 @@ export class ProfileTrucksComponent {
                 this.buildTruckForm()
             });
         this.getCategories();
+        this.getBrands(4);
     }
 
     getCategories() {
         this.carsService.getCategories().subscribe((res) => {
             this.transportCategories = res;
         });
+    };
+    getBrands(type:any){
+        this.carsService.getMarks(type).subscribe((res) => {
+            this.brands = res;
+        });            
     }
+    carChanged(event: any) {
+        if (!event.value) {
+          return;
+        }
+        this.carsService.getModels(+this.truckForm.get('car_attributes').get('category').value, this.truckForm.get('car_attributes').get('brand').value.value).subscribe(
+          res => {
+            this.models = res;
+          },
+          errorRes => {
+            console.log(errorRes);
+          });
+    
+      }
     buildTruckForm() {
         let truckModel = {
+            registration_number: [''],
             car_attributes: this.fb.group({
-                category: [''],
+                category: ['4'],
                 brand: [''],
                 model: ['']
-            })
+            }),
+            type: [''],
+            photo: [''],
+            price: [''],
+            description: [''],
         }
         this.truckForm = this.fb.group(truckModel);
         // this.truckForm.patchValue(this.loggedUser)

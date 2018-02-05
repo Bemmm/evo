@@ -43,15 +43,7 @@ import {
   Address
 } from 'angular-google-place';
 import { OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES } from 'app/shared/constants/';
-interface brand {
-  name: string;
-  value: number;
-}
-
-interface models {
-  name: string;
-  value: number;
-}
+import {TransportCategoryModel, ModelModel, BrandModel} from 'app/shared/models/'
 
 @Component({
   selector: 'evo-register',
@@ -73,8 +65,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
       country: 'UA',
     }
   };
-  brand: brand[] = [];
-  models: models[] = [];
+  brand: BrandModel[] = [];
+  models: ModelModel[] = [];
   registerForm: FormGroup;
   registeredUser: any = null;
   errorMessages: Error[] = [];

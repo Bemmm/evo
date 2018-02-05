@@ -4,7 +4,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from "@angular/router";
 import { StoreModule } from '@ngrx/store';
-import { InputTextModule, DropdownModule, InputMaskModule, CalendarModule, RadioButtonModule, GrowlModule, TabViewModule, DataTableModule, DialogModule, FileUploadModule } from 'primeng/primeng';
+import { InputTextModule,
+         DropdownModule,
+         InputMaskModule,
+         CalendarModule,
+         RadioButtonModule,
+         GrowlModule,
+         TabViewModule,
+         DataTableModule,
+         DialogModule,
+         MultiSelectModule,
+         FileUploadModule } from 'primeng/primeng';
 import { rootReducer } from './store/rootReducer';
 import { AgmCoreModule } from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
@@ -35,6 +45,7 @@ import { mapObjectToArray } from './helpers';
         TabViewModule,
         DataTableModule,
         DialogModule,
+        MultiSelectModule,
         FileUploadModule,
         StoreModule.forRoot(rootReducer, {}),
         AgmCoreModule.forRoot({
@@ -67,6 +78,7 @@ import { mapObjectToArray } from './helpers';
         TabViewModule,
         DataTableModule,
         DialogModule,
+        MultiSelectModule,
         FileUploadModule,
         StoreModule,
         AgmCoreModule,

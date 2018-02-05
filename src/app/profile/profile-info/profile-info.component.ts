@@ -9,6 +9,7 @@ import {
     Address
 } from 'angular-google-place';
 import { OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES } from 'app/shared/constants/';
+import { TransportCategoryModel, BrandModel, ModelModel} from 'app/shared/models/';
 @Component({
     selector: 'evo-profile-info',
     templateUrl: 'profile-info.component.html',
@@ -21,9 +22,9 @@ export class ProfileInfoComponent {
     transportDialog: boolean = false;
     loggedUser: any = null;
     userInfoForm: any = null;
-    transportCategories: any = null;
-    brand: any = null;
-    models: any = null;
+    transportCategories: TransportCategoryModel[] = null;
+    brand: BrandModel[] = null;
+    models: ModelModel[] = null;
     addressOptions = {
         type: 'address',
         componentRestrictions: {

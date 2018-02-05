@@ -1,3 +1,6 @@
 .ui-dialog{
     background-color: #fff;
+    .ui-dialog-content{
+        overflow: visible;
+    }
 }

@@ -2,20 +2,23 @@
 
 .dropdown {
   &__blue {
-    .ui-dropdown {
+    .ui-dropdown,
+    .ui-multiselect {
       border-bottom: 1px solid $evo-blue-dark;
       max-width: 100% ;
       width: 100% !important;
-      .ui-dropdown-trigger {
+      .ui-dropdown-trigger,
+        .ui-multiselect-trigger {
         color: $evo-grey-dark;
       }
-      .ui-dropdown-label {
-        width: 200px;
+      .ui-dropdown-label,
+      .ui-multiselect-label{
         padding: 7px;
         text-align: left;
         color: $evo-blue-dark;
       }
-      .ui-dropdown-panel {
+      .ui-dropdown-panel,
+      .ui-multiselect-panel {
         background: #fff;
         .ui-dropdown-item {
           padding: 5px;
