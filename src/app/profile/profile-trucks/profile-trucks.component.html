@@ -1,3 +1,6 @@
+<div class="form-group flex-row right">
+  <button class="evo-button small" (click)="addTruck()">Додати евакуатор</button>
+</div>
 <p-dataTable [value]="trucks">
     <p-column field="photo" header="Фото"></p-column>
     <p-column field="number" header="Номерний знак"></p-column>
@@ -7,3 +10,26 @@
     <p-column field="car_attributes.car_types" header="Типи"></p-column>
     <p-column field="address.label" header="Місцезнаходження"></p-column>
   </p-dataTable>
+
+  <p-dialog class="" header="Title" [(visible)]="truckDialog" [width]="500" [baseZIndex]="9999">
+    <form  [formGroup]="truckForm">
+      <div formGroupName="car_attributes">
+        <div class="form-group flex-row evo-register__form--transport">
+            <div *ngFor="let transport of transportCategories" class="evo-register__form--transport-item">
+              <p-radioButton class="transport type__{{transport.value}}" (click)="categoryChange(transport.value)" name="transportCategorie" value="{{transport.value}}" formControlName="category"></p-radioButton>
+              <span>{{transport.name}}</span>
+            </div>
+          <validation-messages [control]="registerForm.controls.car_attributes.controls.category"></validation-messages>                        
+        </div>
+        <div class="form-group">
+          <p-dropdown class="dropdown__blue" [options]="brand" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)" optionLabel="name"></p-dropdown>
+          <validation-messages [control]="registerForm.controls.car_attributes.controls.brand"></validation-messages>          
+        
+        </div>
+        <div class="form-group">
+          <p-dropdown class="dropdown__blue" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
+          <validation-messages [control]="registerForm.controls.car_attributes.controls.model"></validation-messages>          
+        </div>
+      </div>
+    </form>
+  </p-dialog>

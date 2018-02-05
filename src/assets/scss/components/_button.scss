@@ -57,7 +57,10 @@
     &:hover {
       @include evo-primary-reverse;
     }
-
+    &.small{
+      padding: 5px;
+      font-size: 13px;
+    }
   &:focus {
     box-shadow: none;
     border: 1px solid $evo-grey;

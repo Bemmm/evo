@@ -1,7 +1,4 @@
 import {
-  userRoles
-} from './../../../shared/constants/user-roles';
-import {
   Injectable
 } from '@angular/core';
 import {
@@ -21,9 +18,6 @@ export class AuthService {
   private registerUserAdditionalsUrl: string = 'users/additionals';
   private passwordResetStartUrl: string = 'passwordResetStart';
   private passwordResetUrl: string = 'passwordReset';
-  private categories: string = 'categories';
-  private marks: string = 'marks';
-  private models: string = 'models';
 
   constructor(
     private api: ApiService,
@@ -32,19 +26,11 @@ export class AuthService {
 
   login(phone: string, password: string): Observable < any > {
     return this.api.post(`${this.loginUrl}`, {
-        phone: '+'+phone,
+        phone: ''+phone,
         password: password
     });
   }
-  getCategories(){
-    return this.api.get(`${this.categories}`); 
-  }
-  getMarks(categoryId:any){
-    return this.api.get(`${this.marks}/${categoryId}`);     
-  }
-  getModels(categoryId:any, markId:any){
-    return this.api.get(`${this.models}/${categoryId}/${markId}`);     
-  }  
+
   register(model: any): Observable < any > {
     return this.api.post(`${this.registerUrl}`, model);
   }

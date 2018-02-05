@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { ValidationService, UserService, AuthService } from 'app/core/services';
+import { ValidationService, UserService, AuthService, CarsService } from 'app/core/services';
 import { Router } from '@angular/router';
 import {
     MapsAPILoader
@@ -8,12 +8,16 @@ import {
 import {
     Address
 } from 'angular-google-place';
+import { OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES } from 'app/shared/constants/';
 @Component({
     selector: 'evo-profile-info',
     templateUrl: 'profile-info.component.html',
     styleUrls: ['profile-info.component.scss']
 })
 export class ProfileInfoComponent {
+    ua = UA;
+    ownershipTypes = OWNERSHIP_TYPES;
+    taxFormTypes = TAX_FORM_TYPES;
     transportDialog: boolean = false;
     loggedUser: any = null;
     userInfoForm: any = null;
@@ -26,18 +30,8 @@ export class ProfileInfoComponent {
           country: 'UA'
         }
       };
-    ua = {
-        firstDayOfWeek: 1,
-        dayNames: ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "Пятниця", "Субота"],
-        dayNamesShort: ["Нед", "Пон", "Вівт", "Сер", "Четв", "Пят", "Суб"],
-        dayNamesMin: ["Нд", "Пн", "Вв", "Ср", "Чт", "Пт", "Сб"],
-        monthNames: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
-        monthNamesShort: ['Січ', 'Лют', 'Берез', 'Квіт', 'Трав', 'Черв', 'Лип', 'Серп', 'Верес', 'Жовт', 'Листоп', 'Груд'],
-        today: 'Сьогодні',
-        clear: 'Очистити'
-      }
 
-    constructor(private fb: FormBuilder, private userService: UserService, private auth: AuthService, private router: Router, private mapsAPILoader: MapsAPILoader) {
+    constructor(private fb: FormBuilder, private userService: UserService, private carsService: CarsService, private auth: AuthService, private router: Router, private mapsAPILoader: MapsAPILoader) {
         this.getCategories();
         this.userService.get()
             .subscribe((user: any) => {
@@ -107,6 +101,7 @@ export class ProfileInfoComponent {
                 phone: ['', [Validators.required]],                                
                 email: ['', [ValidationService.emailValidator]],                
                 title: [''],
+                passport: [''],
                 ownership: ['TOV'],
                 other_ownership: [''],
                 id_code: [''],
@@ -142,7 +137,7 @@ export class ProfileInfoComponent {
     }
 
     getCategories() {
-        this.auth.getCategories().subscribe(
+        this.carsService.getCategories().subscribe(
             res => {
                 this.transportCategories = res;
                 console.log(res);
@@ -153,7 +148,7 @@ export class ProfileInfoComponent {
     }
 
     setUserBrand() {
-        this.auth.getMarks(this.loggedUser.car_attributes.category).subscribe(
+        this.carsService.getMarks(this.loggedUser.car_attributes.category).subscribe(
             res => {
                 this.brand = res;
                 this.userInfoForm.get('car_attributes').get('brand').setValue(this.loggedUser.car_attributes.brand);
@@ -164,7 +159,7 @@ export class ProfileInfoComponent {
             });
     }
     setUserModel() {
-        this.auth.getModels(this.loggedUser.car_attributes.category, this.loggedUser.car_attributes.brand.value).subscribe(
+        this.carsService.getModels(this.loggedUser.car_attributes.category, this.loggedUser.car_attributes.brand.value).subscribe(
             res => {
                 this.models = res;
                 this.userInfoForm.get('car_attributes').get('model').setValue(this.loggedUser.car_attributes.model);
@@ -178,7 +173,7 @@ export class ProfileInfoComponent {
     categoryChange() {
         this.brand = null;
         this.models = null;
-        this.auth.getMarks(this.userInfoForm.get('car_attributes').get('category').value).subscribe(
+        this.carsService.getMarks(this.userInfoForm.get('car_attributes').get('category').value).subscribe(
             res => {
                 this.brand = res;
                 this.transportDialog = !this.transportDialog;
@@ -194,7 +189,7 @@ export class ProfileInfoComponent {
         if (!event.value) {
             return;
         }
-        this.auth.getModels(this.userInfoForm.get('car_attributes').get('category').value, this.userInfoForm.get('car_attributes').get('brand').value.value).subscribe(
+        this.carsService.getModels(this.userInfoForm.get('car_attributes').get('category').value, this.userInfoForm.get('car_attributes').get('brand').value.value).subscribe(
             res => {
                 this.models = res;
             },

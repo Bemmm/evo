@@ -25,7 +25,6 @@ export class UserService {
         
         this.add(userInfo);
     }
-
     save(user: any) {
         this.localStorageService.setItem(this.storageKey, user, true);
         this.add(user);

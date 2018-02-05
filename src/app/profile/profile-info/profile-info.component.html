@@ -1,5 +1,5 @@
-<div class="col-md-4">
-  <form *ngIf="loggedUser.role == 'user'" autocomplete="off" class="updateForm small" novalidate [formGroup]="userInfoForm"
+<div class="col-md-4" *ngIf="loggedUser.role == 'user'">
+  <form  autocomplete="off" class="updateForm small" novalidate [formGroup]="userInfoForm"
     (ngSubmit)="updateUser()">
     <div class="row">
       <div class="col-md-12 text-center">
@@ -68,13 +68,15 @@
     </div>
 
   </form>
+  </div>
 
 
   <!-- ___________________________________DRIVER________________________ -->
 
 
+  <div class="col-md-4" *ngIf="loggedUser.role == 'driver'">
 
-  <form *ngIf="loggedUser.role == 'driver'" autocomplete="off" class="updateForm small" novalidate [formGroup]="userInfoForm"
+  <form  autocomplete="off" class="updateForm small" novalidate [formGroup]="userInfoForm"
   (ngSubmit)="updateUser()">
   <div class="row">
     <div class="col-md-12 text-center">
@@ -156,11 +158,13 @@
   </div>
 
 </form>
+</div>
 
 <!-- ______________________________________COMPANY______________________________- -->
-<form autocomplete="off" class="evo-register__form big evo-form" novalidate *ngIf="helperModel.ownership == 'companies'" [formGroup]="userInfoForm"
-(ngSubmit)="onSubmitAdditionals('companies')">
-<h1 class="title">Реєстрація компанії</h1>
+<div class="col-md-6" *ngIf="loggedUser.role == 'company'">
+
+<form autocomplete="off" class="evo-register__form big evo-form" novalidate [formGroup]="userInfoForm"
+(ngSubmit)="updateUser()">
 <div class="row">
   <div class="col-md-12 text-center">
     <div class="flex-row center-between"> 
@@ -171,7 +175,7 @@
       </span>
     </div>
       <div class="form-group">
-      <p-dropdown class="dropdown__blue" [options]="helperModel.ownershipTypes" formControlName="ownership"></p-dropdown>          
+      <p-dropdown class="dropdown__blue" [options]="ownershipTypes" formControlName="ownership"></p-dropdown>          
       </div>
     </div>
     <div class="form-group" *ngIf="userInfoForm.get('ownership').value === 'OTHER'">
@@ -194,7 +198,7 @@
       </span>
     </div>
     <div class="form-group">
-      <p-dropdown class="dropdown__blue" [options]="helperModel.taxFormTypes" formControlName="tax_form"></p-dropdown>
+      <p-dropdown class="dropdown__blue" [options]="taxFormTypes" formControlName="tax_form"></p-dropdown>
     </div>
   </div>
   <div class="flex-row center-between">                       
@@ -298,16 +302,11 @@
         <label for="static_phone">Стаціонарний телефон</label>
       </span>
     </div>
-    <div class="form-group">
-      <div class="evo-register__form--submit" (click)="setTestData()">TEST DATA</div>
+
+    <div class="form-group text-center">
+      <button *ngIf="userInfoForm.touched" class="evo-button" type="submit">Зберегти</button>
     </div>
-    <div class="form-group">
-      <button class="evo-register__form--submit" type="submit">Підтвердити</button>
-    </div>
-    <div class="form-group">
-      або
-      <a [routerLink]="['/login']"> увійдіть в аккаунт</a>
-    </div>
+
   </div>
 </div>
 

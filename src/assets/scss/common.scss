@@ -16,6 +16,9 @@ html,body, evo-app, evo-auth, evo-home, main{
 .flex-row{
     display:flex;
     flex-direction:row;
+    &.right{
+        justify-content: flex-end; 
+    }
     &.center-center{
         justify-content: center;
         align-items: center;
@@ -25,4 +28,8 @@ html,body, evo-app, evo-auth, evo-home, main{
         align-items: center;
         justify-content: space-between;
     }
+    &.center-around{
+        align-items: center;
+        justify-content: space-around;
+    }    
 }
