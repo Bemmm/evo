@@ -17,7 +17,8 @@ html,body, evo-app, evo-auth, evo-home, main{
     display:flex;
     flex-direction:row;
     &.right{
-        justify-content: flex-end; 
+        justify-content: flex-end;
+        margin: 10px 0;
     }
     &.center-center{
         justify-content: center;

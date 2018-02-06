@@ -2,31 +2,90 @@
   <button class="evo-button small" (click)="addTruck()">Додати евакуатор</button>
 </div>
 <p-dataTable [value]="trucks">
-    <p-column field="photo" header="Фото"></p-column>
-    <p-column field="number" header="Номерний знак"></p-column>
-    <p-column field="car_attributes.brand" header="Марка"></p-column>
-    <p-column field="car_attributes.model" header="Модель"></p-column>
-    <p-column field="car_attributes.max_size" header="Вантажопідйомність"></p-column>
-    <p-column field="car_attributes.car_types" header="Типи"></p-column>
-    <p-column field="address.label" header="Місцезнаходження"></p-column>
-  </p-dataTable>
+  <p-column field="photo" header="Фото"></p-column>
+  <p-column field="number" header="Номерний знак"></p-column>
+  <p-column field="car_attributes.brand" header="Марка"></p-column>
+  <p-column field="car_attributes.model" header="Модель"></p-column>
+  <p-column field="car_attributes.max_size" header="Вантажопідйомність"></p-column>
+  <p-column field="car_attributes.car_types" header="Типи"></p-column>
+  <p-column field="address.label" header="Місцезнаходження"></p-column>
+</p-dataTable>
 
-  <p-dialog class="" header="Title" [(visible)]="truckDialog" [width]="500" [height]="500" [baseZIndex]="9999">
-    <form  [formGroup]="truckForm">
+<p-dialog class="add-truck" header="Додавання евакуатора" [(visible)]="truckDialog" [width]="500" [baseZIndex]="9999">
+  <form [formGroup]="truckForm" (ngSubmit)="submitCreation()">
+    <div class="flex-row center-between">
       <div class="form-group">
-          <p-multiSelect class="dropdown__blue"  [options]="transportCategories" [maxSelectedLabels]="5" [defaultLabel]="'Типи транспорту для перевезення'" [displaySelectedLabel]="true" formControlName="type" optionLabel="name"></p-multiSelect>
+        <span class="ui-float-label blue">
+          <input pInputText id="name" formControlName="registration_number" class="form-control evo-input" type="text">
+          <label for="registration_number">Реєстраційний номер</label>
+        </span>
+        <validation-messages [control]="truckForm.controls.registration_number"></validation-messages>
       </div>
-      <div formGroupName="car_attributes">
-        <div class="form-group">
-          <p-dropdown class="dropdown__blue" [options]="brands" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)" optionLabel="name"></p-dropdown>
-          <validation-messages [control]="truckForm.controls.car_attributes.controls.brand"></validation-messages>          
-        
-        </div>
-        <div class="form-group">
-          <p-dropdown class="dropdown__blue" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
-          <validation-messages [control]="truckForm.controls.car_attributes.controls.model"></validation-messages>          
-        </div>
+      <div class="form-group">
+        <span class="ui-float-label blue">
+          <input pInputText NumberOnly id="name" formControlName="passengers_count" class="form-control evo-input" type="text">
+          <label for="passengers_count">Кількість пасажирських місць</label>
+        </span>
+        <validation-messages [control]="truckForm.controls.passengers_count"></validation-messages>
       </div>
-    </form>
-    <div class="clearfix"></div>
-  </p-dialog>
+    </div>
+
+    <div class="flex-row center-between">
+    <div class="form-group">
+      <span class="ui-float-label blue">
+        <input pInputText NumberOnly id="name" formControlName="loading_limit" class="form-control evo-input" type="text">
+        <label for="loading_limit">Вантажопідйомність(кг)</label>
+      </span>
+      <validation-messages [control]="truckForm.controls.loading_limit"></validation-messages>
+    </div>
+    <div class="form-group">
+        <span class="ui-float-label blue">
+          <input pInputText id="price" formControlName="price" class="form-control evo-input" type="text">
+          <label for="price">Ціна за кілометр</label>
+        </span>
+        <validation-messages [control]="truckForm.controls.price"></validation-messages>
+      </div>
+    </div>
+    <div formGroupName="car_attributes">
+      <div class="form-group">
+        <p-dropdown class="dropdown__blue" [options]="brands" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)"
+          optionLabel="name"></p-dropdown>
+        <validation-messages [control]="truckForm.controls.car_attributes.controls.brand"></validation-messages>
+
+      </div>
+      <div class="form-group">
+        <p-dropdown class="dropdown__blue" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
+        <validation-messages [control]="truckForm.controls.car_attributes.controls.model"></validation-messages>
+      </div>
+    </div>
+    <div class="form-group">
+      <p-multiSelect class="dropdown__blue" [options]="transportCategories" [maxSelectedLabels]="5" [defaultLabel]="'Типи транспорту для перевезення'"
+        [displaySelectedLabel]="true" formControlName="type" optionLabel="name"></p-multiSelect>
+    </div>
+    <div class="form-group" formGroupName="address">
+      <span class="ui-float-label blue">
+        <input type="text" formControlName="label" class="form-control evo-input" [options]='citiesOptions' (FormatAddress)="getFormattedAddress($event, 'address')"
+          (street_number)='street_number=$event' (street)='street=$event' (city)='city=$event' (state)='state=$event' (district)='district=$event'
+          (country)='country=$event' (postal_code)='postal_code=$event' (lat)='lat=$event' (lng)='lng=$event' (adr_address)='adr_address=$event'
+          (name)='name=$event' (place_id)='place_id=$event' (types)='types=$event' (url)='url=$event' (utc_offset)='utc_offset=$event'
+          (vicinity)='vicinity=$event' (photos)='photos=$event' (CountryCodes)='CountryCodes=$event' placeholder=" " id="address"
+          angularGooglePlace pInputText/>
+        <label for="address">Місцезнаходження</label>
+        <validation-messages [control]="truckForm.controls.address.controls.label"></validation-messages>
+      </span>
+    </div>
+
+    <div class="form-group">
+      <span class="ui-float-label blue textarea">
+        <textarea [rows]="3" pInputTextarea id="description" formControlName="description" class="form-control evo-input" placeholder="Примітка для клієнтів"></textarea>
+
+      </span>
+      <validation-messages [control]="truckForm.controls.description"></validation-messages>
+    </div>
+
+    <div class="form-group flex-row right">
+      <button class="evo-button" type="submit">Додати</button>
+    </div>
+  </form>
+  <div class="clearfix"></div>
+</p-dialog>

@@ -80,8 +80,13 @@ export class ApiService {
             .catch(this.errorHandler)
     }
 
-    post(path: string, body: any): Observable<any> {
-        return this.http.post(`${this.api_url}${path}`, JSON.stringify(body), this.options)
+    post(path: string, body: any, token?:string): Observable<any> {
+        const headers = new Headers();
+        if(token){
+            headers.set('x-access-token', token);            
+            headers.set('Content-Type', 'application/json');            
+        }
+        return this.http.post(`${this.api_url}${path}`, JSON.stringify(body), {headers})
             .map(this.checkForError)
             .map(this.getJson)
             .catch(this.errorHandler)

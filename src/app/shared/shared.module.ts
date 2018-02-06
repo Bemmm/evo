@@ -14,7 +14,8 @@ import { InputTextModule,
          DataTableModule,
          DialogModule,
          MultiSelectModule,
-         FileUploadModule } from 'primeng/primeng';
+         FileUploadModule,
+         InputTextareaModule} from 'primeng/primeng';
 import { rootReducer } from './store/rootReducer';
 import { AgmCoreModule } from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
@@ -47,6 +48,7 @@ import { mapObjectToArray } from './helpers';
         DialogModule,
         MultiSelectModule,
         FileUploadModule,
+        InputTextareaModule,
         StoreModule.forRoot(rootReducer, {}),
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyAJDovioj36qSMAHr2LCpy3rmlcPxVevuM',
@@ -80,6 +82,7 @@ import { mapObjectToArray } from './helpers';
         DialogModule,
         MultiSelectModule,
         FileUploadModule,
+        InputTextareaModule,
         StoreModule,
         AgmCoreModule,
         AgmSnazzyInfoWindowModule,

@@ -29,8 +29,8 @@ import {
     getModels(categoryId:any, markId:any){
       return this.api.get(`${this.models}/${categoryId}/${markId}`);     
     }  
-    addTruck(model: any): Observable < any > {
-      return this.api.post(`${this.addTruckUrl}`, model);
+    addTruck(model: any, token?:string): Observable < any > {
+      return this.api.post(`${this.addTruckUrl}`, model, token);
     }
 
   }

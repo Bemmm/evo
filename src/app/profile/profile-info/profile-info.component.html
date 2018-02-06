@@ -161,7 +161,7 @@
 </div>
 
 <!-- ______________________________________COMPANY______________________________- -->
-<div class="col-md-6" *ngIf="loggedUser.role == 'company'">
+<div class="flex-row" *ngIf="loggedUser.role == 'company'">
 
 <form autocomplete="off" class="evo-register__form big evo-form" novalidate [formGroup]="userInfoForm"
 (ngSubmit)="updateUser()">

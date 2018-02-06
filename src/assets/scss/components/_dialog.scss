@@ -4,3 +4,8 @@
         overflow: visible;
     }
 }
+.add-truck{
+    .ui-dialog{
+    z-index: 9 !important;
+    }
+}

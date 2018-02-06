@@ -12,26 +12,31 @@
     max-width: 100%;
     width: 100%;
     margin: auto;
-    p-inputmask, p-calendar{
-      .ui-calendar{
+    &.textarea {
+      label {
+        top: 20px;
+      }
+    }
+    p-inputmask,
+    p-calendar {
+      .ui-calendar {
         position: static;
         display: block;
-        left:0;
-        .ui-datepicker{
+        left: 0;
+        .ui-datepicker {
           background-color: #fff;
         }
       }
-      input{
+      input {
         position: relative;
         width: 100%;
         left: 0;
-        top:0;
+        top: 0;
         background: transparent;
         border: 0;
         height: 28px;
         bottom: 0;
       }
-
     }
     &.blue {
       label {
@@ -88,7 +93,7 @@
         box-shadow: none;
         background: transparent;
         color: $evo-grey-dark;
-        &.ng-invalid{
+        &.ng-invalid {
           color: $evo-error;
         }
       }
