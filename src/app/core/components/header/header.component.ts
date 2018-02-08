@@ -24,7 +24,7 @@ export class HeaderComponent {
 
     getLogoLink(): string {
         return this.isLogged ?
-            (this.user.isConsumerCare() ? '/consumer-care' : '/preview') :
-            '/login';
+            (this.user.isConsumerCare() ? '/' : '/') :
+            '/';
     }
 }

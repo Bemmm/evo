@@ -4,18 +4,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from "@angular/router";
 import { StoreModule } from '@ngrx/store';
-import { InputTextModule,
-         DropdownModule,
-         InputMaskModule,
-         CalendarModule,
-         RadioButtonModule,
-         GrowlModule,
-         TabViewModule,
-         DataTableModule,
-         DialogModule,
-         MultiSelectModule,
-         FileUploadModule,
-         InputTextareaModule} from 'primeng/primeng';
+import {
+  InputTextModule,
+  DropdownModule,
+  InputMaskModule,
+  CalendarModule,
+  RadioButtonModule,
+  GrowlModule,
+  TabViewModule,
+  DialogModule,
+  MultiSelectModule,
+  FileUploadModule,
+  InputTextareaModule
+} from 'primeng/primeng';
+import {  TableModule  } from 'primeng/table'
 import { rootReducer } from './store/rootReducer';
 import { AgmCoreModule } from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
@@ -31,64 +33,64 @@ import { mapObjectToArray } from './helpers';
 
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgbModule,
-        RouterModule,
-        InputTextModule,
-        DropdownModule,
-        InputMaskModule,
-        CalendarModule,
-        RadioButtonModule,
-        GrowlModule,
-        TabViewModule,
-        DataTableModule,
-        DialogModule,
-        MultiSelectModule,
-        FileUploadModule,
-        InputTextareaModule,
-        StoreModule.forRoot(rootReducer, {}),
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyAJDovioj36qSMAHr2LCpy3rmlcPxVevuM',
-            libraries: ['places']
-        }),
-        AgmSnazzyInfoWindowModule,
-        AngularGooglePlaceModule
-    ],
-    declarations: [
-        mapObjectToArray(components),
-        mapObjectToArray(directives),
-    ],
-    providers: [
-        UserActions,
-        MessageService
-    ],
-    exports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgbModule,
-        RouterModule,
-        InputTextModule,
-        DropdownModule,
-        InputMaskModule,
-        CalendarModule,
-        RadioButtonModule,
-        GrowlModule,
-        TabViewModule,
-        DataTableModule,
-        DialogModule,
-        MultiSelectModule,
-        FileUploadModule,
-        InputTextareaModule,
-        StoreModule,
-        AgmCoreModule,
-        AgmSnazzyInfoWindowModule,
-        AngularGooglePlaceModule,
-        mapObjectToArray(components),
-        mapObjectToArray(directives),
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
+    RouterModule,
+    InputTextModule,
+    DropdownModule,
+    InputMaskModule,
+    CalendarModule,
+    RadioButtonModule,
+    GrowlModule,
+    TabViewModule,
+    TableModule,
+    DialogModule,
+    MultiSelectModule,
+    FileUploadModule,
+    InputTextareaModule,
+    StoreModule.forRoot(rootReducer, {}),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAJDovioj36qSMAHr2LCpy3rmlcPxVevuM',
+      libraries: ['places']
+    }),
+    AgmSnazzyInfoWindowModule,
+    AngularGooglePlaceModule
+  ],
+  declarations: [
+    mapObjectToArray(components),
+    mapObjectToArray(directives),
+  ],
+  providers: [
+    UserActions,
+    MessageService
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
+    RouterModule,
+    InputTextModule,
+    DropdownModule,
+    InputMaskModule,
+    CalendarModule,
+    RadioButtonModule,
+    GrowlModule,
+    TabViewModule,
+    TableModule,
+    DialogModule,
+    MultiSelectModule,
+    FileUploadModule,
+    InputTextareaModule,
+    StoreModule,
+    AgmCoreModule,
+    AgmSnazzyInfoWindowModule,
+    AngularGooglePlaceModule,
+    mapObjectToArray(components),
+    mapObjectToArray(directives),
+  ]
 })
 export class SharedModule { }

@@ -82,9 +82,9 @@ export class ApiService {
 
     post(path: string, body: any, token?:string): Observable<any> {
         const headers = new Headers();
+        headers.set('Content-Type', 'application/json');
         if(token){
-            headers.set('x-access-token', token);            
-            headers.set('Content-Type', 'application/json');            
+            headers.set('x-access-token', token);
         }
         return this.http.post(`${this.api_url}${path}`, JSON.stringify(body), {headers})
             .map(this.checkForError)
@@ -102,8 +102,8 @@ export class ApiService {
     put(path: string, body: any, token?:string): Observable<any> {
         const headers = new Headers();
         if(token){
-            headers.set('x-access-token', token);            
-            headers.set('Content-Type', 'application/json');            
+            headers.set('x-access-token', token);
+            headers.set('Content-Type', 'application/json');
         }
         return this.http.put(`${this.api_url}${path}`, JSON.stringify(body), {headers})
             .map(this.checkForError)

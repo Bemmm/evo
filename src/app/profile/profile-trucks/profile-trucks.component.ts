@@ -19,46 +19,22 @@ export class ProfileTrucksComponent {
             country: 'UA'
         }
     };
+  //   cols = [
+  //     { field: 'photo', header: 'Фото' },
+  //     { field: 'registration_number', header: 'Номерний знак' },
+  //     { field: 'car_attributes.brand.name', header: 'Марка' },
+  //     { field: 'car_attributes.model.name', header: 'Модель' },
+  //     { field: 'weight_limit', header: 'Вантажопідйомність' },
+  //     { field: 'car_types', header: 'Типи' },
+  //     { field: 'address[label]', header: 'Місцезнаходження' }
+  // ];
     truckDialog: boolean = false;
     truckForm: any = null;
     loggedUser: any = null;
     transportCategories: TransportCategoryModel[] = null;
     brands: BrandModel[] = null;
     models: ModelModel[] = null;
-    trucks = [
-        {
-            photo: '',
-            number: '321',
-            car_attributes: {
-                brand: '',
-                model: '',
-                max_size: '',
-                car_types: ''
-            },
-            address: {
-                label: '',
-                lat: '',
-                lng: '',
-
-            }
-        },
-        {
-            photo: '',
-            number: '123',
-            car_attributes: {
-                brand: '',
-                model: '',
-                max_size: '',
-                car_types: ''
-            },
-            address: {
-                label: '',
-                lat: '',
-                lng: '',
-
-            }
-        }
-    ]
+    trucks: object[] = [];
     constructor(private fb: FormBuilder,
         private userService: UserService,
         private mapsAPILoader: MapsAPILoader,
@@ -109,9 +85,10 @@ export class ProfileTrucksComponent {
                 lng: [''],
             }),
             passengers_count: [''],
-            loading_limit: [''],
-            type: [''],
-            photo: [''],
+            weight_limit: [''],
+            car_types: [''],
+            type: ['wrecker'],
+            photo: ['1'],
             price: [''],
             description: [''],
         }
@@ -123,7 +100,9 @@ export class ProfileTrucksComponent {
     }
     submitCreation(){
         this.carsService.addTruck(this.truckForm.value, this.loggedUser['x-access-token']).subscribe((res)=>{
-            console.log(res)
+            this.trucks.push(this.truckForm.value);
+            this.truckForm.reset();
+            this.truckDialog = !this.truckDialog;
         })
     }
     getFormattedAddress(event: any, formcontrol: string) {
@@ -131,4 +110,8 @@ export class ProfileTrucksComponent {
         this.truckForm.get(formcontrol).get('lat').setValue(event.lat);
         this.truckForm.get(formcontrol).get('lng').setValue(event.lng);
     }
+    setTest(){
+      this.truckForm.patchValue({"registration_number":"АН25522ФА","car_attributes":{"category":"4","brand":{"name":"TATA","value":78},"model":{"name":"LPT","value":2239}},"address":{"label":"вулиця Академіка Ющенка 5, Вінниця, Вінницька область","lat":49.2204699,"lng":28.44287209999993},"passengers_count":"3","weight_limit":"600","car_types":[{"name":"Легковые","value":1,"_$visited":true},{"name":"Мото","value":2,"_$visited":true}],"type":"wrecker","photo":"1","price":"12","description":"ТРАТАРАТА"});
+    }
+
 }

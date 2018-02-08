@@ -88,6 +88,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     password_confirmation: ['', [Validators.required]],
   };
   userOther = {
+    name: [''],
     email: ['', [ValidationService.emailValidator]],
     role: ['user'],
     address: this.fb.group({
@@ -102,6 +103,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     })
   };
   driverData = {
+    name:[''],
     email: ['', [Validators.required]],
     passport: ['', [Validators.required]],
     birthday: ['', [Validators.required]],
@@ -199,6 +201,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   buildForm(key: string) {
     this.registerForm = this.fb.group(this[key]);
+    if(key !== 'userData'){
+      this.registerForm.patchValue(this.registeredUser);
+    }
     console.log(this.registerForm);
   }
 
