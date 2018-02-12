@@ -53,7 +53,7 @@ export class AuthService {
     const logoutLink = `${prefix}logout`;
 
     this.userService.remove();
-    window.location.href = logoutLink;
+    window.location.href = '/';
   }
 
   passwordResetStart(email: string): Observable < any > {

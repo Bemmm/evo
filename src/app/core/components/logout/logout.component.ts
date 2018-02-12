@@ -14,4 +14,5 @@ export class LogoutComponent {
     onLogoutClick() {
         this.authService.logout();
     }
+
 }
