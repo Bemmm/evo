@@ -93,10 +93,12 @@ export class ProfileTrucksComponent {
     // this.truckForm.patchValue(this.loggedUser)
   }
   addTruck() {
+    console.log(this.truckForm);
     this.truckForm.editMode = false;
     this.truckDialog = !this.truckDialog;
   }
   submitCreation(mode: string) {
+    console.log(this.truckForm)
     if (mode == 'editMode') {
       this.carsService.editTruck(this.truckForm.value, this.loggedUser['x-access-token']).subscribe((res) => {
         this.trucks.push(this.truckForm.value);
@@ -117,7 +119,7 @@ export class ProfileTrucksComponent {
     this.truckForm.get(formcontrol).get('lng').setValue(event.lng);
   }
   setTest() {
-    this.truckForm.patchValue({ "registration_number": "АН25522ФА", "car_attributes": { "category": "4", "brand": { "name": "TATA", "value": 78 }, "model": { "name": "LPT", "value": 2239 } }, "address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "passengers_count": "3", "weight_limit": "600", "car_types": [{ "name": "Легковые", "value": 1, "_$visited": true }, { "name": "Мото", "value": 2, "_$visited": true }], "type": "wrecker", "photo": "1", "price": "12", "description": "ТРАТАРАТА" });
+    this.truckForm.patchValue({ "registration_number": "АН25522ФА", "car_attributes": { "category": "4", "brand": { "name": "TATA", "value": 78 }, "model": { "name": "LPT", "value": 2239 } }, "address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "passengers_count": "3", "weight_limit": "600", "type": "wrecker", "photo": "1", "price": "12", "description": "ТРАТАРАТА" });
   }
   deleteTruck(truck: any) {
     this.carsService.deleteTruck(truck._id, this.loggedUser['x-access-token']).subscribe((res) => {

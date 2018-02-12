@@ -1,6 +1,7 @@
 <div class="form-group flex-row right">
   <button class="evo-button small" (click)="addTruck()">Додати евакуатор</button>
 </div>
+<div *ngIf="!trucks.length">У вас ще немає жодного евакуатора</div>
 <p-table [columns]="cols" [(value)]="trucks" [responsive]="true" *ngIf="trucks.length">
   <ng-template pTemplate="header">
     <tr>
@@ -8,9 +9,9 @@
       <th>Номерний знак</th>
       <th>Марка</th>
       <th>Модель</th>
-      <th>Вантажопідйомність</th>
+      <th>Підйомність</th>
       <th>Типи</th>
-      <th>Місцезнаходження</th>
+      <th>Геолокація</th>
       <th></th>
     </tr>
   </ng-template>
@@ -51,7 +52,7 @@
 </p-dataTable> -->
 
 <p-dialog class="add-truck" header="Додавання евакуатора" [(visible)]="truckDialog" [width]="500" [baseZIndex]="9999" (onHide)="clearForm()">
-  <form [formGroup]="truckForm" (ngSubmit)="submitCreation('editMode')">
+  <form [formGroup]="truckForm" (ngSubmit)="submitCreation(truckForm.editMode ? 'editMode': 'addMode')">
     <div class="flex-row center-between">
       <div class="form-group">
         <span class="ui-float-label blue">
