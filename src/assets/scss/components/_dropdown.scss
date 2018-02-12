@@ -5,6 +5,7 @@
     .ui-dropdown,
     .ui-multiselect {
       border: 0;
+      background: transparent !important;
       border-radius: 0;
       border-bottom: 1px solid $evo-blue-dark;
       max-width: 100% ;
@@ -12,9 +13,12 @@
       .ui-dropdown-trigger,
         .ui-multiselect-trigger {
         color: $evo-grey-dark;
+        background:transparent;
+
       }
       .ui-dropdown-label,
       .ui-multiselect-label{
+        background:transparent;
         padding: 7px;
         text-align: left;
         color: $evo-blue-dark;
