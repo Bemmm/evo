@@ -93,7 +93,6 @@ export class ProfileTrucksComponent {
     // this.truckForm.patchValue(this.loggedUser)
   }
   addTruck() {
-    console.log(this.truckForm);
     this.truckForm.editMode = false;
     this.truckDialog = !this.truckDialog;
   }
@@ -107,7 +106,7 @@ export class ProfileTrucksComponent {
       })
     } else {
       this.carsService.addTruck(this.truckForm.value, this.loggedUser['x-access-token']).subscribe((res) => {
-        this.trucks.push(this.truckForm.value);
+        this.trucks.push(res.car);
         this.truckForm.reset();
         this.truckDialog = !this.truckDialog;
       })
