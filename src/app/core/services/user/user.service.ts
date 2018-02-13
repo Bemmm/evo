@@ -22,7 +22,7 @@ export class UserService {
         if (!userInfo) {
             return;
         }
-        
+
         this.add(userInfo);
     }
     save(user: any) {
@@ -42,6 +42,5 @@ export class UserService {
         this.localStorageService.removeItem(this.storageKey);
         this.userActions.remove();
     }
-
 
 }

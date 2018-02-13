@@ -5,6 +5,7 @@ import { ProfileComponent } from 'app/profile/profile.component';
 import { ProfileInfoComponent } from 'app/profile/profile-info/profile-info.component';
 import { ProfileOrdersComponent } from 'app/profile/profile-orders/profile-orders.component';
 import { ProfileTrucksComponent } from 'app/profile/profile-trucks/profile-trucks.component';
+import { ProfileDriversComponent } from 'app/profile/profile-drivers/profile-drivers.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ProfileTrucksComponent } from 'app/profile/profile-trucks/profile-truck
     ProfileComponent,
     ProfileInfoComponent,
     ProfileOrdersComponent,
-    ProfileTrucksComponent
+    ProfileTrucksComponent,
+    ProfileDriversComponent
   ],
   providers: [
   ]
