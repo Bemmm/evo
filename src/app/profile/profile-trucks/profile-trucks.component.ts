@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { UserService, CarsService } from 'app/core/services';
-import { TransportCategoryModel, BrandModel, ModelModel } from 'app/shared/models'
+import { UserService, CarsService, DriversService } from 'app/core/services';
+import { TransportCategoryModel, BrandModel, ModelModel, DriverModel } from 'app/shared/models'
 import {
   MapsAPILoader
 } from '@agm/core/services/maps-api-loader/maps-api-loader';
@@ -25,15 +25,18 @@ export class ProfileTrucksComponent {
   loggedUser: any = null;
   transportCategories: TransportCategoryModel[] = null;
   brands: BrandModel[] = null;
+  drivers: any = [];
   models: ModelModel[] = null;
   trucks: object[] = [];
   constructor(private fb: FormBuilder,
     private userService: UserService,
     private mapsAPILoader: MapsAPILoader,
+    private driversService: DriversService,
     private carsService: CarsService) {
     this.userService.get()
       .subscribe((user: any) => {
         this.loggedUser = user;
+        if(user.role == 'company'){this.getDrivers()};
         this.buildTruckForm()
       });
     this.getCategories();
@@ -56,7 +59,14 @@ export class ProfileTrucksComponent {
       this.trucks = res.cars;
     });
   };
-
+  getDrivers(){
+    this.driversService.getDrivers(this.loggedUser._id, this.loggedUser['x-access-token']).subscribe((res)=>{
+      this.drivers= res.users;
+      this.drivers.unshift({
+        name: 'Оберіть Водія'
+      });
+    })
+  }
   carChanged() {
     this.carsService.getModels(+this.truckForm.get('car_attributes').get('category').value, this.truckForm.get('car_attributes').get('brand').value.value).subscribe(
       res => {
@@ -70,6 +80,8 @@ export class ProfileTrucksComponent {
   buildTruckForm() {
     let truckModel = {
       registration_number: [''],
+      company_id:[this.loggedUser._id],
+      company_user_id:[''],
       _id: [''],
       car_attributes: this.fb.group({
         category: ['4'],
@@ -99,13 +111,13 @@ export class ProfileTrucksComponent {
   submitCreation(mode: string) {
     console.log(this.truckForm)
     if (mode == 'editMode') {
-      this.carsService.editTruck(this.truckForm.value, this.loggedUser['x-access-token']).subscribe((res) => {
+      this.carsService.editTruck(this.truckForm.value, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
         this.trucks.push(this.truckForm.value);
         this.truckForm.reset();
         this.truckDialog = !this.truckDialog;
       })
     } else {
-      this.carsService.addTruck(this.truckForm.value, this.loggedUser['x-access-token']).subscribe((res) => {
+      this.carsService.addTruck(this.truckForm.value, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
         this.trucks.push(res.car);
         this.truckForm.reset();
         this.truckDialog = !this.truckDialog;

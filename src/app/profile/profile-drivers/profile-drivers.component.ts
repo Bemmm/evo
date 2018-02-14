@@ -74,7 +74,7 @@ export class ProfileDriversComponent {
       })
     } else {
       this.driversService.addDriver(this.driverForm.value, this.loggedUser['x-access-token']).subscribe((res) => {
-        this.drivers.push(res.car);
+        this.drivers.push(res);
         this.driverForm.reset();
         this.driverDialog = !this.driverDialog;
       })
@@ -85,5 +85,16 @@ export class ProfileDriversComponent {
     this.driverForm.get(formcontrol).get('lat').setValue(event.lat);
     this.driverForm.get(formcontrol).get('lng').setValue(event.lng);
   }
-
+  deleteDriver(driver: any) {
+    this.driversService.deleteDriver(driver._id, this.loggedUser['x-access-token']).subscribe((res:any) => {
+      let index = this.drivers.indexOf(driver);
+      if (index !== -1) {
+        this.drivers.splice(index, 1);
+      }
+    })
+  }
+  clearForm() {
+    this.driverForm.editMode = null;
+    this.driverForm.reset();
+  }
 }

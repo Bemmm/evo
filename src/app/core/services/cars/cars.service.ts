@@ -12,6 +12,7 @@ import {
   @Injectable()
   export class CarsService {
     private addTruckUrl: string = 'car';
+    private addCompanyTruckUrl: string = 'company/car';
     private deleteTruckUrl: string = 'car';
     private getTrucksUrl: string = 'cars';
     private categories: string = 'categories';
@@ -31,11 +32,11 @@ import {
     getModels(categoryId:any, markId:any){
       return this.api.get(`${this.models}/${categoryId}/${markId}`);
     }
-    addTruck(model: any, token?:string): Observable < any > {
-      return this.api.post(`${this.addTruckUrl}`, model, token);
+    addTruck(model: any, token?:string, role?:string): Observable < any > {
+      return this.api.post(`${role == 'company' ? this.addCompanyTruckUrl: this.addTruckUrl}`, model, token);
     }
-    editTruck(model: any, token?:string): Observable < any > {
-      return this.api.put(`${this.addTruckUrl}/${model._id}`, model, token);
+    editTruck(model: any, token?:string, role?:string): Observable < any > {
+      return this.api.put(`${role == 'company' ? this.addCompanyTruckUrl: this.addTruckUrl}/${model._id}`, model, token);
     }
     getTrucks(userId: any, token?:string): Observable < any > {
       return this.api.get(`${this.getTrucksUrl}/${userId}`, null, token);

@@ -10,6 +10,7 @@
       <th>Email</th>
       <th>Паспорт</th>
       <th>Телефон</th>
+      <th>Місцезнаходження</th>
       <th></th>
     </tr>
   </ng-template>
@@ -24,17 +25,17 @@
       <td>
         <div class="flex-row center-around">
           <button pButton icon="fa-edit" (click)="editdriver(this.driver)"></button>
-          <button class="ui-button-danger" pButton icon="fa-times" (click)="deletedriver(this.driver)"></button>
+          <button class="ui-button-danger" pButton icon="fa-times" (click)="deleteDriver(this.driver)"></button>
         </div>
       </td>
     </tr>
   </ng-template>
   <ng-template pTemplate="summary">
-    Показано {{drivers?.length}} евакуаторів
+    Показано Водіїв: {{drivers?.length}}
   </ng-template>
 </p-table>
 <ng-template *ngIf="drivers.length">
-  Ви додали ще жодного евакуатора :С
+  Ви не додали ще жодного водія :С
 </ng-template>
 
 

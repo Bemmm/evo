@@ -12,6 +12,7 @@
       <th>Підйомність</th>
       <th>Типи</th>
       <th>Геолокація</th>
+      <th *ngIf="loggedUser.role =='company'">Водій</th>
       <th></th>
     </tr>
   </ng-template>
@@ -26,6 +27,7 @@
         <span *ngFor="let type of truck.car_types">{{type.name}}, </span>
       </td>
       <td>{{truck.address.label}}</td>
+      <td *ngIf="loggedUser.role =='company'">водій</td>
       <td>
         <div class="flex-row center-around">
           <button pButton icon="fa-edit" (click)="editTruck(this.truck)"></button>
@@ -98,6 +100,14 @@
         <validation-messages [control]="truckForm.controls.car_attributes.controls.model"></validation-messages>
       </div>
     </div>
+
+
+
+    <div *ngIf="loggedUser.role == 'company' " class="form-group">
+      <p-dropdown class="dropdown__blue" [(options)]="drivers" formControlName="company_user_id" optionLabel="name"></p-dropdown>
+    </div>
+
+
     <div class="form-group">
       <p-multiSelect class="dropdown__blue" [options]="transportCategories" [maxSelectedLabels]="5" [defaultLabel]="'Типи транспорту для перевезення'"
         [displaySelectedLabel]="true" formControlName="car_types" optionLabel="name"></p-multiSelect>
