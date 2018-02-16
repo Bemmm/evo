@@ -62,6 +62,8 @@ export class ProfileDriversComponent {
   }
   addDriver() {
     this.driverForm.editMode = false;
+    this.driverForm.get('company_id').setValue(this.loggedUser._id);
+    this.driverForm.get('role').setValue('driver');
     this.driverDialog = !this.driverDialog;
   }
   submitCreation(mode: string) {
@@ -93,8 +95,17 @@ export class ProfileDriversComponent {
       }
     })
   }
+  editDriver(driver: any) {
+    console.log(driver);
+    this.driverForm.editMode = true;
+    driver.birthday = new Date(driver.birthday);
+    this.driverForm.patchValue(driver);
+    this.driverDialog = !this.driverDialog;
+  }
+
   clearForm() {
     this.driverForm.editMode = null;
     this.driverForm.reset();
+    this.driverForm.get('role').setValue('driver');
   }
 }

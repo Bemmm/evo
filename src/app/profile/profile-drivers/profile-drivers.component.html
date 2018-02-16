@@ -24,7 +24,7 @@
       <td>{{driver.address.label}}</td>
       <td>
         <div class="flex-row center-around">
-          <button pButton icon="fa-edit" (click)="editdriver(this.driver)"></button>
+          <button pButton icon="fa-edit" (click)="editDriver(driver)"></button>
           <button class="ui-button-danger" pButton icon="fa-times" (click)="deleteDriver(this.driver)"></button>
         </div>
       </td>
@@ -39,7 +39,7 @@
 </ng-template>
 
 
-<p-dialog class="add-driver" header="Додавання евакуатора" [(visible)]="driverDialog" [width]="500" [baseZIndex]="9999" (onHide)="clearForm()">
+<p-dialog class="add-driver" header="Додавання Водія" [(visible)]="driverDialog" [width]="500" [baseZIndex]="9999" (onHide)="clearForm()">
   <form [formGroup]="driverForm" (ngSubmit)="submitCreation(driverForm.editMode ? 'editMode': 'addMode')">
     <div class="row">
       <div class="col-md-12 text-center">

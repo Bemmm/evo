@@ -55,7 +55,7 @@ export class ProfileTrucksComponent {
     });
   }
   getTrucks() {
-    this.carsService.getTrucks(this.loggedUser._id, this.loggedUser['x-access-token']).subscribe((res) => {
+    this.carsService.getTrucks(this.loggedUser._id, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
       this.trucks = res.cars;
     });
   };
@@ -63,7 +63,8 @@ export class ProfileTrucksComponent {
     this.driversService.getDrivers(this.loggedUser._id, this.loggedUser['x-access-token']).subscribe((res)=>{
       this.drivers= res.users;
       this.drivers.unshift({
-        name: 'Оберіть Водія'
+        name: 'Без Водія',
+        _id: null
       });
     })
   }
@@ -109,7 +110,10 @@ export class ProfileTrucksComponent {
     this.truckDialog = !this.truckDialog;
   }
   submitCreation(mode: string) {
-    console.log(this.truckForm)
+    console.log(this.truckForm);
+    if(this.truckForm.value.company_user_id){
+      this.truckForm.value.company_user_id = this.truckForm.value.company_user_id._id
+    }
     if (mode == 'editMode') {
       this.carsService.editTruck(this.truckForm.value, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
         this.trucks.push(this.truckForm.value);
@@ -133,7 +137,7 @@ export class ProfileTrucksComponent {
     this.truckForm.patchValue({ "registration_number": "АН25522ФА", "car_attributes": { "category": "4", "brand": { "name": "TATA", "value": 78 }, "model": { "name": "LPT", "value": 2239 } }, "address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "passengers_count": "3", "weight_limit": "600", "type": "wrecker", "photo": "1", "price": "12", "description": "ТРАТАРАТА" });
   }
   deleteTruck(truck: any) {
-    this.carsService.deleteTruck(truck._id, this.loggedUser['x-access-token']).subscribe((res) => {
+    this.carsService.deleteTruck(truck._id, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
       let index = this.trucks.indexOf(truck);
       if (index !== -1) {
         this.trucks.splice(index, 1);

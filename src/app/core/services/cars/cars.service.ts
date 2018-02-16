@@ -14,7 +14,9 @@ import {
     private addTruckUrl: string = 'car';
     private addCompanyTruckUrl: string = 'company/car';
     private deleteTruckUrl: string = 'car';
+    private deleteCompanyTruckUrl: string = 'company/cars';
     private getTrucksUrl: string = 'cars';
+    private getCompanyTrucksUrl: string = 'company/cars';
     private categories: string = 'categories';
     private marks: string = 'marks';
     private models: string = 'models';
@@ -38,11 +40,11 @@ import {
     editTruck(model: any, token?:string, role?:string): Observable < any > {
       return this.api.put(`${role == 'company' ? this.addCompanyTruckUrl: this.addTruckUrl}/${model._id}`, model, token);
     }
-    getTrucks(userId: any, token?:string): Observable < any > {
-      return this.api.get(`${this.getTrucksUrl}/${userId}`, null, token);
+    getTrucks(userId: any, token?:string, role?:string): Observable < any > {
+      return this.api.get(`${role == 'company' ? this.getTrucksUrl : this.getTrucksUrl }/${userId}`, null, token);
     }
-    deleteTruck(truckId:any, token?:string){
-      return this.api.delete(`${this.deleteTruckUrl}/${truckId}`, null, token);
+    deleteTruck(truckId:any, token?:string, role?:string){
+      return this.api.delete(`${role == 'company' ? this.deleteCompanyTruckUrl : this.deleteTruckUrl}/${truckId}`, null, token);
 
     }
   }
