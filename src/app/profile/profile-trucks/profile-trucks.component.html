@@ -27,7 +27,7 @@
         <span *ngFor="let type of truck.car_types">{{type.name}}, </span>
       </td>
       <td>{{truck.address.label}}</td>
-      <td *ngIf="loggedUser.role =='company'">водій</td>
+      <td *ngIf="loggedUser.role =='company'">{{truck.user.name || 'Не обрано'}}</td>
       <td>
         <div class="flex-row center-around">
           <button pButton icon="fa-edit" (click)="editTruck(this.truck)"></button>

@@ -41,7 +41,7 @@ import {
       return this.api.put(`${role == 'company' ? this.addCompanyTruckUrl: this.addTruckUrl}/${model._id}`, model, token);
     }
     getTrucks(userId: any, token?:string, role?:string): Observable < any > {
-      return this.api.get(`${role == 'company' ? this.getTrucksUrl : this.getTrucksUrl }/${userId}`, null, token);
+      return this.api.get(`${role == 'company' ? this.getCompanyTrucksUrl : this.getTrucksUrl }/${userId}`, null, token);
     }
     deleteTruck(truckId:any, token?:string, role?:string){
       return this.api.delete(`${role == 'company' ? this.deleteCompanyTruckUrl : this.deleteTruckUrl}/${truckId}`, null, token);

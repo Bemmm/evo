@@ -56,7 +56,11 @@ export class ProfileTrucksComponent {
   }
   getTrucks() {
     this.carsService.getTrucks(this.loggedUser._id, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
-      this.trucks = res.cars;
+      if(this.loggedUser.role == 'company'){
+        this.trucks = res.results;        
+      } else{
+        this.trucks = res.cars;
+      }
     });
   };
   getDrivers(){
