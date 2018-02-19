@@ -24,9 +24,18 @@ export class ProfileTrucksComponent {
   truckForm: any = null;
   loggedUser: any = null;
   transportCategories: TransportCategoryModel[] = null;
-  brands: BrandModel[] = null;
-  drivers: any = [];
-  models: ModelModel[] = null;
+  brands: BrandModel[] = [{
+    name: 'Оберіть марку',
+    value: null
+  }];
+  drivers: any = [{
+    name: 'Без водія',
+    _id: null
+  }]
+  models: ModelModel[] = [{
+    name: 'Оберіть модель',
+    value: null
+  }];
   trucks: object[] = [];
   constructor(private fb: FormBuilder,
     private userService: UserService,
@@ -52,6 +61,10 @@ export class ProfileTrucksComponent {
   getBrands(type: any) {
     this.carsService.getMarks(type).subscribe((res) => {
       this.brands = res;
+      this.brands.unshift({
+        name: 'Оберіть марку',
+        value: null
+      })
     });
   }
   getTrucks() {
@@ -76,6 +89,10 @@ export class ProfileTrucksComponent {
     this.carsService.getModels(+this.truckForm.get('car_attributes').get('category').value, this.truckForm.get('car_attributes').get('brand').value.value).subscribe(
       res => {
         this.models = res;
+        this.models.unshift({
+          name: 'Оберіть модель',
+          value: null
+        })
       },
       errorRes => {
         console.log(errorRes);
@@ -110,6 +127,7 @@ export class ProfileTrucksComponent {
     // this.truckForm.patchValue(this.loggedUser)
   }
   addTruck() {
+    this.getDrivers();    
     this.truckForm.editMode = false;
     this.truckDialog = !this.truckDialog;
   }
@@ -149,6 +167,7 @@ export class ProfileTrucksComponent {
     })
   }
   editTruck(truck: any) {
+    this.getDrivers();    
     this.truckForm.editMode = true;
     this.truckForm.patchValue(truck)
     this.carChanged();

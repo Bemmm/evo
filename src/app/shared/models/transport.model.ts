@@ -5,7 +5,7 @@ export interface BrandModel {
 
 export interface ModelModel {
   name: string;
-  value: number;
+  value: any;
 }
 export interface DriverModel {
   name: string;
