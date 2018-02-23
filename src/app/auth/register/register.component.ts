@@ -241,7 +241,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     const subscription = this.auth.register(this.registerForm.value).subscribe(
       res => {
         this.registeredUser = res;
-        // this.router.navigate(['/profile', res._id]);
       },
       errorRes => {
         console.log(errorRes);
@@ -265,8 +264,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.registerForm.patchValue({ "name": "Company", "ownership": "TOV", "other_ownership": "", "id_code": "", "zkpo": "12345678", "tax_form": "pdv", "passport": "АН255346", "official_address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "physical_address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "director": { "name": "Бембенок Богдан Васильович", "phone": "+380-11-1111-111" }, "liable": { "name": "Бембенок Інна Миколаївна", "phone": "+380-11-1111-112" }, "static_phone": "222260", "role": "company" });
     console.log(this.registerForm.value);
   }
-  getFormattedAddress(event: any, formcontrol: string) {
-    this.registerForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
+  getFormattedAddress(event: any, formcontrol: string, type:string) {
+    if(type == 'city'){
+      this.registerForm.get(formcontrol).get('label').setValue(`${event.city}, ${event.state}`);
+    } else{
+      this.registerForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
+    }
     this.registerForm.get(formcontrol).get('lat').setValue(event.lat);
     this.registerForm.get(formcontrol).get('lng').setValue(event.lng);
     console.log(this.registerForm);

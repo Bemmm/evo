@@ -27,7 +27,7 @@
         <span *ngFor="let type of truck.car_types">{{type.name}}, </span>
       </td>
       <td>{{truck.address.label}}</td>
-      <td *ngIf="loggedUser.role =='company'">{{truck.user.name || 'Не обрано'}}</td>
+      <td *ngIf="loggedUser.role =='company'">{{truck.user ? truck.user.name : 'Без водія'}}</td>
       <td>
         <div class="flex-row center-around">
           <button pButton icon="fa-edit" (click)="editTruck(this.truck)"></button>
@@ -105,12 +105,16 @@
 
     <div *ngIf="loggedUser.role == 'company' " class="form-group">
       <p-dropdown class="dropdown__blue" [(options)]="drivers" formControlName="company_user_id" optionLabel="name"></p-dropdown>
+      <validation-messages [control]="truckForm.controls.company_user_id"></validation-messages>
+
     </div>
 
 
     <div class="form-group">
       <p-multiSelect class="dropdown__blue" [options]="transportCategories" [maxSelectedLabels]="5" [defaultLabel]="'Типи транспорту для перевезення'"
         [displaySelectedLabel]="true" formControlName="car_types" optionLabel="name"></p-multiSelect>
+      <validation-messages [control]="truckForm.controls.car_types"></validation-messages>
+
     </div>
     <div class="form-group" formGroupName="address">
       <span class="ui-float-label blue">
@@ -128,14 +132,13 @@
     <div class="form-group">
       <span class="ui-float-label blue textarea">
         <textarea [rows]="3" pInputTextarea id="description" formControlName="description" class="form-control evo-input" placeholder="Примітка для клієнтів"></textarea>
-
       </span>
       <validation-messages [control]="truckForm.controls.description"></validation-messages>
     </div>
 
     <div class="form-group flex-row right">
       <button *ngIf="!truckForm.editMode" class="evo-button" type="submit">Додати</button>
-      <button *ngIf="truckForm.editMode" class="evo-button" type="submit">Зберегти</button>
+      <button *ngIf="truckForm.editMode && truckForm.valid" class="evo-button" type="submit">Зберегти</button>
 
       <div (click)="setTest()">TEST</div>
     </div>

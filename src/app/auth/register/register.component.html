@@ -9,14 +9,14 @@
             <input pInputText id="name" formControlName="name" class="form-control evo-input" type="text">
             <label for="name">Ім'я</label>
           </span>
-          <validation-messages [control]="registerForm.controls.name"></validation-messages> 
+          <validation-messages [control]="registerForm.controls.name"></validation-messages>
         </div>
         <div class="form-group">
           <span class="ui-float-label blue">
             <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control evo-input"></p-inputMask>
             <label for="phone">Телефон</label>
           </span>
-          <validation-messages [control]="registerForm.controls.phone"></validation-messages>          
+          <validation-messages [control]="registerForm.controls.phone"></validation-messages>
         </div>
         <div class="form-group">
           <span class="ui-float-label blue">
@@ -31,7 +31,7 @@
             <label for="password_confirmation">Підтвердіть пароль</label>
           </span>
           <div class="rb-error" style="color: #f00; text-align: left; font-size: 12px;" *ngIf="registerForm.controls.password.value && registerForm.controls.password_confirmation.value && registerForm.controls.password.value !== registerForm.controls.password_confirmation.value">Паролі не співпадають</div>
-          <validation-messages [control]="registerForm.controls.password_confirmation"></validation-messages>          
+          <validation-messages [control]="registerForm.controls.password_confirmation"></validation-messages>
         </div>
         <div class="form-group">
           <button [disabled]="registerForm.invalid" class="evo-register__form--submit" type="submit">Підтвердити</button>
@@ -76,15 +76,15 @@
             <input pInputText id="email" formControlName="email" class="form-control evo-input" type="text">
             <label for="email">Email</label>
           </span>
-          <validation-messages [control]="registerForm.controls.email"></validation-messages>                    
+          <validation-messages [control]="registerForm.controls.email"></validation-messages>
         </div>
         <div class="form-group" formGroupName="address">
           <span class="ui-float-label blue">
-              <input type="text" 
+              <input type="text"
               formControlName="label"
               class="form-control evo-input"
               [options]='citiesOptions'
-              (FormatAddress)="getFormattedAddress($event, 'address')"
+              (FormatAddress)="getFormattedAddress($event, 'address', 'city')"
               (street_number) = 'street_number=$event'
               (street)= 'street=$event'
               (city)= 'city=$event'
@@ -92,23 +92,23 @@
               (district)='district=$event'
               (country)='country=$event'
               (postal_code)='postal_code=$event'
-              (lat)='lat=$event' 
-              (lng)='lng=$event' 
-              (adr_address)='adr_address=$event' 
-              (name)='name=$event' 
-              (place_id)='place_id=$event' 
-              (types)='types=$event' 
-              (url)='url=$event'  
-              (utc_offset)='utc_offset=$event' 
-              (vicinity)='vicinity=$event' 
-              (photos)='photos=$event' 
+              (lat)='lat=$event'
+              (lng)='lng=$event'
+              (adr_address)='adr_address=$event'
+              (name)='name=$event'
+              (place_id)='place_id=$event'
+              (types)='types=$event'
+              (url)='url=$event'
+              (utc_offset)='utc_offset=$event'
+              (vicinity)='vicinity=$event'
+              (photos)='photos=$event'
               (CountryCodes)='CountryCodes=$event'
               placeholder=" "
               id="city"
               angularGooglePlace
-              pInputText/>            
+              pInputText/>
             <label for="city">Місто</label>
-            <validation-messages [control]="registerForm.controls.address.controls.label"></validation-messages>          
+            <validation-messages [control]="registerForm.controls.address.controls.label"></validation-messages>
 
           </span>
         </div>
@@ -118,16 +118,16 @@
                 <p-radioButton class="transport type__{{transport.value}}" (click)="categoryChange(transport.value)" name="transportCategorie" value="{{transport.value}}" formControlName="category"></p-radioButton>
                 <span>{{transport.name}}</span>
               </div>
-            <validation-messages [control]="registerForm.controls.car_attributes.controls.category"></validation-messages>                        
+            <validation-messages [control]="registerForm.controls.car_attributes.controls.category"></validation-messages>
           </div>
           <div class="form-group">
             <p-dropdown class="dropdown__blue" [options]="brand" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)" optionLabel="name"></p-dropdown>
-            <validation-messages [control]="registerForm.controls.car_attributes.controls.brand"></validation-messages>          
-          
+            <validation-messages [control]="registerForm.controls.car_attributes.controls.brand"></validation-messages>
+
           </div>
           <div class="form-group">
             <p-dropdown class="dropdown__blue" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
-            <validation-messages [control]="registerForm.controls.car_attributes.controls.model"></validation-messages>          
+            <validation-messages [control]="registerForm.controls.car_attributes.controls.model"></validation-messages>
           </div>
         </div>
         <div class="form-group">
@@ -177,9 +177,9 @@
         </div>
         <div class="form-group" formGroupName="address">
           <span class="ui-float-label blue">
-              <input type="text" 
+              <input type="text"
               formControlName= "label"
-              class="form-control evo-input" 
+              class="form-control evo-input"
               [options]='addressOptions'
               (FormatAddress)="getFormattedAddress($event, 'address')"
               (street_number) = 'street_number=$event'
@@ -189,21 +189,21 @@
               (district)='district=$event'
               (country)='country=$event'
               (postal_code)='postal_code=$event'
-              (lat)='lat=$event' 
-              (lng)='lng=$event' 
-              (adr_address)='adr_address=$event' 
-              (name)='name=$event' 
-              (place_id)='place_id=$event' 
-              (types)='types=$event' 
-              (url)='url=$event'  
-              (utc_offset)='utc_offset=$event' 
-              (vicinity)='vicinity=$event' 
-              (photos)='photos=$event' 
+              (lat)='lat=$event'
+              (lng)='lng=$event'
+              (adr_address)='adr_address=$event'
+              (name)='name=$event'
+              (place_id)='place_id=$event'
+              (types)='types=$event'
+              (url)='url=$event'
+              (utc_offset)='utc_offset=$event'
+              (vicinity)='vicinity=$event'
+              (photos)='photos=$event'
               (CountryCodes)='CountryCodes=$event'
               placeholder=" "
               id="address"
               angularGooglePlace
-              pInputText/>  
+              pInputText/>
               <label for="address">Фізична адреса</label>
           </span>
         </div>
@@ -232,7 +232,7 @@
     <h1 class="title">Реєстрація компанії</h1>
     <div class="row">
       <div class="col-md-12 text-center">
-        <div class="flex-row center-between"> 
+        <div class="flex-row center-between">
         <div class="form-group ">
           <span class="ui-float-label blue">
             <input pInputText id="title" formControlName="title" class="form-control evo-input" type="text">
@@ -240,7 +240,7 @@
           </span>
         </div>
           <div class="form-group">
-          <p-dropdown class="dropdown__blue" [options]="helperModel.ownershipTypes" formControlName="ownership"></p-dropdown>          
+          <p-dropdown class="dropdown__blue" [options]="helperModel.ownershipTypes" formControlName="ownership"></p-dropdown>
           </div>
         </div>
         <div class="form-group" *ngIf="registerForm.get('ownership').value === 'OTHER'">
@@ -255,9 +255,9 @@
             <label for="id_code">Ідентифікаційний код</label>
           </span>
         </div>
-        <div class="flex-row center-between">             
+        <div class="flex-row center-between">
         <div class="form-group" *ngIf="registerForm.get('ownership').value !== 'FOP'">
-          <span class="ui-float-label blue">              
+          <span class="ui-float-label blue">
             <p-inputMask pInputText mask="99999999" id="zkpo" formControlName="zkpo" class="form-control evo-input"></p-inputMask>
             <label for="zkpo">Код ЗКПО</label>
           </span>
@@ -266,12 +266,12 @@
           <p-dropdown class="dropdown__blue" [options]="helperModel.taxFormTypes" formControlName="tax_form"></p-dropdown>
         </div>
       </div>
-      <div class="flex-row center-between">                       
+      <div class="flex-row center-between">
           <div class="form-group" formGroupName="official_address" *ngIf="registerForm.get('ownership').value !== 'FOP'">
             <span class="ui-float-label blue">
-                <input type="text" 
+                <input type="text"
                 formControlName= "label"
-                class="form-control evo-input" 
+                class="form-control evo-input"
                 [options]='addressOptions'
                 (FormatAddress)="getFormattedAddress($event, 'official_address')"
                 (street_number) = 'street_number=$event'
@@ -281,29 +281,29 @@
                 (district)='district=$event'
                 (country)='country=$event'
                 (postal_code)='postal_code=$event'
-                (lat)='lat=$event' 
-                (lng)='lng=$event' 
-                (adr_address)='adr_address=$event' 
-                (name)='name=$event' 
-                (place_id)='place_id=$event' 
-                (types)='types=$event' 
-                (url)='url=$event'  
-                (utc_offset)='utc_offset=$event' 
-                (vicinity)='vicinity=$event' 
-                (photos)='photos=$event' 
+                (lat)='lat=$event'
+                (lng)='lng=$event'
+                (adr_address)='adr_address=$event'
+                (name)='name=$event'
+                (place_id)='place_id=$event'
+                (types)='types=$event'
+                (url)='url=$event'
+                (utc_offset)='utc_offset=$event'
+                (vicinity)='vicinity=$event'
+                (photos)='photos=$event'
                 (CountryCodes)='CountryCodes=$event'
                 placeholder=" "
                 id="official_address"
                 angularGooglePlace
-                pInputText/>   
+                pInputText/>
                 <label for="official_address">Юридична адреса</label>
             </span>
           </div>
           <div class="form-group" formGroupName="physical_address">
             <span class="ui-float-label blue">
-                <input type="text" 
+                <input type="text"
                 formControlName= "label"
-                class="form-control evo-input" 
+                class="form-control evo-input"
                 [options]='addressOptions'
                 (FormatAddress)="getFormattedAddress($event, 'physical_address')"
                 (street_number) = 'street_number=$event'
@@ -313,26 +313,26 @@
                 (district)='district=$event'
                 (country)='country=$event'
                 (postal_code)='postal_code=$event'
-                (lat)='lat=$event' 
-                (lng)='lng=$event' 
-                (adr_address)='adr_address=$event' 
-                (name)='name=$event' 
-                (place_id)='place_id=$event' 
-                (types)='types=$event' 
-                (url)='url=$event'  
-                (utc_offset)='utc_offset=$event' 
-                (vicinity)='vicinity=$event' 
-                (photos)='photos=$event' 
+                (lat)='lat=$event'
+                (lng)='lng=$event'
+                (adr_address)='adr_address=$event'
+                (name)='name=$event'
+                (place_id)='place_id=$event'
+                (types)='types=$event'
+                (url)='url=$event'
+                (utc_offset)='utc_offset=$event'
+                (vicinity)='vicinity=$event'
+                (photos)='photos=$event'
                 (CountryCodes)='CountryCodes=$event'
                 placeholder=" "
                 id="physical_address"
                 angularGooglePlace
-                pInputText/>                 
+                pInputText/>
               <!-- <input pInputText id="physical_address" #addressElement formControlName="label" class="form-control evo-input" type="text"> -->
               <label for="physical_address">Фізична адреса</label>
             </span>
-          </div>   
-          </div>         
+          </div>
+          </div>
         <div formGroupName="director" class="flex-row center-between">
           <div class="form-group">
             <span class="ui-float-label blue">
@@ -347,7 +347,7 @@
                 </span>
           </div>
         </div>
-        <div formGroupName="liable" class="flex-row center-between" *ngIf="registerForm.get('ownership').value !== 'FOP'">            
+        <div formGroupName="liable" class="flex-row center-between" *ngIf="registerForm.get('ownership').value !== 'FOP'">
           <div class="form-group">
             <span class="ui-float-label blue">
               <input pInputText id="liable_name" formControlName="name" class="form-control evo-input" type="text">

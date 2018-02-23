@@ -23,7 +23,7 @@ export class ProfileTrucksComponent {
   truckDialog: boolean = false;
   truckForm: any = null;
   loggedUser: any = null;
-  transportCategories: TransportCategoryModel[] = null;
+  transportCategories: any = null;
   brands: BrandModel[] = [{
     name: 'Оберіть марку',
     value: null
@@ -70,7 +70,7 @@ export class ProfileTrucksComponent {
   getTrucks() {
     this.carsService.getTrucks(this.loggedUser._id, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
       if(this.loggedUser.role == 'company'){
-        this.trucks = res.results;        
+        this.trucks = res.results;
       } else{
         this.trucks = res.cars;
       }
@@ -86,6 +86,7 @@ export class ProfileTrucksComponent {
     })
   }
   carChanged() {
+    if(!this.truckForm.get('car_attributes').get('brand')){return}
     this.carsService.getModels(+this.truckForm.get('car_attributes').get('category').value, this.truckForm.get('car_attributes').get('brand').value.value).subscribe(
       res => {
         this.models = res;
@@ -101,33 +102,33 @@ export class ProfileTrucksComponent {
   }
   buildTruckForm() {
     let truckModel = {
-      registration_number: [''],
+      registration_number: ['', [Validators.required]],
       company_id:[this.loggedUser._id],
       company_user_id:[''],
       _id: [''],
       car_attributes: this.fb.group({
         category: ['4'],
-        brand: [''],
-        model: ['']
+        brand: ['', [Validators.required]],
+        model: ['', [Validators.required]]
       }),
       address: this.fb.group({
         label: ['', [Validators.required]],
         lat: [''],
         lng: [''],
       }),
-      passengers_count: [''],
-      weight_limit: [''],
-      car_types: [''],
+      passengers_count: ['', [Validators.required]],
+      weight_limit: ['', [Validators.required]],
+      car_types: ['', [Validators.required]],
       type: ['wrecker'],
       photo: ['1'],
-      price: [''],
+      price: ['', [Validators.required]],
       description: [''],
     }
     this.truckForm = this.fb.group(truckModel);
     // this.truckForm.patchValue(this.loggedUser)
   }
   addTruck() {
-    this.getDrivers();    
+    this.getDrivers();
     this.truckForm.editMode = false;
     this.truckDialog = !this.truckDialog;
   }
@@ -151,12 +152,12 @@ export class ProfileTrucksComponent {
     }
   }
   getFormattedAddress(event: any, formcontrol: string) {
-    this.truckForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
+    this.truckForm.get(formcontrol).get('label').setValue(`${event.street? event.street+',' : ''} ${event.street_number ? event.street_number + ',' : ''} ${event.city}, ${event.state}`);
     this.truckForm.get(formcontrol).get('lat').setValue(event.lat);
     this.truckForm.get(formcontrol).get('lng').setValue(event.lng);
   }
   setTest() {
-    this.truckForm.patchValue({ "registration_number": "АН25522ФА", "car_attributes": { "category": "4", "brand": { "name": "TATA", "value": 78 }, "model": { "name": "LPT", "value": 2239 } }, "address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "passengers_count": "3", "weight_limit": "600", "type": "wrecker", "photo": "1", "price": "12", "description": "ТРАТАРАТА" });
+    // this.truckForm.patchValue({ "registration_number": "АН25522ФА", "car_attributes": { "category": "4", "brand": { "name": "TATA", "value": 78 }, "model": { "name": "LPT", "value": 2239 } }, "address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "passengers_count": "3", "weight_limit": "600", "type": "wrecker", "photo": "1", "price": "12", "description": "ТРАТАРАТА" });
   }
   deleteTruck(truck: any) {
     this.carsService.deleteTruck(truck._id, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
@@ -167,9 +168,10 @@ export class ProfileTrucksComponent {
     })
   }
   editTruck(truck: any) {
-    this.getDrivers();    
+    this.getDrivers();
     this.truckForm.editMode = true;
-    this.truckForm.patchValue(truck)
+    this.truckForm.patchValue(truck);
+    this.truckForm.get('car_types').setValue('');
     this.carChanged();
     this.truckDialog = !this.truckDialog;
   }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { AuthService } from 'app/core/services';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'evo-logout',
@@ -9,9 +10,11 @@ import { AuthService } from 'app/core/services';
 })
 export class LogoutComponent {
 
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService,
+                private router: Router) { }
 
     onLogoutClick() {
+        this.router.navigate(['/']);
         this.authService.logout();
     }
 
