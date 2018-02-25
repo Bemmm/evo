@@ -1,10 +1,25 @@
-<evo-header [hasSearchLink]="hasSearchLink" [isLogged]="isLogged" [headerStyle]="'back'" (toggleMobileNav)="onToggleMobileNav()"></evo-header>    
-<main>
-  <div class="evo-auth__content">
-    <router-outlet></router-outlet>
+<div class="auth">
+  <evo-header class="auth_header" [hasSearchLink]="hasSearchLink" [isLogged]="isLogged" [headerStyle]="'back'" (toggleMobileNav)="onToggleMobileNav()"></evo-header>
+  <router-outlet></router-outlet>
+  <div class="auth_navigation row">
+    <div [routerLinkActive]="['active']" [routerLink]="['/auth/register']" class="auth_navigation-item col-xs-6 text-center">
+      <div class="auth_navigation-item-button">
+        <i class="fa fa-user-o"></i>
+      </div>
+      <div class="auth_navigation-item-title">
+        Реєстрація
+      </div>
+    </div>
+    <div [routerLinkActive]="['active']" [routerLink]="['/auth/login']" class="auth_navigation-item col-xs-6 text-center">
+      <div class="auth_navigation-item-button">
+        <i class="fa fa-angle-right"></i>
+      </div>
+      <div class="auth_navigation-item-title">
+        Вхід
+      </div>
+    </div>
   </div>
-
-</main>
+</div>
 <!-- <footer>
   <evo-footer [hideOrdersLink]="true"></evo-footer>
 </footer> -->

@@ -1,10 +1,10 @@
-<div class="evo-home">
+<div class="container-fluid h-100">
   <header>
     <evo-header [hasSearchLink]="hasSearchLink" [isLogged]="isLogged" [headerStyle]="'menu'" (toggleMobileNav)="onToggleMobileNav()"></evo-header>
   </header>
-  <div class="evo-home-content">
+  <div class="container">
     <main>
-        <section class="evo-home__container">
+        <section>
           <router-outlet></router-outlet>
         </section>
     </main>

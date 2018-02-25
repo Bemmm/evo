@@ -1,107 +1,11 @@
   /* stylelint-disable */
 
   .evo-header {
-    @include evo-primary-gradient;
-    &__content {
-      display: flex;
-      justify-content: space-between;
-      align-items: stretch;
-      align-content: stretch;
-      .dropdown-menu{
-        background: #fff;
-        border-radius: 0;
-        border: 0;
-        padding: 10px;
-        margin-top: 17px;
-        border-radius: 3px;
-        .dropdown-item{
-          cursor: pointer;
-          padding: 5px;
-          border-bottom: 1px solid #b9b9b9;
-          color: #797979;
-          &:hover{
-            background-color: #64d1bb;
-            color: white;
-        }
-        }
+    background-color: $evo-yellow;
+    padding: 20px 0;
+      &__title{
+        font-size: 1.4em;
+        color: $evo-title-text;
       }
-    }
-    &__info {
-      display: flex;
-      align-items: center;
-      &--button {
-        cursor: pointer;
-        margin: 0 10px;
-        color: #fff;
-        &.back {
-          font-size: 30px;
-        }
-        a {
-          color: #fff;
-          span {
-            vertical-align: middle;
-            padding-left: 5px;
-            font-size: 16px;
-          }
-        }
-      }
-    }
-    &__logo,
-    &__cart,
-    &__help {
-      display: block;
-      text-indent: -9999px;
-      cursor: pointer;
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-      background-size: cover;
-    }
-    &__brand {
-      color: #fff;
-      font-weight: 600;
-      font-size: 30px;
-      margin: 10px;
-      font-family: Roboto;
-      display: flex;
-      text-decoration: none !important;
-      div{
-        color: #64d1bb;
-      }
-      span{
-        font-size: 20px;
-        align-self:center;
-      }
-      &:hover{
-        text-decoration: none;
-        color: #fff;
-      }
-    }
-    &__logo {
-      width: rem(84px);
-      height: rem(84px);
-      background-image: url(./assets/logo.svg);
-      margin: 10px 0;
-    }
-    &__help {
-      width: rem(20px);
-      height: rem(20px); // background-image: url(./assets/img/help-icon.png);
-      margin-right: rem(12px);
-    }
-    &__search {
-      font-size: rem(12px);
-      font-weight: bold;
-      text-transform: uppercase;
-      color: $evo-white;
-      margin-right: 30px;
-      cursor: pointer;
-    }
-    &__mobile-menu {
-      font-size: rem(17px);
-      color: $evo-white;
-    }
-    &__user-info {
-      font-size: rem(12px);
-      color: $evo-white;
-      margin-right: rem(12px);
-    }
+    
   }

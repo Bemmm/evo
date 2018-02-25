@@ -1,106 +1,29 @@
-  /* stylelint-disable */
-  .ui-inputtext{
-    color:inherit;
-    &:focus, &.ui-state-focus, {
-      box-shadow: none;
-    }
-  }
-  .ui-float-label input:focus~label,
-  .ui-float-label input.ui-state-filled~label,
-  .ui-float-label .ui-inputwrapper-focus~label,
-  .ui-float-label .ui-inputwrapper-filled~label {
-    top: -.10em;
-  }
-
-  $base-width: rem(300px);
-  .ui-float-label {
-    max-width: 100%;
-    width: 100%;
-    margin: auto;
-    &.textarea {
-      label {
-        top: 20px;
-      }
-    }
-    p-inputmask,
-    p-calendar {
-      .ui-calendar {
-        position: static;
-        display: block;
-        left: 0;
-        .ui-datepicker {
-          background-color: #fff;
-        }
-      }
-      input {
-        position: relative;
-        width: 100%;
-        left: 0;
-        top: 0;
-        background: transparent;
-        border: 0;
-        height: 28px;
-        bottom: 0;
-      }
-    }
-    &.blue {
-      label {
-        color: $evo-blue-dark;
-        font-weight: 200;
-      }
-      &.icon {
-        .fa {
-          position: absolute;
-          color: $evo-blue-dark;
-          left: .25em;
-          top: 50%;
-          margin-top: -.5em;
-          font-size: 20px;
-        }
-        label {
-          left: 1.5em;
-        }
-      }
-      .evo-input {
-        border: 0;
-        border-bottom: 1px solid $evo-blue-dark;
-        border-radius: 0;
+.evo-input{
+  font-family: 'Roboto';
+  &>input, &>p-inputmask{
+    box-shadow: none;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid $evo-grey;
+    position: relative;
+    input{
+      border: 0;
+      left: 0;
+      padding: 0;
+      position: absolute;
+      height: 100%;
+      margin: 0;
+      top: 0;
+      &:focus{
         box-shadow: none;
-        background: transparent;
-        color: $evo-blue-dark;
-      }
-    }
-    &.grey {
-      label {
-        color: $evo-grey-dark;
-        font-weight: 200;
-      }
-      &.icon {
-        .fa {
-          position: absolute;
-          color: $evo-blue-dark;
-          left: .25em;
-          top: 50%;
-          margin-top: -.5em;
-          font-size: 20px;
-        }
-        label {
-          left: 1.5em;
-        }
-        .evo-input {
-          padding-left: 20px;
-        }
-      }
-      .evo-input {
-        border: 0;
-        border-bottom: 1px solid $evo-grey-dark;
-        border-radius: 0;
-        box-shadow: none;
-        background: transparent;
-        color: $evo-grey-dark;
-        &.ng-invalid {
-          color: $evo-error;
-        }
       }
     }
   }
+  label{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 18px;
+    top:35%;
+    color: $evo-text;
+  }
+}

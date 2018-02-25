@@ -1,47 +1,39 @@
-<div class="evo-header">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="row">
-                    <div class="col-xs-12 evo-header__content" *ngIf="headerStyle === 'menu' ">
-                        <div class="flex-row center-center">
-                            <!-- <a class="evo-header__logo" title="EVO" [routerLink]="getLogoLink()">
-                                </a> -->
-                            <a class="evo-header__brand" [routerLink]="getLogoLink()">
-                                    Cars
-                                    <div>Work</div>
-                                    <span>.com</span>
-                                </a>
-                        </div>
-                        <div class="evo-header__info">
-                            <ng-container *ngIf="!user">
-                                <div class="evo-header__info--button"><a [routerLink]="['/auth/login']">Увійти</a></div>
-                            </ng-container>
-                            <ng-container *ngIf="!user">
-                                <div class="evo-header__info--button"><a [routerLink]="['/auth/register']">Реєстрація</a></div>
-                            </ng-container>
-                            <ng-container *ngIf="user">
-                                <div ngbDropdown>
-                                    <div class="evo-header__info--button" id="userDropdown" ngbDropdownToggle>{{ user.role == 'company' && user.title ? user.title : user.name }}</div>
-                                    <ul ngbDropdownMenu aria-labelledby="userDropdown">
-                                        <li class="dropdown-item" [routerLink]="['/profile', user._id]">Особистий кабінет</li>
-                                        <li class="dropdown-item"><evo-logout></evo-logout></li>
-                                    </ul>
-                                </div>
-                            </ng-container>
-
-                        </div>
+<div class="evo-header container-fluid">
+    <div class="row">
+        <div class="col-12">
+        <div *ngIf="headerStyle === 'menu' ">
+            <div class="evo-header__info">
+                <ng-container *ngIf="!user">
+                    <div class="evo-header__info--button"><a [routerLink]="['/auth/login']">Увійти</a></div>
+                </ng-container>
+                <ng-container *ngIf="!user">
+                    <div class="evo-header__info--button"><a [routerLink]="['/auth/register']">Реєстрація</a></div>
+                </ng-container>
+                <ng-container *ngIf="user">
+                    <div ngbDropdown>
+                        <div class="evo-header__info--button" id="userDropdown" ngbDropdownToggle>{{ user.role == 'company' && user.title ? user.title : user.name }}</div>
+                        <ul ngbDropdownMenu aria-labelledby="userDropdown">
+                            <li class="dropdown-item" [routerLink]="['/profile', user._id]">Особистий кабінет</li>
+                            <li class="dropdown-item">
+                                <evo-logout></evo-logout>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col-xs-12 evo-header__content" *ngIf="headerStyle === 'back' ">
-                        <div class="evo-header__info">
-                            <ng-container>
-                                <div class="evo-header__info--button back"><a [routerLink]="['/']"><i class="fa fa-chevron-left" aria-hidden="true"></i><span>Назад</span></a></div>
-                            </ng-container>
+                </ng-container>
 
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
+        <div *ngIf="headerStyle === 'back' ">
+            <div class="col-xs-4 evo-header__button">
+                <ng-container>
+                    <div><a [routerLink]="['/']"><i class="fa fa-chevron-left" aria-hidden="true"></i><span>Назад</span></a></div>
+                </ng-container>
+            </div>
+            <div class="col-xs-4 text-center evo-header__title">
+                Вхід
+            </div>
+            <div class="col-xs-4"></div>
+        </div>
+    </div>
     </div>
 </div>

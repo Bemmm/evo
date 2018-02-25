@@ -1,48 +1,7 @@
   .evo-footer {
-    @include evo-primary-gradient;
+    background-color: $evo-yellow;    
   &__content {
     padding: rem(20px);
     position: relative;
   }
-
-  &__logo {
-    width: rem(67px);
-    height: rem(36px);
-    // background: url(./assets/img/jostens-logo.png) 50% 50% no-repeat;
-    background-size: contain;
-    margin-bottom: rem(12px);
-    image-rendering: -webkit-optimize-contrast;
-  }
-
-  &__label {
-    @include font($primary-font-family, rem(8px));
-    color: $evo-white;
-    white-space: nowrap;
-    text-align: center;
-  }
-  .evo-footer__content {
-    display: flex;
-  }
-  
-  .evo-footer-navigation-my-orders {
-    right: 0;
-    position: absolute;
-  
-    h4 {
-        margin-top: 0;
-    }
-
-    a {
-      color: $evo-white;
-    }
-  }
-  
-}
-
-@media (min-width: $screen-sm-min) {
-
-}
-
-@media (max-width: 480px) {
-
 }
