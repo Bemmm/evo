@@ -1,12 +1,14 @@
 .evo-input{
   font-family: 'Roboto';
-  &>input, &>p-inputmask{
+  &>input, &>p-inputmask, &>p-calendar{
     box-shadow: none;
     border-radius: 0;
     border: 0;
     border-bottom: 1px solid $evo-grey;
     position: relative;
-    input{
+    input,
+    &>span{
+      display: block; 
       width:100%;
       border: 0;
       left: 0;

@@ -72,14 +72,26 @@
           </span>
         </div>
         <div formGroupName="car_attributes">
-          <div class="form-group flex-row evo-register__form--transport">
+          <div (click)="transportDialog = !transportDialog"> обрати категорыю</div>
+          <p-dialog class="transport-dialog" header="Title" [(visible)]="transportDialog" [width]="auto" [height]="auto">
+            <div class="transport-dialog_content">
+              <div *ngFor="let transport of helperModel.transportCategories" class="transport-dialog_content-item">
+                <div>{{transport.name}}</div>
+                <div class="transport-dialog_content-item-icon type{{transport.value}}"></div>
+              </div>
+            </div>
+            <div class="transport-dialog_action">
+              <button class="evo-button">Обрати</button>
+            </div>
+          </p-dialog>
+          <!-- <div class="form-group flex-row evo-register__form--transport">
             <div *ngFor="let transport of helperModel.transportCategories" class="evo-register__form--transport-item">
               <p-radioButton class="transport type__{{transport.value}}" (click)="categoryChange(transport.value)" name="transportCategorie"
                 value="{{transport.value}}" formControlName="category"></p-radioButton>
               <span>{{transport.name}}</span>
             </div>
             <validation-messages [control]="registerForm.controls.car_attributes.controls.category"></validation-messages>
-          </div>
+          </div> -->
           <div class="form-group">
             <p-dropdown class="evo-dropdown" [options]="brand" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)"
               optionLabel="name"></p-dropdown>

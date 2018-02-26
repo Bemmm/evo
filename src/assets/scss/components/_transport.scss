@@ -1,36 +1,52 @@
-// .transport {
-//   width: 65px;
-//   height: 40px;
-//   background: url('~assets/images/transport/sprite.png');
-//   background-size: 266px 208px;
-//   vertical-align: middle;
-//   margin: 5px 10px;
-//   &.type__1 {
-//     background-position: -134px 0;
-//   }
-//   &.type__2 {
-//     background-position: -134px -84px;
-//   }
-//   &.type__3 {
-//     background-position:  0 -168px;
-//   }
-//   &.type__4 {
-//     background-position: -67px -126px;
-//   }
-//   &.type__5 {
-//     background-position: -201px 0;
-//   }
-//   &.type__6 {
-//     background-position: -201px -84px;
-//   }
-//   &.type__7 {
-      
-//     background-position: 0 -42px;
-//   }
-//   &.type__8 {
-//     background-position: 0 -84px;
-//   }
-//   &.type__9 {
-//     background-position: -67px 0;
-//   }  
-// }
+.transport-dialog{
+    &_content{
+        &-item{
+            text-align: left;
+            font-size: 20px;
+            padding: 30px 15px;
+            border-bottom: 1px solid $evo-separator;
+            font-weight: 300;
+            font-family: 'Roboto';
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            &-icon{
+                width: 65px;
+                height: 40px;
+                background: url('~assets/images/transport/sprite.png');
+                background-size: 266px 208px;
+                &.type1 {
+                    background-position: -134px 0;
+                }
+                &.type2 {
+                    background-position: -134px -84px;
+                }
+                &.type3 {
+                    background-position:  0 -168px;
+                }
+                &.type4 {
+                    background-position: -67px -126px;
+                }
+                &.type5 {
+                    background-position: -201px 0;
+                }
+                &.type6 {
+                    background-position: -201px -84px;
+                }
+                &.type7 {
+                    
+                    background-position: 0 -42px;
+                }
+                &.type8 {
+                    background-position: 0 -84px;
+                }
+                &.type9 {
+                    background-position: -67px 0;
+                }  
+            }     
+
+        }
+    }
+    
+}

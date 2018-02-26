@@ -8,6 +8,10 @@ import { HomeComponent } from './home.component';
 import { ErrorComponent } from './error/error.component';
 import { MapComponent } from './map/map.component';
 import { ProfileComponent } from 'app/profile/profile.component';
+import { ProfileInfoComponent } from 'app/profile/profile-info/profile-info.component';
+import { ProfileDriversComponent } from 'app/profile/profile-drivers/profile-drivers.component';
+import { ProfileOrdersComponent } from 'app/profile/profile-orders/profile-orders.component';
+import { ProfileTrucksComponent } from 'app/profile/profile-trucks/profile-trucks.component';
 import { LogoutComponent } from 'app/core/components/logout/logout.component';
 const homeRoutes: Routes = [
     {
@@ -24,12 +28,31 @@ const homeRoutes: Routes = [
     },
     {
         path: 'profile/:id',
-        component: ProfileComponent
-    }, 
+        component: ProfileComponent,
+        children: [
+            { path: '', redirectTo: 'info', pathMatch: 'full' },
+            {
+                path: 'info',
+                component: ProfileInfoComponent
+            },
+            {
+                path: 'drivers',
+                component: ProfileDriversComponent
+            },
+            {
+                path: 'orders',
+                component: ProfileOrdersComponent
+            },
+            {
+                path: 'trucks',
+                component: ProfileTrucksComponent
+            },
+        ]
+    },
     {
         path: 'logout',
         component: LogoutComponent
-    },               
+    },
 ];
 
 @NgModule({
