@@ -1,5 +1,14 @@
-.evo-register{
-    .evo-button{
-        margin: auto;
-    }
+.evo-register {
+  height: 100%;
+  &__step {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+  }
+  .evo-button {
+    margin: auto;
+  }
 }

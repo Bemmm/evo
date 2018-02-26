@@ -1,4 +1,3 @@
-<div class="container">
 <p-tabView>
   <p-tabPanel header="Мій профіль" [selected]="true">
     <evo-profile-info></evo-profile-info>
@@ -13,4 +12,42 @@
     <evo-profile-trucks></evo-profile-trucks>
   </p-tabPanel>
 </p-tabView>
-</div>
+
+<div class="navigation_bar row">
+    <div [routerLinkActive]="['active']" [routerLink]="['/auth/register']" class="navigation_bar-item text-center">
+      <div class="navigation_bar-item-button">
+        <i class="fa fa-user-o"></i>
+      </div>
+      <div class="navigation_bar-item-title">
+        Профіль
+      </div>
+    </div>
+
+    <div [routerLinkActive]="['active']" [routerLink]="['/auth/register']" class="navigation_bar-item text-center">
+      <div class="navigation_bar-item-button">
+        <i class="fa fa-user-o"></i>
+      </div>
+      <div class="navigation_bar-item-title">
+        Замовлення
+      </div>
+    </div>
+
+    <div [routerLinkActive]="['active']" [routerLink]="['/auth/register']" class="navigation_bar-item text-center" *ngIf="loggedUser.role == 'company'">
+      <div class="navigation_bar-item-button">
+        <i class="fa fa-user-o"></i>
+      </div>
+      <div class="navigation_bar-item-title">
+        Водії
+      </div>
+    </div>
+
+    <div [routerLinkActive]="['active']" [routerLink]="['/auth/register']" class="navigation_bar-item text-center" *ngIf="loggedUser.role !== 'user' ">
+      <div class="navigation_bar-item-button">
+        <i class="fa fa-user-o"></i>
+      </div>
+      <div class="navigation_bar-item-title">
+        Евакуатори
+      </div>
+    </div>
+
+  </div>

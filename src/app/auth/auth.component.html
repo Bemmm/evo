@@ -1,20 +1,20 @@
 <div class="auth">
   <evo-header class="auth_header" [hasSearchLink]="hasSearchLink" [isLogged]="isLogged" [headerStyle]="'back'" (toggleMobileNav)="onToggleMobileNav()"></evo-header>
   <router-outlet></router-outlet>
-  <div class="auth_navigation row">
-    <div [routerLinkActive]="['active']" [routerLink]="['/auth/register']" class="auth_navigation-item col-xs-6 text-center">
-      <div class="auth_navigation-item-button">
+  <div class="navigation_bar row">
+    <div [routerLinkActive]="['active']" [routerLink]="['/auth/register']" class="navigation_bar-item text-center">
+      <div class="navigation_bar-item-button">
         <i class="fa fa-user-o"></i>
       </div>
-      <div class="auth_navigation-item-title">
+      <div class="navigation_bar-item-title">
         Реєстрація
       </div>
     </div>
-    <div [routerLinkActive]="['active']" [routerLink]="['/auth/login']" class="auth_navigation-item col-xs-6 text-center">
-      <div class="auth_navigation-item-button">
+    <div [routerLinkActive]="['active']" [routerLink]="['/auth/login']" class="navigation_bar-item text-center">
+      <div class="navigation_bar-item-button">
         <i class="fa fa-angle-right"></i>
       </div>
-      <div class="auth_navigation-item-title">
+      <div class="navigation_bar-item-title">
         Вхід
       </div>
     </div>
