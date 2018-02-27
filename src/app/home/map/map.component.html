@@ -12,7 +12,12 @@
 <form class="evo-map__form">
   <div class="evo-map__form-search">
       <button class="evo-map__form-search-button clean"><i class="material-icons">close</i></button>
-      <input pInputText  class="form-control">
+      <input type="text" class="form-control" [options]='addressOptions' (FormatAddress)="getFormattedAddress($event, 'where', 'address')"
+      (street_number)='street_number=$event' (street)='street=$event' (city)='city=$event' (state)='state=$event' (district)='district=$event'
+      (country)='country=$event' (postal_code)='postal_code=$event' (lat)='lat=$event' (lng)='lng=$event' (adr_address)='adr_address=$event'
+      (name)='name=$event' (place_id)='place_id=$event' (types)='types=$event' (url)='url=$event' (utc_offset)='utc_offset=$event'
+      (vicinity)='vicinity=$event' (photos)='photos=$event' (CountryCodes)='CountryCodes=$event' placeholder=" " id="city"
+      angularGooglePlace pInputText/>
       <button class="evo-map__form-search-button speak"><i class="material-icons">mic_none</i></button>
   </div>
 </form>

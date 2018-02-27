@@ -35,6 +35,12 @@ import {
 })
 
 export class MapComponent implements OnInit {
+  addressOptions = {
+    types: ['address'],
+    componentRestrictions: {
+      country: 'UA'
+    }
+  };
   searchForm: FormGroup;
   helperModel: any = {
     styles: [{
@@ -273,8 +279,11 @@ export class MapComponent implements OnInit {
 
 
   searchModel = {
-    from: ['', Validators.required],
-    where: ['', Validators.required],
+    where: this.fb.group({
+      label: [''],
+      lat: [''],
+      lng: ['']
+    }),
     minPrice: [''],
     maxPrice: ['']
   };
@@ -295,28 +304,6 @@ export class MapComponent implements OnInit {
     //set current position
     this.setCurrentPosition();
 
-    //load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.whereElementRef.nativeElement, {
-        types: ["address"]
-      });
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          console.log('BEM autcomplete :: autocomplete', autocomplete);
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-          
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-          //set latitude, longitude and zoom
-          this.helperModel.latitude = place.geometry.location.lat();
-          this.helperModel.longitude = place.geometry.location.lng();
-          this.helperModel.zoom = 16;
-        });
-      });
-    });
   }
 
   private setCurrentPosition() {
@@ -327,6 +314,15 @@ export class MapComponent implements OnInit {
         this.helperModel.zoom = 16;
       });
     }
+  }
+  getFormattedAddress(event: any, formcontrol: string, type:string) {
+    if(type == 'city'){
+      this.searchForm.get(formcontrol).get('label').setValue(`${event.city}, ${event.state}`);
+    } else{
+      this.searchForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
+    }
+    this.searchForm.get(formcontrol).get('lat').setValue(event.lat);
+    this.searchForm.get(formcontrol).get('lng').setValue(event.lng);
   }
   buildForm() {
     this.searchForm = this.fb.group(this.searchModel);
