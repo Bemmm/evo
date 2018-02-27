@@ -1,11 +1,21 @@
   /* stylelint-disable */
   @font-face {
 	font-family: 'Roboto';
-	src: url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+	src: url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700');
 	font-weight: bold;
 	font-style: normal;
 }
-
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
 
 // .evo-text-bold {
 //   font-weight: bold;

@@ -11,6 +11,7 @@ export class HeaderComponent {
     @Input() hasSearchLink: boolean = false;
     @Input() isLogged: boolean = false;
     @Input() headerStyle: any = '';
+    @Input() title: any = '';
     @Output() toggleMobileNav = new EventEmitter();
     user: any;
 
@@ -20,6 +21,7 @@ export class HeaderComponent {
                 this.user = user;
             })
             config.placement = 'bottom-right';
+            console.log(this.title);
     }
 
     getLogoLink(): string {

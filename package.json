@@ -67,6 +67,7 @@
     "karma-remap-istanbul": "^0.6.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.5",
+    "material-design-icons": "^3.0.1",
     "node-sass": "^4.5.3",
     "null-loader": "^0.1.1",
     "postcss-loader": "^2.0.8",

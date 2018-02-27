@@ -19,12 +19,14 @@ import { LoginComponent } from './login/login.component';
                 children: [
                     {
                         path: 'register',
-                        component: RegisterComponent
+                        component: RegisterComponent,
+                        data:{title:'Реєстрація'}
                     },
                     {
                         path: 'login',
-                        component: LoginComponent
-                    }                    
+                        component: LoginComponent,
+                        data:{title:'Вхід'}
+                    }
                 ]
             }
         ])

@@ -164,7 +164,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.helperModel.ownershipTypes = OWNERSHIP_TYPES;
     this.helperModel.taxFormTypes = TAX_FORM_TYPES;
     this.helperModel.ua = UA;
-
     this.getCategories()
   }
   getCategories() {
