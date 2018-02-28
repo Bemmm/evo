@@ -1,8 +1,7 @@
 <div class="evo-header container-fluid">
     <div class="row">
-        <div class="col-12">
         <div *ngIf="headerStyle === 'menu' ">
-            <div class="evo-header__info">
+            <div class="col-xs-12">
                 <ng-container *ngIf="!user">
                     <div class="evo-header__info--button"><a [routerLink]="['/auth/login']">Увійти</a></div>
                 </ng-container>
@@ -34,6 +33,5 @@
             </div>
             <div class="col-xs-4"></div>
         </div>
-    </div>
     </div>
 </div>

@@ -7,6 +7,7 @@ $parabola-margin-top: -22px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   &-item{
       outline: 0;
       position: relative;
