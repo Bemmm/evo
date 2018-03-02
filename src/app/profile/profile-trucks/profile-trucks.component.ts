@@ -70,9 +70,9 @@ export class ProfileTrucksComponent {
   getTrucks() {
     this.carsService.getTrucks(this.loggedUser._id, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
       if(this.loggedUser.role == 'company'){
-        this.trucks = res.results;
+        if (res.results) this.trucks = res.results;
       } else{
-        this.trucks = res.cars;
+        if (res.cars) this.trucks = res.cars;
       }
     });
   };
