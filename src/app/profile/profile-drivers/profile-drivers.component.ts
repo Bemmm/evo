@@ -45,7 +45,7 @@ export class ProfileDriversComponent {
   buildDriverForm() {
     let driverModel = {
       company_id:[this.loggedUser._id],
-      name:[''],
+      name:['', [Validators.required]],
       email: ['', [Validators.required]],
       passport: ['', [Validators.required]],
       birthday: ['', [Validators.required]],
@@ -82,10 +82,15 @@ export class ProfileDriversComponent {
       })
     }
   }
-  getFormattedAddress(event: any, formcontrol: string) {
-    this.driverForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
+  getFormattedAddress(event: any, formcontrol: string, type:string) {
+    if(type == 'city'){
+      this.driverForm.get(formcontrol).get('label').setValue(`${event.city}, ${event.state}`);
+    } else{
+      this.driverForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
+    }
     this.driverForm.get(formcontrol).get('lat').setValue(event.lat);
     this.driverForm.get(formcontrol).get('lng').setValue(event.lng);
+    console.log(this.driverForm);
   }
   deleteDriver(driver: any) {
     this.driversService.deleteDriver(driver._id, this.loggedUser['x-access-token']).subscribe((res:any) => {
