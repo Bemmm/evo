@@ -17,38 +17,63 @@
       display: flex;
       border-radius: 30px;
       overflow: hidden;
-      box-shadow:0 15px 30px -3px rgba(173, 173, 173, 0.28);
-      .form-control{
-        height:55px;
+      box-shadow: 0 15px 30px -3px rgba(173, 173, 173, 0.28);
+      .form-control {
+        height: 55px;
         border: 0;
         box-shadow: none;
+        border-radius: 0;
       }
-      &-button{
+      &-button {
         background: #fff;
         border: 0;
         width: 70px;
-        &.clean{
-          i{
-            color:#c8c8c8;
+        &.clean {
+          i {
+            color: #c8c8c8;
             margin-top: 5px;
             font-size: 26px;
           }
         }
-        &.speak{
+        &.speak {
           position: relative;
-          i{
+          i {
             margin-top: 5px;
             font-size: 23px;
           }
-          &:before{
+          &:before {
             content: '';
             position: absolute;
             left: 0;
             top: 10px;
-            width:1px;
+            width: 1px;
             height: 35px;
             background-color: #e3e3e3;
           }
+        }
+      }
+    }
+    &-request {
+      padding-bottom: 40px;
+      padding-top: 0px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      text-align: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      background-color: #fff;
+      &-wrapper{
+        margin-top: -25px;
+        button{
+          border: 15px solid #fff;
+          min-width: 250px;
         }
       }
     }
