@@ -247,10 +247,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(subscription);
   }
-  categoryChange(event: any) {
+  setCategory(event: any) {
+    this.registerForm.get('car_attributes').get('category').setValue(event);
     const subscription = this.carsService.getMarks(this.registerForm.get('car_attributes').get('category').value).subscribe(
       res => {
-        console.log(res);
+        this.transportDialog = !this.transportDialog;
         this.brand = res;
       },
       errorRes => {

@@ -1,5 +1,5 @@
 .transport-dialog{
-    &_content{
+    &__content{
         &-item{
             text-align: left;
             font-size: 20px;
@@ -35,7 +35,7 @@
                     background-position: -201px -84px;
                 }
                 &.type7 {
-                    
+
                     background-position: 0 -42px;
                 }
                 &.type8 {
@@ -43,10 +43,12 @@
                 }
                 &.type9 {
                     background-position: -67px 0;
-                }  
-            }     
+                }
+            }
 
         }
     }
-    
+    &__action{
+      margin-top:20px;
+    }
 }

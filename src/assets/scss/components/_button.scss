@@ -11,4 +11,9 @@
     border-radius: 50px;
     padding: 15px 25px;
     min-width: 200px;
+    outline: none !important;
+    &[disabled]{
+      background-color: #ebebeb;
+      border: 1px solid #dedede;
+    }
 }

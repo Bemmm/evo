@@ -2,7 +2,7 @@ $button-size:70px;
 $parabola-margin: 35px;
 $parabola-margin-top: -22px;
 .navigation_bar {
-  max-height: 150px;
+  height: 120px;
   background-color: $evo-grey-background;
   display: flex;
   align-items: center;
@@ -11,6 +11,7 @@ $parabola-margin-top: -22px;
   &-item {
     outline: 0;
     position: relative;
+    z-index: 0;
     &.active {
       .navigation_bar-item-button {
         background: #fff !important;

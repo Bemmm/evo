@@ -10,5 +10,9 @@
   }
   .evo-button {
     margin: auto;
+    &.category {
+      width: 50px;
+      font-size: 14px;
+    }
   }
 }
