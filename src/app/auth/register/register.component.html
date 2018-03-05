@@ -72,10 +72,10 @@
           </span>
         </div>
         <div formGroupName="car_attributes">
-          <div class="evo-button category" (click)="transportDialog = !transportDialog"> Обрати категорію</div>
+          <div class="evo-button category" (click)="toggleTransportDialog()">Обрати категорію</div>
           <p-dialog class="transport-dialog" header="Оберіть категорію транспорту" [(visible)]="transportDialog">
             <div class="transport-dialog__content">
-              <div *ngFor="let transport of helperModel.transportCategories" class="transport-dialog__content-item" click="setCategory(this.transport.value)">
+              <div *ngFor="let transport of helperModel.transportCategories" class="transport-dialog__content-item" (click)="setCategory(this.transport.value)">
                 <div>{{transport.name}}</div>
                 <div class="transport-dialog__content-item-icon type{{transport.value}}"></div>
               </div>
@@ -101,7 +101,7 @@
           </div>
         </div>
         <div class="form-group">
-          <button  [disabled]="registerForm.invalid" class="evo-register__form--submit" type="submit">Підтвердити</button>
+          <button  [disabled]="registerForm.invalid" class="evo-button" type="submit">Підтвердити</button>
         </div>
       </div>
     </div>

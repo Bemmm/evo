@@ -2,7 +2,7 @@
 
   .evo-header {
     background-color: $evo-yellow;
-    padding: 20px 0;
+    padding: 17px 0;
     &__title {
       font-size: 1.4em;
       color: $evo-title-text;
@@ -10,7 +10,8 @@
     &__item {
       padding: 4px 10px;
       a{
-        color: $evo-title-text;
+        color: $evo-button;
+        font-size: 18px;
       }
     }
   }
