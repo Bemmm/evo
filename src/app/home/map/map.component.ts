@@ -41,6 +41,7 @@ export class MapComponent implements OnInit {
       country: 'UA'
     }
   };
+  searchInput: '';
   searchForm: FormGroup;
   helperModel: any = {
     styles: [{
@@ -274,10 +275,6 @@ export class MapComponent implements OnInit {
     zoom: 4
   };
 
-  @ViewChild("whereElement")
-  public whereElementRef: ElementRef;
-
-
   searchModel = {
     where: this.fb.group({
       label: [''],
@@ -314,6 +311,9 @@ export class MapComponent implements OnInit {
         this.helperModel.zoom = 16;
       });
     }
+  }
+  clearInput(){
+    this.searchInput = '';
   }
   getFormattedAddress(event: any, formcontrol: string, type:string) {
     if(type == 'city'){

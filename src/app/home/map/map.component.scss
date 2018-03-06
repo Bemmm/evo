@@ -110,10 +110,13 @@
 
         button {
           // border-top: 10px solid #fff;
-          padding: 25px;
+          padding: 15px 25px;
           min-width: 245px;
           z-index: 9999;
-          position: relative
+          position: relative;
+          &.speak{
+            z-index: 1;
+          }
         }
       }
     }
