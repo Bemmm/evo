@@ -90,13 +90,13 @@
             <validation-messages [control]="registerForm.controls.car_attributes.controls.category"></validation-messages>
           </div> -->
           <div class="form-group">
-            <p-dropdown class="evo-dropdown" [options]="brand" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)"
+            <p-dropdown [disabled]="!registerForm.controls.car_attributes.controls.category.value" class="evo-dropdown" [options]="brand" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)"
               optionLabel="name"></p-dropdown>
             <validation-messages [control]="registerForm.controls.car_attributes.controls.brand"></validation-messages>
 
           </div>
           <div class="form-group">
-            <p-dropdown class="evo-dropdown" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
+            <p-dropdown [disabled]="!registerForm.controls.car_attributes.controls.brand.value" class="evo-dropdown" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
             <validation-messages [control]="registerForm.controls.car_attributes.controls.model"></validation-messages>
           </div>
         </div>

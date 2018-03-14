@@ -12,6 +12,12 @@
     padding: 15px 25px;
     min-width: 200px;
     outline: none !important;
+    &.category{
+      width: 50px;
+      font-size: 14px;
+      text-align: center;
+      margin: auto;
+    }
     &[disabled]{
       background-color: #ebebeb;
       border: 1px solid #dedede;

@@ -39,11 +39,12 @@ import {
 import {
   MapsAPILoader
 } from '@agm/core/services/maps-api-loader/maps-api-loader';
+import { } from 'googlemaps';
 import {
   Address
 } from 'angular-google-place';
 import { OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES } from 'app/shared/constants/';
-import {TransportCategoryModel, ModelModel, BrandModel} from 'app/shared/models/'
+import { TransportCategoryModel, ModelModel, BrandModel } from 'app/shared/models/'
 
 @Component({
   selector: 'evo-register',
@@ -65,8 +66,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
       country: 'UA',
     }
   };
-  brand: BrandModel[] = [];
-  models: ModelModel[] = [];
+  brand: any = [{
+    name: 'Оберіть марку',
+    value: null
+  }];
+  models: any = [{
+    name: 'Оберіть модель',
+    value: null
+  }];
   registerForm: FormGroup;
   registeredUser: any = null;
   errorMessages: Error[] = [];
@@ -103,7 +110,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     })
   };
   driverData = {
-    name:[''],
+    name: [''],
     email: ['', [Validators.required]],
     passport: ['', [Validators.required]],
     birthday: ['', [Validators.required]],
@@ -197,7 +204,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   buildForm(key: string) {
     this.registerForm = this.fb.group(this[key]);
-    if(key !== 'userData'){
+    if (key !== 'userData') {
       this.registerForm.patchValue(this.registeredUser);
     }
     console.log(this.registerForm);
@@ -207,10 +214,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if (!event.value) {
       return;
     }
-    console.log(this.registerForm.get('car_attributes').get('brand').value.value);
     const subscription = this.carsService.getModels(this.registerForm.get('car_attributes').get('category').value, this.registerForm.get('car_attributes').get('brand').value.value).subscribe(
       res => {
         this.models = res;
+        this.models.unshift({
+          name: 'Оберіть модель',
+          value: null
+        })
       },
       errorRes => {
         console.log(errorRes);
@@ -232,6 +242,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(subscription);
   }
+
   onSubmit() {
     this.registerForm.value.phone = this.registerForm.value.phone.replace(/[+-]/g, '');
     const subscription = this.auth.register(this.registerForm.value).subscribe(
@@ -244,6 +255,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(subscription);
   }
+
   setCategory(event: any) {
     console.log(event);
     this.registerForm.get('car_attributes').get('category').setValue(event);
@@ -251,6 +263,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
       res => {
         this.transportDialog = !this.transportDialog;
         this.brand = res;
+        this.brand.unshift({
+          name: 'Оберіть марку',
+          value: null
+        });
       },
       errorRes => {
         console.log(errorRes);
@@ -258,17 +274,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(subscription);
   }
-  toggleTransportDialog(){
+  toggleTransportDialog() {
     this.transportDialog = !this.transportDialog;
   }
   setTestData() {
     this.registerForm.patchValue({ "name": "Company", "ownership": "TOV", "other_ownership": "", "id_code": "", "zkpo": "12345678", "tax_form": "pdv", "passport": "АН255346", "official_address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "physical_address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "director": { "name": "Бембенок Богдан Васильович", "phone": "+380-11-1111-111" }, "liable": { "name": "Бембенок Інна Миколаївна", "phone": "+380-11-1111-112" }, "static_phone": "222260", "role": "company" });
     console.log(this.registerForm.value);
   }
-  getFormattedAddress(event: any, formcontrol: string, type:string) {
-    if(type == 'city'){
+  getFormattedAddress(event: any, formcontrol: string, type: string) {
+    if (type == 'city') {
       this.registerForm.get(formcontrol).get('label').setValue(`${event.city}, ${event.state}`);
-    } else{
+    } else {
       this.registerForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
     }
     this.registerForm.get(formcontrol).get('lat').setValue(event.lat);
