@@ -16,23 +16,23 @@ import { AppComponent } from './app.component';
 
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        NoopAnimationsModule,
-        NgbModule.forRoot(),
-        CoreModule,
-        HomeModule,
-        AppRoutingModule,
-        AuthModule,
-        ProfileModule,
-        SharedModule
-    ],
-    declarations: [
-        AppComponent
-    ],
-    providers: [DatePipe],
-    exports: [AppComponent],
-    entryComponents: [AppComponent],
-    bootstrap: [AppComponent]
+  imports: [
+    SharedModule,
+    BrowserModule,
+    NoopAnimationsModule,
+    NgbModule.forRoot(),
+    CoreModule,
+    HomeModule,
+    AppRoutingModule,
+    AuthModule,
+    ProfileModule
+  ],
+  declarations: [
+    AppComponent
+  ],
+  providers: [DatePipe],
+  exports: [AppComponent],
+  entryComponents: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

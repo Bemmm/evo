@@ -17,14 +17,10 @@ import {
 import {
   Subscription
 } from 'rxjs/Subscription';
-
 import {
   UserModel,
   CompanyModel
 } from 'app/shared/models';
-import {
-  matchValidatorCreate
-} from 'app/shared/validators';
 import {
   AuthService,
   AuthErrorsService,
@@ -36,13 +32,7 @@ import {
 import {
   successRegistration
 } from 'app/shared/constants/messages';
-import {
-  MapsAPILoader
-} from '@agm/core/services/maps-api-loader/maps-api-loader';
-import { } from 'googlemaps';
-import {
-  Address
-} from 'angular-google-place';
+
 import { OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES } from 'app/shared/constants/';
 import { TransportCategoryModel, ModelModel, BrandModel } from 'app/shared/models/'
 
@@ -55,7 +45,7 @@ import { TransportCategoryModel, ModelModel, BrandModel } from 'app/shared/model
 
 export class RegisterComponent implements OnInit, OnDestroy {
   addressOptions = {
-    type: 'address',
+    type: '(address)',
     componentRestrictions: {
       country: 'UA'
     }
@@ -160,7 +150,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private authErrors: AuthErrorsService,
     private router: Router,
     private userService: UserService,
-    private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private api: ApiService,
     private carsService: CarsService

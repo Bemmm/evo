@@ -1,9 +1,9 @@
 .ui-inputtext.ui-state-focus, .ui-inputtext:focus{
   box-shadow: 0;
 }
-p-dropdown{
+p-dropdown, p-multiselect{
   width: 100% !important;
-  .ui-dropdown{
+  .ui-dropdown, .ui-multiselect{
     width:100% !important;
     border: 0;
     border-bottom: 1px solid $evo-grey;

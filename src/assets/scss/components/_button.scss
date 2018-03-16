@@ -4,7 +4,7 @@
   .evo-button{
     display: block;
     color: #6c6750;
-    background: #fed803;
+    background: $evo-yellow;
     font-family: 'Roboto';
     border: 0;
     font-size: 20px;
@@ -12,6 +12,14 @@
     padding: 15px 25px;
     min-width: 200px;
     outline: none !important;
+    margin:auto;
+    &__square{
+      border-radius: 0;
+      min-width: 100%;
+      padding: 5px;
+      margin: 10px 0;
+      background:$evo-yellow;
+    }
     &.category{
       width: 50px;
       font-size: 14px;

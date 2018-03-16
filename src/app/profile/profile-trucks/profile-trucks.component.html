@@ -1,6 +1,4 @@
-<div class="form-group flex-row right">
-  <button class="evo-button small" (click)="addTruck()">Додати евакуатор</button>
-</div>
+<button class="evo-button evo-button__square" (click)="addTruck()">Додати евакуатор</button>
 <div *ngIf="!trucks.length">У вас ще немає жодного евакуатора</div>
 <p-table [columns]="cols" [(value)]="trucks" [responsive]="true" *ngIf="trucks.length">
   <ng-template pTemplate="header">
@@ -53,19 +51,19 @@
   <p-column field="address.label" header="Місцезнаходження"></p-column>
 </p-dataTable> -->
 
-<p-dialog class="add-truck" header="Додавання евакуатора" [(visible)]="truckDialog" [width]="500" [baseZIndex]="9999" (onHide)="clearForm()">
+<p-dialog class="add-truck" header="Додавання евакуатора" [(visible)]="truckDialog" (onHide)="clearForm()">
   <form [formGroup]="truckForm" (ngSubmit)="submitCreation(truckForm.editMode ? 'editMode': 'addMode')">
     <div class="flex-row center-between">
       <div class="form-group">
-        <span class="ui-float-label blue">
-          <input pInputText id="name" formControlName="registration_number" class="form-control evo-input" type="text">
+        <span class="ui-float-label blue evo-input">
+          <input pInputText id="name" formControlName="registration_number" class="form-control " type="text">
           <label for="registration_number">Реєстраційний номер</label>
         </span>
         <validation-messages [control]="truckForm.controls.registration_number"></validation-messages>
       </div>
       <div class="form-group">
-        <span class="ui-float-label blue">
-          <input pInputText NumberOnly id="name" formControlName="passengers_count" class="form-control evo-input" type="text">
+        <span class="ui-float-label blue evo-input">
+          <input pInputText NumberOnly id="name" formControlName="passengers_count" class="form-control " type="text">
           <label for="passengers_count">Кількість пасажирських місць</label>
         </span>
         <validation-messages [control]="truckForm.controls.passengers_count"></validation-messages>
@@ -74,15 +72,15 @@
 
     <div class="flex-row center-between">
       <div class="form-group">
-        <span class="ui-float-label blue">
-          <input pInputText NumberOnly id="name" formControlName="weight_limit" class="form-control evo-input" type="text">
+        <span class="ui-float-label blue evo-input">
+          <input pInputText NumberOnly id="name" formControlName="weight_limit" class="form-control " type="text">
           <label for="weight_limit">Вантажопідйомність(кг)</label>
         </span>
         <validation-messages [control]="truckForm.controls.weight_limit"></validation-messages>
       </div>
       <div class="form-group">
-        <span class="ui-float-label blue">
-          <input pInputText id="price" formControlName="price" class="form-control evo-input" type="text">
+        <span class="ui-float-label blue evo-input">
+          <input pInputText id="price" formControlName="price" class="form-control " type="text">
           <label for="price">Ціна за кілометр</label>
         </span>
         <validation-messages [control]="truckForm.controls.price"></validation-messages>
@@ -90,13 +88,13 @@
     </div>
     <div formGroupName="car_attributes">
       <div class="form-group">
-        <p-dropdown class="dropdown__blue" [options]="brands" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)"
+        <p-dropdown class="evo-dropdown" [options]="brands" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)"
           optionLabel="name"></p-dropdown>
         <validation-messages [control]="truckForm.controls.car_attributes.controls.brand"></validation-messages>
 
       </div>
       <div class="form-group">
-        <p-dropdown class="dropdown__blue" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
+        <p-dropdown class="evo-dropdown" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
         <validation-messages [control]="truckForm.controls.car_attributes.controls.model"></validation-messages>
       </div>
     </div>
@@ -104,21 +102,21 @@
 
 
     <div *ngIf="loggedUser.role == 'company' " class="form-group">
-      <p-dropdown class="dropdown__blue" [(options)]="drivers" formControlName="company_user_id" optionLabel="name"></p-dropdown>
+      <p-dropdown class="evo-dropdown" [(options)]="drivers" formControlName="company_user_id" optionLabel="name"></p-dropdown>
       <validation-messages [control]="truckForm.controls.company_user_id"></validation-messages>
 
     </div>
 
 
     <div class="form-group">
-      <p-multiSelect class="dropdown__blue" [options]="transportCategories" [maxSelectedLabels]="5" [defaultLabel]="'Типи транспорту для перевезення'"
+      <p-multiSelect class="evo-dropdown" [options]="transportCategories" [maxSelectedLabels]="5" [defaultLabel]="'Типи транспорту для перевезення'"
         [displaySelectedLabel]="true" formControlName="car_types" optionLabel="name"></p-multiSelect>
       <validation-messages [control]="truckForm.controls.car_types"></validation-messages>
 
     </div>
     <div class="form-group" formGroupName="address">
-      <span class="ui-float-label blue">
-        <input type="text" formControlName="label" class="form-control evo-input" [options]='citiesOptions' (FormatAddress)="getFormattedAddress($event, 'address')"
+      <span class="ui-float-label blue evo-input">
+        <input type="text" formControlName="label" class="form-control " [options]='citiesOptions' (FormatAddress)="getFormattedAddress($event, 'address')"
           (street_number)='street_number=$event' (street)='street=$event' (city)='city=$event' (state)='state=$event' (district)='district=$event'
           (country)='country=$event' (postal_code)='postal_code=$event' (lat)='lat=$event' (lng)='lng=$event' (adr_address)='adr_address=$event'
           (name)='name=$event' (place_id)='place_id=$event' (types)='types=$event' (url)='url=$event' (utc_offset)='utc_offset=$event'
@@ -130,8 +128,8 @@
     </div>
 
     <div class="form-group">
-      <span class="ui-float-label blue textarea">
-        <textarea [rows]="3" pInputTextarea id="description" formControlName="description" class="form-control evo-input" placeholder="Примітка для клієнтів"></textarea>
+      <span class="ui-float-label blue evo-input textarea">
+        <textarea [rows]="3" pInputTextarea id="description" formControlName="description" class="form-control " placeholder="Примітка для клієнтів"></textarea>
       </span>
       <validation-messages [control]="truckForm.controls.description"></validation-messages>
     </div>
@@ -139,8 +137,6 @@
     <div class="form-group flex-row right">
       <button *ngIf="!truckForm.editMode" class="evo-button" type="submit">Додати</button>
       <button *ngIf="truckForm.editMode && truckForm.valid" class="evo-button" type="submit">Зберегти</button>
-
-      <div (click)="setTest()">TEST</div>
     </div>
   </form>
   <div class="clearfix"></div>

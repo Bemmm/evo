@@ -3,7 +3,7 @@
   position: relative;
   font-family: 'Roboto';
   agm-map {
-    height: 90vh;
+    height: 95vh;
     flex: 6 7;
   }
   &__form {
@@ -74,11 +74,11 @@
         margin-top: -45px;
         position: relative;
         box-shadow: 0 -20px 30px -10px rgba(173, 173, 173, 0.28);
-        &-info{
+        &-info {
           color: #d9d9d9;
           padding-top: 20px;
         }
-        &-space{
+        &-space {
           position: absolute;
           width: 88%;
           top: -8px;
@@ -107,50 +107,47 @@
           right: -50px;
           transform: rotateX(180deg);
         }
-
         button {
           // border-top: 10px solid #fff;
           padding: 15px 25px;
           min-width: 245px;
           z-index: 9999;
           position: relative;
-          &.speak{
+          &.speak {
             z-index: 1;
           }
         }
       }
     }
   }
+  &__truck {
+    padding: 20px 40px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: #fff;
+    &-title {
+      font-family: 'Roboto';
+      font-size: 25px;
+      color: $evo-text;
+    }
+    &-image {
+      width: 100%;
+      text-align: center;
+      max-width: 200px;
+      img{
+      }
+    }
+    &-number {
+      width: 100%;
+      text-align: center;
+      border: 1px solid $evo-grey-border;
+      height: 100%;
+      display: block;
+      padding: 20px;
+      border-radius: 5px;
+      color: #a9a9a9;
+      max-width: 150px;
+    }
+  }
 }
-
-//   &__search {
-//     flex: 1 7;
-//     box-shadow: -5px 0 20px 0px #b9b9b9;
-//     z-index: 1;
-//     .title {
-//       text-align: center;
-//       color: $evo-grey-dark;
-//       font-size: 23px;
-//       font-weight: 400;
-//       margin-bottom: 20px;
-//     }
-//     &--form {
-//       &--submit {
-//         @include evo-primary-gradient;
-//         cursor: pointer;
-//         border-width: 1px;
-//         border-style: solid;
-//         border-color: transparent;
-//         border-radius: 3px;
-//         font-weight: 300;
-//         font-size: 17px;
-//         color: #fff;
-//         padding: 15px;
-//         width: $base-width;
-//         &:hover {
-//           @include evo-primary-reverse;
-//         }
-//       }
-//     }
-//   }
-// }

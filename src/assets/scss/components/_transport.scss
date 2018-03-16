@@ -2,6 +2,13 @@
   .ui-dialog-content {
     padding: 0 !important;
   }
+}
+.add-truck {
+  .ui-dialog-content {
+    padding: 10px !important;
+  }
+}
+.transport-dialog, .add-truck {
   &__content {
     &-item {
       text-align: left;

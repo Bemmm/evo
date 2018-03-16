@@ -7,27 +7,43 @@
         </ng-template>
       </agm-snazzy-info-window>
     </agm-marker>
+
+      <agm-marker *ngFor="let truck of trucks" (markerClick)="showTruckInfo(this.truck)" [latitude]="convertToNumber(truck.address.lat)" [longitude]="convertToNumber(truck.address.lng)">
+      </agm-marker>
   </agm-map>
 
-<form class="evo-map__form">
-  <div class="evo-map__form-search">
-      <button class="evo-map__form-search-button clean" (click)="clearInput()"><i class="material-icons">close</i></button>
+
+  <form class="evo-map__form" (ngSubmit)="searchTrucks()">
+    <div class="evo-map__form-search">
+      <button class="evo-map__form-search-button clean" (click)="clearInput()">
+        <i class="material-icons">close</i>
+      </button>
       <input type="text" name="searchInput" [(ngModel)]="searchInput" class="form-control" [options]='addressOptions' (FormatAddress)="getFormattedAddress($event, 'where', 'address')"
-      (street_number)='street_number=$event' (street)='street=$event' (city)='city=$event' (state)='state=$event' (district)='district=$event'
-      (country)='country=$event' (postal_code)='postal_code=$event' (lat)='lat=$event' (lng)='lng=$event' (adr_address)='adr_address=$event'
-      (name)='name=$event' (place_id)='place_id=$event' (types)='types=$event' (url)='url=$event' (utc_offset)='utc_offset=$event'
-      (vicinity)='vicinity=$event' (photos)='photos=$event' (CountryCodes)='CountryCodes=$event' placeholder=" " id="city"
-      angularGooglePlace pInputText/>
-      <button class="evo-map__form-search-button speak"><i class="material-icons">mic_none</i></button>
-  </div>
-  <div class="evo-map__form-request">
+        (street_number)='street_number=$event' (street)='street=$event' (city)='city=$event' (state)='state=$event' (district)='district=$event'
+        (country)='country=$event' (postal_code)='postal_code=$event' (lat)='lat=$event' (lng)='lng=$event' (adr_address)='adr_address=$event'
+        (name)='name=$event' (place_id)='place_id=$event' (types)='types=$event' (url)='url=$event' (utc_offset)='utc_offset=$event'
+        (vicinity)='vicinity=$event' (photos)='photos=$event' (CountryCodes)='CountryCodes=$event' placeholder=" " id="city"
+        angularGooglePlace pInputText/>
+      <button class="evo-map__form-search-button speak">
+        <i class="material-icons">mic_none</i>
+      </button>
+    </div>
+    <div class="evo-map__form-request" *ngIf="!selectedTruck">
       <div class="evo-map__form-request-wrapper">
         <div class="evo-map__form-request-wrapper-space"></div>
-        <button class="evo-button">Замовити</button>
+        <button class="evo-button">Шукати</button>
         <div class="evo-map__form-request-wrapper-info">3 евакутора поруч</div>
       </div>
+    </div>
+  </form>
+
+  <div class="evo-map__truck" *ngIf="selectedTruck">
+    <h1 class="evo-map__truck-title">{{selectedTruck.car_attributes.brand.name}} {{selectedTruck.car_attributes.model.name}}</h1>
+    <div class="flex-row center-left">
+      <div class="evo-map__truck-image"><img width="100%" src="https://101clipart.com/wp-content/uploads/12/Truck%20Clipart%20Top%20View%2003.jpg" alt=""></div>
+      <div class="evo-map__truck-number">{{selectedTruck.registration_number}}</div>
+    </div>
   </div>
-</form>
 
   <div class="clearfix"></div>
 </div>

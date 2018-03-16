@@ -107,15 +107,14 @@
     </div>
   </form>
 
-  <div class="registration__step" *ngIf="helperModel.ownership == 'corporate' && (helperModel.ownership !== 'drivers' || helperModel.ownership !== 'companies')">
-    <button class="registration__step--button" (click)="changeOwnership('drivers')">Власник евакуатора</button>
-    <button class="registration__step--button" (click)="changeOwnership('companies')">Евакуаторна служба</button>
+  <div class="evo-register__step" *ngIf="helperModel.ownership == 'corporate' && (helperModel.ownership !== 'drivers' || helperModel.ownership !== 'companies')">
+    <button class="evo-button" (click)="changeOwnership('drivers')">Власник евакуатора</button>
+    <button class="evo-button" (click)="changeOwnership('companies')">Евакуаторна служба</button>
   </div>
 
 
   <form autocomplete="off" class="evo-register__form small evo-form" novalidate *ngIf="helperModel.ownership == 'drivers'"
     [formGroup]="registerForm" (ngSubmit)="onSubmitAdditionals('drivers')">
-    <h1 class="title">Реєстрація водія</h1>
     <div class="row">
       <div class="col-md-12 text-center">
         <div class="form-group">
@@ -151,7 +150,7 @@
         </div>
 
         <div class="form-group">
-          <button  [disabled]="registerForm.invalid" class="evo-register__form--submit"  type="submit">Підтвердити</button>
+          <button  [disabled]="registerForm.invalid" class="evo-button"  type="submit">Підтвердити</button>
         </div>
 
       </div>
@@ -161,7 +160,6 @@
 
   <form autocomplete="off" class="evo-register__form big evo-form" novalidate *ngIf="helperModel.ownership == 'companies'"
     [formGroup]="registerForm" (ngSubmit)="onSubmitAdditionals('companies')">
-    <h1 class="title">Реєстрація компанії</h1>
     <div class="row">
       <div class="col-md-12 text-center">
         <div class="flex-row center-between">

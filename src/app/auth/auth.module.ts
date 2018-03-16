@@ -11,8 +11,8 @@ import { LoginComponent } from './login/login.component';
 
 @NgModule({
     imports: [
-        AuthRoutingModule,
         SharedModule,
+        AuthRoutingModule,
         CoreModule
     ],
     declarations: [
