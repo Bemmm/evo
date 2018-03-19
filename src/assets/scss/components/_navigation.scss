@@ -1,8 +1,6 @@
-$button-size:70px;
-$parabola-margin: 23px;
-$parabola-margin-top: -20px;
 .navigation_bar {
-  height: 125px;
+  height: $navbar_height;
+  min-height: $navbar_height;
   background-color: $evo-grey-background;
   display: flex;
   align-items: center;

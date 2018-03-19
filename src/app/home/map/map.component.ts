@@ -353,10 +353,11 @@ export class MapComponent implements OnInit {
     this.searchInput = '';
   }
   getAddress(event:any, formControl:any){
-    console.log(formControl);
+    this.helperModel.longitude = event.geometry.location.lng();
+    this.helperModel.latitude = event.geometry.location.lat();
     this.searchForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
-    this.searchForm.get(formControl).get('lat').setValue(event.location.lat);
-    this.searchForm.get(formControl).get('lng').setValue(event.location.lng);
+    this.searchForm.get(formControl).get('lat').setValue(event.geometry.location.lat);
+    this.searchForm.get(formControl).get('lng').setValue(event.geometry.location.lng);
   }
   buildForm() {
     this.searchForm = this.fb.group(this.searchModel);
@@ -371,5 +372,8 @@ export class MapComponent implements OnInit {
   showTruckInfo(truck:Object){
     this.selectedTruck = truck;
     console.log(truck);
+  }
+  closeTruckInfo(){
+    this.selectedTruck = undefined;
   }
 }

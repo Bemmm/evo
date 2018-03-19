@@ -3,8 +3,9 @@
   position: relative;
   font-family: 'Roboto';
   agm-map {
-    height: 95vh;
-    flex: 6 7;
+    height: 100%;
+    min-height: 100%;
+    width:100%;
   }
   &__form {
     &-search {
@@ -23,7 +24,6 @@
         border: 0;
         box-shadow: none;
         border-radius: 0;
-        border: 0;
       }
       &-button {
         background: #fff;
@@ -127,11 +127,30 @@
     width: 100%;
     bottom: 0;
     background: #fff;
+    &-close{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      right: 15px;
+      width: 50px;
+      background: $evo-grey-background;
+      height: 50px;
+      top: 10px;
+      border-radius: 50%;
+      i{
+        font-size: 29px;
+      }
+    }
     &-title {
       font-family: 'Roboto';
       font-size: 25px;
       color: $evo-text;
       font-weight: 400;
+    }
+    &-details{
+      color:$evo-grey-background-text;
+      margin: 10px 0;
     }
     &-image {
       width: 100%;

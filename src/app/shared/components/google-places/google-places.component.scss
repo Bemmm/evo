@@ -1,6 +1,10 @@
 // component css goes here
-.form-control {
+.form-control,
+input {
   box-shadow: none;
   border-radius: 0;
-  border: 0;
+  &:focus{
+    box-shadow: none !important;
+    outline: 0;
+  }
 }

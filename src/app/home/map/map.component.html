@@ -18,13 +18,7 @@
       <button class="evo-map__form-search-button clean" (click)="clearInput()">
         <i class="material-icons">close</i>
       </button>
-      <google-places class="form-control" [type]="'address'" (locationData)="getAddress($event, 'searchInput')"></google-places>
-      <!-- <input type="text" name="searchInput" [(ngModel)]="searchInput" class="form-control" [options]='addressOptions' (FormatAddress)="getFormattedAddress($event, 'where', 'address')" -->
-        <!-- (street_number)='street_number=$event' (street)='street=$event' (city)='city=$event' (state)='state=$event' (district)='district=$event'
-        (country)='country=$event' (postal_code)='postal_code=$event' (lat)='lat=$event' (lng)='lng=$event' (adr_address)='adr_address=$event'
-        (name)='name=$event' (place_id)='place_id=$event' (types)='types=$event' (url)='url=$event' (utc_offset)='utc_offset=$event'
-        (vicinity)='vicinity=$event' (photos)='photos=$event' (CountryCodes)='CountryCodes=$event' placeholder=" " id="city"
-        angularGooglePlace pInputText/> -->
+      <google-places class="form-control" [type]="'address'" (locationData)="getAddress($event, 'where')"></google-places>
       <button class="evo-map__form-search-button speak">
         <i class="material-icons">mic_none</i>
       </button>
@@ -39,15 +33,19 @@
   </form>
 
   <div class="evo-map__truck" *ngIf="selectedTruck">
+    <div class="evo-map__truck-close" (click)="closeTruckInfo()">  
+      <i class="material-icons">close</i>
+    </div>
     <h1 class="evo-map__truck-title">{{selectedTruck.car_attributes.brand.name}} {{selectedTruck.car_attributes.model.name}}</h1>
-    <h5>
-      <span *ngFor="let type of selectedTruck.car_types">{{type.name}}, </span>
+    <h5 class="evo-map__truck-details">
+      <span *ngFor="let type of selectedTruck.car_types">{{type.name}} </span>
       <span> | {{selectedTruck.passengers_count}} місць</span>
     </h5>
     <div class="flex-row center-left">
       <div class="evo-map__truck-image"><img width="100%" src="https://101clipart.com/wp-content/uploads/12/Truck%20Clipart%20Top%20View%2003.jpg" alt=""></div>
       <div class="evo-map__truck-number">{{selectedTruck.registration_number}}</div>
     </div>
+    <button class="evo-button">Зателефонувати</button>
   </div>
 
   <div class="clearfix"></div>
