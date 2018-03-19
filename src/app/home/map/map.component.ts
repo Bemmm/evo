@@ -36,12 +36,6 @@ import { CarsService } from 'app/core/services';
 })
 
 export class MapComponent implements OnInit {
-  addressOptions = {
-    types: ['address'],
-    componentRestrictions: {
-      country: 'UA'
-    }
-  };
   searchInput: '';
   searchForm: FormGroup;
   helperModel: any = {
@@ -358,14 +352,11 @@ export class MapComponent implements OnInit {
   clearInput() {
     this.searchInput = '';
   }
-  getFormattedAddress(event: any, formcontrol: string, type: string) {
-    if (type == 'city') {
-      this.searchForm.get(formcontrol).get('label').setValue(`${event.city}, ${event.state}`);
-    } else {
-      this.searchForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
-    }
-    this.searchForm.get(formcontrol).get('lat').setValue(event.lat);
-    this.searchForm.get(formcontrol).get('lng').setValue(event.lng);
+  getAddress(event:any, formControl:any){
+    console.log(formControl);
+    this.searchForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
+    this.searchForm.get(formControl).get('lat').setValue(event.location.lat);
+    this.searchForm.get(formControl).get('lng').setValue(event.location.lng);
   }
   buildForm() {
     this.searchForm = this.fb.group(this.searchModel);

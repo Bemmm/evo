@@ -151,10 +151,11 @@ export class ProfileTrucksComponent {
       })
     }
   }
-  getFormattedAddress(event: any, formcontrol: string) {
-    this.truckForm.get(formcontrol).get('label').setValue(`${event.street? event.street+',' : ''} ${event.street_number ? event.street_number + ',' : ''} ${event.city}, ${event.state}`);
-    this.truckForm.get(formcontrol).get('lat').setValue(event.lat);
-    this.truckForm.get(formcontrol).get('lng').setValue(event.lng);
+  getAddress(event:any, formControl:any){
+    console.log(event);
+    this.truckForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
+    this.truckForm.get(formControl).get('lat').setValue(event.geometry.location.lat());
+    this.truckForm.get(formControl).get('lng').setValue(event.geometry.location.lng());
   }
   setTest() {
     // this.truckForm.patchValue({ "registration_number": "АН25522ФА", "car_attributes": { "category": "4", "brand": { "name": "TATA", "value": 78 }, "model": { "name": "LPT", "value": 2239 } }, "address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "passengers_count": "3", "weight_limit": "600", "type": "wrecker", "photo": "1", "price": "12", "description": "ТРАТАРАТА" });

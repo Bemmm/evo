@@ -1,6 +1,4 @@
-<div class="form-group flex-row right">
-  <button class="evo-button small" (click)="addDriver()">Додати водія</button>
-</div>
+  <button class="evo-button evo-button__square" (click)="addDriver()">Додати водія</button>
 <div *ngIf="!drivers.length">Ви ще не додали жодного водія</div>
 <p-table [columns]="cols" [(value)]="drivers" [responsive]="true" *ngIf="drivers.length">
   <ng-template pTemplate="header">

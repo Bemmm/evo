@@ -15,12 +15,16 @@ button{
 }
 evo-login,
 evo-register,
-evo-home{
+evo-home,
+evo-profile{
     flex: 1;
     box-shadow: 0 15px 30px -3px rgba(173, 173, 173, 0.28);
     position: relative;
     height: 100%;
     overflow-y:auto;
+}
+.pac-container{
+  z-index: 99999;
 }
 .form-group{
     margin:50px 0;

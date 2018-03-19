@@ -1,288 +1,196 @@
-<form *ngIf="loggedUser.role == 'user'" autocomplete="off" class="updateForm small" novalidate [formGroup]="userInfoForm"
-  (ngSubmit)="updateUser()">
-  <div class="form-group">
-    <span class="ui-float-label evo-input">
-            <input pInputText id="name" formControlName="name" class="form-control" type="text">
-            <label for="name">Ім'я</label>
-          </span>
-    <validation-messages [control]="userInfoForm.controls.name"></validation-messages>
-  </div>
+<div class="container">
+  <form *ngIf="loggedUser.role == 'user'" autocomplete="off" class="updateForm small" novalidate [formGroup]="userInfoForm"
+    (ngSubmit)="updateUser()">
+    <div class="form-group">
+      <span class="ui-float-label evo-input">
+        <input pInputText id="name" formControlName="name" class="form-control" type="text">
+        <label for="name">Ім'я</label>
+      </span>
+      <validation-messages [control]="userInfoForm.controls.name"></validation-messages>
+    </div>
 
-  <div class="form-group">
-    <span class="ui-float-label evo-input">
-            <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control"></p-inputMask>
-            <label for="phone">Телефон</label>
-          </span>
-    <validation-messages [control]="userInfoForm.controls.phone"></validation-messages>
-  </div>
+    <div class="form-group">
+      <span class="ui-float-label evo-input">
+        <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control"></p-inputMask>
+        <label for="phone">Телефон</label>
+      </span>
+      <validation-messages [control]="userInfoForm.controls.phone"></validation-messages>
+    </div>
 
-  <div class="form-group">
-    <span class="ui-float-label evo-input">
-            <input pInputText id="email" formControlName="email" class="form-control" type="text">
-            <label for="email">Email</label>
-          </span>
-    <validation-messages [control]="userInfoForm.controls.email"></validation-messages>
-  </div>
-  <div formGroupName="car_attributes">
+    <div class="form-group">
+      <span class="ui-float-label evo-input">
+        <input pInputText id="email" formControlName="email" class="form-control" type="text">
+        <label for="email">Email</label>
+      </span>
+      <validation-messages [control]="userInfoForm.controls.email"></validation-messages>
+    </div>
+    <div formGroupName="car_attributes">
       <div class="evo-button category" (click)="showTransportDialog()">Змінити категорію</div>
       <p-dialog class="transport-dialog" header="Оберіть категорію транспорту" [(visible)]="transportDialog">
         <div class="transport-dialog__content">
-          <div *ngFor="let transport of transportCategories" [ngClass]="{'active':transport.value == userInfoForm.controls.car_attributes.controls.category.value}" class="transport-dialog__content-item" (click)="setCategory(this.transport.value)">
+          <div *ngFor="let transport of transportCategories" [ngClass]="{'active':transport.value == userInfoForm.controls.car_attributes.controls.category.value}"
+            class="transport-dialog__content-item" (click)="setCategory(this.transport.value)">
             <div>{{transport.name}}</div>
             <div class="transport-dialog__content-item-icon type{{transport.value}}"></div>
           </div>
         </div>
       </p-dialog>
 
-    <div class="form-group">
-      <p-dropdown class="dropdown__blue" [options]="brand" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)"
-        optionLabel="name"></p-dropdown>
-      <validation-messages [control]="userInfoForm.controls.car_attributes.controls.brand"></validation-messages>
+      <div class="form-group">
+        <p-dropdown class="dropdown__blue" [options]="brand" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)"
+          optionLabel="name"></p-dropdown>
+        <validation-messages [control]="userInfoForm.controls.car_attributes.controls.brand"></validation-messages>
+      </div>
+
+      <div class="form-group">
+        <p-dropdown class="dropdown__blue" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
+        <validation-messages [control]="userInfoForm.controls.car_attributes.controls.model"></validation-messages>
+      </div>
+
     </div>
 
-    <div class="form-group">
-      <p-dropdown class="dropdown__blue" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
-      <validation-messages [control]="userInfoForm.controls.car_attributes.controls.model"></validation-messages>
+    <div class="form-group text-center">
+      <button *ngIf="userInfoForm.touched" class="evo-button" type="submit">Зберегти</button>
     </div>
 
-  </div>
-
-  <div class="form-group text-center">
-    <button *ngIf="userInfoForm.touched" class="evo-button" type="submit">Зберегти</button>
-  </div>
-
-</form>
-
-
-<!-- ___________________________________DRIVER________________________ -->
-
-  <form *ngIf="loggedUser.role == 'driver'" autocomplete="off" class="updateForm small" novalidate [formGroup]="userInfoForm" (ngSubmit)="updateUser()">
-
-        <div class="form-group">
-          <span class="ui-float-label evo-input">
-          <input pInputText id="name" formControlName="name" class="form-control" type="text">
-          <label for="name">ФІО</label>
-        </span>
-          <validation-messages [control]="userInfoForm.controls.name"></validation-messages>
-        </div>
-
-        <div class="form-group">
-          <span class="ui-float-label evo-input">
-          <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control"></p-inputMask>
-          <label for="phone">Телефон</label>
-        </span>
-          <validation-messages [control]="userInfoForm.controls.phone"></validation-messages>
-        </div>
-
-        <div class="form-group">
-          <span class="ui-float-label evo-input">
-          <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="1920:2018" [locale]="ua" formControlName="birthday" class="form-control"></p-calendar>
-          <label for="birthday">Дата народження</label>
-        </span>
-        </div>
-
-        <div class="form-group">
-          <span class="ui-float-label evo-input">
-          <input pInputText id="passport" formControlName="passport" class="form-control" type="text">
-          <label for="passport">Серія та номер паспорту</label>
-        </span>
-        </div>
-
-        <div class="form-group">
-          <span class="ui-float-label evo-input">
-          <input pInputText id="email" formControlName="email" class="form-control" type="text">
-          <label for="email">Email</label>
-        </span>
-          <validation-messages [control]="userInfoForm.controls.email"></validation-messages>
-        </div>
-
-        <div class="form-group" formGroupName="address">
-          <span class="ui-float-label evo-input">
-            <input type="text"
-            formControlName= "label"
-            class="form-control"
-            [options]='addressOptions'
-            (FormatAddress)="getFormattedAddress($event, 'address')"
-            (street_number) = 'street_number=$event'
-            (street)= 'street=$event'
-            (city)= 'city=$event'
-            (state)='state=$event'
-            (district)='district=$event'
-            (country)='country=$event'
-            (postal_code)='postal_code=$event'
-            (lat)='lat=$event'
-            (lng)='lng=$event'
-            (adr_address)='adr_address=$event'
-            (name)='name=$event'
-            (place_id)='place_id=$event'
-            (types)='types=$event'
-            (url)='url=$event'
-            (utc_offset)='utc_offset=$event'
-            (vicinity)='vicinity=$event'
-            (photos)='photos=$event'
-            (CountryCodes)='CountryCodes=$event'
-            placeholder=" "
-            id="address"
-            angularGooglePlace
-            pInputText/>
-            <label for="address">Фізична адреса</label>
-        </span>
-        </div>
-
-        <div class="form-group text-center">
-          <button *ngIf="userInfoForm.touched" class="evo-button" type="submit">Зберегти</button>
-        </div>
   </form>
 
-<!-- ______________________________________COMPANY______________________________- -->
-<div class="flex-row" *ngIf="loggedUser.role == 'company'">
 
-  <form autocomplete="off" class="evo-register__form big evo-form" novalidate [formGroup]="userInfoForm" (ngSubmit)="updateUser()">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <div class="flex-row center-between">
+  <!-- ___________________________________DRIVER________________________ -->
+
+  <form *ngIf="loggedUser.role == 'driver'" autocomplete="off" class="updateForm small" novalidate [formGroup]="userInfoForm"
+    (ngSubmit)="updateUser()">
+
+    <div class="form-group">
+      <span class="ui-float-label evo-input">
+        <input pInputText id="name" formControlName="name" class="form-control" type="text">
+        <label for="name">ФІО</label>
+      </span>
+      <validation-messages [control]="userInfoForm.controls.name"></validation-messages>
+    </div>
+
+    <div class="form-group">
+      <span class="ui-float-label evo-input">
+        <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control"></p-inputMask>
+        <label for="phone">Телефон</label>
+      </span>
+      <validation-messages [control]="userInfoForm.controls.phone"></validation-messages>
+    </div>
+
+    <div class="form-group">
+      <span class="ui-float-label evo-input">
+        <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="1920:2018" [locale]="ua" formControlName="birthday"
+          class="form-control"></p-calendar>
+        <label for="birthday">Дата народження</label>
+      </span>
+    </div>
+
+    <div class="form-group">
+      <span class="ui-float-label evo-input">
+        <input pInputText id="passport" formControlName="passport" class="form-control" type="text">
+        <label for="passport">Серія та номер паспорту</label>
+      </span>
+    </div>
+
+    <div class="form-group">
+      <span class="ui-float-label evo-input">
+        <input pInputText id="email" formControlName="email" class="form-control" type="text">
+        <label for="email">Email</label>
+      </span>
+      <validation-messages [control]="userInfoForm.controls.email"></validation-messages>
+    </div>
+
+    <div class="form-group" formGroupName="address">
+      <google-places [type]="'(cities)'" [label]="{en:'city', ua:'Місто'}" (locationData)="getAddress($event, 'address')"></google-places>
+    </div>
+
+    <div class="form-group text-center">
+      <button *ngIf="userInfoForm.touched" class="evo-button" type="submit">Зберегти</button>
+    </div>
+  </form>
+
+  <!-- ______________________________________COMPANY______________________________- -->
+    <form *ngIf="loggedUser.role == 'company'" autocomplete="off" class="updateForm" novalidate [formGroup]="userInfoForm" (ngSubmit)="updateUser()">
+      <div class="row">
+        <div class="col-md-12 text-center">
           <div class="form-group ">
             <span class="ui-float-label evo-input">
-        <input pInputText id="title" formControlName="title" class="form-control" type="text">
-        <label for="title">Назва компанії</label>
-      </span>
+              <input pInputText id="title" formControlName="title" class="form-control" type="text">
+              <label for="title">Назва компанії</label>
+            </span>
           </div>
           <div class="form-group">
             <p-dropdown class="dropdown__blue" [options]="ownershipTypes" formControlName="ownership"></p-dropdown>
           </div>
-        </div>
-        <div class="form-group" *ngIf="userInfoForm.get('ownership').value === 'OTHER'">
-          <span class="ui-float-label evo-input">
-        <input pInputText id="other_ownership" formControlName="other_ownership" class="form-control" type="text">
-        <label for="other_ownership">Інша форма реєстрації</label>
-      </span>
-        </div>
-        <div class="form-group" *ngIf="userInfoForm.get('ownership').value === 'FOP'">
-          <span class="ui-float-label evo-input">
-        <p-inputMask pInputText mask="9999999999" id="id_code" formControlName="id_code" class="form-control"></p-inputMask>
-        <label for="id_code">Ідентифікаційний код</label>
-      </span>
-        </div>
-        <div class="flex-row center-between">
+          <div class="form-group" *ngIf="userInfoForm.get('ownership').value === 'OTHER'">
+            <span class="ui-float-label evo-input">
+              <input pInputText id="other_ownership" formControlName="other_ownership" class="form-control" type="text">
+              <label for="other_ownership">Інша форма реєстрації</label>
+            </span>
+          </div>
+          <div class="form-group" *ngIf="userInfoForm.get('ownership').value === 'FOP'">
+            <span class="ui-float-label evo-input">
+              <p-inputMask pInputText mask="9999999999" id="id_code" formControlName="id_code" class="form-control"></p-inputMask>
+              <label for="id_code">Ідентифікаційний код</label>
+            </span>
+          </div>
           <div class="form-group" *ngIf="userInfoForm.get('ownership').value !== 'FOP'">
             <span class="ui-float-label evo-input">
-        <p-inputMask pInputText mask="99999999" id="zkpo" formControlName="zkpo" class="form-control"></p-inputMask>
-        <label for="zkpo">Код ЗКПО</label>
-      </span>
+              <p-inputMask pInputText mask="99999999" id="zkpo" formControlName="zkpo" class="form-control"></p-inputMask>
+              <label for="zkpo">Код ЗКПО</label>
+            </span>
           </div>
           <div class="form-group">
             <p-dropdown class="dropdown__blue" [options]="taxFormTypes" formControlName="tax_form"></p-dropdown>
           </div>
-        </div>
-        <div class="flex-row center-between">
           <div class="form-group" formGroupName="official_address" *ngIf="userInfoForm.get('ownership').value !== 'FOP'">
-            <span class="ui-float-label evo-input">
-            <input type="text"
-            formControlName= "label"
-            class="form-control"
-            [options]='addressOptions'
-            (FormatAddress)="getFormattedAddress($event, 'official_address')"
-            (street_number) = 'street_number=$event'
-            (street)= 'street=$event'
-            (city)= 'city=$event'
-            (state)='state=$event'
-            (district)='district=$event'
-            (country)='country=$event'
-            (postal_code)='postal_code=$event'
-            (lat)='lat=$event'
-            (lng)='lng=$event'
-            (adr_address)='adr_address=$event'
-            (name)='name=$event'
-            (place_id)='place_id=$event'
-            (types)='types=$event'
-            (url)='url=$event'
-            (utc_offset)='utc_offset=$event'
-            (vicinity)='vicinity=$event'
-            (photos)='photos=$event'
-            (CountryCodes)='CountryCodes=$event'
-            placeholder=" "
-            id="official_address"
-            angularGooglePlace
-            pInputText/>
-            <label for="official_address">Юридична адреса</label>
-        </span>
+            <google-places [type]="'address'" [label]="{en:'official_address', ua:'Юридична адреса'}" (locationData)="getAddress($event, 'official_address')"></google-places>
           </div>
           <div class="form-group" formGroupName="physical_address">
-            <span class="ui-float-label evo-input">
-            <input type="text"
-            formControlName= "label"
-            class="form-control"
-            [options]='addressOptions'
-            (FormatAddress)="getFormattedAddress($event, 'physical_address')"
-            (street_number) = 'street_number=$event'
-            (street)= 'street=$event'
-            (city)= 'city=$event'
-            (state)='state=$event'
-            (district)='district=$event'
-            (country)='country=$event'
-            (postal_code)='postal_code=$event'
-            (lat)='lat=$event'
-            (lng)='lng=$event'
-            (adr_address)='adr_address=$event'
-            (name)='name=$event'
-            (place_id)='place_id=$event'
-            (types)='types=$event'
-            (url)='url=$event'
-            (utc_offset)='utc_offset=$event'
-            (vicinity)='vicinity=$event'
-            (photos)='photos=$event'
-            (CountryCodes)='CountryCodes=$event'
-            placeholder=" "
-            id="physical_address"
-            angularGooglePlace
-            pInputText/>
-          <!-- <input pInputText id="physical_address" #addressElement formControlName="label" class="form-control" type="text"> -->
-          <label for="physical_address">Фізична адреса</label>
-        </span>
+            <google-places [type]="'address'" [label]="{en:'physical_address', ua:'Фізична адреса'}" (locationData)="getAddress($event, 'physical_address')"></google-places>
           </div>
-        </div>
-        <div formGroupName="director" class="flex-row center-between">
-          <div class="form-group">
-            <span class="ui-float-label evo-input">
-          <input pInputText id="director_name" formControlName="name" class="form-control" type="text">
-          <label for="director_name">ФІО директора</label>
-        </span>
+          <div formGroupName="director">
+            <div class="form-group">
+              <span class="ui-float-label evo-input">
+                <input pInputText id="director_name" formControlName="name" class="form-control" type="text">
+                <label for="director_name">ФІО директора</label>
+              </span>
+            </div>
+            <div class="form-group">
+              <span class="ui-float-label evo-input">
+                <p-inputMask mask="+380-99-9999-999" pInputText id="director_phone" formControlName="phone" class="form-control"></p-inputMask>
+                <label for="director_phone">Телефон директора</label>
+              </span>
+            </div>
+          </div>
+          <div formGroupName="liable" *ngIf="userInfoForm.get('ownership').value !== 'FOP'">
+            <div class="form-group">
+              <span class="ui-float-label evo-input">
+                <input pInputText id="liable_name" formControlName="name" class="form-control" type="text">
+                <label for="liable_name">ФІО відповідальної особи</label>
+              </span>
+            </div>
+            <div class="form-group">
+              <span class="ui-float-label evo-input">
+                <p-inputMask mask="+380-99-9999-999" pInputText id="liable_phone" formControlName="phone" class="form-control"></p-inputMask>
+                <label for="liable_phone">Телефон відповідальної особи</label>
+              </span>
+            </div>
           </div>
           <div class="form-group">
             <span class="ui-float-label evo-input">
-              <p-inputMask mask="+380-99-9999-999" pInputText id="director_phone" formControlName="phone" class="form-control"></p-inputMask>
-              <label for="director_phone">Телефон директора</label>
+              <input pInputText id="static_phone" formControlName="static_phone" class="form-control" type="text">
+              <label for="static_phone">Стаціонарний телефон</label>
             </span>
           </div>
-        </div>
-        <div formGroupName="liable" class="flex-row center-between" *ngIf="userInfoForm.get('ownership').value !== 'FOP'">
-          <div class="form-group">
-            <span class="ui-float-label evo-input">
-          <input pInputText id="liable_name" formControlName="name" class="form-control" type="text">
-          <label for="liable_name">ФІО відповідальної особи</label>
-        </span>
-          </div>
-          <div class="form-group">
-            <span class="ui-float-label evo-input">
-              <p-inputMask mask="+380-99-9999-999" pInputText id="liable_phone" formControlName="phone" class="form-control"></p-inputMask>
-              <label for="liable_phone">Телефон відповідальної особи</label>
-            </span>
-          </div>
-        </div>
-        <div class="form-group">
-          <span class="ui-float-label evo-input">
-        <input pInputText id="static_phone" formControlName="static_phone" class="form-control" type="text">
-        <label for="static_phone">Стаціонарний телефон</label>
-      </span>
-        </div>
 
-        <div class="form-group text-center">
-          <button *ngIf="userInfoForm.touched" class="evo-button" type="submit">Зберегти</button>
-        </div>
+          <div class="form-group text-center">
+            <button *ngIf="userInfoForm.touched" class="evo-button" type="submit">Зберегти</button>
+          </div>
 
+        </div>
       </div>
-    </div>
 
-  </form>
+    </form>
 </div>
 <div class="clearfix"></div>

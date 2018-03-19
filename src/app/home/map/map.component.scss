@@ -23,6 +23,7 @@
         border: 0;
         box-shadow: none;
         border-radius: 0;
+        border: 0;
       }
       &-button {
         background: #fff;
@@ -130,6 +131,7 @@
       font-family: 'Roboto';
       font-size: 25px;
       color: $evo-text;
+      font-weight: 400;
     }
     &-image {
       width: 100%;

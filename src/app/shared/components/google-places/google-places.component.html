@@ -1,0 +1,8 @@
+<!--component html goes here -->
+<span *ngIf="label" class="ui-float-label evo-input">
+  <input id="{{label.en}}" type="text" #address class="form-control" placeholder="" pInputText>
+  <label for="{{label.en}}">{{label.ua}}</label>
+</span>
+<input *ngIf="!label" type="text" #address class="form-control" placeholder="" pInputText>
+
+

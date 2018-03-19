@@ -53,7 +53,6 @@
 
 <p-dialog class="add-truck" header="Додавання евакуатора" [(visible)]="truckDialog" (onHide)="clearForm()">
   <form [formGroup]="truckForm" (ngSubmit)="submitCreation(truckForm.editMode ? 'editMode': 'addMode')">
-    <div class="flex-row center-between">
       <div class="form-group">
         <span class="ui-float-label blue evo-input">
           <input pInputText id="name" formControlName="registration_number" class="form-control " type="text">
@@ -68,9 +67,7 @@
         </span>
         <validation-messages [control]="truckForm.controls.passengers_count"></validation-messages>
       </div>
-    </div>
 
-    <div class="flex-row center-between">
       <div class="form-group">
         <span class="ui-float-label blue evo-input">
           <input pInputText NumberOnly id="name" formControlName="weight_limit" class="form-control " type="text">
@@ -85,7 +82,6 @@
         </span>
         <validation-messages [control]="truckForm.controls.price"></validation-messages>
       </div>
-    </div>
     <div formGroupName="car_attributes">
       <div class="form-group">
         <p-dropdown class="evo-dropdown" [options]="brands" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)"
@@ -115,16 +111,7 @@
 
     </div>
     <div class="form-group" formGroupName="address">
-      <span class="ui-float-label blue evo-input">
-        <input type="text" formControlName="label" class="form-control " [options]='citiesOptions' (FormatAddress)="getFormattedAddress($event, 'address')"
-          (street_number)='street_number=$event' (street)='street=$event' (city)='city=$event' (state)='state=$event' (district)='district=$event'
-          (country)='country=$event' (postal_code)='postal_code=$event' (lat)='lat=$event' (lng)='lng=$event' (adr_address)='adr_address=$event'
-          (name)='name=$event' (place_id)='place_id=$event' (types)='types=$event' (url)='url=$event' (utc_offset)='utc_offset=$event'
-          (vicinity)='vicinity=$event' (photos)='photos=$event' (CountryCodes)='CountryCodes=$event' placeholder=" " id="address"
-          angularGooglePlace pInputText/>
-        <label for="address">Місцезнаходження</label>
-        <validation-messages [control]="truckForm.controls.address.controls.label"></validation-messages>
-      </span>
+      <google-places [type]="'address'" [label]="{en:'address', ua:'Місцезнаходження'}" (locationData)="getAddress($event, 'address')"></google-places>
     </div>
 
     <div class="form-group">

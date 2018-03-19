@@ -9,8 +9,8 @@ import { ProfileDriversComponent } from 'app/profile/profile-drivers/profile-dri
 
 @NgModule({
   imports: [
-    CommonModule,
-    SharedModule
+    SharedModule,
+    CommonModule
   ],
   declarations: [
     ProfileComponent,
