@@ -290,6 +290,55 @@ export class MapComponent implements OnInit {
         "lat": 49.2202179,
         "lng": 28.4429107
       },
+      "user":{
+        "phone": '+380989422971',
+        "name": 'Oleh'
+      },
+      "passengers_count": "12",
+      "weight_limit": "600",
+      "car_types": [
+        {
+          "name": "Легковые",
+          "value": 1
+        },
+        {
+          "name": "Мото",
+          "value": 2
+        },
+        {
+          "name": "Водный транспорт",
+          "value": 3
+        }
+      ],
+      "type": "wrecker",
+      "photo": "1",
+      "price": "24",
+      "description": "фівфівфівфів"
+    },
+    {
+      "registration_number": "АН255356",
+      "company_id": "5aabc25a3223340004b65a62",
+      "company_user_id": "",
+      "_id": "",
+      "user":{
+        "phone": '+380989422971',
+        "name": 'Maxim'
+      },
+      "car_attributes": {
+        "category": "4",
+        "brand": {
+          "name": "TATA",
+          "value": 78
+        }, "model": {
+          "name": "LPT",
+          "value": 2239
+        }
+      },
+      "address": {
+        "label": "Скайпарк",
+        "lat": 49.2333661,
+        "lng": 28.4699592
+      },
       "passengers_count": "12",
       "weight_limit": "600",
       "car_types": [
@@ -375,5 +424,10 @@ export class MapComponent implements OnInit {
   }
   closeTruckInfo(){
     this.selectedTruck = undefined;
+  }
+  repeatCarTypes(carTypes:any){
+    return carTypes.map((item:any)=>{
+      return item.name;
+    }).join(', ');
   }
 }

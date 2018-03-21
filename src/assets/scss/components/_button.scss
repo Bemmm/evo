@@ -1,33 +1,40 @@
-
-  $base-width: rem(280px);
-  $base-height: rem(50px);
-  .evo-button{
-    display: block;
+$base-width: rem(280px);
+$base-height: rem(50px);
+.evo-button {
+  display: block;
+  color: #6c6750;
+  background: $evo-yellow;
+  font-family: 'Roboto';
+  border: 0;
+  font-size: 20px;
+  border-radius: 50px;
+  padding: 15px 25px;
+  min-width: 200px;
+  outline: none !important;
+  margin: auto;
+  a {
     color: #6c6750;
+    text-decoration: none;
+    &:focus {
+      color: #6c6750;
+      text-decoration: none;
+    }
+  }
+  &__square {
+    border-radius: 0;
+    min-width: 100%;
+    padding: 5px;
+    margin: 10px 0;
     background: $evo-yellow;
-    font-family: 'Roboto';
-    border: 0;
-    font-size: 20px;
-    border-radius: 50px;
-    padding: 15px 25px;
-    min-width: 200px;
-    outline: none !important;
-    margin:auto;
-    &__square{
-      border-radius: 0;
-      min-width: 100%;
-      padding: 5px;
-      margin: 10px 0;
-      background:$evo-yellow;
-    }
-    &.category{
-      width: 50px;
-      font-size: 14px;
-      text-align: center;
-      margin: auto;
-    }
-    &[disabled]{
-      background-color: #ebebeb;
-      border: 1px solid #dedede;
-    }
+  }
+  &.category {
+    width: 50px;
+    font-size: 14px;
+    text-align: center;
+    margin: auto;
+  }
+  &[disabled] {
+    background-color: #ebebeb;
+    border: 1px solid #dedede;
+  }
 }

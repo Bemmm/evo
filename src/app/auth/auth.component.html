@@ -1,5 +1,5 @@
 <div class="evo-auth">
-  <evo-header class="auth_header" [hasSearchLink]="hasSearchLink" [isLogged]="isLogged" [headerStyle]="'back'" (toggleMobileNav)="onToggleMobileNav()" [(title)]="title"></evo-header>
+  <evo-header class="auth_header" [hasSearchLink]="hasSearchLink" [isLogged]="isLogged" [headerStyle]="'title'" (toggleMobileNav)="onToggleMobileNav()" [(title)]="title"></evo-header>
   <router-outlet></router-outlet>
   <div class="navigation_bar row">
     <div [routerLinkActive]="['active']" [routerLink]="['/auth/register']" class="navigation_bar-item text-center">

@@ -3,12 +3,25 @@
   .evo-header {
     background-color: $evo-yellow;
     padding: 17px 0;
+    height: 67px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     &__title {
       font-size: 1.7em;
       color: $evo-title-text;
     }
     &__item {
-      padding: 4px 10px;
+      &-button{
+        i{
+          color:$evo-title-text;
+          font-size: 32px;
+          vertical-align: middle;
+          &.logout{
+            font-size: 28px;
+          }
+        }
+      }
       a{
         color: $evo-button;
         font-size: 18px;
