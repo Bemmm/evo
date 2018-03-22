@@ -31,9 +31,11 @@ export class GooglePlacesComponent implements OnInit {
 
 
   ngOnInit() {
-    this.clear.subscribe((res: any) => {
-      this.clearInput();
-    });
+    if (this.clear) {
+      this.clear.subscribe((res: any) => {
+        this.clearInput();
+      });
+    }
   }
 
   focusFunction() {

@@ -1,19 +1,38 @@
-.ui-inputtext.ui-state-focus, .ui-inputtext:focus{
+.ui-inputtext.ui-state-focus,
+.ui-inputtext:focus {
   box-shadow: 0;
 }
-p-dropdown, p-multiselect{
+
+p-dropdown,
+p-multiselect {
   width: 100% !important;
-  .ui-dropdown, .ui-multiselect{
-    width:100% !important;
+  .ui-dropdown,
+  .ui-multiselect {
+    // position: static;
+    width: 100% !important;
     border: 0;
-    border-bottom: 1px solid $evo-grey;
-    border-radius: 0;
-    &-label{
+    border: 1px solid #d3d3d3;
+    border-radius: 30px;
+    background-color: $evo-grey-background;
+    &-label {
+      background-color: transparent;
       font-size: 18px;
       padding: 6px 12px;
+      padding-right: 52px !important;
       text-align: left;
       font-family: 'Roboto';
       font-weight: 400;
+      color: $evo-text;
+    }
+    &-trigger {
+      width: 45px !important;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .ui-clickable {
+        margin: auto !important;
+      }
     }
   }
 }
