@@ -160,16 +160,15 @@ export class MapComponent implements OnInit {
   }
 
   getCurrentPosition() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log(this.helperModel);
-        this.helperModel.latitude = position.coords.latitude;
-        this.helperModel.longitude = position.coords.longitude;
-        this.helperModel.zoom = 16;
-      }, (err) => {
-        console.log(err);
-      }, { enableHighAccuracy: true });
-    }
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(this.helperModel);
+      this.helperModel.latitude = position.coords.latitude;
+      this.helperModel.longitude = position.coords.longitude;
+      this.helperModel.zoom = 16;
+    }, (err) => {
+      console.log(err);
+    }, { enableHighAccuracy: true });
+
   }
 
   clearInput(event: any) {
