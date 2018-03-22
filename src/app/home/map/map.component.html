@@ -1,21 +1,24 @@
 <div class="evo-map">
-  <agm-map [styles]="helperModel.styles" [latitude]="helperModel.latitude" [longitude]="helperModel.longitude" [zoom]="16">
+  <agm-map [ngClass]="{'disabled':focusedInputClass}" [styles]="helperModel.styles" [latitude]="helperModel.latitude" [longitude]="helperModel.longitude"
+    [zoom]="16">
     <agm-marker [latitude]="helperModel.latitude" [longitude]="helperModel.longitude" [iconUrl]="'https://image.ibb.co/hbLi9c/cursor_1.png'">
     </agm-marker>
 
-      <agm-marker *ngFor="let truck of trucks" [iconUrl]="'https://image.ibb.co/hrnoQH/800px_COLOURBOX17453850_1.png'" (markerClick)="showTruckInfo(this.truck)" [latitude]="convertToNumber(truck.address.lat)" [longitude]="convertToNumber(truck.address.lng)">
-      </agm-marker>
+    <agm-marker *ngFor="let truck of trucks" [iconUrl]="'https://image.ibb.co/hrnoQH/800px_COLOURBOX17453850_1.png'" (markerClick)="showTruckInfo(this.truck)"
+      [latitude]="convertToNumber(truck.address.lat)" [longitude]="convertToNumber(truck.address.lng)">
+    </agm-marker>
   </agm-map>
 
 
   <form class="evo-map__form" (ngSubmit)="searchTrucks()">
-    <div class="evo-map__form-search">
+    <div class="evo-map__form-search" [ngClass]="{'focused':focusedInputClass}">
       <button class="evo-map__form-search-button clean" (click)="clearInput()">
         <i class="material-icons">close</i>
       </button>
-      <google-places class="form-control" [type]="'address'" (locationData)="getAddress($event, 'where')"></google-places>
-      <button class="evo-map__form-search-button speak">
-        <i class="material-icons">mic_none</i>
+      <google-places class="form-control" [type]="'address'" (locationData)="getAddress($event, 'where')" (focus)="focusedInputClass = $event"
+        [(defaultAddress)]="helperModel"></google-places>
+      <button class="evo-map__form-search-button filter">
+        <i class="material-icons">filter_list</i>
       </button>
     </div>
     <div class="evo-map__form-request" *ngIf="!selectedTruck">
@@ -38,13 +41,19 @@
       <span> | {{selectedTruck.passengers_count}} місць</span>
     </h5>
     <div class="evo-map__truck-car flex-row center-left">
-      <div class="evo-map__truck-car-image"><img width="100%" src="https://101clipart.com/wp-content/uploads/12/Truck%20Clipart%20Top%20View%2003.jpg" alt=""></div>
+      <div class="evo-map__truck-car-image">
+        <img width="100%" src="https://101clipart.com/wp-content/uploads/12/Truck%20Clipart%20Top%20View%2003.jpg" alt="">
+      </div>
       <div class="evo-map__truck-car-number">{{selectedTruck.registration_number}}</div>
     </div>
     <div class="evo-map__truck-driver">
-      <div class="evo-map__truck-driver">{{selectedTruck.user.name}}: <span class="evo-map__truck-driver-details">{{selectedTruck.description}}</span></div>
+      <div class="evo-map__truck-driver">{{selectedTruck.user.name}}:
+        <span class="evo-map__truck-driver-details">{{selectedTruck.description}}</span>
+      </div>
     </div>
-    <button class="evo-button"><a href="tel:{{selectedTruck.user.phone}}">Зателефонувати</a></button>
+    <button class="evo-button">
+      <a href="tel:{{selectedTruck.user.phone}}">Зателефонувати</a>
+    </button>
   </div>
 
   <div class="clearfix"></div>

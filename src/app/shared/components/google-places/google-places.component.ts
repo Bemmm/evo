@@ -1,4 +1,4 @@
-import { Component, NgZone, Input, Output, EventEmitter, ElementRef, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, NgZone, Input, Output, EventEmitter, ElementRef, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { } from 'googlemaps';
 
@@ -11,18 +11,29 @@ import { } from 'googlemaps';
 export class GooglePlacesComponent {
   @Input() type: string;
   @Input() label: Object;
+  @Input() defaultAddress: any;
   @Output() locationData = new EventEmitter<any>();
+  @Output() focus = new EventEmitter<any>();
   @ViewChild("address")
   public addressElementRef: ElementRef;
   autocomplete: any;
+  focused: any;
 
   constructor(private ngZone: NgZone,
-    private mapsAPILoader: MapsAPILoader, ) {
+    private mapsAPILoader: MapsAPILoader) {
     this.listenChanges();
   };
 
+  focusFunction() {
+    this.focused = !this.focused;
+    this.focus.emit(this.focused);
+  }
+
   listenChanges() {
     this.mapsAPILoader.load().then(() => {
+      if (this.defaultAddress) {
+        this.setCurrentAddress();
+      };
       this.autocomplete = new google.maps.places.Autocomplete(this.addressElementRef.nativeElement, {
         types: [this.type]
       });
@@ -46,5 +57,27 @@ export class GooglePlacesComponent {
       })
     })
   }
+
+  setCurrentAddress() {
+    let geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(this.defaultAddress.latitude, this.defaultAddress.longitude);
+    geocoder.geocode({
+      'location': latlng
+    }, function (results: any, status: any) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+          console.log(results[1]);
+          console.log(this.addressElementRef);
+
+          // this.addressElementRef.nativeElement.value = results[1].formatted_address;
+        } else {
+          alert('No results found');
+        }
+      } else {
+        alert('Geocoder failed due to: ' + status);
+      }
+    });
+  }
+
 }
 
