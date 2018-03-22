@@ -1,5 +1,5 @@
 <div class="evo-map">
-  <agm-map [ngClass]="{'disabled':focusedInputClass}" [styles]="helperModel.styles" [latitude]="helperModel.latitude" [longitude]="helperModel.longitude"
+  <agm-map [ngClass]="{'disabled':focusedInputClass}" [styles]="helperModel.styles" [(latitude)]="helperModel.latitude" [(longitude)]="helperModel.longitude"
     [zoom]="16">
     <agm-marker [latitude]="helperModel.latitude" [longitude]="helperModel.longitude" [iconUrl]="'https://image.ibb.co/hbLi9c/cursor_1.png'">
     </agm-marker>
@@ -12,14 +12,14 @@
 
   <form class="evo-map__form" (ngSubmit)="searchTrucks()">
     <div class="evo-map__form-search" [ngClass]="{'focused':focusedInputClass}">
-      <button class="evo-map__form-search-button clean" (click)="clearInput()">
+      <div class="evo-map__form-search-button clean" (click)="clearInput()">
         <i class="material-icons">close</i>
-      </button>
-      <google-places class="form-control" [type]="'address'" (locationData)="getAddress($event, 'where')" (focus)="focusedInputClass = $event"
+      </div>
+      <google-places class="form-control" [type]="'address'" [clear]="clearEmitter" (locationData)="getAddress($event, 'where')" (focus)="focusedInputClass = $event"
         [(defaultAddress)]="helperModel"></google-places>
-      <button class="evo-map__form-search-button filter">
+      <div class="evo-map__form-search-button filter">
         <i class="material-icons">filter_list</i>
-      </button>
+      </div>
     </div>
     <div class="evo-map__form-request" *ngIf="!selectedTruck">
       <div class="evo-map__form-request-wrapper">

@@ -1,8 +1,7 @@
 <!--component html goes here -->
 <span *ngIf="label" class="ui-float-label evo-input">
-  <input id="{{label.en}}" type="text" #address class="form-control" placeholder="" pInputText  (focus)="focusFunction()" (focusout)="focusFunction()">
+  <input #address id="{{label.en}}" type="text" class="form-control" placeholder="" pInputText (focus)="focusFunction()" (focusout)="focusFunction()">
   <label for="{{label.en}}">{{label.ua}}</label>
 </span>
-<input style="width:100%; height:100%; border:0; padding:0;" *ngIf="!label" type="text" #address placeholder="" pInputText (focus)="focusFunction()" (focusout)="focusFunction()">
-
-
+<input #address style="width:100%; height:100%; border:0; padding:0;" *ngIf="!label" type="text" placeholder="Введіть вашу адресу" pInputText
+  (focus)="focusFunction()" (focusout)="focusFunction()">

@@ -10,7 +10,8 @@ import {
   OnDestroy,
   ViewChild,
   ElementRef,
-  NgZone
+  NgZone,
+  EventEmitter
 } from '@angular/core';
 import {
   Router,
@@ -28,7 +29,7 @@ import {
   MapsAPILoader
 } from '@agm/core/services/maps-api-loader/maps-api-loader';
 import { CarsService } from 'app/core/services';
-import { mapConstants } from 'app/home/map/map.constants'
+import { mapConstants } from 'app/home/map/map.constants';
 
 @Component({
   selector: 'evo-map',
@@ -39,6 +40,7 @@ import { mapConstants } from 'app/home/map/map.constants'
 export class MapComponent implements OnInit {
   searchInput: '';
   searchForm: FormGroup;
+  clearEmitter = new EventEmitter<any>();
   helperModel: any = {
     styles: mapConstants,
     label: '',
@@ -150,53 +152,63 @@ export class MapComponent implements OnInit {
     private ngZone: NgZone,
     private carsService: CarsService
   ) {
+    this.getCurrentPosition();
   }
 
   ngOnInit() {
     this.buildForm();
-    this.setCurrentPosition();
-
   }
 
-  private setCurrentPosition() {
+  getCurrentPosition() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
+        console.log(this.helperModel);
         this.helperModel.latitude = position.coords.latitude;
         this.helperModel.longitude = position.coords.longitude;
         this.helperModel.zoom = 16;
-      });
+      }, (err) => {
+        console.log(err);
+      }, { enableHighAccuracy: true });
     }
   }
-  clearInput() {
-    this.searchInput = '';
+
+  clearInput(event: any) {
+    this.clearEmitter.emit(true);
   }
+
   getAddress(event: any, formControl: any) {
+    console.log(event);
     this.helperModel.longitude = event.geometry.location.lng();
     this.helperModel.latitude = event.geometry.location.lat();
     this.searchForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
     this.searchForm.get(formControl).get('lat').setValue(event.geometry.location.lat);
     this.searchForm.get(formControl).get('lng').setValue(event.geometry.location.lng);
   }
+
   buildForm() {
     this.searchForm = this.fb.group(this.searchModel);
-
   }
+
   searchTrucks() {
     console.log(this.trucks);
   }
+
   convertToNumber(value: String) {
     return +value;
   }
+
   showTruckInfo(truck: Object) {
     this.selectedTruck = truck;
-    console.log(truck);
   }
+
   closeTruckInfo() {
     this.selectedTruck = undefined;
   }
+
   repeatCarTypes(carTypes: any) {
     return carTypes.map((item: any) => {
       return item.name;
     }).join(', ');
   }
+
 }

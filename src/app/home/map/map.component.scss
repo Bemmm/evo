@@ -50,6 +50,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
         &.clean {
           i {
             color: #c8c8c8;
@@ -176,8 +177,9 @@
       margin-top: 10px;
     }
     &-car {
-      margin: 20px 0;
+      margin: 20px auto;
       justify-content: space-around !important;
+      max-width: 600px;
       &-image {
         width: 100%;
         text-align: center;
