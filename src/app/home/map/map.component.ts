@@ -28,7 +28,7 @@ import {
 import {
   MapsAPILoader
 } from '@agm/core/services/maps-api-loader/maps-api-loader';
-import { CarsService } from 'app/core/services';
+import { CarsService, UserService } from 'app/core/services';
 import { mapConstants } from 'app/home/map/map.constants';
 
 @Component({
@@ -39,6 +39,7 @@ import { mapConstants } from 'app/home/map/map.constants';
 
 export class MapComponent implements OnInit {
   searchInput: '';
+  loggedUser: any;
   searchForm: FormGroup;
   clearEmitter = new EventEmitter<any>();
   helperModel: any = {
@@ -48,101 +49,12 @@ export class MapComponent implements OnInit {
     longitude: 0,
     zoom: 4
   };
-  trucks: any = [{
-    "registration_number": "АН255356",
-    "company_id": "5aabc25a3223340004b65a62",
-    "company_user_id": "",
-    "_id": "",
-    "car_attributes": {
-      "category": "4",
-      "brand": {
-        "name": "TATA",
-        "value": 78
-      }, "model": {
-        "name": "LPT",
-        "value": 2239
-      }
-    },
-    "address": {
-      "label": "Ющенка 5",
-      "lat": 49.2202179,
-      "lng": 28.4429107
-    },
-    "user": {
-      "phone": '+380989422971',
-      "name": 'Oleh'
-    },
-    "passengers_count": "12",
-    "weight_limit": "600",
-    "car_types": [
-      {
-        "name": "Легковые",
-        "value": 1
-      },
-      {
-        "name": "Мото",
-        "value": 2
-      },
-      {
-        "name": "Водный транспорт",
-        "value": 3
-      }
-    ],
-    "type": "wrecker",
-    "photo": "1",
-    "price": "24",
-    "description": "фівфівфівфів"
-  }, {
-    "registration_number": "АН255356",
-    "company_id": "5aabc25a3223340004b65a62",
-    "company_user_id": "",
-    "_id": "",
-    "user": {
-      "phone": '+380989422971',
-      "name": 'Maxim'
-    },
-    "car_attributes": {
-      "category": "4",
-      "brand": {
-        "name": "TATA",
-        "value": 78
-      }, "model": {
-        "name": "LPT",
-        "value": 2239
-      }
-    },
-    "address": {
-      "label": "Скайпарк",
-      "lat": 49.2333661,
-      "lng": 28.4699592
-    },
-    "passengers_count": "12",
-    "weight_limit": "600",
-    "car_types": [
-      {
-        "name": "Легковые",
-        "value": 1
-      },
-      {
-        "name": "Мото",
-        "value": 2
-      },
-      {
-        "name": "Водный транспорт",
-        "value": 3
-      }
-    ],
-    "type": "wrecker",
-    "photo": "1",
-    "price": "24",
-    "description": "фівфівфівфів"
-  }];
+  trucks: any;
   selectedTruck: any = undefined;
   searchModel = {
     where: this.fb.group({
       label: [''],
-      lat: [''],
-      lng: ['']
+      coordinates: this.fb.array([])
     }),
   };
   constructor(
@@ -150,25 +62,38 @@ export class MapComponent implements OnInit {
     private router: Router,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    private carsService: CarsService
+    private carsService: CarsService,
+    private userService: UserService
   ) {
-    this.getCurrentPosition();
+    this.userService.get()
+    .subscribe((user: any) => {
+        this.loggedUser = user;
+    })
+
   }
 
   ngOnInit() {
+    this.getCurrentPosition();
     this.buildForm();
   }
 
+
   getCurrentPosition() {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(this.helperModel);
       this.helperModel.latitude = position.coords.latitude;
       this.helperModel.longitude = position.coords.longitude;
       this.helperModel.zoom = 16;
+      this.getNearCars();
     }, (err) => {
       console.log(err);
     }, { enableHighAccuracy: true });
 
+  }
+  getNearCars() {
+    this.carsService.getNearCars(this.helperModel.latitude, this.helperModel.longitude, this.loggedUser['x-access-token']).subscribe((res) => {
+      this.trucks =  res.cars;
+      console.log(this.trucks);
+    })
   }
 
   clearInput(event: any) {
@@ -180,8 +105,8 @@ export class MapComponent implements OnInit {
     this.helperModel.longitude = event.geometry.location.lng();
     this.helperModel.latitude = event.geometry.location.lat();
     this.searchForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
-    this.searchForm.get(formControl).get('lat').setValue(event.geometry.location.lat);
-    this.searchForm.get(formControl).get('lng').setValue(event.geometry.location.lng);
+    this.searchForm.get(formControl).get('coordinates').setValue([event.geometry.location.lat, event.geometry.location.lng]);
+
   }
 
   buildForm() {
@@ -196,8 +121,10 @@ export class MapComponent implements OnInit {
     return +value;
   }
 
-  showTruckInfo(truck: Object) {
-    this.selectedTruck = truck;
+  showTruckInfo(truck: any) {
+    this.carsService.getTruckInfo(truck._id).subscribe((res)=>{
+      this.selectedTruck = res;
+    });
   }
 
   closeTruckInfo() {

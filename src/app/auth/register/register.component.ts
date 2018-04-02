@@ -9,7 +9,8 @@ import {
 import {
   FormGroup,
   FormBuilder,
-  Validators
+  Validators,
+  FormControl
 } from '@angular/forms';
 import {
   Router
@@ -36,7 +37,7 @@ import {
 import { } from 'googlemaps';
 
 import { OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES } from 'app/shared/constants/';
-import { TransportCategoryModel, ModelModel, BrandModel } from 'app/shared/models/'
+import { TransportCategoryModel, ModelModel, BrandModel } from 'app/shared/models/';
 
 @Component({
   selector: 'evo-register',
@@ -92,8 +93,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
     role: ['user'],
     address: this.fb.group({
       label: ['', [Validators.required]],
-      lat: [''],
-      lng: [''],
+      type: ['Point'],
+      coordinates:this.fb.array([
+        new FormControl(),
+        new FormControl()
+      ])
     }),
     car_attributes: this.fb.group({
       brand: ['', [Validators.required]],
@@ -109,8 +113,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
     role: ['driver'],
     address: this.fb.group({
       label: ['', [Validators.required]],
-      lat: [''],
-      lng: [''],
+      type: ['Point'],
+      coordinates:this.fb.array([
+        new FormControl(),
+        new FormControl()
+      ])
     }),
   }
   companyData = {
@@ -124,13 +131,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
     passport: [''],
     official_address: this.fb.group({
       label: [''],
-      lat: [''],
-      lng: ['']
+      type: ['Point'],
+      coordinates:this.fb.array([
+        new FormControl(),
+        new FormControl()
+      ])
     }),
     physical_address: this.fb.group({
       label: [''],
-      lat: [''],
-      lng: ['']
+      type: ['Point'],
+      coordinates:this.fb.array([
+        new FormControl(),
+        new FormControl()
+      ])
     }),
     director: this.fb.group({
       name: [''],
@@ -274,7 +287,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
   getAddress(event:any, formControl:any){
     this.registerForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
-    this.registerForm.get(formControl).get('lat').setValue(event.geometry.location.lat());
-    this.registerForm.get(formControl).get('lng').setValue(event.geometry.location.lng());
+    this.registerForm.get(formControl).get('coordinates').setValue([event.geometry.location.lat(), event.geometry.location.lng()]);
+
   }
 }

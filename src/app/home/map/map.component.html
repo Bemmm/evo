@@ -5,7 +5,7 @@
     </agm-marker>
 
     <agm-marker *ngFor="let truck of trucks" [iconUrl]="'https://image.ibb.co/hrnoQH/800px_COLOURBOX17453850_1.png'" (markerClick)="showTruckInfo(this.truck)"
-      [latitude]="convertToNumber(truck.address.lat)" [longitude]="convertToNumber(truck.address.lng)">
+      [latitude]="truck.address.coordinates[0]" [longitude]="truck.address.coordinates[1]">
     </agm-marker>
   </agm-map>
 

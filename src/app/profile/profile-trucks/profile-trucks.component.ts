@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserService, CarsService, DriversService } from 'app/core/services';
 import { TransportCategoryModel, BrandModel, ModelModel, DriverModel } from 'app/shared/models'
 import {
@@ -113,8 +112,11 @@ export class ProfileTrucksComponent {
       }),
       address: this.fb.group({
         label: ['', [Validators.required]],
-        lat: [''],
-        lng: [''],
+        type:['Point'],
+        coordinates:this.fb.array([
+          new FormControl(),
+          new FormControl()
+        ])
       }),
       passengers_count: ['', [Validators.required]],
       weight_limit: ['', [Validators.required]],
@@ -154,12 +156,9 @@ export class ProfileTrucksComponent {
   getAddress(event:any, formControl:any){
     console.log(event);
     this.truckForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
-    this.truckForm.get(formControl).get('lat').setValue(event.geometry.location.lat());
-    this.truckForm.get(formControl).get('lng').setValue(event.geometry.location.lng());
+    this.truckForm.get(formControl).get('coordinates').setValue([event.geometry.location.lat(), event.geometry.location.lng()]);
   }
-  setTest() {
-    // this.truckForm.patchValue({ "registration_number": "АН25522ФА", "car_attributes": { "category": "4", "brand": { "name": "TATA", "value": 78 }, "model": { "name": "LPT", "value": 2239 } }, "address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "passengers_count": "3", "weight_limit": "600", "type": "wrecker", "photo": "1", "price": "12", "description": "ТРАТАРАТА" });
-  }
+
   deleteTruck(truck: any) {
     this.carsService.deleteTruck(truck._id, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
       let index = this.trucks.indexOf(truck);
