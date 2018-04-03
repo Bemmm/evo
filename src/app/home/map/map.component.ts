@@ -90,7 +90,7 @@ export class MapComponent implements OnInit {
 
   }
   getNearCars() {
-    this.carsService.getNearCars(this.helperModel.latitude, this.helperModel.longitude, this.loggedUser['x-access-token']).subscribe((res) => {
+    this.carsService.getNearCars(this.helperModel.latitude, this.helperModel.longitude).subscribe((res) => {
       this.trucks =  res.cars;
       console.log(this.trucks);
     })
@@ -115,10 +115,6 @@ export class MapComponent implements OnInit {
 
   searchTrucks() {
     console.log(this.trucks);
-  }
-
-  convertToNumber(value: String) {
-    return +value;
   }
 
   showTruckInfo(truck: any) {

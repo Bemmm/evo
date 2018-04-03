@@ -21,7 +21,7 @@ export class CarsService {
   private categories: string = 'categories';
   private marks: string = 'marks';
   private models: string = 'models';
-  private searchCars: string = 'search-cars'
+  private searchCars: string = 'search-nearest-cars'
   constructor(
     private api: ApiService
   ) { }
@@ -47,10 +47,10 @@ export class CarsService {
   deleteTruck(truckId: any, token?: string, role?: string) {
     return this.api.delete(`${role == 'company' ? this.deleteCompanyTruckUrl : this.deleteTruckUrl}/${truckId}`, null, token);
   }
-  getNearCars(lat: any, lng: any, token?: string) {
-    return this.api.get(`${this.searchCars}/${lat}/${lng}`, null, token);
+  getNearCars(lat: any, lng: any) {
+    return this.api.get(`${this.searchCars}`, {coordinates:[lat, lng]});
   }
-  getTruckInfo(truckId: any, token?: string){
+  getTruckInfo(truckId: any){
     return Observable.of({
       "registration_number": "АН255356",
       "company_id": "5aabc25a3223340004b65a62",
