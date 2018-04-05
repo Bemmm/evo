@@ -15,9 +15,9 @@ p-multiselect {
     border-radius: 30px;
     background-color: $evo-grey-background;
     &-label {
-      background-color: transparent;
+      background-color: transparent !important;
       font-size: 18px;
-      padding: 6px 12px;
+      padding: 6px 12px !important;
       padding-right: 52px !important;
       text-align: left;
       font-family: 'Roboto';

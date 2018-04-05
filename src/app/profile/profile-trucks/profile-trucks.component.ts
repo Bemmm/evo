@@ -36,6 +36,7 @@ export class ProfileTrucksComponent {
     value: null
   }];
   trucks: object[] = [];
+
   constructor(private fb: FormBuilder,
     private userService: UserService,
     private mapsAPILoader: MapsAPILoader,

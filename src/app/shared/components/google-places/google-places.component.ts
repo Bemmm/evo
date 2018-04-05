@@ -1,6 +1,7 @@
-import { Component, NgZone, Input, Output, EventEmitter, ElementRef, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
+import { Component, NgZone, Input, Output, EventEmitter, ElementRef, ViewEncapsulation, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { } from 'googlemaps';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'google-places',
@@ -9,7 +10,7 @@ import { } from 'googlemaps';
   encapsulation: ViewEncapsulation.None
 })
 
-export class GooglePlacesComponent implements OnInit {
+export class GooglePlacesComponent implements OnInit,  OnDestroy {
   @Input() type: string;
   @Input() label: Object;
   @Input() defaultAddress: any;
@@ -38,6 +39,10 @@ export class GooglePlacesComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(){
+
+  }
+
   focusFunction() {
     this.focused = !this.focused;
     this.focus.emit(this.focused);
@@ -48,6 +53,7 @@ export class GooglePlacesComponent implements OnInit {
   }
 
   listenChanges() {
+    console.log('LISTENCHANGES', this.addressElementRef);
     this.mapsAPILoader.load().then(() => {
       this.autocomplete = new google.maps.places.Autocomplete(this.addressElementRef.nativeElement, {
         types: [this.type]
