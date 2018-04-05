@@ -21,7 +21,8 @@ export class CarsService {
   private categories: string = 'categories';
   private marks: string = 'marks';
   private models: string = 'models';
-  private searchCars: string = 'search-nearest-cars'
+  private searchNearestCars: string = 'search-nearest-cars';
+  private searchCars: string = 'search-cars';
   constructor(
     private api: ApiService
   ) { }
@@ -48,53 +49,9 @@ export class CarsService {
     return this.api.delete(`${role == 'company' ? this.deleteCompanyTruckUrl : this.deleteTruckUrl}/${truckId}`, null, token);
   }
   getNearCars(lat: any, lng: any) {
-    return this.api.get(`${this.searchCars}`, {coordinates:[lat, lng]});
+    return this.api.get(`${this.searchNearestCars}`, {coordinates:[lat, lng]});
   }
   getTruckInfo(truckId: any){
-    return Observable.of({
-      "registration_number": "АН255356",
-      "company_id": "5aabc25a3223340004b65a62",
-      "company_user_id": "",
-      "_id": "",
-      "car_attributes": {
-        "category": "4",
-        "brand": {
-          "name": "TATA",
-          "value": 78
-        }, "model": {
-          "name": "LPT",
-          "value": 2239
-        }
-      },
-      "address": {
-        "label": "Ющенка 5",
-        "lat": 49.2202179,
-        "lng": 28.4429107
-      },
-      "user": {
-        "phone": '+380989422971',
-        "name": 'Oleh'
-      },
-      "passengers_count": "12",
-      "weight_limit": "600",
-      "car_types": [
-        {
-          "name": "Легковые",
-          "value": 1
-        },
-        {
-          "name": "Мото",
-          "value": 2
-        },
-        {
-          "name": "Водный транспорт",
-          "value": 3
-        }
-      ],
-      "type": "wrecker",
-      "photo": "1",
-      "price": "24",
-      "description": "фівфівфівфів"
-    })
+    return this.api.get(`${this.searchCars}/${truckId}`);
   }
 }

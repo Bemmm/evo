@@ -47,12 +47,12 @@
       <div class="evo-map__truck-car-number">{{selectedTruck.registration_number}}</div>
     </div>
     <div class="evo-map__truck-driver">
-      <div class="evo-map__truck-driver">{{selectedTruck.user.name}}:
+      <div class="evo-map__truck-driver">{{selectedTruck.owner.name}}:
         <span class="evo-map__truck-driver-details">{{selectedTruck.description}}</span>
       </div>
     </div>
     <button class="evo-button">
-      <a href="tel:{{selectedTruck.user.phone}}">Зателефонувати</a>
+      <a href="tel:{{selectedTruck.owner.phone}}">Зателефонувати</a>
     </button>
   </div>
 

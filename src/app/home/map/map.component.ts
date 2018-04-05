@@ -119,7 +119,7 @@ export class MapComponent implements OnInit {
 
   showTruckInfo(truck: any) {
     this.carsService.getTruckInfo(truck._id).subscribe((res)=>{
-      this.selectedTruck = res;
+      this.selectedTruck = res.car;
     });
   }
 
