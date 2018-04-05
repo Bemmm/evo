@@ -3,78 +3,86 @@
 @import "partials/functions";
 @import "partials/mixins";
 @import "components";
-
-html,body, evo-app, evo-auth, evo-home, main{
-    height: 100%;
-    min-height: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    font-family: 'Roboto';
+html,
+body,
+evo-app,
+evo-auth,
+evo-home,
+main {
+  height: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: 'Roboto';
 }
-button{
+
+button {
   outline: none;
 }
-evo-map,
-.evo-map{
-    height: 100%;
-    min-height: 100%;
-}
-evo-auth,
-.evo-auth{
-    height: 100%;
-    min-height: 100%;
-    // height: calc(100% - #{$navbar_height});
-    // min-height: calc(100% - #{$navbar_height});
-}
-evo-login,
-evo-register{
-    height: 100%;
-    overflow-y: auto;
-}
-// evo-login,
-// evo-register,
-// evo-home,
-// evo-profile{
-//     flex: 1;
-//     box-shadow: 0 15px 30px -3px rgba(173, 173, 173, 0.28);
-//     position: relative;
-//     height: 100%;
-//     overflow-y:auto;
-// }
 
-.pac-container{
+evo-map,
+.evo-map {
+  height: 100%;
+  min-height: 100%;
+}
+
+evo-auth,
+.evo-auth {
+  height: 100%;
+  min-height: 100%; // height: calc(100% - #{$navbar_height});
+  // min-height: calc(100% - #{$navbar_height});
+}
+
+evo-login,
+evo-register {
+  height: 100%;
+  overflow-y: auto;
+}
+
+evo-profile-trucks,
+evo-profile-info,
+evo-profile-drivers {
+  margin: 10px 0;
+  display: block;
+  flex-direction: column;
+}
+
+.pac-container {
   z-index: 99999;
-  .pac-item{
+  .pac-item {
     padding: 5px;
   }
 }
-.relative{
+
+.relative {
   position: relative;
 }
-.form-group{
-    margin:50px 0;
+
+.form-group {
+  margin: 50px 0;
 }
-.flex-row{
-    display:flex;
-    flex-direction:row;
-    &.right{
-        justify-content: flex-end;
-        margin: 10px 0;
-    }
-    &.center-center{
-        justify-content: center;
-        align-items: center;
-    }
-    &.center-left{
-      justify-content: flex-start;
-      align-items: center;
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  &.right {
+    justify-content: flex-end;
+    margin: 10px 0;
   }
-    &.center-between{
-        align-items: center;
-        justify-content: space-between;
-    }
-    &.center-around{
-        align-items: center;
-        justify-content: space-around;
-    }
+  &.center-center {
+    justify-content: center;
+    align-items: center;
+  }
+  &.center-left {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  &.center-between {
+    align-items: center;
+    justify-content: space-between;
+  }
+  &.center-around {
+    align-items: center;
+    justify-content: space-around;
+  }
 }
