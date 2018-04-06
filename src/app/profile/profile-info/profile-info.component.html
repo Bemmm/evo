@@ -25,11 +25,12 @@
       <validation-messages [control]="userInfoForm.controls.email"></validation-messages>
     </div>
     <div formGroupName="car_attributes">
-      <div class="evo-button category" (click)="showTransportDialog()">Змінити категорію</div>
+      <div class="evo-button category" (click)="showTransportDialog()">{{selectedCategory ? selectedCategory.name : 'Обрати категорію'}}</div>
+
       <p-dialog class="transport-dialog" header="Оберіть категорію транспорту" [(visible)]="transportDialog">
         <div class="transport-dialog__content">
           <div *ngFor="let transport of transportCategories" [ngClass]="{'active':transport.value == userInfoForm.controls.car_attributes.controls.category.value}"
-            class="transport-dialog__content-item" (click)="setCategory(this.transport.value)">
+            class="transport-dialog__content-item" (click)="setCategory(this.transport)">
             <div>{{transport.name}}</div>
             <div class="transport-dialog__content-item-icon type{{transport.value}}"></div>
           </div>

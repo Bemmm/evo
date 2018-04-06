@@ -75,6 +75,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       label: 'Оберіть модель',
       value: null
     }],
+    selectedCategory: null,
     transportCategories: [],
     ownership: null,
     taxFormTypes: null,
@@ -94,7 +95,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     address: this.fb.group({
       label: ['', [Validators.required]],
       type: ['Point'],
-      coordinates:this.fb.array([
+      coordinates: this.fb.array([
         new FormControl(),
         new FormControl()
       ])
@@ -114,7 +115,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     address: this.fb.group({
       label: ['', [Validators.required]],
       type: ['Point'],
-      coordinates:this.fb.array([
+      coordinates: this.fb.array([
         new FormControl(),
         new FormControl()
       ])
@@ -132,7 +133,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     official_address: this.fb.group({
       label: [''],
       type: ['Point'],
-      coordinates:this.fb.array([
+      coordinates: this.fb.array([
         new FormControl(),
         new FormControl()
       ])
@@ -140,7 +141,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     physical_address: this.fb.group({
       label: [''],
       type: ['Point'],
-      coordinates:this.fb.array([
+      coordinates: this.fb.array([
         new FormControl(),
         new FormControl()
       ])
@@ -261,8 +262,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   setCategory(event: any) {
-    console.log(event);
-    this.registerForm.get('car_attributes').get('category').setValue(event);
+    this.helperModel.selectedCategory = event.name;
+    this.registerForm.get('car_attributes').get('category').setValue(event.value);
     const subscription = this.carsService.getMarks(this.registerForm.get('car_attributes').get('category').value).subscribe(
       res => {
         this.transportDialog = !this.transportDialog;
@@ -278,6 +279,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(subscription);
   }
+
   toggleTransportDialog() {
     this.transportDialog = !this.transportDialog;
   }
@@ -285,7 +287,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.registerForm.patchValue({ "name": "Company", "ownership": "TOV", "other_ownership": "", "id_code": "", "zkpo": "12345678", "tax_form": "pdv", "passport": "АН255346", "official_address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "physical_address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "director": { "name": "Бембенок Богдан Васильович", "phone": "+380-11-1111-111" }, "liable": { "name": "Бембенок Інна Миколаївна", "phone": "+380-11-1111-112" }, "static_phone": "222260", "role": "company" });
     console.log(this.registerForm.value);
   }
-  getAddress(event:any, formControl:any){
+  getAddress(event: any, formControl: any) {
     this.registerForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
     this.registerForm.get(formControl).get('coordinates').setValue([event.geometry.location.lat(), event.geometry.location.lng()]);
 

@@ -64,10 +64,10 @@
           <validation-messages [control]="registerForm.controls.address.controls.label"></validation-messages>
         </div>
         <div formGroupName="car_attributes">
-          <div class="evo-button category" (click)="toggleTransportDialog()">Обрати категорію</div>
+          <div class="evo-button category" (click)="toggleTransportDialog()">{{helperModel.selectedCategory ? helperModel.selectedCategory : 'Оберіть категорію'}}</div>
           <p-dialog class="transport-dialog" header="Оберіть категорію транспорту" [(visible)]="transportDialog">
             <div class="transport-dialog__content">
-              <div *ngFor="let transport of helperModel.transportCategories" class="transport-dialog__content-item" (click)="setCategory(this.transport.value)">
+              <div *ngFor="let transport of helperModel.transportCategories" class="transport-dialog__content-item" (click)="setCategory(this.transport)">
                 <div>{{transport.name}}</div>
                 <div class="transport-dialog__content-item-icon type{{transport.value}}"></div>
               </div>
