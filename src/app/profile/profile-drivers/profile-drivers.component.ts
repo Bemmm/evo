@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl} from '@angular/forms';
 import { UserService, DriversService } from 'app/core/services';
 import { MapsAPILoader } from '@agm/core/services/maps-api-loader/maps-api-loader';
 import { Validators } from '@angular/forms';
@@ -53,8 +53,11 @@ export class ProfileDriversComponent {
       role: ['driver'],
       address: this.fb.group({
         label: ['', [Validators.required]],
-        lat: [''],
-        lng: [''],
+        type: ['Point'],
+        coordinates: this.fb.array([
+          new FormControl(),
+          new FormControl()
+        ])
       }),
     }
     this.driverForm = this.fb.group(driverModel);
@@ -82,10 +85,10 @@ export class ProfileDriversComponent {
       })
     }
   }
-  getFormattedAddress(event: any, formcontrol: string) {
-    this.driverForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
-    this.driverForm.get(formcontrol).get('lat').setValue(event.lat);
-    this.driverForm.get(formcontrol).get('lng').setValue(event.lng);
+  getAddress(event: any, formcontrol: string) {
+    this.driverForm.get(formcontrol).get('label').setValue(`${event.formatted_address}`);
+    this.driverForm.get(formcontrol).get('coordinates').setValue([event.geometry.location.lat(), event.geometry.location.lng()]);
+
   }
   deleteDriver(driver: any) {
     this.driversService.deleteDriver(driver._id, this.loggedUser['x-access-token']).subscribe((res:any) => {

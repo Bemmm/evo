@@ -1,39 +1,48 @@
 <router-outlet></router-outlet>
 <div class="navigation_bar row">
-    <div [routerLinkActive]="['active']" [routerLink]="['info']" class="navigation_bar-item text-center">
-      <div class="navigation_bar-item-button">
-        <i class="fa fa-user-o"></i>
-      </div>
-      <div class="navigation_bar-item-title">
-        Профіль
-      </div>
+  <div [routerLinkActive]="['active']" [routerLink]="['/']" [routerLinkActiveOptions]="{ exact: true }" class="navigation_bar-item text-center">
+    <div class="navigation_bar-item-button">
+      <i class="fa fa-user-o"></i>
     </div>
-
-    <div [routerLinkActive]="['active']" [routerLink]="['orders']" class="navigation_bar-item text-center">
-      <div class="navigation_bar-item-button">
-        <i class="fa fa-user-o"></i>
-      </div>
-      <div class="navigation_bar-item-title">
-        Замовлення
-      </div>
+    <div class="navigation_bar-item-title">
+      Головна
     </div>
-
-    <div [routerLinkActive]="['active']" [routerLink]="['drivers']" class="navigation_bar-item text-center" *ngIf="loggedUser.role == 'company'">
-      <div class="navigation_bar-item-button">
-        <i class="fa fa-user-o"></i>
-      </div>
-      <div class="navigation_bar-item-title">
-        Водії
-      </div>
-    </div>
-
-    <div [routerLinkActive]="['active']" [routerLink]="['trucks']" class="navigation_bar-item text-center" *ngIf="loggedUser.role !== 'user' ">
-      <div class="navigation_bar-item-button">
-        <i class="fa fa-user-o"></i>
-      </div>
-      <div class="navigation_bar-item-title">
-        Евакуатори
-      </div>
-    </div>
-
   </div>
+
+  <div [routerLinkActive]="['active']" [routerLink]="['info']" class="navigation_bar-item text-center">
+    <div class="navigation_bar-item-button">
+      <i class="fa fa-user-o"></i>
+    </div>
+    <div class="navigation_bar-item-title">
+      Профіль
+    </div>
+  </div>
+
+  <div [routerLinkActive]="['active']" [routerLink]="['orders']" class="navigation_bar-item text-center">
+    <div class="navigation_bar-item-button">
+      <i class="fa fa-user-o"></i>
+    </div>
+    <div class="navigation_bar-item-title">
+      Замовлення
+    </div>
+  </div>
+
+  <div [routerLinkActive]="['active']" [routerLink]="['drivers']" class="navigation_bar-item text-center" *ngIf="loggedUser.role == 'company'">
+    <div class="navigation_bar-item-button">
+      <i class="fa fa-user-o"></i>
+    </div>
+    <div class="navigation_bar-item-title">
+      Водії
+    </div>
+  </div>
+
+  <div [routerLinkActive]="['active']" [routerLink]="['trucks']" class="navigation_bar-item text-center" *ngIf="loggedUser.role !== 'user' ">
+    <div class="navigation_bar-item-button">
+      <i class="fa fa-user-o"></i>
+    </div>
+    <div class="navigation_bar-item-title">
+      Евакуатори
+    </div>
+  </div>
+
+</div>

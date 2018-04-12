@@ -58,7 +58,9 @@ export class GooglePlacesComponent implements OnInit,  OnDestroy {
       this.autocomplete = new google.maps.places.Autocomplete(this.addressElementRef.nativeElement, {
         types: [this.type]
       });
-      if (this.defaultAddress) {
+      if (this.defaultAddress && this.defaultAddress.label.value) {
+        this.addressElementRef.nativeElement.value = this.defaultAddress.label.value;
+      } else if( this.defaultAddress){
         this.setCurrentAddress(this.addressElementRef);
       };
 

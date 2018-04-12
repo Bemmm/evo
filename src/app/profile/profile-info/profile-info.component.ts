@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormControl } from '@angular/forms';
 import { ValidationService, UserService, AuthService, CarsService } from 'app/core/services';
 import { Router } from '@angular/router';
 import {
@@ -47,11 +47,10 @@ export class ProfileInfoComponent {
 
   }
 
-  getFormattedAddress(event: any, formcontrol: string) {
-    this.userInfoForm.get(formcontrol).get('label').setValue(`${event.street} ${event.street_number}, ${event.city}, ${event.state}`);
-    this.userInfoForm.get(formcontrol).get('lat').setValue(event.lat);
-    this.userInfoForm.get(formcontrol).get('lng').setValue(event.lng);
-    console.log(this.userInfoForm);
+  getAddress(event: any, formcontrol: string) {
+    this.userInfoForm.get(formcontrol).get('label').setValue(`${event.formatted_address}`);
+    this.userInfoForm.get(formcontrol).get('coordinates').setValue([event.geometry.location.lat(), event.geometry.location.lng()]);
+
   }
 
   updateUser() {
@@ -80,8 +79,11 @@ export class ProfileInfoComponent {
         }),
         address: this.fb.group({
           label: ['', [Validators.required]],
-          lat: [''],
-          lng: [''],
+          type: ['Point'],
+          coordinates: this.fb.array([
+            new FormControl(),
+            new FormControl()
+          ])
         }),
         role: ['user']
       },
@@ -93,8 +95,11 @@ export class ProfileInfoComponent {
         birthday: ['', [Validators.required]],
         address: this.fb.group({
           label: ['', [Validators.required]],
-          lat: [''],
-          lng: [''],
+          type: ['Point'],
+          coordinates: this.fb.array([
+            new FormControl(),
+            new FormControl()
+          ])
         }),
         role: ['driver']
       },
@@ -110,14 +115,20 @@ export class ProfileInfoComponent {
         zkpo: [''],
         tax_form: [''],
         official_address: this.fb.group({
-          label: [''],
-          lat: [''],
-          lng: ['']
+          label: ['', [Validators.required]],
+          type: ['Point'],
+          coordinates: this.fb.array([
+            new FormControl(),
+            new FormControl()
+          ])
         }),
         physical_address: this.fb.group({
-          label: [''],
-          lat: [''],
-          lng: ['']
+          label: ['', [Validators.required]],
+          type: ['Point'],
+          coordinates: this.fb.array([
+            new FormControl(),
+            new FormControl()
+          ])
         }),
         director: this.fb.group({
           name: [''],
@@ -142,8 +153,8 @@ export class ProfileInfoComponent {
     this.carsService.getCategories().subscribe(
       res => {
         this.transportCategories = res;
-        res.map((item:any)=>{
-          if (item.value == this.userInfoForm.get('car_attributes').get('category').value) this.selectedCategory = item;
+        res.map((item: any) => {
+          if (this.userInfoForm.get('role').value == 'user' && item.value == this.userInfoForm.get('car_attributes').get('category').value) this.selectedCategory = item;
         })
       },
       errorRes => {

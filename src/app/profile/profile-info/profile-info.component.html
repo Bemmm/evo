@@ -10,6 +10,11 @@
     </div>
 
     <div class="form-group">
+      <google-places [type]="'(cities)'" [defaultAddress]="this.userInfoForm.controls.address.controls" [label]="{en:'city', ua:'Місто'}"
+        (locationData)="getAddress($event, 'address')"></google-places>
+    </div>
+
+    <div class="form-group">
       <span class="ui-float-label evo-input">
         <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control"></p-inputMask>
         <label for="phone">Телефон</label>
@@ -54,7 +59,7 @@
     </div>
 
     <div class="form-group text-center">
-      <button *ngIf="userInfoForm.touched" class="evo-button" type="submit">Зберегти</button>
+      <button class="evo-button" type="submit">Зберегти</button>
     </div>
 
   </form>
@@ -104,12 +109,15 @@
       <validation-messages [control]="userInfoForm.controls.email"></validation-messages>
     </div>
 
-    <div class="form-group" formGroupName="address">
-      <google-places [type]="'(cities)'" [label]="{en:'city', ua:'Місто'}" (locationData)="getAddress($event, 'address')"></google-places>
+
+    <div class="form-group">
+      <google-places [type]="'address'" [defaultAddress]="this.userInfoForm.controls.address.controls" [label]="{en:'city', ua:'Адреса'}"
+        (locationData)="getAddress($event, 'address')"></google-places>
     </div>
 
+
     <div class="form-group text-center">
-      <button *ngIf="userInfoForm.touched" class="evo-button" type="submit">Зберегти</button>
+      <button class="evo-button" type="submit">Зберегти</button>
     </div>
   </form>
 
@@ -148,10 +156,10 @@
           <p-dropdown class="dropdown__blue" [options]="taxFormTypes" formControlName="tax_form"></p-dropdown>
         </div>
         <div class="form-group" formGroupName="official_address" *ngIf="userInfoForm.get('ownership').value !== 'FOP'">
-          <google-places [type]="'address'" [label]="{en:'official_address', ua:'Юридична адреса'}" (locationData)="getAddress($event, 'official_address')"></google-places>
+          <google-places [type]="'address'" [defaultAddress]="this.userInfoForm.controls.official_address.controls" [label]="{en:'official_address', ua:'Юридична адреса'}" (locationData)="getAddress($event, 'official_address')"></google-places>
         </div>
         <div class="form-group" formGroupName="physical_address">
-          <google-places [type]="'address'" [label]="{en:'physical_address', ua:'Фізична адреса'}" (locationData)="getAddress($event, 'physical_address')"></google-places>
+          <google-places [type]="'address'" [defaultAddress]="this.userInfoForm.controls.physical_address.controls" [label]="{en:'physical_address', ua:'Фізична адреса'}" (locationData)="getAddress($event, 'physical_address')"></google-places>
         </div>
         <div formGroupName="director">
           <div class="form-group">
@@ -189,7 +197,7 @@
         </div>
 
         <div class="form-group text-center">
-          <button *ngIf="userInfoForm.touched" class="evo-button" type="submit">Зберегти</button>
+          <button class="evo-button" type="submit">Зберегти</button>
         </div>
 
       </div>

@@ -37,76 +37,45 @@
 </ng-template>
 
 
-<p-dialog class="add-driver" header="Додавання Водія" [(visible)]="driverDialog" [width]="500" [baseZIndex]="9999" (onHide)="clearForm()">
+<p-dialog class="add-driver" header="Додавання Водія" [(visible)]="driverDialog"  (onHide)="clearForm()">
   <form [formGroup]="driverForm" (ngSubmit)="submitCreation(driverForm.editMode ? 'editMode': 'addMode')">
-    <div class="row">
-      <div class="col-md-12 text-center">
+
         <div class="form-group">
-          <span class="ui-float-label blue">
-            <input pInputText id="email" formControlName="email" class="form-control evo-input" type="text">
+          <span class="ui-float-label blue evo-input">
+            <input pInputText id="email" formControlName="email" class="form-control" type="text">
             <label for="email">Email</label>
           </span>
         </div>
         <div class="form-group">
-            <span class="ui-float-label blue">
+            <span class="ui-float-label blue evo-input">
               <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control evo-input"></p-inputMask>
               <label for="phone">Телефон</label>
             </span>
             <validation-messages [control]="driverForm.controls.phone"></validation-messages>
           </div>
         <div class="form-group">
-            <span class="ui-float-label blue">
-              <input pInputText id="name" formControlName="name" class="form-control evo-input" type="text">
+            <span class="ui-float-label blue evo-input">
+              <input pInputText id="name" formControlName="name" class="form-control" type="text">
               <label for="name">ФІО</label>
             </span>
           </div>
         <div class="form-group">
-          <span class="ui-float-label blue">
+          <span class="ui-float-label blue evo-input">
             <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="1920:2018" dateFormat="dd.mm.yy" [locale]="ua" formControlName="birthday" class="form-control evo-input"></p-calendar>
             <label for="birthday">Дата народження</label>
           </span>
         </div>
         <div class="form-group" formGroupName="address">
-          <span class="ui-float-label blue">
-              <input type="text"
-              formControlName= "label"
-              class="form-control evo-input"
-              [options]='addressOptions'
-              (FormatAddress)="getFormattedAddress($event, 'address')"
-              (street_number) = 'street_number=$event'
-              (street)= 'street=$event'
-              (city)= 'city=$event'
-              (state)='state=$event'
-              (district)='district=$event'
-              (country)='country=$event'
-              (postal_code)='postal_code=$event'
-              (lat)='lat=$event'
-              (lng)='lng=$event'
-              (adr_address)='adr_address=$event'
-              (name)='name=$event'
-              (place_id)='place_id=$event'
-              (types)='types=$event'
-              (url)='url=$event'
-              (utc_offset)='utc_offset=$event'
-              (vicinity)='vicinity=$event'
-              (photos)='photos=$event'
-              (CountryCodes)='CountryCodes=$event'
-              placeholder=" "
-              id="address"
-              angularGooglePlace
-              pInputText/>
-              <label for="address">Фізична адреса</label>
-          </span>
+            <google-places [label]="{en:'address', ua:'Фізична адреса'}" [defaultAddress]="this.driverForm.controls.address.controls" [type]="'address'" (locationData)="getAddress($event, 'address')"></google-places>
+
         </div>
 
         <div class="form-group">
-          <span class="ui-float-label blue">
-            <input pInputText id="passport" formControlName="passport" class="form-control evo-input" type="text">
+          <span class="ui-float-label blue evo-input">
+            <input pInputText id="passport" formControlName="passport" class="form-control" type="text">
             <label for="passport">Серія та номер паспорту</label>
           </span>
         </div>
-      </div>
-    </div>
 
     <div class="form-group flex-row right">
       <button *ngIf="!driverForm.editMode" class="evo-button" type="submit">Додати</button>
