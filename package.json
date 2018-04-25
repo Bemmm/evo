@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "http-server dist/",
-    "watch": "webpack-dev-server --inline --progress --port 3000",
+    "watch": "webpack-dev-server --inline --progress --port 8080",
     "preinstall": "npm install -g http-server",
     "postinstall": "npm run build-dev",
     "dev-with-prod-proxy": "webpack-dev-server --inline --progress --port 3000 --env.prodProxy --env.mode=dev",
