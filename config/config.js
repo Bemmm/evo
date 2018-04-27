@@ -1,7 +1,7 @@
 const configs = {
   local: {
     baseHref: '/',
-    apiUrl: 'https://user-login-demo.herokuapp.com/api/',
+    apiUrl: 'http://159.89.5.152:4200/api/',
     googleAnalyticsTag: '-',
     sourceMap: 'nosources-source-map'
   },
