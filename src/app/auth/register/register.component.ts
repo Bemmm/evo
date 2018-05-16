@@ -108,6 +108,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   };
   driverData = {
     name: [''],
+    phone: ['', Validators.required],
     email: ['', [Validators.required]],
     passport: ['', [Validators.required]],
     birthday: ['', [Validators.required]],

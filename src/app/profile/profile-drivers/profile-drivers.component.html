@@ -37,7 +37,7 @@
 </ng-template>
 
 
-<p-dialog class="add-driver" header="Додавання Водія" [(visible)]="driverDialog"  (onHide)="clearForm()">
+<p-dialog class="add-driver" header="Додавання Водія" *ngIf="driverDialog" [(visible)]="driverDialog"  (onHide)="clearForm()">
   <form [formGroup]="driverForm" (ngSubmit)="submitCreation(driverForm.editMode ? 'editMode': 'addMode')">
 
         <div class="form-group">
@@ -67,7 +67,6 @@
         </div>
         <div class="form-group" formGroupName="address">
             <google-places [label]="{en:'address', ua:'Фізична адреса'}" [defaultAddress]="this.driverForm.controls.address.controls" [type]="'address'" (locationData)="getAddress($event, 'address')"></google-places>
-
         </div>
 
         <div class="form-group">

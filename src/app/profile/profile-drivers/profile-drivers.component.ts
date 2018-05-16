@@ -1,16 +1,21 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl} from '@angular/forms';
 import { UserService, DriversService } from 'app/core/services';
-import { MapsAPILoader } from '@agm/core/services/maps-api-loader/maps-api-loader';
 import { Validators } from '@angular/forms';
 import { UA } from 'app/shared/constants/calendar-local';
-
+import {
+  MapsAPILoader
+} from '@agm/core/services/maps-api-loader/maps-api-loader';
+import {
+  Address
+} from 'angular-google-place';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 @Component({
     selector: 'evo-profile-drivers',
     templateUrl: 'profile-drivers.component.html',
     styleUrls: ['profile-drivers.component.scss']
 })
-export class ProfileDriversComponent {
+export class ProfileDriversComponent implements OnDestroy{
   addressOptions = {
     type: 'address',
     componentRestrictions: {
@@ -41,6 +46,11 @@ export class ProfileDriversComponent {
     });
   };
 
+  ngOnDestroy(){
+    let element = document.getElementsByClassName('pac-container')[0];
+    element.remove();
+    console.log(element);
+  }
 
   buildDriverForm() {
     let driverModel = {
