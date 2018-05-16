@@ -25,7 +25,7 @@
   </div>
 
   <div class="col-xs-4 evo-header__item text-right" *ngIf="user">
-    <a class="evo-header__item-button" [routerLink]="['/logout']">
+    <a class="evo-header__item-button" (click)="logout()">
       <i class="material-icons logout">exit_to_app</i>
     </a>
   </div>

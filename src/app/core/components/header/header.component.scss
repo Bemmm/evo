@@ -13,6 +13,7 @@
     }
     &__item {
       &-button{
+        cursor: pointer;
         i{
           color:$evo-title-text;
           font-size: 32px;
