@@ -111,7 +111,9 @@
 
     </div>
     <div class="form-group" formGroupName="address">
-      <google-places *ngIf="truckDialog" [type]="'address'" [label]="{en:'address', ua:'Місцезнаходження'}" (locationData)="getAddress($event, 'address')"></google-places>
+
+      <google-places *ngIf="truckDialog" [type]="'address'" [label]="{en:'address', ua:'Місцезнаходження'}"
+      [defaultAddress]="this.truckForm.controls.address.controls" (locationData)="getAddress($event, 'address')"></google-places>
     </div>
 
     <div class="form-group">
