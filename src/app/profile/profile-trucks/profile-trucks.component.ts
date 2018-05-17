@@ -125,7 +125,7 @@ export class ProfileTrucksComponent {
       type: ['wrecker'],
       photo: ['1'],
       price: ['', [Validators.required]],
-      description: [''],
+      description: ['', [Validators.required]],
     }
     this.truckForm = this.fb.group(truckModel);
     // this.truckForm.patchValue(this.loggedUser)

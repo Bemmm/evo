@@ -1,1 +1,70 @@
 // component css goes here
+.driver {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin:20px 0;
+  &-wrapper {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background-color: $evo-yellow;
+    padding: 20px 0;
+    position: relative;
+    &_actions{
+      position: absolute;
+      top: 5px;
+      width:95%;
+      display: flex;
+      justify-content: space-between;
+      .ui-button-icon-only{
+        background: $evo-grey;
+        border-radius: 50%;
+        border: 1px solid $evo-grey-border;
+        width: 30px;
+        height: 30px;
+        &:hover{
+          background-color: transparent;
+
+        }
+      }
+    }
+    &-image {
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      border-radius: 50%;
+      img {
+        width: 100%;
+      }
+    }
+    &-name{
+      font-size: 20px;
+      color:#fff;
+      margin: 5px 0;
+    }
+  }
+  &_info {
+    padding: 10px;
+    background-color: $evo-grey-background;
+    font-family: 'Roboto';
+    &-item{
+      background-color: #fff;
+      margin: 2px 0;
+      padding: 10px;
+      &>div{
+        color: $evo-grey-background-text;
+        font-size: 13px;
+      }
+      &:first-child{
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+      }
+      &:last-child{
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+      }
+    }
+  }
+}

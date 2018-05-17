@@ -48,7 +48,7 @@ export class ProfileDriversComponent implements OnDestroy{
 
   ngOnDestroy(){
     let element = document.getElementsByClassName('pac-container')[0];
-    element.remove();
+    if (element) element.remove();
     console.log(element);
   }
 
@@ -120,5 +120,9 @@ export class ProfileDriversComponent implements OnDestroy{
     this.driverForm.editMode = null;
     this.driverForm.reset();
     this.driverForm.get('role').setValue('driver');
+  }
+  formatBirthday(data:string){
+    let date = new Date(data);
+    return date.getDate()+'/' + (date.getMonth()+1) + '/'+date.getFullYear();
   }
 }

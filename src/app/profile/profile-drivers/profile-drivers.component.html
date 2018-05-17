@@ -1,6 +1,6 @@
   <button class="evo-button evo-button__square" (click)="addDriver()">Додати водія</button>
 <div *ngIf="!drivers.length">Ви ще не додали жодного водія</div>
-<p-table [columns]="cols" [(value)]="drivers" [responsive]="true" *ngIf="drivers.length">
+<!-- <p-table [columns]="cols" [(value)]="drivers" [responsive]="true" *ngIf="drivers.length">
   <ng-template pTemplate="header">
     <tr>
       <th>ФІО</th>
@@ -31,7 +31,31 @@
   <ng-template pTemplate="summary">
     Показано Водіїв: {{drivers?.length}}
   </ng-template>
-</p-table>
+</p-table> -->
+<div class="col-md-12" style="display:flex; justify-content:space-around; flex-wrap: wrap;">
+  <div class="card driver" *ngFor="let driver of drivers">
+    <div class="driver-wrapper">
+        <div class="driver-wrapper_actions">
+            <button class="edit" pButton icon="fa-edit" (click)="editDriver(driver)"></button>
+            <button class="delete" pButton icon="fa-times" (click)="deleteDriver(this.driver)"></button>
+        </div>
+      <div class="driver-wrapper-image">
+        <img src="https://lightwidget.com/widgets/empty-photo.jpg" alt="">
+     </div>
+     <div class="driver-wrapper-name">
+        {{driver.name}}
+     </div>
+    </div>
+    <div class="driver_info">
+      <div class="driver_info-item driver_info-birthday">{{formatBirthday(driver.birthday)}}<div>Дата народжння</div></div>
+      <div class="driver_info-item driver_info-email">{{driver.email}}<div>Email</div></div>
+      <div class="driver_info-item driver_info-passport">{{driver.passport}}<div>Паспорт</div></div>
+      <div class="driver_info-item driver_info-phone">{{driver.phone}} <div>Телефон</div></div>
+      <div class="driver_info-item driver_info-address">{{driver.address.label}}</div>
+    </div>
+  </div>
+</div>
+
 <ng-template *ngIf="drivers.length">
   Ви не додали ще жодного водія :С
 </ng-template>
