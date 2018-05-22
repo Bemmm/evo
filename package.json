@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "http-server dist/",
+    "start": "cd dist/ && angular-http-server ",
     "watch": "webpack-dev-server --inline --progress --port 8080",
     "preinstall": "npm install -g http-server",
     "postinstall": "npm run build-dev",
@@ -56,7 +56,6 @@
     "font-awesome": "^4.7.0",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
-    "http-server": "^0.10.0",
     "istanbul-instrumenter-loader": "^3.0.0",
     "jasmine": "^2.8.0",
     "jasmine-core": "^2.8.0",
@@ -93,6 +92,7 @@
   },
   "devDependencies": {
     "webpack": "^3.11.0",
+    "angular-http-server": "^1.4.5",
     "webpack-cli": "^2.1.2"
   }
 }
