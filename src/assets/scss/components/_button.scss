@@ -2,16 +2,16 @@ $base-width: rem(280px);
 $base-height: rem(50px);
 .evo-button {
   display: block;
-  color: #6c6750;
-  background: $evo-yellow;
-  font-family: 'Roboto';
-  border: 0;
-  font-size: 20px;
-  border-radius: 50px;
-  padding: 15px 25px;
-  min-width: 200px;
-  outline: none !important;
+  font-family: 'Ubuntu';
+  font-size: 14px;
+  border-radius: 30px;
+  padding: 5px 20px;
   margin: auto;
+  &__solid{
+    color: #fff;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+  }
   a {
     color: #6c6750;
     text-decoration: none;

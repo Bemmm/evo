@@ -1,10 +1,17 @@
 .evo-input{
-  font-family: 'Roboto';
+  border: 1px solid #e5e5e5;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 32px 50px;
+  padding-bottom: 10px;  
   &>input, &>p-inputmask, &>p-calendar{
     box-shadow: none;
+    font-size: 20px;
+    color:#999999;
     border-radius: 0;
-    border: 0;
-    border-bottom: 1px solid $evo-grey;
+    border:0;
+    height: 20px;
     position: relative;
     input,
     &>span{
@@ -19,15 +26,16 @@
       top: 0;
       &:focus{
         box-shadow: none;
-
       }
     }
   }
   label{
-    font-family: 'Roboto';
     font-weight: 400;
-    font-size: 18px;
-    // top:35%;
-    color: $evo-text;
+    font-family: 'Ubuntu';
+    font-size: 14px;
+    color: #000;
+    position: absolute;
+    top: 8px;
+    left: 40px;
   }
 }

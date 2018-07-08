@@ -1,31 +1,39 @@
   /* stylelint-disable */
 
   .evo-header {
-    background-color: $evo-yellow;
-    padding: 17px 0;
-    height: 67px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &__title {
-      font-size: 1.7em;
-      color: $evo-title-text;
+    background-color: black;
+    padding: 10px 0;
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &:before,
+      &:after{
+        display: none;
+      }
     }
-    &__item {
-      &-button{
-        cursor: pointer;
-        i{
-          color:$evo-title-text;
-          font-size: 32px;
-          vertical-align: middle;
-          &.logout{
-            font-size: 28px;
-          }
+    &__row{
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+    }
+    &__logo {
+      &:hover{
+        text-decoration: none;
+        color: inherit;
+      }
+      color: #fff;
+      font-size: 30px;
+      span {
+        color: #59d389;
+        span {
+          font-size:16px;
         }
       }
-      a{
-        color: $evo-button;
-        font-size: 18px;
-      }
+    }
+    &__item {
+      color: #fff;
+      font-size: 14px;
+      margin:0 20px;
     }
   }

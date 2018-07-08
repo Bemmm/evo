@@ -1,18 +1,18 @@
-<div class="container evo-login">
-  <form class="evo-login__form evo-form" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form class="evo-form" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="evo-form__title">Вхід</div>
       <div class="row">
         <div class="col-md-12 text-center">
           <div class="form-group">
-            <span class="ui-float-label blue evo-input">  
+            <div class="evo-input">  
               <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control"></p-inputMask>
               <label for="phone">Телефон</label>
-            </span>
+            </div>
           </div>
           <div class="form-group">
-            <span class="ui-float-label blue evo-input">  
+            <div class="evo-input">  
               <input pInputText id="password" formControlName="password" class="form-control" type="password" >
               <label for="password">Пароль</label>
-            </span>
+            </div>
           </div>
           <div class="form-group">
             <button class="evo-button" type="submit">Увійти</button>  
@@ -20,5 +20,3 @@
         </div>
       </div>
   </form>
-
-</div>

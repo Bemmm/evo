@@ -1,24 +1,9 @@
 <div class="evo-auth">
   <evo-header class="auth_header" [hasSearchLink]="hasSearchLink" [isLogged]="isLogged" [headerStyle]="'title'" (toggleMobileNav)="onToggleMobileNav()" [(title)]="title"></evo-header>
+  <div class="page-title page-title-auth">
+      <div class="page-title__text">Ласкаво просимо!</div>
+  </div>  
   <router-outlet></router-outlet>
-  <div class="navigation_bar row">
-    <div [routerLinkActive]="['active']" [routerLink]="['/auth/register']" class="navigation_bar-item text-center">
-      <div class="navigation_bar-item-button">
-        <i class="fa fa-user-o"></i>
-      </div>
-      <div class="navigation_bar-item-title">
-        Реєстрація
-      </div>
-    </div>
-    <div [routerLinkActive]="['active']" [routerLink]="['/auth/login']" class="navigation_bar-item text-center">
-      <div class="navigation_bar-item-button">
-        <i class="fa fa-angle-right"></i>
-      </div>
-      <div class="navigation_bar-item-title">
-        Вхід
-      </div>
-    </div>
-  </div>
 </div>
 <!-- <footer>
   <evo-footer [hideOrdersLink]="true"></evo-footer>

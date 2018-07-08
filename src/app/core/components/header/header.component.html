@@ -1,42 +1,27 @@
-<div class="evo-header container-fluid" *ngIf="headerStyle === 'menu'">
+<div class="evo-header" *ngIf="headerStyle === 'menu'">
 
-  <div class="col-xs-4 evo-header__item text-left" *ngIf="!user">
-    <div class="evo-header__info-button">
-      <a [routerLink]="['/auth/login']">Увійти</a>
+  <div class="container">
+    
+    <div class="evo-header__row"> 
+      <div class="evo-header__logo ">
+        <div [routerLink]="['/']">Cars<span>Work.<span>com</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="evo-header__row">
+      <div class="evo-header__item" *ngIf="!user">
+        <div [routerLink]="['/auth/register']">Як додати евакуатор?</div>
+      </div>
+      <div [routerLink]="['/auth/login']" class="evo-button evo-button__solid">Реєстрація/Вхід</div>
     </div>
   </div>
 
-
-  <div class="col-xs-4 evo-header__item" *ngIf="user">
-    <a class="evo-header__item-button" [routerLink]="['/profile', user._id]">
-      <i class="material-icons">person_outline</i>
-    </a>
-  </div>
-
-
-  <div class="col-xs-4 text-center evo-header__title">
-    {{title ? title : ''}}
-  </div>
-
-  <div class="col-xs-4 evo-header__item text-right" *ngIf="!user">
-    <div class="evo-header__info-button">
-      <a [routerLink]="['/auth/register']">Реєстрація</a>
+  <div class="evo-header container-fluid" *ngIf="headerStyle === 'title'">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4 text-center evo-header__title">
+      {{title ? title : ''}}
     </div>
+    <div class="col-xs-4"></div>
   </div>
-
-  <div class="col-xs-4 evo-header__item text-right" *ngIf="user">
-    <a class="evo-header__item-button" (click)="logout()">
-      <i class="material-icons logout">exit_to_app</i>
-    </a>
-  </div>
-</div>
-
-
-<div class="evo-header container-fluid" *ngIf="headerStyle === 'title'">
-  <div class="col-xs-4"></div>
-  <div class="col-xs-4 text-center evo-header__title">
-    {{title ? title : ''}}
-  </div>
-  <div class="col-xs-4"></div>
-
 </div>

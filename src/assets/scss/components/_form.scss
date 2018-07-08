@@ -1,0 +1,10 @@
+.evo-form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    &__title{
+        font-size: 60px;
+        font-family: 'Playfair Display';
+        font-weight: 600;
+    }
+}
