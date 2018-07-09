@@ -5,12 +5,7 @@
 @import "components";
 html,
 body,
-evo-app,
-evo-auth,
-evo-home,
 main {
-  height: 100%;
-  min-height: 100%;
   max-width: 100%;
   overflow-x: hidden;
   font-family: 'Roboto';
@@ -18,38 +13,6 @@ main {
 
 button {
   outline: none;
-}
-
-evo-map,
-.evo-map {
-  height: 100%;
-  min-height: 100%;
-}
-
-evo-auth,
-.evo-auth {
-  height: 100%;
-  min-height: 100%;
-}
-evo-profile,
-.evo-profile {
-  height: 100%;
-  min-height: 100%;
-}
-evo-login,
-evo-register {
-  height: 100%;
-  overflow-y: auto;
-}
-
-evo-profile-trucks,
-evo-profile-info,
-evo-profile-drivers {
-  margin: 10px 0;
-  height: calc(100% - 146px);
-  overflow-y: auto;
-  display: block;
-  flex-direction: column;
 }
 
 .pac-container {
@@ -64,7 +27,7 @@ evo-profile-drivers {
 }
 
 .form-group {
-  margin: 50px 0;
+  margin: 20px 0;
 }
 
 .flex-row {
@@ -72,6 +35,10 @@ evo-profile-drivers {
   flex-direction: row;
   &.right {
     justify-content: flex-end;
+    margin: 10px 0;
+  }
+  &.left {
+    justify-content: flex-start;
     margin: 10px 0;
   }
   &.center-center {
