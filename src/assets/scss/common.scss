@@ -27,7 +27,7 @@ button {
 }
 
 .form-group {
-  margin: 50px 0;
+  margin: 20px 0;
 }
 
 .flex-row {
@@ -35,6 +35,10 @@ button {
   flex-direction: row;
   &.right {
     justify-content: flex-end;
+    margin: 10px 0;
+  }
+  &.left {
+    justify-content: flex-start;
     margin: 10px 0;
   }
   &.center-center {

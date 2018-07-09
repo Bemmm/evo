@@ -1,5 +1,6 @@
-.evo-login{
-    .evo-button{
-        margin: auto;
+    .evo-button {
+      &__green {
+        min-width: 140px;
+        margin-top: 25px;
+      }
     }
-}

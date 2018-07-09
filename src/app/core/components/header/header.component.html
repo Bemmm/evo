@@ -1,8 +1,8 @@
 <div class="evo-header" *ngIf="headerStyle === 'menu'">
 
   <div class="container">
-    
-    <div class="evo-header__row"> 
+
+    <div class="evo-header__row">
       <div class="evo-header__logo ">
         <div [routerLink]="['/']">Cars<span>Work.<span>com</span></span>
         </div>
@@ -10,7 +10,7 @@
     </div>
 
     <div class="evo-header__row">
-      <div class="evo-header__item" *ngIf="!user">
+      <div class="evo-header__item">
         <div [routerLink]="['/auth/register']">Як додати евакуатор?</div>
       </div>
       <div [routerLink]="['/auth/login']" class="evo-button evo-button__solid">Реєстрація/Вхід</div>

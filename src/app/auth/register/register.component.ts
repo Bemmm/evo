@@ -158,7 +158,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     static_phone: [''],
     role: ['company'],
   };
-  transportDialog = false;
   subscriptions: Subscription[] = [];
 
   constructor(
@@ -180,7 +179,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     const subscription = this.carsService.getCategories().subscribe(
       res => {
         this.helperModel.transportCategories = res;
-        console.log(res);
+        this.helperModel.transportCategories.unshift({
+          name: 'Оберіть категорію',
+          value: null
+        })
       },
       errorRes => {
         console.log(errorRes);
@@ -263,11 +265,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   setCategory(event: any) {
-    this.helperModel.selectedCategory = event.name;
+    // this.helperModel.selectedCategory = event.name;
     this.registerForm.get('car_attributes').get('category').setValue(event.value);
     const subscription = this.carsService.getMarks(this.registerForm.get('car_attributes').get('category').value).subscribe(
       res => {
-        this.transportDialog = !this.transportDialog;
         this.brand = res;
         this.brand.unshift({
           name: 'Оберіть марку',
@@ -281,9 +282,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.subscriptions.push(subscription);
   }
 
-  toggleTransportDialog() {
-    this.transportDialog = !this.transportDialog;
-  }
+
   setTestData() {
     this.registerForm.patchValue({ "name": "Company", "ownership": "TOV", "other_ownership": "", "id_code": "", "zkpo": "12345678", "tax_form": "pdv", "passport": "АН255346", "official_address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "physical_address": { "label": "вулиця Академіка Ющенка 5, Вінниця, Вінницька область", "lat": 49.2204699, "lng": 28.44287209999993 }, "director": { "name": "Бембенок Богдан Васильович", "phone": "+380-11-1111-111" }, "liable": { "name": "Бембенок Інна Миколаївна", "phone": "+380-11-1111-112" }, "static_phone": "222260", "role": "company" });
     console.log(this.registerForm.value);

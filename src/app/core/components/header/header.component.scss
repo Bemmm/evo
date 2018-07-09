@@ -1,7 +1,7 @@
   /* stylelint-disable */
 
   .evo-header {
-    background-color: black;
+    background-color: $evo-main;
     padding: 10px 0;
     .container {
       display: flex;
@@ -34,6 +34,8 @@
     &__item {
       color: #fff;
       font-size: 14px;
-      margin:0 20px;
+    }
+    .evo-button.evo-button__solid{
+      margin: 0 28px;
     }
   }

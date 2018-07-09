@@ -3,20 +3,23 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <div class="form-group">
-            <div class="evo-input">  
-              <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control"></p-inputMask>
-              <label for="phone">Телефон</label>
+            <div class="evo-input">
+              <p-inputMask mask="+380-99-9999-999" placeholder="Вкажіть Ваш номер телефону" pInputText id="phone" formControlName="phone" class="form-control"></p-inputMask>
+              <label for="phone">Номер телефону</label>
             </div>
           </div>
           <div class="form-group">
-            <div class="evo-input">  
-              <input pInputText id="password" formControlName="password" class="form-control" type="password" >
+            <div class="evo-input">
+              <input pInputText id="password" formControlName="password" class="form-control" type="password" placeholder="***********">
               <label for="password">Пароль</label>
             </div>
           </div>
           <div class="form-group">
-            <button class="evo-button" type="submit">Увійти</button>  
-          </div>                                                                                    
+            <button class="evo-button evo-button__green" type="submit">Увійти</button>
+          </div>
         </div>
       </div>
   </form>
+  <div class="navigation__auth">
+    <div [routerLink]="['/auth/register']"  class="navigation__auth__link">немає аккаунту / реєстрація</div>
+  </div>

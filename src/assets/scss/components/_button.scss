@@ -2,11 +2,26 @@ $base-width: rem(280px);
 $base-height: rem(50px);
 .evo-button {
   display: block;
-  font-family: 'Ubuntu';
+  font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
   border-radius: 30px;
-  padding: 5px 20px;
+  padding: 7px 24px;
   margin: auto;
+  &__purple{
+    color: #fff;
+    background-color: #8f63f4;
+    text-transform: uppercase;
+    border: 1px solid #8f63f4;
+    font-size:18px;
+
+  }
+  &__green{
+    color: #fff;
+    background-color: #59d389;
+    text-transform: uppercase;
+    border: 1px solid #59d389;
+    font-size:18px;
+  }
   &__solid{
     color: #fff;
     text-transform: uppercase;

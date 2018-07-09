@@ -1,66 +1,21 @@
-.navigation_bar {
-  height: $navbar_height;
-  width:100%;
-  min-height: $navbar_height;
-  background-color: $evo-grey-background;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  overflow: hidden;
-  &-item {
-    outline: 0;
-    position: relative;
-    z-index: 0;
-    &.active {
-      .navigation_bar-item-button {
-        background: #fff !important;
-        &:before {
-          content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 100 100' preserveAspectRatio='none'><path  d='m0.27778,0l109.72222,0.24098c-98.18562,12.91007 -27.38416,94.26854 -110,89.91741l0.27778,-90.15839z' fill='#fff'></path></svg>");
-          width: 95px;
-          height: 95px;
-          position: absolute;
-          display: block;
-          top: $parabola-margin-top;
-          right: $parabola-margin;
-          margin: auto;
-          transform: rotateY(180deg);
-          z-index: 70;
-        }
-        &:after {
-          content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 100 100' preserveAspectRatio='none'><path  d='m0.27778,0l109.72222,0.24098c-98.18562,12.91007 -27.38416,94.26854 -110,89.91741l0.27778,-90.15839z' fill='#fff'></path></svg>");
-          width: 95px;
-          height: 95px;
-          position: absolute;
-          display: block;
-          top: $parabola-margin-top;
-          left: $parabola-margin;
-          margin: auto;
-          z-index: 70;
-        }
-      }
-    }
-    padding: 20px 10px;
-    &-button {
-      position: relative;
-      box-shadow: 0 15px 30px -3px rgba(173, 173, 173, 0.28);
-      position: relative;
-      z-index: 50;
-      width: $button-size;
-      height: $button-size;
-      background: $evo-grey-background-button;
-      display: flex;
-      margin: auto;
-      border-radius: 100%;
-      align-items: center;
-      justify-content: center;
-      i {
-        z-index: 200;
-        font-size: 20px;
-        color: $evo-title-text;
-      }
-    }
-    &-title {
-      color: $evo-grey-background-text;
+.navigation{
+  &__auth{
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 115px;
+    padding: 30px;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: center;
+    max-width: 350px;
+    text-align: center;
+    &__link{
+      text-transform: uppercase;
+      text-decoration: underline;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Ubuntu', sans-serif;
+      cursor: pointer;
     }
   }
 }

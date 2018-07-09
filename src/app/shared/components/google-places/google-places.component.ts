@@ -15,6 +15,7 @@ export class GooglePlacesComponent implements OnInit,  OnDestroy {
   @Input() label: Object;
   @Input() defaultAddress: any;
   @Input() clear: any;
+  @Input() placeholder: any;
 
   @Output() locationData = new EventEmitter<any>();
   @Output() focus = new EventEmitter<any>();

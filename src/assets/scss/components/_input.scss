@@ -3,19 +3,30 @@
   position: relative;
   border-radius: 30px;
   overflow: hidden;
-  padding: 32px 50px;
-  padding-bottom: 10px;  
+  padding: 30px 50px 10px 30px;
+  min-width: 350px;
+  &.error{
+    border-color: red;
+  }
+  &>input{
+    padding-left: 10px !important;
+    font-size: 18px;
+  }
   &>input, &>p-inputmask, &>p-calendar{
     box-shadow: none;
-    font-size: 20px;
-    color:#999999;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    color:#9b9b9b;
     border-radius: 0;
     border:0;
+    padding: 0;
     height: 20px;
     position: relative;
     input,
     &>span{
+      font-family: 'Ubuntu', sans-serif;
       display: block;
+      color:#9b9b9b;
       width:100%;
       border: 0;
       left: 0;
@@ -31,11 +42,16 @@
   }
   label{
     font-weight: 400;
-    font-family: 'Ubuntu';
+    font-family: 'Ubuntu', sans-serif;
     font-size: 14px;
     color: #000;
     position: absolute;
     top: 8px;
     left: 40px;
+    margin-bottom: 0;
+    span{
+      font-size: 16px;
+      color: red;
+    }
   }
 }
