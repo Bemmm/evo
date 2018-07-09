@@ -33,8 +33,8 @@ import {
 import {
   successRegistration
 } from 'app/shared/constants/messages';
-
-import { } from 'googlemaps';
+//eslint 
+// import {} from 'googlemaps';
 
 import { OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES } from 'app/shared/constants/';
 import { TransportCategoryModel, ModelModel, BrandModel } from 'app/shared/models/';
@@ -75,7 +75,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       label: 'Оберіть модель',
       value: null
     }],
-    selectedCategory: null,
     transportCategories: [],
     ownership: null,
     taxFormTypes: null,
@@ -194,6 +193,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.buildForm('userData');
 
   }
+  test() {
+    
+    this.registeredUser = {"x-access-token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1YjQzYjcxYTU3MmY5MjNiMTA3ZWYyN2MifQ.JLMCxyg8gdyIqBNbPjOltCW5bWzPaU6DYvrVPlPtwHU","_id":"5b43b71a572f923b107ef27c","name":"asdasdasdasdasd","phone":"380191829460","cars":[], "email":"bembenok@gmail.com","role":"user","address":{"label":"Винница, Винницкая область, Украина, 21000","type":"Point","coordinates":[49.23308299999999,28.468216900000016]},"car_attributes":{"brand":{"name":"Mitsubishi","value":52},"model":{"name":"Lancer Evolution","value":2669},"category":{"name":"Легковые","value":1}}}
+    this.helperModel.ownership = 'corporate';
+    this.buildForm('driverData');
+  }
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
@@ -222,7 +227,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if (!event.value) {
       return;
     }
-    const subscription = this.carsService.getModels(this.registerForm.get('car_attributes').get('category').value, this.registerForm.get('car_attributes').get('brand').value.value).subscribe(
+    const subscription = this.carsService.getModels(this.registerForm.get('car_attributes').get('category').value.value, this.registerForm.get('car_attributes').get('brand').value.value).subscribe(
       res => {
         this.models = res;
         this.models.unshift({
@@ -265,9 +270,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   setCategory(event: any) {
-    // this.helperModel.selectedCategory = event.name;
+    console.log(event);
     this.registerForm.get('car_attributes').get('category').setValue(event.value);
-    const subscription = this.carsService.getMarks(this.registerForm.get('car_attributes').get('category').value).subscribe(
+    const subscription = this.carsService.getMarks(this.registerForm.get('car_attributes').get('category').value.value).subscribe(
       res => {
         this.brand = res;
         this.brand.unshift({

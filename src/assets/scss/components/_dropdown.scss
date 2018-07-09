@@ -32,6 +32,9 @@
       position: relative;
       width:100% !important;
       background-color: #fff !important;
+      &-panel {
+        top:30px !important;
+      }
       &-label {
         cursor: pointer;
         left: 17px;

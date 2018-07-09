@@ -4,9 +4,28 @@
   border-radius: 30px;
   overflow: hidden;
   padding: 30px 50px 10px 30px;
-  min-width: 350px;
+  min-width: 360px;
   &.error{
     border-color: red;
+  }
+  &.check{
+    &:after{
+      content: '\F00C';
+      position: absolute;
+      font-family: 'FontAwesome';
+      right: 10px;
+      top: 13px;
+      width: 35px;
+      display: flex;
+      height: 35px;
+      background-color: #59d389;
+      border-radius: 100%;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+      color: #fff;
+    }
   }
   &>input{
     padding-left: 10px !important;

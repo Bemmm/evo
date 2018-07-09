@@ -1,4 +1,5 @@
-export const OWNERSHIP_TYPES = [{
+export const OWNERSHIP_TYPES = [
+  {
     label: 'ТОВ',
     value: 'TOV'
   },

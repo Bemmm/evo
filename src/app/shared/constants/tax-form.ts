@@ -1,5 +1,5 @@
 export const TAX_FORM_TYPES = [{
-    label: 'Форма оплати податку',
+    label: 'Не обрано',
     value: null
   },
   {

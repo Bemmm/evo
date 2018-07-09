@@ -3,42 +3,38 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <div class="evo-input" [ngClass]="{'error': registerForm.controls.name.invalid && registerForm.controls.name.touched }">
+        <div class="evo-input" [ngClass]="{'error': registerForm.controls.name.invalid && registerForm.controls.name.touched,
+                                           'check': registerForm.controls.name.valid && registerForm.controls.name.touched }">
           <input pInputText id="name" formControlName="name" class="form-control" placeholder="Вкажіть ваше ім'я" type="text">
-          <label for="name">Ваше ім'я
-            <span>*</span>
+          <label for="name">Ваше ім'я<span>*</span>
           </label>
         </div>
-        <validation-messages [control]="registerForm.controls.name"></validation-messages>
       </div>
       <div class="form-group">
-        <div class="evo-input" [ngClass]="{'error': registerForm.controls.phone.invalid && registerForm.controls.phone.touched }">
+        <div class="evo-input" [ngClass]="{'error': registerForm.controls.phone.invalid && registerForm.controls.phone.touched,
+        'check': registerForm.controls.phone.valid && registerForm.controls.phone.touched }">
           <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control" placeholder="Вкажіть Ваш номер телефону"></p-inputMask>
-          <label for="phone">Номер телефону
-            <span>*</span>
+          <label for="phone">Номер телефону<span>*</span>
           </label>
         </div>
-        <validation-messages [control]="registerForm.controls.phone"></validation-messages>
       </div>
       <div class="form-group">
-        <div class="evo-input" [ngClass]="{'error': registerForm.controls.password.invalid && registerForm.controls.password.touched }">
+        <div class="evo-input" [ngClass]="{'error': registerForm.controls.password.invalid && registerForm.controls.password.touched,
+        'check': registerForm.controls.password.valid && registerForm.controls.password.touched }">
           <input pInputText id="password" formControlName="password" class="form-control " type="password" placeholder="Оберіть свій пароль">
-          <label for="password">Пароль
-            <span>*</span>
+          <label for="password">Пароль<span>*</span>
           </label>
         </div>
-        <validation-messages [control]="registerForm.controls.password"></validation-messages>
       </div>
       <div class="form-group">
-        <div class="evo-input" [ngClass]="{'error': registerForm.controls.password_confirmation.invalid && registerForm.controls.password_confirmation.touched }">
+        <div class="evo-input" [ngClass]="{'error': registerForm.controls.password_confirmation.invalid && registerForm.controls.password_confirmation.touched,
+        'check': registerForm.controls.password_confirmation.valid && registerForm.controls.password_confirmation.touched }">
           <input pInputText id="password_confirmation" formControlName="password_confirmation" class="form-control " type="password"
             placeholder="Підтвердіть свій пароль">
-          <label for="password_confirmation">Підтвердження паролю
-            <span>*</span>
+          <label for="password_confirmation">Підтвердження паролю<span>*</span>
           </label>
         </div>
         <div class="rb-error" style="color: #f00; text-align: left; font-size: 12px;" *ngIf="registerForm.controls.password.value && registerForm.controls.password_confirmation.value && registerForm.controls.password.value !== registerForm.controls.password_confirmation.value">Паролі не співпадають</div>
-        <validation-messages [control]="registerForm.controls.password_confirmation"></validation-messages>
       </div>
       <div class="form-group">
         <button [disabled]="registerForm.invalid" class="evo-button evo-button__green" type="submit">Зареєструватись</button>
@@ -64,7 +60,7 @@
 
 <!-- USER! -->
 <form autocomplete="off" class="evo-form" novalidate [formGroup]="registerForm" (ngSubmit)="onSubmitAdditionals()" *ngIf="registeredUser && helperModel.ownership === 'users'">
-    <div class="evo-form__title">Реєстрація користувача</div>
+  <div class="evo-form__title">Реєстрація користувача</div>
   <div class="row">
     <div class="col-md-12 text-center">
       <div class="form-group">
@@ -72,41 +68,42 @@
           <input pInputText id="email" formControlName="email" class="form-control" type="text" placeholder="Вкажіть ваш e-mail">
           <label for="email">Ваш e-mail</label>
         </div>
-        <validation-messages [control]="registerForm.controls.email"></validation-messages>
       </div>
 
       <div class="form-group" formGroupName="address">
         <google-places [type]="'(cities)'" [label]="{en:'city', ua:'Звідки ви?'}" [placeholder]="'Ваше місто'" (locationData)="getAddress($event, 'address')"></google-places>
-        <validation-messages [control]="registerForm.controls.address.controls.label"></validation-messages>
       </div>
 
       <div formGroupName="car_attributes">
         <div class="form-group">
           <div class="evo-dropdown">
-            <p-dropdown [options]="helperModel.transportCategories"
-              [filter]="true" filterBy="label" formControlName="category" (onChange)="setCategory($event)" optionLabel="name"></p-dropdown>
+            <p-dropdown [options]="helperModel.transportCategories" formControlName="category" (onChange)="setCategory($event)" optionLabel="name"></p-dropdown>
             <label>Тип транспортного засобу</label>
-            <div class="evo-dropdown__trigger"><i class="fa fa-chevron-down"></i></div>
+            <div class="evo-dropdown__trigger">
+              <i class="fa fa-chevron-down"></i>
+            </div>
           </div>
         </div>
         <div class="form-group">
           <div class="evo-dropdown">
-            <p-dropdown [disabled]="!registerForm.controls.car_attributes.controls.category.value" [options]="brand"
-              [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)" optionLabel="name"></p-dropdown>
+            <p-dropdown [disabled]="!registerForm.controls.car_attributes.controls.category.value" [options]="brand" [filter]="true"
+              filterBy="label" formControlName="brand" (onChange)="carChanged($event)" optionLabel="name"></p-dropdown>
             <label>Марка вашого авто</label>
-            <div class="evo-dropdown__trigger"><i class="fa fa-chevron-down"></i></div>
+            <div class="evo-dropdown__trigger">
+              <i class="fa fa-chevron-down"></i>
+            </div>
 
-            <validation-messages [control]="registerForm.controls.car_attributes.controls.brand"></validation-messages>
           </div>
         </div>
 
         <div class="form-group">
           <div class="evo-dropdown">
-            <p-dropdown [disabled]="!registerForm.controls.car_attributes.controls.brand.value" [options]="models"
-              [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
+            <p-dropdown [disabled]="!registerForm.controls.car_attributes.controls.brand.value" [options]="models" [filter]="true" filterBy="label"
+              formControlName="model" optionLabel="name"></p-dropdown>
             <label>Модель вашого авто</label>
-            <div class="evo-dropdown__trigger"><i class="fa fa-chevron-down"></i></div>
-            <validation-messages [control]="registerForm.controls.car_attributes.controls.model"></validation-messages>
+            <div class="evo-dropdown__trigger">
+              <i class="fa fa-chevron-down"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -119,120 +116,146 @@
   </div>
 </form>
 
-<div class="evo-register__step" *ngIf="helperModel.ownership == 'corporate' && (helperModel.ownership !== 'drivers' || helperModel.ownership !== 'companies')">
-  <button class="evo-button" (click)="changeOwnership('drivers')">Власник евакуатора</button>
-  <button class="evo-button" (click)="changeOwnership('companies')">Евакуаторна служба</button>
-</div>
+<ng-container *ngIf="helperModel.ownership == 'corporate' && (helperModel.ownership !== 'drivers' || helperModel.ownership !== 'companies')">
+  <div class="evo-form">
+    <div class="evo-form__title">Хто ви?</div>
+    <div class="row">
+      <div class="col-md-12">
+        <button class="evo-button evo-button__purple evo-button__purple-step" (click)="changeOwnership('drivers')">Власник евакуатора</button>
+        <button class="evo-button evo-button__green evo-button__green-step" (click)="changeOwnership('companies')">Евакуаторна служба</button>
+      </div>
+    </div>
+  </div>
+  <div class="navigation__auth">
+    <div [routerLink]="['/auth/loign']" class="navigation__auth__link">я маю аккаунт</div>
+  </div>
+</ng-container>
 
-
-<form autocomplete="off" class="evo-register__form small evo-form" novalidate *ngIf="helperModel.ownership == 'drivers'"
-  [formGroup]="registerForm" (ngSubmit)="onSubmitAdditionals('drivers')">
+<!-- DRIVER -->
+<form autocomplete="off" class="evo-form" novalidate *ngIf="helperModel.ownership == 'drivers'" [formGroup]="registerForm"
+  (ngSubmit)="onSubmitAdditionals('drivers')">
+  <div class="evo-form__title">Зареєструватись для надання
+    <br>послуг евакуатора</div>
   <div class="row">
     <div class="col-md-12 text-center">
       <div class="form-group">
         <div class="evo-input">
-          <input pInputText id="email" formControlName="email" class="form-control " type="text">
-          <label for="email">Email</label>
+          <input pInputText id="email" formControlName="email" placeholder="Вкажіть ваш e-mail" class="form-control" type="text">
+          <label for="email">Ваш e-mail</label>
         </div>
       </div>
       <div class="form-group">
         <div class="evo-input">
-          <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="1920:2018" dateFormat="dd.mm.yy" [locale]="helperModel.ua"
-            formControlName="birthday" class="form-control "></p-calendar>
-          <label for="birthday">Дата народження</label>
+          <p-inputMask mask="99.99.99" placeholder="Вкажіть дату вашого народження" pInputText id="birthday" formControlName="birthday"
+            class="form-control"></p-inputMask>
+          <label for="birthday">Дата народження(ЧЧ.ММ.РР)</label>
         </div>
       </div>
       <div class="form-group" formGroupName="address">
-        <google-places [label]="{en:'address', ua:'Фізична адреса'}" [type]="'address'" (locationData)="getAddress($event, 'address')"></google-places>
+        <google-places [label]="{en:'address', ua:'Адреса'}" [type]="'address'" [placeholder]="'Вкажіть ваше місцерозташування'"
+          (locationData)="getAddress($event, 'address')"></google-places>
       </div>
 
       <div class="form-group">
         <div class="evo-input">
-          <input pInputText id="passport" formControlName="passport" class="form-control " type="text">
-          <label for="passport">Серія та номер паспорту</label>
+          <input pInputText id="passport" formControlName="passport" placeholder="Серія та номер паспорту" class="form-control " type="text">
+          <label for="passport">Номер паспорту</label>
         </div>
       </div>
 
       <div class="form-group">
-        <button [disabled]="registerForm.invalid" class="evo-button" type="submit">Підтвердити</button>
+        <button [disabled]="registerForm.invalid" class="evo-button evo-button__green" type="submit">Зареєструватись</button>
       </div>
 
     </div>
   </div>
 
 </form>
-
-<form autocomplete="off" class="evo-register__form big evo-form" novalidate *ngIf="helperModel.ownership == 'companies'"
-  [formGroup]="registerForm" (ngSubmit)="onSubmitAdditionals('companies')">
+<!-- CORPORATE -->
+<form autocomplete="off" class="evo-form" novalidate *ngIf="helperModel.ownership == 'companies'" [formGroup]="registerForm"
+  (ngSubmit)="onSubmitAdditionals('companies')">
+  <div class="evo-form__title">Зареєструвати евакуаторну службу</div>
   <div class="row">
     <div class="col-md-12 text-center">
       <div class="form-group ">
         <div class="evo-input">
-          <input pInputText id="title" formControlName="title" class="form-control " type="text">
-          <label for="title">Назва компанії</label>
+          <input pInputText id="title" formControlName="title" placeholder="Вкажіть назву компанії" class="form-control " type="text">
+          <label for="title">Назва компанії<span>*</span></label>
         </div>
       </div>
       <div class="form-group">
-        <p-dropdown [options]="helperModel.ownershipTypes" formControlName="ownership"></p-dropdown>
+        <div class="evo-dropdown">
+          <p-dropdown [options]="helperModel.ownershipTypes" formControlName="ownership"></p-dropdown>
+          <label>Форма реєстрації<span>*</span></label>
+          <div class="evo-dropdown__trigger">
+            <i class="fa fa-chevron-down"></i>
+          </div>
+        </div>
       </div>
       <div class="form-group" *ngIf="registerForm.get('ownership').value === 'OTHER'">
         <div class="evo-input">
           <input pInputText id="other_ownership" formControlName="other_ownership" class="form-control " type="text">
-          <label for="other_ownership">Інша форма реєстрації</label>
+          <label for="other_ownership">Інша форма реєстрації<span>*</span></label>
         </div>
       </div>
       <div class="form-group" *ngIf="registerForm.get('ownership').value === 'FOP'">
         <div class="evo-input">
           <p-inputMask pInputText mask="9999999999" id="id_code" formControlName="id_code" class="form-control "></p-inputMask>
-          <label for="id_code">Ідентифікаційний код</label>
+          <label for="id_code">Ідентифікаційний код<span>*</span></label>
         </div>
       </div>
       <div class="form-group" *ngIf="registerForm.get('ownership').value !== 'FOP'">
         <div class="evo-input">
-          <p-inputMask pInputText mask="99999999" id="zkpo" formControlName="zkpo" class="form-control "></p-inputMask>
-          <label for="zkpo">Код ЗКПО</label>
+          <p-inputMask pInputText mask="99999999" id="zkpo" placeholder="Ваш код ЗКПО" formControlName="zkpo" class="form-control "></p-inputMask>
+          <label for="zkpo">Код ЗКПО<span>*</span></label>
         </div>
       </div>
       <div class="form-group">
-        <p-dropdown [options]="helperModel.taxFormTypes" formControlName="tax_form"></p-dropdown>
+        <div class="evo-dropdown">
+          <p-dropdown [options]="helperModel.taxFormTypes" formControlName="tax_form"></p-dropdown>
+          <label>Форма оплати податку<span>*</span></label>
+          <div class="evo-dropdown__trigger">
+            <i class="fa fa-chevron-down"></i>
+          </div>
+        </div>
       </div>
       <div class="form-group" formGroupName="official_address" *ngIf="registerForm.get('ownership').value !== 'FOP'">
-        <google-places [type]="'address'" [label]="{en:'official_address', ua:'Юридична адреса'}" (locationData)="getAddress($event, 'official_address')"></google-places>
+        <google-places [type]="'address'" [placeholder]="'Вкажіть юридичну адресу'" [label]="{en:'official_address', ua:'Юридична адреса'}" (locationData)="getAddress($event, 'official_address')"></google-places>
       </div>
       <div class="form-group" formGroupName="physical_address">
-        <google-places [type]="'address'" [label]="{en:'physical_address', ua:'Фізична адреса'}" (locationData)="getAddress($event, 'physical_address')"></google-places>
+        <google-places [type]="'address'" [placeholder]="'Вкажіть фізичну адресу'" [label]="{en:'physical_address', ua:'Фізична адреса'}" (locationData)="getAddress($event, 'physical_address')"></google-places>
       </div>
       <div formGroupName="director">
         <div class="form-group">
           <div class="evo-input">
-            <input pInputText id="director_name" formControlName="name" class="form-control " type="text">
-            <label for="director_name">ФІО директора</label>
+            <input pInputText id="director_name" placeholder="Вкажіть ФІО директора" formControlName="name" class="form-control " type="text">
+            <label for="director_name">ФІО директора<span>*</span></label>
           </div>
         </div>
         <div class="form-group">
           <div class="evo-input">
-            <p-inputMask mask="+380-99-9999-999" pInputText id="director_phone" formControlName="phone" class="form-control "></p-inputMask>
-            <label for="director_phone">Телефон директора</label>
+            <p-inputMask mask="+380-99-9999-999" pInputText id="director_phone" placeholder="Вкажіть телефон директора" formControlName="phone" class="form-control "></p-inputMask>
+            <label for="director_phone">Телефон директора<span>*</span></label>
           </div>
         </div>
       </div>
       <div formGroupName="liable" *ngIf="registerForm.get('ownership').value !== 'FOP'">
         <div class="form-group">
           <div class="evo-input">
-            <input pInputText id="liable_name" formControlName="name" class="form-control " type="text">
-            <label for="liable_name">ФІО відповідальної особи</label>
+            <input pInputText id="liable_name" placeholder="Вкажіть ФІО відповідальної особи" formControlName="name" class="form-control " type="text">
+            <label for="liable_name">ФІО відповідальної особи<span>*</span></label>
           </div>
         </div>
         <div class="form-group">
           <div class="evo-input">
-            <p-inputMask mask="+380-99-9999-999" pInputText id="liable_phone" formControlName="phone" class="form-control "></p-inputMask>
-            <label for="liable_phone">Телефон відповідальної особи</label>
+            <p-inputMask mask="+380-99-9999-999" pInputText id="liable_phone" placeholder="Вкажіть телефон відповідальної особи" formControlName="phone" class="form-control "></p-inputMask>
+            <label for="liable_phone">Телефон відповідальної особи<span>*</span></label>
           </div>
         </div>
       </div>
       <div class="form-group">
         <div class="evo-input">
-          <input pInputText id="static_phone" formControlName="static_phone" class="form-control " type="text">
+          <input pInputText id="static_phone" formControlName="static_phone" placeholder="Вкажіть стаціонарний нмоер телефону" class="form-control " type="text">
           <label for="static_phone">Стаціонарний телефон</label>
         </div>
       </div>
@@ -240,7 +263,7 @@
         <div class="evo-register__form--submit" (click)="setTestData()">TEST DATA</div>
       </div>
       <div class="form-group">
-        <button [disabled]="registerForm.invalid" class="evo-button" type="submit">Підтвердити</button>
+        <button [disabled]="registerForm.invalid" class="evo-button evo-button__green" type="submit">Підтвердити</button>
       </div>
       <div class="form-group">
         або
@@ -250,3 +273,4 @@
   </div>
 
 </form>
+<button (click)="test()"></button>
