@@ -3,13 +3,15 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <div class="form-group">
-            <div class="evo-input">
-              <p-inputMask mask="+380-99-9999-999" placeholder="Вкажіть Ваш номер телефону" pInputText id="phone" formControlName="phone" class="form-control"></p-inputMask>
+            <div class="evo-input" [ngClass]="{'error': loginForm.controls.phone.invalid && loginForm.controls.phone.touched,
+            'check': loginForm.controls.phone.valid && loginForm.controls.phone.touched }">
+              <p-inputMask mask="+380-99-9999-999" placeholder="Вкажіть Ваш номер телефону" pInputText id="phone" formControlName="phone" class="form-control" ></p-inputMask>
               <label for="phone">Номер телефону</label>
             </div>
           </div>
           <div class="form-group">
-            <div class="evo-input">
+            <div class="evo-input"  [ngClass]="{'error': loginForm.controls.password.invalid && loginForm.controls.password.touched,
+            'check': loginForm.controls.password.valid && loginForm.controls.password.touched }">
               <input pInputText id="password" formControlName="password" class="form-control" type="password" placeholder="***********">
               <label for="password">Пароль</label>
             </div>

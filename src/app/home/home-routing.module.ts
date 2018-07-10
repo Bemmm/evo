@@ -16,77 +16,82 @@ import { ProfileDriversComponent } from 'app/profile/profile-drivers/profile-dri
 import { ProfileOrdersComponent } from 'app/profile/profile-orders/profile-orders.component';
 import { ProfileTrucksComponent } from 'app/profile/profile-trucks/profile-trucks.component';
 import { LogoutComponent } from 'app/core/components/logout/logout.component';
+import { LandingComponent } from 'app/landing/landing.component';
 
 const homeRoutes: Routes = [
-    {
-        path: '',
-        component: MapComponent
-    },
-    {
-        path: 'error',
-        component: ErrorComponent
-    },
-    {
-        path: 'error/:code',
-        component: ErrorComponent
-    },
-    {
-        path: 'auth',
-        component: AuthComponent,
-        children: [
-            {
-                path: 'register',
-                component: RegisterComponent,
-                data: { title: 'Реєстрація' }
-            },
-            {
-                path: 'login',
-                component: LoginComponent,
-                data: { title: 'Вхід' }
-            }
-        ]
-    },
-    {
-        path: 'profile/:id',
-        component: ProfileComponent,
-        children: [
-            { path: '', redirectTo: 'info', pathMatch: 'full' },
-            {
-                path: 'info',
-                component: ProfileInfoComponent
-            },
-            {
-                path: 'drivers',
-                component: ProfileDriversComponent
-            },
-            {
-                path: 'orders',
-                component: ProfileOrdersComponent
-            },
-            {
-                path: 'trucks',
-                component: ProfileTrucksComponent
-            },
-        ]
-    },
-    {
-        path: 'logout',
-        component: LogoutComponent
-    },
+  {
+    path: '',
+    component: LandingComponent
+  },
+  {
+    path: 'map',
+    component: MapComponent
+  },
+  {
+    path: 'error',
+    component: ErrorComponent
+  },
+  {
+    path: 'error/:code',
+    component: ErrorComponent
+  },
+  {
+    path: 'auth',
+    component: AuthComponent,
+    children: [
+      {
+        path: 'register',
+        component: RegisterComponent,
+        data: { title: 'Реєстрація' }
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+        data: { title: 'Вхід' }
+      }
+    ]
+  },
+  {
+    path: 'profile/:id',
+    component: ProfileComponent,
+    children: [
+      { path: '', redirectTo: 'info', pathMatch: 'full' },
+      {
+        path: 'info',
+        component: ProfileInfoComponent
+      },
+      {
+        path: 'drivers',
+        component: ProfileDriversComponent
+      },
+      {
+        path: 'orders',
+        component: ProfileOrdersComponent
+      },
+      {
+        path: 'trucks',
+        component: ProfileTrucksComponent
+      },
+    ]
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent
+  },
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forChild([
-            {
-                path: '',
-                component: HomeComponent,
-                children: homeRoutes
-            }
-        ])
-    ],
-    exports: [
-        RouterModule
-    ]
+  imports: [
+    RouterModule.forChild([
+      {
+        path: '',
+        component: HomeComponent,
+        children: homeRoutes
+      }
+    ])
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class HomeRoutingModule { }

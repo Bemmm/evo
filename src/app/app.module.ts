@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
+import { LandingModule } from './landing/landing.module';
 import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
@@ -25,7 +26,8 @@ import { AppComponent } from './app.component';
     HomeModule,
     AppRoutingModule,
     AuthModule,
-    ProfileModule
+    ProfileModule,
+    LandingModule
   ],
   declarations: [
     AppComponent

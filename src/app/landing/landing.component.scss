@@ -1,0 +1,146 @@
+.landing {
+  &__banner {
+    height: 750px;
+    background-image: url('assets/banner.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .evo-input {
+      min-width: 720px;
+      position: relative;
+      padding: 30px 255px 10px 30px;
+      .evo-button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
+    }
+    &__title {
+      color: rgb(255, 255, 255);
+      font-family: "Playfair Display";
+      font-weight: 800;
+      text-align: center;
+      font-size: 68px;
+    }
+    &__description {
+      font-size: 30px;
+      color: rgb(255, 255, 255);
+      font-family: "Ubuntu";
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  }
+  &__hit {
+    padding: 100px;
+    position: relative;
+    &:before {
+      position: absolute;
+      content: 'Як це працює?';
+      top: -30px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      display: block;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      width: 230px;
+      color: #fff;
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: rgb(33, 33, 33);
+      font-family: "Ubuntu", sans-serif;
+      text-align: center;
+      background: #fff;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      font-weight: 600;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__item {
+      margin: 0 50px;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      &__image {
+        overflow: hidden;
+        width: 175px;
+        height: 175px;
+        img {
+          width: 100%;
+        }
+      }
+      &__title {
+        font-size: 22px;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 400;
+      }
+    }
+  }
+  &__trucks {
+    max-width: 80%;
+    margin: auto;
+    &__title {
+      font-size: 60px;
+      color: rgb(33, 33, 33);
+      font-family: "Playfair Display", sans-serif;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    &__item {
+      img {
+        width: 100%;
+      }
+      &__description {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__driver {
+          padding-right: 120px;
+          position: relative;
+          text-align: right;
+          img {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: 5px solid #fff;
+            border-top-left-radius: 10px;
+          }
+          h1 {
+            font-size: 30px;
+            color: rgb(33, 33, 33);
+            font-family: "Playfair Display", sans-serif;
+            font-weight: 800;
+            margin: 0;
+            margin-top: 10px;
+          }
+          h2 {
+            margin: 0;
+            font-size: 16px;
+            line-height: 24px;
+            color: rgb(80, 80, 80);
+            font-family: "Ubuntu", sans-serif;
+          }
+        }
+      }
+    }
+  }
+  &__benefits {
+    padding: 100px 0;
+    &__item {
+      text-align: center;
+      &__title {
+        font-size: 22px;
+        color: rgb(33, 33, 33);
+        font-family: "Ubuntu", sans-serif;
+        text-align: center;
+      }
+    }
+  }
+}

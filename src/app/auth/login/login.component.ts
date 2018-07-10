@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   helperModel: any = {};
   loginData = {
     phone: ['', Validators.required],
-    password: ['']
+    password: ['', Validators.required]
   };
   showSuccessMessage: boolean = false;
   successRegistrationMsg = '';
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private userService: UserService,
     private warningService: WarningService
-    
+
   ) {}
 
   ngOnInit() {
