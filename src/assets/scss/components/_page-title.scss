@@ -5,11 +5,17 @@
     justify-content: center;
     display: flex;
     margin-bottom: 80px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
     &-auth{
         background-image: url('~assets/images/page-title/auth.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
     }
+    &-user{
+        background-image: url('~assets/images/page-title/user.jpg');
+        .page-title__text{
+        }
+    }    
     &__text{
         font-size: 72px;
         color: #fff;

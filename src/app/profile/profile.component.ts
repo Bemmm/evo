@@ -9,15 +9,25 @@ import { UserService, ValidationService } from 'app/core/services';
 })
 
 export class ProfileComponent implements OnInit {
-    loggedUser:any;
-    constructor(private userService: UserService, private fb: FormBuilder){
+    loggedUser: any;
+    constructor(private userService: UserService, private fb: FormBuilder) {
         this.userService.get()
             .subscribe((user: any) => {
                 this.loggedUser = user;
             })
     }
-    
-    ngOnInit(){
+    getUserType() {
+        switch (this.loggedUser.role) {
+            case 'user':
+                return 'Користувач';
+            case 'driver':
+                return 'Водій';
+            case 'company':
+                return 'Служба';
+
+        }
+    }
+    ngOnInit() {
 
     }
 }

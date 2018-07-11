@@ -227,7 +227,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if (!event.value) {
       return;
     }
-    const subscription = this.carsService.getModels(this.registerForm.get('car_attributes').get('category').value.value, this.registerForm.get('car_attributes').get('brand').value.value).subscribe(
+    const subscription = this.carsService.getModels(this.registerForm.get('car_attributes').get('category').value, this.registerForm.get('car_attributes').get('brand').value.value).subscribe(
       res => {
         this.models = res;
         this.models.unshift({
@@ -271,8 +271,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   setCategory(event: any) {
     console.log(event);
-    this.registerForm.get('car_attributes').get('category').setValue(event.value);
-    const subscription = this.carsService.getMarks(this.registerForm.get('car_attributes').get('category').value.value).subscribe(
+    this.registerForm.get('car_attributes').get('category').setValue(event.value.value);
+    const subscription = this.carsService.getMarks(this.registerForm.get('car_attributes').get('category').value).subscribe(
       res => {
         this.brand = res;
         this.brand.unshift({

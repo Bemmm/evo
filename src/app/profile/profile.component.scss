@@ -1,0 +1,48 @@
+.page-title{
+    margin-bottom: 0;
+}
+.profile{
+    &__user{
+        margin-top: -125px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        &__avatar{
+            overflow: hidden;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            width: 250px;
+            height: 250px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+        &__name{
+            font-size: 32px;
+            font-family: 'Ubuntu', sans-serif;
+            text-transform: uppercase;
+            color: #212121;
+        }
+        &__type{
+            font-size: 16px;
+            color: rgb(80,80,80);
+            font-family: "Ubuntu", sans-serif;
+            text-align: center;
+        }
+    }
+    &__tabs{
+        display: flex;
+        flex-direction: row;
+        &__item{
+            padding: 10px 25px;
+            font-size: 22px;
+            color: rgb(33,33,33);
+            font-family: "Ubuntu", sans-serif;
+            text-align: center;
+            &.active{
+                border-bottom: 3px solid #59d389;
+            }
+        }
+    }
+}
