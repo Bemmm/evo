@@ -8,17 +8,17 @@
       justify-content: space-between;
       align-items: center;
       &:before,
-      &:after{
+      &:after {
         display: none;
       }
     }
-    &__row{
+    &__row {
       flex-direction: row;
       display: flex;
       align-items: center;
     }
     &__logo {
-      &:hover{
+      &:hover {
         text-decoration: none;
         color: inherit;
       }
@@ -27,15 +27,44 @@
       span {
         color: #59d389;
         span {
-          font-size:16px;
+          font-size: 16px;
         }
       }
     }
     &__item {
       color: #fff;
       font-size: 14px;
+      margin-right: 70px;
     }
-    .evo-button.evo-button__solid{
-      margin: 0 28px;
+    &__user {
+      display: flex;
+      align-items: center;
+      &__avatar {
+        display: flex;
+        border-radius: 50%;
+        overflow: hidden;
+        width: 35px;
+        height: 35px;
+        align-items: flex-end;
+        justify-content: center;
+        background: #fff;
+        color: black;
+        margin-right: 10px;
+        i {
+          font-size: 35px;
+          margin-bottom: -5px;
+        }
+      }
+      &__name {
+        font-size: 14px;
+        letter-spacing: 1px;
+        color: rgb(255, 255, 255);
+        font-family: "Ubuntu";
+        text-align: center;
+        text-transform: uppercase;
+        i {
+          margin-left: 15px;
+        }
+      }
     }
   }

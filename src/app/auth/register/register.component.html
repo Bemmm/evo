@@ -37,7 +37,7 @@
         <div class="rb-error" style="color: #f00; text-align: left; font-size: 12px;" *ngIf="registerForm.controls.password.value && registerForm.controls.password_confirmation.value && registerForm.controls.password.value !== registerForm.controls.password_confirmation.value">Паролі не співпадають</div>
       </div>
       <div class="form-group">
-        <button [disabled]="registerForm.invalid" class="evo-button evo-button__green" type="submit">Зареєструватись</button>
+        <button [disabled]="registerForm.invalid" class="evo-button evo-button-green" type="submit">Зареєструватись</button>
       </div>
     </div>
   </div>
@@ -48,8 +48,8 @@
     <div class="evo-form__title">Реєстрація</div>
     <div class="row">
       <div class="col-md-12">
-        <button class="evo-button evo-button__purple evo-button__purple-step" (click)="changeOwnership('users')">я хочу користуватись сервісом</button>
-        <button class="evo-button evo-button__green evo-button__green-step" (click)="changeOwnership('corporate')">я хочу надавати послуги евакуатора</button>
+        <button class="evo-button evo-button-purple evo-button-purple-step" (click)="changeOwnership('users')">я хочу користуватись сервісом</button>
+        <button class="evo-button evo-button-green evo-button-green-step" (click)="changeOwnership('corporate')">я хочу надавати послуги евакуатора</button>
       </div>
     </div>
   </div>
@@ -109,7 +109,7 @@
       </div>
 
       <div class="form-group">
-        <button [disabled]="registerForm.invalid" class="evo-button evo-button__green" type="submit">Зареєструватись</button>
+        <button [disabled]="registerForm.invalid" class="evo-button evo-button-green" type="submit">Зареєструватись</button>
       </div>
 
     </div>
@@ -121,8 +121,8 @@
     <div class="evo-form__title">Хто ви?</div>
     <div class="row">
       <div class="col-md-12">
-        <button class="evo-button evo-button__purple evo-button__purple-step" (click)="changeOwnership('drivers')">Власник евакуатора</button>
-        <button class="evo-button evo-button__green evo-button__green-step" (click)="changeOwnership('companies')">Евакуаторна служба</button>
+        <button class="evo-button evo-button-purple evo-button-purple-step" (click)="changeOwnership('drivers')">Власник евакуатора</button>
+        <button class="evo-button evo-button-green evo-button-green-step" (click)="changeOwnership('companies')">Евакуаторна служба</button>
       </div>
     </div>
   </div>
@@ -164,7 +164,7 @@
       </div>
 
       <div class="form-group">
-        <button [disabled]="registerForm.invalid" class="evo-button evo-button__green" type="submit">Зареєструватись</button>
+        <button [disabled]="registerForm.invalid" class="evo-button evo-button-green" type="submit">Зареєструватись</button>
       </div>
 
     </div>
@@ -263,7 +263,7 @@
         <div class="evo-register__form--submit" (click)="setTestData()">TEST DATA</div>
       </div>
       <div class="form-group">
-        <button [disabled]="registerForm.invalid" class="evo-button evo-button__green" type="submit">Підтвердити</button>
+        <button [disabled]="registerForm.invalid" class="evo-button evo-button-green" type="submit">Підтвердити</button>
       </div>
       <div class="form-group">
         або

@@ -1,33 +1,12 @@
-.updateForm {
-  width:100%;
-  .small {
-    max-width: 400px;
-  }
-  .choosenCategory {
-    display: flex;
-    .transport {
-      width: 65px;
-      height: 45px;
-      margin: 5px 10px;
-      border: 1px solid #d9d9d9;
-      border-radius: 3px;
+.evo-form{
+  &-profile{
+    padding: 50px 0;
+    .evo-button-green{
+      align-self: flex-start;
+      margin-left: 0;
     }
   }
-  &__dialog {
-    &--content {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-  }
-  &--transport {
-    max-width: 48.25rem;
-    flex-wrap: wrap;
-    &-item {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      width: 115px;
-    }
+  .evo-button{
+    margin-top: 30px;
   }
 }

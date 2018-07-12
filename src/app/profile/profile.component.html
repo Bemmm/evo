@@ -1,7 +1,7 @@
 <div class="page-title page-title-{{loggedUser.role}}">
   <div class="page-title__text">Особистий кабінет</div>
 </div>
-<div class="profile">
+<div class="profile container">
   <div class="profile__user">
     <div class="profile__user__avatar" style="background-image: url('http://alenakraeva.com/wp-content/uploads/2016/11/hipsteri-eto.jpg')"></div>
     <div class="profile__user__name">{{loggedUser.name}}</div>
@@ -17,13 +17,13 @@
 
     <div [routerLinkActive]="['active']" [routerLink]="['info']" class="profile__tabs__item text-center">
       <div class="profile__tabs__item-title">
-        Профіль
+        Мій профіль
       </div>
     </div>
 
     <div [routerLinkActive]="['active']" [routerLink]="['orders']" class="profile__tabs__item text-center">
       <div class="profile__tabs__item-title">
-        Замовлення
+        Мої Замовлення
       </div>
     </div>
 

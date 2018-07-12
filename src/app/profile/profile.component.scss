@@ -34,8 +34,10 @@
     &__tabs{
         display: flex;
         flex-direction: row;
+        border-bottom: 1px solid #e8e8e8;
+        margin-top: 50px;
         &__item{
-            padding: 10px 25px;
+            padding: 10px 50px;
             font-size: 22px;
             color: rgb(33,33,33);
             font-family: "Ubuntu", sans-serif;
