@@ -1068,7 +1068,7 @@ p-togglebutton.ng-dirty.ng-invalid .ui-button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 14px;
+  font-size: 0.9rem;
   cursor: default; }
 
 .si-wrapper-top {

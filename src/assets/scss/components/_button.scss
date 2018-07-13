@@ -3,16 +3,16 @@ $base-height: rem(50px);
 .evo-button {
   display: block;
   font-family: 'Ubuntu', sans-serif;
-  font-size: 14px;
+  font-size: 0.9rem;
   border-radius: 30px;
   padding: 7px 24px;
-  margin: auto;
+  margin: 5px auto;
   &-purple{
     color: #fff;
     background-color: #8f63f4;
     text-transform: uppercase;
     border: 1px solid #8f63f4;
-    font-size:18px;
+    font-size: 1.12rem;
 
   }
   &-green{
@@ -20,7 +20,7 @@ $base-height: rem(50px);
     background-color: #59d389;
     text-transform: uppercase;
     border: 1px solid #59d389;
-    font-size:18px;
+    font-size: 1.12rem;
   }
   &-solid{
     color: #fff;
@@ -44,7 +44,7 @@ $base-height: rem(50px);
   }
   &.category {
     width: 50px;
-    font-size: 14px;
+    font-size: 0.9rem;
     text-align: center;
     margin: auto;
   }

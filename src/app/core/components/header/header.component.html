@@ -24,6 +24,10 @@
         <div class="evo-header__user__name">{{user.name || 'Користувач'}}
             <i class="fa fa-chevron-down"></i>
         </div>
+        <ul class="evo-header__user__dropdown">
+          <li [routerLink]="['/profile', user._id]">Особостий кабінет</li>
+          <!-- <li><evo-logout></evo-logout></li> -->
+        </ul>
       </div>
     </div>
   </div>

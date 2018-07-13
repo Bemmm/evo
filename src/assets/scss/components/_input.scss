@@ -24,18 +24,18 @@
       overflow: hidden;
       align-items: center;
       justify-content: center;
-      font-size: 21px;
+      font-size: 1.3rem;
       color: #fff;
     }
   }
   &>input{
     padding-left: 10px !important;
-    font-size: 18px;
+    font-size: 1.1rem;
   }
   &>input, &>p-inputmask, &>p-calendar{
     box-shadow: none;
     font-family: 'Ubuntu', sans-serif;
-    font-size: 18px;
+    font-size: 1.1rem;
     color:#9b9b9b;
     border-radius: 0;
     border:0;
@@ -63,14 +63,14 @@
   label{
     font-weight: 400;
     font-family: 'Ubuntu', sans-serif;
-    font-size: 14px;
+    font-size: 0.9rem;
     color: #000;
     position: absolute;
     top: 8px;
     left: 40px;
     margin-bottom: 0;
     span{
-      font-size: 16px;
+      font-size: 1rem;
       color: red;
     }
   }
