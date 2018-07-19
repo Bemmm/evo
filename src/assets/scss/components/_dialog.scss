@@ -1,23 +1,51 @@
-.ui-dialog{
+.evo-dialog{
+  .evo-input{
+    min-width: auto;
+  }
+  .ui-fileupload-choose{
     width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 99999 !important;
-    position: fixed;
-    span.ui-dialog-title{
-      font-size:1.4em !important;
+    height: 200px;
+    background: #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#59d389;
+    border:0;
+    border-radius: 0;
+    &:hover{
+      background-color: #efefef;
+      color: #59d389;
+      border: none;
     }
-    &-content {
-      max-height: calc(100% - 45px);
-      overflow: auto;
+    .ui-button-text{
+      text-transform: uppercase;
     }
-    &-titlebar {
-      background: $evo-yellow;
-      color: $evo-title-text;
-      padding: 1.7em 1.5em !important;
-      &-icon{
-        font-size: 19px;
+    }
+    .ui-button-icon-left {
+      display: none;
+    }
+  .ui-helper-hidden-accessible{
+    display: none;
+  }
+  .ui-dialog-titlebar{
+    background: #59d389;
+    font-size: 2rem;
+    color: rgb(255,255,255);
+    font-family: "Playfair Display";
+    font-weight: 800;
+    text-align: center;   
+    padding: 0.8em 1.5em !important;
+    &-icon{
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 20px;
+      color: #fff;
+      &:hover{
+        border: 0;
+        background: transparent;
+        color: #fff;
       }
-    }
+    } 
+  }
 }

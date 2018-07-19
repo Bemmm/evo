@@ -3,7 +3,7 @@
 }
 .profile{
     &__user{
-        margin-top: -125px;
+        margin-top: -7.8rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -12,14 +12,14 @@
             overflow: hidden;
             border-radius: 50%;
             border: 3px solid #fff;
-            width: 250px;
-            height: 250px;
+            width: 15.6rem;
+            height: 15.6rem;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center center;
         }
         &__name{
-            font-size: 32px;
+            font-size: 2rem;
             font-family: 'Ubuntu', sans-serif;
             text-transform: uppercase;
             color: #212121;
@@ -42,6 +42,9 @@
             color: rgb(33,33,33);
             font-family: "Ubuntu", sans-serif;
             text-align: center;
+            &:focus{
+                outline: none;
+            }
             &.active{
                 border-bottom: 3px solid #59d389;
             }

@@ -24,7 +24,7 @@ export class ProfileTrucksComponent {
   loggedUser: any = null;
   transportCategories: any = null;
   brands: BrandModel[] = [{
-    name: 'Оберіть марку',
+    name: 'Не обрано',
     value: null
   }];
   drivers: any = [{
@@ -32,7 +32,7 @@ export class ProfileTrucksComponent {
     _id: null
   }]
   models: ModelModel[] = [{
-    name: 'Оберіть модель',
+    name: 'Не обрано',
     value: null
   }];
   trucks: object[] = [];
@@ -62,7 +62,7 @@ export class ProfileTrucksComponent {
     this.carsService.getMarks(type).subscribe((res) => {
       this.brands = res;
       this.brands.unshift({
-        name: 'Оберіть марку',
+        name: 'Не обрано',
         value: null
       })
     });
@@ -91,7 +91,7 @@ export class ProfileTrucksComponent {
       res => {
         this.models = res;
         this.models.unshift({
-          name: 'Оберіть модель',
+          name: 'Не обрано',
           value: null
         })
       },
@@ -120,11 +120,11 @@ export class ProfileTrucksComponent {
         ])
       }),
       passengers_count: ['', [Validators.required]],
-      weight_limit: ['', [Validators.required]],
+      weight_limit: [''],
       car_types: ['', [Validators.required]],
       type: ['wrecker'],
       photo: ['1'],
-      price: ['', [Validators.required]],
+      price: [''],
       description: ['', [Validators.required]],
     }
     this.truckForm = this.fb.group(truckModel);

@@ -89,3 +89,6 @@ button {
     justify-content: space-around;
   }
 }
+.ui-widget-overlay.ui-dialog-mask{
+  background: rgba($color: #000000, $alpha: 0.7);
+}

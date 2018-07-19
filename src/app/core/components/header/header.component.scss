@@ -21,9 +21,12 @@
     }
     &__logo {
       &:hover {
+        opacity: 1;
         text-decoration: none;
         color: #fff !important;
       }
+      opacity: 0.8;
+      cursor: pointer;
       color: #fff;
       font-size: 30px;
       span {

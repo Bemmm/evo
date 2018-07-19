@@ -1,47 +1,71 @@
-<button class="evo-button evo-button__square" (click)="addTruck()">Додати евакуатор</button>
-<div *ngIf="!trucks.length">У вас ще немає жодного евакуатора</div>
-<p-table [columns]="cols" [(value)]="trucks" [responsive]="true" *ngIf="trucks.length">
-  <ng-template pTemplate="header">
-    <tr>
-      <th>Фото</th>
-      <th>Номерний знак</th>
-      <th>Марка</th>
-      <th>Модель</th>
-      <th>Підйомність</th>
-      <th>Типи</th>
-      <th>Геолокація</th>
-      <th *ngIf="loggedUser.role =='company'">Водій</th>
-      <th></th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-truck>
-    <tr>
-      <td>{{truck.photo}}</td>
-      <td>{{truck.registration_number}}</td>
-      <td>{{truck.car_attributes.brand.name}}</td>
-      <td>{{truck.car_attributes.model.name}}</td>
-      <td>{{truck.weight_limit}}</td>
-      <td>
-        <span *ngFor="let type of truck.car_types">{{type.name}}, </span>
-      </td>
-      <td>{{truck.address.label}}</td>
-      <td *ngIf="loggedUser.role =='company'">{{truck.user ? truck.user.name : 'Без водія'}}</td>
-      <td>
-        <div class="flex-row center-around">
-          <button pButton icon="fa-edit" (click)="editTruck(this.truck)"></button>
-          <button class="ui-button-danger" pButton icon="fa-times" (click)="deleteTruck(this.truck)"></button>
+<div class="container">
+  <div *ngIf="!trucks.length">У вас ще немає жодного евакуатора</div>
+  <div class="evo-trucks" *ngIf="trucks.length">
+    <div class="evo-trucks__header row">
+      <div class="col-md-2">Фото</div>
+      <div class="col-md-2">Номерний знак</div>
+      <div class="col-md-2">Марка/модель</div>
+      <div class="col-md-2">Вантажопідйомність</div>
+      <div class="col-md-2">Тип</div>
+      <div class="col-md-2">Місцезнаходження</div>
+    </div>
+    <div class="evo-trucks__list">
+      <div class="evo-trucks__list__item row" *ngFor="let truck of trucks">
+        <div class="col-md-2 evo-trucks__list__item__image">
+          <img src="https://cinemavehicles.com/images/M142555793.jpg" alt="">
         </div>
-      </td>
-    </tr>
+        <div class="col-md-2 evo-trucks__list__item__number">{{truck.registration_number}}</div>
+        <div class="col-md-2 evo-trucks__list__item__car">{{truck.car_attributes.brand.name}} {{truck.car_attributes.brand.model}}</div>
+        <div class="col-md-2 evo-trucks__list__item__weight">{{truck.weight_limit}}</div>
+        <div class="col-md-2 evo-trucks__list__item__types">
+          <img src="" alt="">
+        </div>
+        <div class="col-md-2 evo-trucks__list__item__location">{{truck.address.label}}</div>
+      </div>
+    </div>
+  </div>
+  <!-- <p-table [columns]="cols" [(value)]="trucks" [responsive]="true" *ngIf="trucks.length">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Фото</th>
+        <th>Номерний знак</th>
+        <th>Марка</th>
+        <th>Модель</th>
+        <th>Підйомність</th>
+        <th>Типи</th>
+        <th>Геолокація</th>
+        <th *ngIf="loggedUser.role =='company'">Водій</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-truck>
+      <tr>
+        <td>{{truck.photo}}</td>
+        <td>{{truck.registration_number}}</td>
+        <td>{{truck.car_attributes.brand.name}}</td>
+        <td>{{truck.car_attributes.model.name}}</td>
+        <td>{{truck.weight_limit}}</td>
+        <td>
+          <span *ngFor="let type of truck.car_types">{{type.name}}, </span>
+        </td>
+        <td>{{truck.address.label}}</td>
+        <td *ngIf="loggedUser.role =='company'">{{truck.user ? truck.user.name : 'Без водія'}}</td>
+        <td>
+          <div class="flex-row center-around">
+            <button pButton icon="fa-edit" (click)="editTruck(this.truck)"></button>
+            <button class="ui-button-danger" pButton icon="fa-times" (click)="deleteTruck(this.truck)"></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      Показано {{trucks?.length}} евакуаторів
+    </ng-template>
+  </p-table> -->
+  <ng-template *ngIf="!trucks.length">
+    Ви не додали ще жодного евакуатора :С
   </ng-template>
-  <ng-template pTemplate="summary">
-    Показано {{trucks?.length}} евакуаторів
-  </ng-template>
-</p-table>
-<ng-template *ngIf="trucks.length">
-  Ви додали ще жодного евакуатора :С
-</ng-template>
-<!-- <p-dataTable [(value)]="trucks">
+  <!-- <p-dataTable [(value)]="trucks">
   <p-column field="photo" header="Фото"></p-column>
   <p-column field="registration_number" header="Номерний знак"></p-column>
   <p-column field="car_attributes.brand.name" header="Марка"></p-column>
@@ -50,84 +74,117 @@
   <p-column field="(...car_types).name" header="Типи"></p-column>
   <p-column field="address.label" header="Місцезнаходження"></p-column>
 </p-dataTable> -->
+  <div class="flex-row right">
+    <button class="evo-button evo-button-purple" (click)="addTruck()">Додати авто</button>
+  </div>
+  <p-dialog class="evo-dialog" [responsive]="true" [modal]="true" [width]="840" header="Додавання евакуатора" [(visible)]="truckDialog"
+    (onHide)="clearForm()">
+    <form [formGroup]="truckForm" class="evo-form" (ngSubmit)="submitCreation(truckForm.editMode ? 'editMode': 'addMode')">
+      <div class="row">
+        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+          <div class="evo-input">
+            <input pInputText id="name" placeholder="Введіть реєстраційний номер" formControlName="registration_number" class="form-control "
+              type="text">
+            <label for="registration_number">Реєстраційний номер
+              <span>*</span>
+            </label>
+          </div>
+        </div>
+        <ng-container formGroupName="car_attributes">
+          <div class="form-group col-md-6 col-sm-6 col-xs-12">
+            <div class="evo-dropdown">
+              <p-dropdown [options]="brands" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)" optionLabel="name"></p-dropdown>
+              <label>Марка авто
+                <span>*</span>
+              </label>
+              <div class="evo-dropdown__trigger">
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
 
-<p-dialog class="add-truck" header="Додавання евакуатора" [(visible)]="truckDialog" (onHide)="clearForm()">
-  <form [formGroup]="truckForm" (ngSubmit)="submitCreation(truckForm.editMode ? 'editMode': 'addMode')">
-      <div class="form-group">
-        <span class="ui-float-label blue evo-input">
-          <input pInputText id="name" formControlName="registration_number" class="form-control " type="text">
-          <label for="registration_number">Реєстраційний номер</label>
-        </span>
-        <validation-messages [control]="truckForm.controls.registration_number"></validation-messages>
+          </div>
+          <div class="form-group col-md-6 col-sm-6 col-xs-12">
+            <div class="evo-dropdown">
+              <p-dropdown [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
+              <label>Модель авто
+                <span>*</span>
+              </label>
+              <div class="evo-dropdown__trigger">
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+          <div class="evo-dropdown">
+            <p-multiSelect [options]="transportCategories" [maxSelectedLabels]="5" [defaultLabel]="'Типи транспорту для перевезення'"
+              [displaySelectedLabel]="true" formControlName="car_types" optionLabel="name"></p-multiSelect>
+            <label>Тип транспортного засобу для евакуації
+              <span>*</span>
+            </label>
+            <div class="evo-dropdown__trigger">
+              <i class="fa fa-chevron-down"></i>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+          <div class="evo-input">
+            <input pInputText NumberOnly id="name" placeholder="Вкажіть вантажопідйомність" formControlName="weight_limit" class="form-control "
+              type="text">
+            <label for="weight_limit">Вантажопідйомність(кг)</label>
+          </div>
+        </div>
+        <div class="form-group col-md-3 col-sm-3 col-xs-12">
+          <div class="evo-input">
+            <input pInputText NumberOnly placeholder="Не вказано" id="name" formControlName="passengers_count" class="form-control "
+              type="text">
+            <label for="passengers_count">Пасажирів
+              <span>*</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group col-md-3 col-sm-3 col-xs-12">
+          <div class="evo-input">
+            <input pInputText id="price" placeholder="Не вказано" formControlName="price" class="form-control " type="text">
+            <label for="price">Ціна за км</label>
+          </div>
+        </div>
+
+
+
+
+        <div *ngIf="loggedUser.role == 'company' " class="form-group col-md-6 col-sm-6 col-xs-12">
+          <div class="evo-dropdown">
+            <p-dropdown [(options)]="drivers" formControlName="company_user_id" optionLabel="name"></p-dropdown>
+          </div>
+
+        </div>
+
+
+
+        <div class="form-group col-md-12 col-sm-12 col-xs-12" formGroupName="address">
+          <google-places *ngIf="truckDialog" [type]="'address'" [placeholder]="'Вкажіть місцезнаходження авто'" [label]="{en:'address', ua:'Місцезнаходження'}"
+            [defaultAddress]="this.truckForm.controls.address.controls" (locationData)="getAddress($event, 'address')"></google-places>
+        </div>
+        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+          <p-fileUpload name="myfile[]" [chooseLabel]="'Додати фото'" mode="basic" (uploadHandler)="myUploader($event)"></p-fileUpload>
+        </div>
+        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+          <div class="evo-input textarea">
+            <textarea [rows]="3" pInputTextarea id="description" formControlName="description" class="form-control " placeholder="Ваш текст"></textarea>
+            <label>Примітка для клієнтів</label>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6 col-sm-6 col-xs-12 flex-row right">
+          <button *ngIf="!truckForm.editMode" class="evo-button" type="submit">Додати</button>
+          <button *ngIf="truckForm.editMode && truckForm.valid" class="evo-button" type="submit">Зберегти</button>
+        </div>
       </div>
-      <div class="form-group">
-        <span class="ui-float-label blue evo-input">
-          <input pInputText NumberOnly id="name" formControlName="passengers_count" class="form-control " type="text">
-          <label for="passengers_count">Кількість пасажирських місць</label>
-        </span>
-        <validation-messages [control]="truckForm.controls.passengers_count"></validation-messages>
-      </div>
-
-      <div class="form-group">
-        <span class="ui-float-label blue evo-input">
-          <input pInputText NumberOnly id="name" formControlName="weight_limit" class="form-control " type="text">
-          <label for="weight_limit">Вантажопідйомність(кг)</label>
-        </span>
-        <validation-messages [control]="truckForm.controls.weight_limit"></validation-messages>
-      </div>
-      <div class="form-group">
-        <span class="ui-float-label blue evo-input">
-          <input pInputText id="price" formControlName="price" class="form-control " type="text">
-          <label for="price">Ціна за кілометр</label>
-        </span>
-        <validation-messages [control]="truckForm.controls.price"></validation-messages>
-      </div>
-    <div formGroupName="car_attributes">
-      <div class="form-group">
-        <p-dropdown class="evo-dropdown" [options]="brands" [filter]="true" filterBy="label" formControlName="brand" (onChange)="carChanged($event)"
-          optionLabel="name"></p-dropdown>
-        <validation-messages [control]="truckForm.controls.car_attributes.controls.brand"></validation-messages>
-
-      </div>
-      <div class="form-group">
-        <p-dropdown class="evo-dropdown" [options]="models" [filter]="true" filterBy="label" formControlName="model" optionLabel="name"></p-dropdown>
-        <validation-messages [control]="truckForm.controls.car_attributes.controls.model"></validation-messages>
-      </div>
-    </div>
-
-
-
-    <div *ngIf="loggedUser.role == 'company' " class="form-group">
-      <p-dropdown class="evo-dropdown" [(options)]="drivers" formControlName="company_user_id" optionLabel="name"></p-dropdown>
-      <validation-messages [control]="truckForm.controls.company_user_id"></validation-messages>
-
-    </div>
-
-
-    <div class="form-group">
-      <p-multiSelect class="evo-dropdown" [options]="transportCategories" [maxSelectedLabels]="5" [defaultLabel]="'Типи транспорту для перевезення'"
-        [displaySelectedLabel]="true" formControlName="car_types" optionLabel="name"></p-multiSelect>
-      <validation-messages [control]="truckForm.controls.car_types"></validation-messages>
-
-    </div>
-    <div class="form-group" formGroupName="address">
-
-      <google-places *ngIf="truckDialog" [type]="'address'" [label]="{en:'address', ua:'Місцезнаходження'}"
-      [defaultAddress]="this.truckForm.controls.address.controls" (locationData)="getAddress($event, 'address')"></google-places>
-    </div>
-
-    <div class="form-group">
-      <span class="ui-float-label blue evo-input textarea">
-        <textarea [rows]="3" pInputTextarea id="description" formControlName="description" class="form-control " placeholder="Примітка для клієнтів"></textarea>
-      </span>
-      <validation-messages [control]="truckForm.controls.description"></validation-messages>
-    </div>
-
-    <div class="form-group flex-row right">
-      <button *ngIf="!truckForm.editMode" class="evo-button" type="submit">Додати</button>
-      <button *ngIf="truckForm.editMode && truckForm.valid" class="evo-button" type="submit">Зберегти</button>
-    </div>
-  </form>
+    </form>
+    <div class="clearfix"></div>
+  </p-dialog>
   <div class="clearfix"></div>
-</p-dialog>
-<div class="clearfix"></div>
+</div>
