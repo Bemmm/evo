@@ -65,15 +65,16 @@
         </div>
       </ng-container>
     </div>
-
-    <button class="evo-button evo-button-green" [disabled]="!userInfoForm.dirty" type="submit">Зберегти</button>
-
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <button class="evo-button evo-button-green" [disabled]="!userInfoForm.dirty" type="submit">Зберегти</button>
+    </div>
   </form>
 
 
   <!-- ___________________________________DRIVER________________________ -->
 
-  <form *ngIf="loggedUser.role == 'driver'" autocomplete="off" class="evo-form evo-form-profile" novalidate [formGroup]="userInfoForm" (ngSubmit)="updateUser()">
+  <form *ngIf="loggedUser.role == 'driver'" autocomplete="off" class="evo-form evo-form-profile" novalidate [formGroup]="userInfoForm"
+    (ngSubmit)="updateUser()">
     <div class="row">
       <div class="form-group col-md-4 col-xs-12 col-sm-4">
         <div class=" evo-input">
@@ -118,13 +119,16 @@
           (locationData)="getAddress($event, 'address')"></google-places>
       </div>
 
+      <div class="col-md-12 col-sm-12 col-xs-12">
 
-      <button class="evo-button evo-button-green" [disabled]="!userInfoForm.dirty" type="submit">Зберегти</button>
+        <button class="evo-button evo-button-green" [disabled]="!userInfoForm.dirty" type="submit">Зберегти</button>
+      </div>
     </div>
   </form>
 
   <!-- ______________________________________COMPANY______________________________- -->
-  <form *ngIf="loggedUser.role == 'company'" autocomplete="off" class="evo-form evo-form-profile" novalidate [formGroup]="userInfoForm" (ngSubmit)="updateUser()">
+  <form *ngIf="loggedUser.role == 'company'" autocomplete="off" class="evo-form evo-form-profile" novalidate [formGroup]="userInfoForm"
+    (ngSubmit)="updateUser()">
     <div class="row">
       <div class="col-md-12 text-center">
         <div class="form-group col-md-4 col-xs-12 col-sm-4 ">

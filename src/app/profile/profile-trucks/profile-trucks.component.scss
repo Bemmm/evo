@@ -1,3 +1,41 @@
-.evo-button-purple{
-    margin: initial;
+.evo-button-purple {
+  margin: initial;
+}
+$basic_height: 150px;
+.evo-trucks {
+  &__header {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    &__item {
+      font-size: 1rem;
+      color: #adadad;
+      text-align: center;
+    }
+  }
+  &__list {
+    &__item {
+      min-height: $basic_height;
+      border: 1px solid #e7e7e7;
+      border-radius: 5px;
+      margin-bottom: 50px;
+      overflow: hidden;
+      padding: 0;
+      &__info {
+        text-align: center;
+        height: $basic_height;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #505050;
+        font-size: 1rem;
+        &-image{
+          height: $basic_height;
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          padding: 0 !important;
+        }
+      }
+    }
+  }
 }

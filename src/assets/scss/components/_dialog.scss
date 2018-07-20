@@ -1,4 +1,7 @@
 .evo-dialog{
+  .ui-dialog{
+    border: 0;
+  }
   .evo-input{
     min-width: auto;
   }
@@ -33,7 +36,7 @@
     color: rgb(255,255,255);
     font-family: "Playfair Display";
     font-weight: 800;
-    text-align: center;   
+    text-align: center;
     padding: 0.8em 1.5em !important;
     &-icon{
       position: absolute;
@@ -46,6 +49,6 @@
         background: transparent;
         color: #fff;
       }
-    } 
+    }
   }
 }

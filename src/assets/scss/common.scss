@@ -60,7 +60,14 @@ button {
 .form-group {
   margin: 20px 0;
 }
+.title__empty{
+  font-size: 1.3rem;
+  color: #9b9b9b;
+  padding: 2rem;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
 
+}
 .flex-row {
   display: flex;
   flex-direction: row;

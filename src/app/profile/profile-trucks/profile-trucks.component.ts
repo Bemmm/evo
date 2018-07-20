@@ -67,6 +67,10 @@ export class ProfileTrucksComponent {
       })
     });
   }
+  myUploader(event:any) {
+    //event.files == files to upload
+    console.log(event);
+  }
   getTrucks() {
     this.carsService.getTrucks(this.loggedUser._id, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
       if(this.loggedUser.role == 'company'){
@@ -87,7 +91,7 @@ export class ProfileTrucksComponent {
   }
   carChanged() {
     if(!this.truckForm.get('car_attributes').get('brand')){return}
-    this.carsService.getModels(+this.truckForm.get('car_attributes').get('category').value, this.truckForm.get('car_attributes').get('brand').value.value).subscribe(
+    this.carsService.getModels(+this.truckForm.get('car_attributes').get('category').value.value, this.truckForm.get('car_attributes').get('brand').value.value).subscribe(
       res => {
         this.models = res;
         this.models.unshift({
@@ -107,7 +111,10 @@ export class ProfileTrucksComponent {
       company_user_id:[''],
       _id: [''],
       car_attributes: this.fb.group({
-        category: ['4'],
+        category: [{
+          name:'Спецтехника',
+          value:'4'
+        }],
         brand: ['', [Validators.required]],
         model: ['', [Validators.required]]
       }),
@@ -123,7 +130,7 @@ export class ProfileTrucksComponent {
       weight_limit: [''],
       car_types: ['', [Validators.required]],
       type: ['wrecker'],
-      photo: ['1'],
+      photo: ['http://nebula.wsimg.com/8be34569870dbd3d0d3d7a6186a0d3e9?AccessKeyId=CD25373D2C31DE4D18B4&disposition=0&alloworigin=1'],
       price: [''],
       description: ['', [Validators.required]],
     }
