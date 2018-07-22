@@ -1,7 +1,7 @@
 <form autocomplete="off" class="evo-form" novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit()" *ngIf="!registeredUser">
   <div class="evo-form__title">Реєстрація нового користувача</div>
-  <div class="row">
-    <div class="col-md-12">
+  <div class="col-md-4">
+    <div class="text-center">
       <div class="form-group">
         <div class="evo-input" [ngClass]="{'error': registerForm.controls.name.invalid && registerForm.controls.name.touched,
                                            'check': registerForm.controls.name.valid && registerForm.controls.name.touched }">
@@ -46,8 +46,8 @@
 <ng-container *ngIf="registeredUser && !helperModel.ownership">
   <div class="evo-form">
     <div class="evo-form__title">Реєстрація</div>
-    <div class="row">
-      <div class="col-md-12">
+    <div class="col-md-4">
+      <div class="">
         <button class="evo-button evo-button-purple evo-button-purple-step" (click)="changeOwnership('users')">я хочу користуватись сервісом</button>
         <button class="evo-button evo-button-green evo-button-green-step" (click)="changeOwnership('corporate')">я хочу надавати послуги евакуатора</button>
       </div>
@@ -61,8 +61,8 @@
 <!-- USER! -->
 <form autocomplete="off" class="evo-form" novalidate [formGroup]="registerForm" (ngSubmit)="onSubmitAdditionals()" *ngIf="registeredUser && helperModel.ownership === 'users'">
   <div class="evo-form__title">Реєстрація користувача</div>
-  <div class="row">
-    <div class="col-md-12 text-center">
+  <div class="col-md-4">
+    <div class="text-center">
       <div class="form-group">
         <div class="evo-input" [ngClass]="{'error': registerForm.controls.email.invalid && registerForm.controls.email.touched }">
           <input pInputText id="email" formControlName="email" class="form-control" type="text" placeholder="Вкажіть ваш e-mail">
@@ -119,8 +119,8 @@
 <ng-container *ngIf="helperModel.ownership == 'corporate' && (helperModel.ownership !== 'drivers' || helperModel.ownership !== 'companies')">
   <div class="evo-form">
     <div class="evo-form__title">Хто ви?</div>
-    <div class="row">
-      <div class="col-md-12">
+    <div class="col-md-4">
+      <div class="text-center">
         <button class="evo-button evo-button-purple evo-button-purple-step" (click)="changeOwnership('drivers')">Власник евакуатора</button>
         <button class="evo-button evo-button-green evo-button-green-step" (click)="changeOwnership('companies')">Евакуаторна служба</button>
       </div>
@@ -136,8 +136,8 @@
   (ngSubmit)="onSubmitAdditionals('drivers')">
   <div class="evo-form__title">Зареєструватись для надання
     <br>послуг евакуатора</div>
-  <div class="row">
-    <div class="col-md-12 text-center">
+  <div class="col-md-4">
+    <div class="text-center">
       <div class="form-group">
         <div class="evo-input">
           <input pInputText id="email" formControlName="email" placeholder="Вкажіть ваш e-mail" class="form-control" type="text">
@@ -175,8 +175,8 @@
 <form autocomplete="off" class="evo-form" novalidate *ngIf="helperModel.ownership == 'companies'" [formGroup]="registerForm"
   (ngSubmit)="onSubmitAdditionals('companies')">
   <div class="evo-form__title">Зареєструвати евакуаторну службу</div>
-  <div class="row">
-    <div class="col-md-12 text-center">
+  <div class="col-md-4">
+    <div class="text-center">
       <div class="form-group ">
         <div class="evo-input">
           <input pInputText id="title" formControlName="title" placeholder="Вкажіть назву компанії" class="form-control " type="text">

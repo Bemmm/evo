@@ -1,7 +1,7 @@
   <form class="evo-form" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="evo-form__title">Вхід</div>
-      <div class="row">
-        <div class="col-md-12 text-center">
+      <div class="col-md-4">
+        <div class="text-center">
           <div class="form-group">
             <div class="evo-input" [ngClass]="{'error': loginForm.controls.phone.invalid && loginForm.controls.phone.touched,
             'check': loginForm.controls.phone.valid && loginForm.controls.phone.touched }">

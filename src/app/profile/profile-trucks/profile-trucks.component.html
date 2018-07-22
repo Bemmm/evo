@@ -9,17 +9,23 @@
       <div class="col-md-2 evo-trucks__header__item">Місцезнаходження</div>
     </div>
     <div class="evo-trucks__list">
-      <div class="evo-trucks__list__item row" *ngFor="let truck of trucks">
-        <div class="col-md-2 evo-trucks__list__item__info evo-trucks__list__item__info-image"[ngStyle]="{'background-image': 'url(' + truck.photo + ')'}">
+      <ng-container *ngFor="let truck of trucks">
+        <div class="evo-trucks__list__item row">
+          <div class="col-md-2 evo-trucks__list__item__info evo-trucks__list__item__info-image" [ngStyle]="{'background-image': 'url(' + truck.photo + ')'}">
+          </div>
+          <div class="col-md-2 evo-trucks__list__item__info ">{{truck.registration_number}}</div>
+          <div class="col-md-2 evo-trucks__list__item__info ">{{truck.car_attributes.brand.name}} {{truck.car_attributes.brand.model}}</div>
+          <div class="col-md-2 evo-trucks__list__item__info ">{{truck.weight_limit}} кг</div>
+          <div class="col-md-2 evo-trucks__list__item__info evo-trucks__list__item__info-transport">
+            <div *ngFor="let item of truck.car_types" class="evo-trucks__list__item__info-transport__item type{{item.value}}"></div>
+          </div>
+          <div class="col-md-2 evo-trucks__list__item__info evo-trucks__list__item__info-adress ">{{truck.address.label}}</div>
         </div>
-        <div class="col-md-2 evo-trucks__list__item__info ">{{truck.registration_number}}</div>
-        <div class="col-md-2 evo-trucks__list__item__info ">{{truck.car_attributes.brand.name}} {{truck.car_attributes.brand.model}}</div>
-        <div class="col-md-2 evo-trucks__list__item__info ">{{truck.weight_limit}} кг</div>
-        <div class="col-md-2 evo-trucks__list__item__info ">
-          <img src="" alt="">
+        <div class="flex-row right evo-trucks__list__actions">
+          <div (click)="editTruck(this.truck)" class="evo-trucks__list__actions__item evo-trucks__list__actions__item-edit">Редагувати</div>
+          <div (click)="deleteTruck(this.truck)" class="evo-trucks__list__actions__item evo-trucks__list__actions__item-delete">Видалити</div>
         </div>
-        <div class="col-md-2 evo-trucks__list__item__info ">{{truck.address.label}}</div>
-      </div>
+      </ng-container>
     </div>
   </div>
   <!-- <p-table [columns]="cols" [(value)]="trucks" [responsive]="true" *ngIf="trucks.length">
@@ -118,7 +124,7 @@
         </ng-container>
         <div class="form-group col-md-6 col-sm-6 col-xs-12">
           <div class="evo-dropdown">
-            <p-multiSelect [options]="transportCategories" [maxSelectedLabels]="5" [defaultLabel]="'Типи транспорту для перевезення'"
+            <p-multiSelect [options]="transportCategories" [maxSelectedLabels]="3" [defaultLabel]="'Типи транспорту для перевезення'"
               [displaySelectedLabel]="true" formControlName="car_types" optionLabel="name"></p-multiSelect>
             <label>Тип транспортного засобу для евакуації
               <span>*</span>
@@ -134,7 +140,9 @@
             'check': truckForm.controls.weight_limit.valid && truckForm.controls.weight_limit.touched }">
             <input pInputText NumberOnly id="name" placeholder="Вкажіть вантажопідйомність" formControlName="weight_limit" class="form-control "
               type="text">
-            <label for="weight_limit">Вантажопідйомність(кг)<span>*</span> </label>
+            <label for="weight_limit">Вантажопідйомність(кг)
+              <span>*</span>
+            </label>
           </div>
         </div>
         <div class="form-group col-md-3 col-sm-3 col-xs-12">
@@ -181,9 +189,8 @@
         </div>
         <div class="clearfix"></div>
         <div class="flex-row col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
-          <button *ngIf="!truckForm.editMode" (click)="truckDialog = !truckDialog" class="evo-button evo-button-solid-green">Скасувати</button>
-          <button *ngIf="!truckForm.editMode" class="evo-button evo-button-green" type="submit">Зберегти</button>
-          <button *ngIf="truckForm.editMode && truckForm.valid-green" class="evo-button" type="submit">Зберегти</button>
+          <button (click)="truckDialog = !truckDialog" class="evo-button evo-button-solid-green">Скасувати</button>
+          <button class="evo-button evo-button-green" type="submit">Зберегти</button>
         </div>
       </div>
     </form>
