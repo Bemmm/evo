@@ -14,7 +14,7 @@
       .evo-button {
         position: absolute;
         right: 10px;
-        top: 10px;
+        top: 5px;
       }
     }
     &__title {
@@ -81,6 +81,9 @@
   }
   &__trucks {
     max-width: 80%;
+    @media screen and (max-width:1200px){
+      max-width: 100%;
+    }
     margin: auto;
     &__title {
       font-size: 3.8rem;
@@ -99,12 +102,12 @@
         align-items: center;
         justify-content: space-between;
         &__driver {
-          padding-right: 120px;
+          padding-right: 7rem;
           position: relative;
           text-align: right;
           img {
-            width: 100px;
-            height: 100px;
+            width: 6rem;
+            height: 6rem;
             position: absolute;
             right: 0;
             bottom: 0;
