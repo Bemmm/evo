@@ -143,9 +143,6 @@ export class ProfileInfoComponent {
       }
     };
     this.userInfoForm = this.fb.group(formTypes[type]);
-    if (this.loggedUser.birthday) {
-      this.loggedUser.birthday = new Date(this.loggedUser.birthday);
-    }
     this.userInfoForm.patchValue(this.loggedUser)
   }
 
