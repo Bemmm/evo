@@ -1,109 +1,81 @@
-  <button class="evo-button evo-button__square" (click)="addDriver()">Додати водія</button>
-<div *ngIf="!drivers.length">Ви ще не додали жодного водія</div>
-<!-- <p-table [columns]="cols" [(value)]="drivers" [responsive]="true" *ngIf="drivers.length">
-  <ng-template pTemplate="header">
-    <tr>
-      <th>ФІО</th>
-      <th>Дата народження</th>
-      <th>Email</th>
-      <th>Паспорт</th>
-      <th>Телефон</th>
-      <th>Місцезнаходження</th>
-      <th></th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-driver>
-    <tr>
-      <td>{{driver.name}}</td>
-      <td>{{driver.birthday}}</td>
-      <td>{{driver.email}}</td>
-      <td>{{driver.passport}}</td>
-      <td>{{driver.phone}}</td>
-      <td>{{driver.address.label}}</td>
-      <td>
-        <div class="flex-row center-around">
-          <button pButton icon="fa-edit" (click)="editDriver(driver)"></button>
-          <button class="ui-button-danger" pButton icon="fa-times" (click)="deleteDriver(this.driver)"></button>
+<div class="container">
+  <div class="evo-drivers" *ngIf="drivers.length">
+    <div class="evo-drivers__list">
+      <ng-container *ngFor="let driver of drivers">
+        <div class="evo-drivers__list__item col-md-4">
+          <!-- <div class="col-md-3 evo-drivers__list__item__info evo-drivers__list__item__info-image" [ngStyle]="{'background-image': 'url(' + driver.photo + ')'}"> -->
+            <div class="col-md-3 evo-drivers__list__item__info evo-drivers__list__item__info-image" [ngStyle]="{'background-image': 'url(' + 'https://amp.businessinsider.com/images/57bf0018b996eb57128b4614-750-563.jpg' + ')'}">
+          </div>
+          <div class="col-md-9 evo-drivers__list__item__info ">{{driver.name}}</div>
+          <div class="flex-row right evo-drivers__list__item__actions">
+            <div (click)="editDriver(this.driver)" class="evo-drivers__list__actions__item evo-drivers__list__actions__item-edit">Змінити</div>
+            <div (click)="deleteDriver(this.driver)" class="evo-drivers__list__actions__item evo-drivers__list__actions__item-delete">Видалити</div>
+          </div>
         </div>
-      </td>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="summary">
-    Показано Водіїв: {{drivers?.length}}
-  </ng-template>
-</p-table> -->
-<div class="col-md-12" style="display:flex; justify-content:space-around; flex-wrap: wrap;">
-  <div class="card driver" *ngFor="let driver of drivers">
-    <div class="driver-wrapper">
-        <div class="driver-wrapper_actions">
-            <button class="edit" pButton icon="fa-edit" (click)="editDriver(driver)"></button>
-            <button class="delete" pButton icon="fa-times" (click)="deleteDriver(this.driver)"></button>
-        </div>
-      <div class="driver-wrapper-image">
-        <img src="https://lightwidget.com/widgets/empty-photo.jpg" alt="">
-     </div>
-     <div class="driver-wrapper-name">
-        {{driver.name}}
-     </div>
-    </div>
-    <div class="driver_info">
-      <div class="driver_info-item driver_info-birthday">{{formatBirthday(driver.birthday)}}<div>Дата народжння</div></div>
-      <div class="driver_info-item driver_info-email">{{driver.email}}<div>Email</div></div>
-      <div class="driver_info-item driver_info-passport">{{driver.passport}}<div>Паспорт</div></div>
-      <div class="driver_info-item driver_info-phone">{{driver.phone}} <div>Телефон</div></div>
-      <div class="driver_info-item driver_info-address">{{driver.address.label}}</div>
+      </ng-container>
     </div>
   </div>
-</div>
 
-<ng-template *ngIf="drivers.length">
-  Ви не додали ще жодного водія :С
-</ng-template>
-
-
-<p-dialog class="add-driver" header="Додавання Водія" *ngIf="driverDialog" [(visible)]="driverDialog"  (onHide)="clearForm()">
-  <form [formGroup]="driverForm" (ngSubmit)="submitCreation(driverForm.editMode ? 'editMode': 'addMode')">
-
-        <div class="form-group">
-          <span class="ui-float-label blue evo-input">
-            <input pInputText id="email" formControlName="email" class="form-control" type="text">
-            <label for="email">Email</label>
-          </span>
-        </div>
-        <div class="form-group">
-            <span class="ui-float-label blue evo-input">
-              <p-inputMask mask="+380-99-9999-999" pInputText id="phone" formControlName="phone" class="form-control evo-input"></p-inputMask>
-              <label for="phone">Телефон</label>
-            </span>
-            <validation-messages [control]="driverForm.controls.phone"></validation-messages>
-          </div>
-        <div class="form-group">
-            <span class="ui-float-label blue evo-input">
-              <input pInputText id="name" formControlName="name" class="form-control" type="text">
-              <label for="name">ФІО</label>
-            </span>
-          </div>
-        <div class="form-group">
-          <span class="ui-float-label blue evo-input">
-            <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="1920:2018" dateFormat="dd.mm.yy" [locale]="ua" formControlName="birthday" class="form-control evo-input"></p-calendar>
-            <label for="birthday">Дата народження</label>
-          </span>
-        </div>
-        <div class="form-group" formGroupName="address">
-            <google-places [label]="{en:'address', ua:'Фізична адреса'}" [defaultAddress]="this.driverForm.controls.address.controls" [type]="'address'" (locationData)="getAddress($event, 'address')"></google-places>
-        </div>
-
-        <div class="form-group">
-          <span class="ui-float-label blue evo-input">
-            <input pInputText id="passport" formControlName="passport" class="form-control" type="text">
-            <label for="passport">Серія та номер паспорту</label>
-          </span>
-        </div>
-
-    <div class="form-group flex-row right">
-      <button *ngIf="!driverForm.editMode" class="evo-button" type="submit">Додати</button>
-      <button *ngIf="driverForm.editMode" class="evo-button" type="submit">Зберегти</button>
-    </div>
-  </form>
+  <div class="title__empty" *ngIf="!drivers.length">
+    Ви не додали ще жодного водія :С
+  </div>
   <div class="clearfix"></div>
-</p-dialog>
+  <div class="flex-row right">
+    <button class="evo-button evo-button-purple" (click)="addDriver()">Додати водія</button>
+  </div>
+
+  <p-dialog class="evo-dialog" [responsive]="true" [modal]="true" [width]="840" header="Додавання Водія" *ngIf="driverDialog"
+    [(visible)]="driverDialog" (onHide)="clearForm()">
+    <form [formGroup]="driverForm" (ngSubmit)="submitCreation(driverForm.editMode ? 'editMode': 'addMode')">
+      <div class="row">
+        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+          <div class="evo-input">
+            <input pInputText id="name" placeholder="Введіть ФІО водія" formControlName="name" class="form-control" type="text">
+            <label for="name">ФІО
+              <span>*</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+          <div class="evo-input">
+            <p-inputMask mask="+380-99-9999-999" placeholder="Вкажіть номер телефону водія" pInputText id="phone" formControlName="phone"
+              class="form-control"></p-inputMask>
+            <label for="phone">Номер телефону
+              <span>*</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+          <div class="evo-input">
+            <p-inputMask mask="99.99.99" placeholder="(ЧЧ.ММ.РР)" pInputText id="birthday" formControlName="birthday" class="form-control"></p-inputMask>
+            <label for="birthday">Дата народження</label>
+          </div>
+        </div>
+        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+          <div class="evo-input">
+            <input pInputText id="passport" placeholder="Вкажіть серію та номер паспорту" formControlName="passport" class="form-control"
+              type="text">
+            <label for="passport">Серія та номер паспорту</label>
+          </div>
+        </div>
+        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+          <div class="evo-input">
+            <input pInputText id="email" placeholder="Вкажіть email водія" formControlName="email" class="form-control" type="text">
+            <label for="email">E-mail</label>
+          </div>
+        </div>
+        <div class="form-group col-md-6 col-sm-6 col-xs-12" formGroupName="address">
+          <google-places [placeholder]="'Вкажіть адресу реєстрації водія'" [label]="{en:'address', ua:'Адреса'}" [defaultAddress]="this.driverForm.controls.address.controls"
+            [type]="'address'" (locationData)="getAddress($event, 'address')"></google-places>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="flex-row col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
+          <button (click)="driverDialog = !driverDialog" class="evo-button evo-button-solid-green">Скасувати</button>
+          <button class="evo-button evo-button-green" type="submit">Зберегти</button>
+        </div>
+      </div>
+    </form>
+    <div class="clearfix"></div>
+  </p-dialog>
+</div>

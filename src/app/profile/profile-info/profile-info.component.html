@@ -130,82 +130,106 @@
   <form *ngIf="loggedUser.role == 'company'" autocomplete="off" class="evo-form evo-form-profile" novalidate [formGroup]="userInfoForm"
     (ngSubmit)="updateUser()">
     <div class="row">
-      <div class="col-md-12 text-center">
-        <div class="form-group col-md-4 col-xs-12 col-sm-4 ">
-          <div class=" evo-input">
-            <input pInputText id="title" formControlName="title" class="form-control" type="text">
-            <label for="title">Назва компанії</label>
+      <div class="form-group col-md-4 col-xs-12 col-sm-4 ">
+        <div class="evo-input">
+          <input pInputText id="title" formControlName="title" class="form-control" type="text">
+          <label for="title">Назва компанії</label>
+        </div>
+      </div>
+      <div class="form-group col-md-4 col-xs-12 col-sm-4">
+        <div class="evo-dropdown">
+          <p-dropdown class="dropdown__blue" [options]="ownershipTypes" formControlName="ownership"></p-dropdown>
+          <label>Форма реєстрації
+            <span>*</span>
+          </label>
+          <div class="evo-dropdown__trigger">
+            <i class="fa fa-chevron-down"></i>
           </div>
         </div>
-        <div class="form-group col-md-4 col-xs-12 col-sm-4">
-          <p-dropdown class="dropdown__blue" [options]="ownershipTypes" formControlName="ownership"></p-dropdown>
+      </div>
+      <div class="form-group col-md-4 col-xs-12 col-sm-4">
+        <div class="evo-dropdown">
+          <p-dropdown class="dropdown__blue" [options]="taxFormTypes" formControlName="tax_form"></p-dropdown>
+          <label>Форма оплати податку
+            <span>*</span>
+          </label>
+          <div class="evo-dropdown__trigger">
+            <i class="fa fa-chevron-down"></i>
+          </div>
         </div>
-        <div class="form-group col-md-4 col-xs-12 col-sm-4" *ngIf="userInfoForm.get('ownership').value === 'OTHER'">
-          <div class=" evo-input">
+      </div>
+      <ng-container *ngIf="userInfoForm.get('ownership').value === 'OTHER'">
+        <div class="form-group col-md-4 col-xs-12 col-sm-4">
+          <div class="evo-input">
             <input pInputText id="other_ownership" formControlName="other_ownership" class="form-control" type="text">
             <label for="other_ownership">Інша форма реєстрації</label>
           </div>
         </div>
-        <div class="form-group col-md-4 col-xs-12 col-sm-4" *ngIf="userInfoForm.get('ownership').value === 'FOP'">
-          <div class=" evo-input">
+      </ng-container>
+      <ng-container *ngIf="userInfoForm.get('ownership').value === 'FOP'">
+        <div class="form-group col-md-4 col-xs-12 col-sm-4">
+          <div class="evo-input">
             <p-inputMask pInputText mask="9999999999" id="id_code" formControlName="id_code" class="form-control"></p-inputMask>
             <label for="id_code">Ідентифікаційний код</label>
           </div>
         </div>
-        <div class="form-group col-md-4 col-xs-12 col-sm-4" *ngIf="userInfoForm.get('ownership').value !== 'FOP'">
-          <div class=" evo-input">
+      </ng-container>
+      <ng-container *ngIf="userInfoForm.get('ownership').value !== 'FOP'">
+        <div class="form-group col-md-4 col-xs-12 col-sm-4">
+          <div class="evo-input">
             <p-inputMask pInputText mask="99999999" id="zkpo" formControlName="zkpo" class="form-control"></p-inputMask>
             <label for="zkpo">Код ЗКПО</label>
           </div>
         </div>
-        <div class="form-group col-md-4 col-xs-12 col-sm-4">
-          <p-dropdown class="dropdown__blue" [options]="taxFormTypes" formControlName="tax_form"></p-dropdown>
-        </div>
-        <div class="form-group col-md-4 col-xs-12 col-sm-4" formGroupName="official_address" *ngIf="userInfoForm.get('ownership').value !== 'FOP'">
+      </ng-container>
+      <ng-container *ngIf="userInfoForm.get('ownership').value !== 'FOP'">
+        <div class="form-group col-md-4 col-xs-12 col-sm-4" formGroupName="official_address">
           <google-places [type]="'address'" [defaultAddress]="this.userInfoForm.controls.official_address.controls" [label]="{en:'official_address', ua:'Юридична адреса'}"
             (locationData)="getAddress($event, 'official_address')"></google-places>
         </div>
-        <div class="form-group col-md-4 col-xs-12 col-sm-4" formGroupName="physical_address">
-          <google-places [type]="'address'" [defaultAddress]="this.userInfoForm.controls.physical_address.controls" [label]="{en:'physical_address', ua:'Фізична адреса'}"
-            (locationData)="getAddress($event, 'physical_address')"></google-places>
-        </div>
-        <div formGroupName="director">
-          <div class="form-group col-md-4 col-xs-12 col-sm-4">
-            <div class=" evo-input">
-              <input pInputText id="director_name" formControlName="name" class="form-control" type="text">
-              <label for="director_name">ФІО директора</label>
-            </div>
-          </div>
-          <div class="form-group col-md-4 col-xs-12 col-sm-4">
-            <div class=" evo-input">
-              <p-inputMask mask="+380-99-9999-999" pInputText id="director_phone" formControlName="phone" class="form-control"></p-inputMask>
-              <label for="director_phone">Телефон директора</label>
-            </div>
-          </div>
-        </div>
-        <div formGroupName="liable" *ngIf="userInfoForm.get('ownership').value !== 'FOP'">
-          <div class="form-group col-md-4 col-xs-12 col-sm-4">
-            <div class=" evo-input">
-              <input pInputText id="liable_name" formControlName="name" class="form-control" type="text">
-              <label for="liable_name">ФІО відповідальної особи</label>
-            </div>
-          </div>
-          <div class="form-group col-md-4 col-xs-12 col-sm-4">
-            <div class=" evo-input">
-              <p-inputMask mask="+380-99-9999-999" pInputText id="liable_phone" formControlName="phone" class="form-control"></p-inputMask>
-              <label for="liable_phone">Телефон відповідальної особи</label>
-            </div>
+      </ng-container>
+      <div class="form-group col-md-4 col-xs-12 col-sm-4" formGroupName="physical_address">
+        <google-places [type]="'address'" [defaultAddress]="this.userInfoForm.controls.physical_address.controls" [label]="{en:'physical_address', ua:'Фізична адреса'}"
+          (locationData)="getAddress($event, 'physical_address')"></google-places>
+      </div>
+      <ng-container formGroupName="director">
+        <div class="form-group col-md-4 col-xs-12 col-sm-4">
+          <div class=" evo-input">
+            <input pInputText id="director_name" formControlName="name" class="form-control" type="text">
+            <label for="director_name">ФІО директора</label>
           </div>
         </div>
         <div class="form-group col-md-4 col-xs-12 col-sm-4">
           <div class=" evo-input">
-            <input pInputText id="static_phone" formControlName="static_phone" class="form-control" type="text">
-            <label for="static_phone">Стаціонарний телефон</label>
+            <p-inputMask mask="+380-99-9999-999" pInputText id="director_phone" formControlName="phone" class="form-control"></p-inputMask>
+            <label for="director_phone">Телефон директора</label>
           </div>
         </div>
+      </ng-container>
+      <ng-container formGroupName="liable" *ngIf="userInfoForm.get('ownership').value !== 'FOP'">
+        <div class="form-group col-md-4 col-xs-12 col-sm-4">
+          <div class=" evo-input">
+            <input pInputText id="liable_name" formControlName="name" class="form-control" type="text">
+            <label for="liable_name">ФІО відповідальної особи<span>*</span></label>
+          </div>
+        </div>
+        <div class="form-group col-md-4 col-xs-12 col-sm-4">
+          <div class=" evo-input">
+            <p-inputMask mask="+380-99-9999-999" pInputText id="liable_phone" formControlName="phone" class="form-control"></p-inputMask>
+            <label for="liable_phone">Телефон відповідальної особи<span>*</span></label>
+          </div>
+        </div>
+      </ng-container>
+      <div class="form-group col-md-4 col-xs-12 col-sm-4">
+        <div class=" evo-input">
+          <input pInputText id="static_phone" formControlName="static_phone" class="form-control" type="text">
+          <label for="static_phone">Стаціонарний телефон</label>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-sm-12 col-xs-12">
 
         <button class="evo-button evo-button-green" [disabled]="!userInfoForm.dirty" type="submit">Зберегти</button>
-
       </div>
     </div>
 

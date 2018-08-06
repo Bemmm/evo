@@ -63,7 +63,7 @@ export class ProfileDriversComponent implements OnDestroy{
       role: ['driver'],
       address: this.fb.group({
         label: ['', [Validators.required]],
-        type: ['Point'],
+        type: 'Point',
         coordinates: this.fb.array([
           new FormControl(),
           new FormControl()
@@ -111,7 +111,6 @@ export class ProfileDriversComponent implements OnDestroy{
   editDriver(driver: any) {
     console.log(driver);
     this.driverForm.editMode = true;
-    driver.birthday = new Date(driver.birthday);
     this.driverForm.patchValue(driver);
     this.driverDialog = !this.driverDialog;
   }
@@ -121,8 +120,5 @@ export class ProfileDriversComponent implements OnDestroy{
     this.driverForm.reset();
     this.driverForm.get('role').setValue('driver');
   }
-  formatBirthday(data:string){
-    let date = new Date(data);
-    return date.getDate()+'/' + (date.getMonth()+1) + '/'+date.getFullYear();
-  }
+
 }

@@ -28,56 +28,11 @@
       </ng-container>
     </div>
   </div>
-  <!-- <p-table [columns]="cols" [(value)]="trucks" [responsive]="true" *ngIf="trucks.length">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Фото</th>
-        <th>Номерний знак</th>
-        <th>Марка</th>
-        <th>Модель</th>
-        <th>Підйомність</th>
-        <th>Типи</th>
-        <th>Геолокація</th>
-        <th *ngIf="loggedUser.role =='company'">Водій</th>
-        <th></th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-truck>
-      <tr>
-        <td>{{truck.photo}}</td>
-        <td>{{truck.registration_number}}</td>
-        <td>{{truck.car_attributes.brand.name}}</td>
-        <td>{{truck.car_attributes.model.name}}</td>
-        <td>{{truck.weight_limit}}</td>
-        <td>
-          <span *ngFor="let type of truck.car_types">{{type.name}}, </span>
-        </td>
-        <td>{{truck.address.label}}</td>
-        <td *ngIf="loggedUser.role =='company'">{{truck.user ? truck.user.name : 'Без водія'}}</td>
-        <td>
-          <div class="flex-row center-around">
-            <button pButton icon="fa-edit" (click)="editTruck(this.truck)"></button>
-            <button class="ui-button-danger" pButton icon="fa-times" (click)="deleteTruck(this.truck)"></button>
-          </div>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="summary">
-      Показано {{trucks?.length}} евакуаторів
-    </ng-template>
-  </p-table> -->
+
   <div class="title__empty" *ngIf="!trucks.length">
     Ви не додали ще жодного евакуатора :С
   </div>
-  <!-- <p-dataTable [(value)]="trucks">
-  <p-column field="photo" header="Фото"></p-column>
-  <p-column field="registration_number" header="Номерний знак"></p-column>
-  <p-column field="car_attributes.brand.name" header="Марка"></p-column>
-  <p-column field="car_attributes.model.name" header="Модель"></p-column>
-  <p-column field="weight_limit" header="Вантажопідйомність"></p-column>
-  <p-column field="(...car_types).name" header="Типи"></p-column>
-  <p-column field="address.label" header="Місцезнаходження"></p-column>
-</p-dataTable> -->
+
   <div class="flex-row right">
     <button class="evo-button evo-button-purple" (click)="addTruck()">Додати авто</button>
   </div>

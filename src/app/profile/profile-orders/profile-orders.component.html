@@ -1,4 +1,4 @@
-  <!-- <p-dataTable [value]="orders">
+<!-- <p-dataTable [value]="orders">
     <p-column field="id" header="id"></p-column>
     <p-column field="date" header="Дата/час"></p-column>
     <p-column field="driver.name" header="Водій"></p-column>
@@ -7,4 +7,6 @@
     <p-column field="status" header="Статус"></p-column>
     <p-column field="mark" header="Оцінка"></p-column>
   </p-dataTable> -->
-У вас ще немає замовлень
+<div class="title__empty" *ngIf="!orders.length">
+  У вас ще немає замовлень
+</div>
