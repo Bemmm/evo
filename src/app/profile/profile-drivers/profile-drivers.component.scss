@@ -1,25 +1,48 @@
 .evo-button-purple {
   margin: initial;
 }
+
 $basic_height: 4.375rem;
 .evo-drivers {
   padding: 25px 0;
   &__list {
+    &__actions {
+      margin-top: 5px !important;
+      &__item {
+        font-size: 0.75rem;
+        margin-left: 5px;
+        text-decoration: underline;
+        opacity: 0.7;
+        cursor: pointer;
+        font-family: 'Ubuntu', sans-serif;
+        &:hover {
+          opacity: 1;
+        }
+        &-edit {
+          color: #59d389;
+        }
+        &-delete {
+          color: rgb(175, 0, 0);
+        }
+      }
+    }
     &__item {
       border: 1px solid #e7e7e7;
       border-radius: 5px;
       position: relative;
       height: $basic_height;
       padding: 0 !important;
-      &__info{
+      &__info {
         height: $basic_height;
         font-size: 1rem;
         justify-content: center;
         align-items: center;
         display: flex;
-        &-image{
+        &-image {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
           overflow: hidden;
-          height: $basic_height;
+          height: 100%;
           background-size: cover;
           background-position: center center;
           background-repeat: no-repeat;

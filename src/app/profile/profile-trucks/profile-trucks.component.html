@@ -122,6 +122,11 @@
         <div *ngIf="loggedUser.role == 'company' " class="form-group col-md-6 col-sm-6 col-xs-12">
           <div class="evo-dropdown">
             <p-dropdown [(options)]="drivers" formControlName="company_user_id" optionLabel="name"></p-dropdown>
+            <label>Водій
+            </label>
+            <div class="evo-dropdown__trigger">
+              <i class="fa fa-chevron-down"></i>
+            </div>
           </div>
 
         </div>

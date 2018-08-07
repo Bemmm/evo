@@ -2,14 +2,16 @@
   <div class="evo-drivers" *ngIf="drivers.length">
     <div class="evo-drivers__list">
       <ng-container *ngFor="let driver of drivers">
-        <div class="evo-drivers__list__item col-md-4">
-          <!-- <div class="col-md-3 evo-drivers__list__item__info evo-drivers__list__item__info-image" [ngStyle]="{'background-image': 'url(' + driver.photo + ')'}"> -->
+        <div class="col-md-4">
+          <div class="evo-drivers__list__item">
+            <!-- <div class="col-md-3 evo-drivers__list__item__info evo-drivers__list__item__info-image" [ngStyle]="{'background-image': 'url(' + driver.photo + ')'}"> -->
             <div class="col-md-3 evo-drivers__list__item__info evo-drivers__list__item__info-image" [ngStyle]="{'background-image': 'url(' + 'https://amp.businessinsider.com/images/57bf0018b996eb57128b4614-750-563.jpg' + ')'}">
-          </div>
-          <div class="col-md-9 evo-drivers__list__item__info ">{{driver.name}}</div>
-          <div class="flex-row right evo-drivers__list__item__actions">
-            <div (click)="editDriver(this.driver)" class="evo-drivers__list__actions__item evo-drivers__list__actions__item-edit">Змінити</div>
-            <div (click)="deleteDriver(this.driver)" class="evo-drivers__list__actions__item evo-drivers__list__actions__item-delete">Видалити</div>
+            </div>
+            <div class="col-md-9 evo-drivers__list__item__info ">{{driver.name}}</div>
+            <div class="flex-row right evo-drivers__list__item__actions">
+              <div (click)="editDriver(this.driver)" class="evo-drivers__list__actions__item evo-drivers__list__actions__item-edit">Змінити</div>
+              <div (click)="deleteDriver(this.driver)" class="evo-drivers__list__actions__item evo-drivers__list__actions__item-delete">Видалити</div>
+            </div>
           </div>
         </div>
       </ng-container>
