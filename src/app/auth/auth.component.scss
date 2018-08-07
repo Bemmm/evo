@@ -1,5 +1,11 @@
-.evo-auth{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+.evo-auth {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  &-auth {
+    background-image: url('assets/auth.jpg');
+  }
 }
