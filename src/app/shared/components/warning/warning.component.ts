@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import {
     WarningService
-} from 'app/core/services';
+} from '../../../core/services';
 import {
     Subscription
 } from 'rxjs/Subscription';

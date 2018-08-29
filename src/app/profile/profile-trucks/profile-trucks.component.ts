@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { UserService, CarsService, DriversService } from 'app/core/services';
-import { TransportCategoryModel, BrandModel, ModelModel, DriverModel } from 'app/shared/models'
+import { UserService, CarsService, DriversService } from '../../core/services';
+import { TransportCategoryModel, BrandModel, ModelModel, DriverModel } from '../../shared/models'
 import {
   MapsAPILoader
 } from '@agm/core/services/maps-api-loader/maps-api-loader';

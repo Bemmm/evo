@@ -21,7 +21,7 @@ import {
 import {
   UserModel,
   CompanyModel
-} from 'app/shared/models';
+} from '../../shared/models';
 import {
   AuthService,
   AuthErrorsService,
@@ -29,15 +29,15 @@ import {
   ApiService,
   ValidationService,
   CarsService
-} from 'app/core/services';
+} from '../../core/services';
 import {
   successRegistration
-} from 'app/shared/constants/messages';
+} from '../../shared/constants/messages';
 //eslint 
 // import {} from 'googlemaps';
 
-import { OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES } from 'app/shared/constants/';
-import { TransportCategoryModel, ModelModel, BrandModel } from 'app/shared/models/';
+import { OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES } from '../../shared/constants';
+import { TransportCategoryModel, ModelModel, BrandModel } from '../../shared/models';
 
 @Component({
   selector: 'evo-register',

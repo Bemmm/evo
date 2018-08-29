@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import {
     ValidationService
-} from 'app/core/services';
+} from '../../../core/services';
 
 @Component({
     selector: 'validation-messages',

@@ -1,8 +1,8 @@
 import { Directive, Input, OnInit, ElementRef, HostListener, Renderer, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { isInteger, isNumber } from 'app/shared/helpers';
-import { emoji } from 'app/shared/constants/regexp';
+import { isInteger, isNumber } from '../../helpers';
+import { emoji } from '../../constants/regexp';
 
 const TRIM_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,

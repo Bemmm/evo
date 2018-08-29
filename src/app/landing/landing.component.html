@@ -3,11 +3,15 @@
   <div class="landing__banner">
     <div class="landing__banner__title">Обирайте найближчий евакуатор</div>
     <div class="landing__banner__description">Зручно, вигідно, швидко</div>
-    <div class="col-md-8">
+    <div class="landing__banner__wrapper col-md-8">
       <div class="evo-input flex-row">
-        <input pInputText id="search" class="form-control" type="search" placeholder="Введіть вашу адресу, населений пункт">
+        <google-places style="width: 100%" [type]="'address'" (locationData)="getAddress($event, 'where')" (focus)="focusedInputClass = $event"
+        [defaultAddress]="helperModel"></google-places>
         <label for="search">Де ви?</label>
         <div class="evo-button evo-button-green">Знайти евакуатор</div>
+      </div>
+      <div class="landing__banner__wrapper__sdropdown">
+        <div class="landing__banner__wrapper__sdropdown__item" (click)="setSearchType(this.item.value)" [ngStyle]="{'background-image': 'url(' + item.image + ')'}" *ngFor="let item of searchOptions">{{item.label}}</div>
       </div>
     </div>
   </div>

@@ -5,10 +5,10 @@ import {
 } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
+import 'rxjs';
 import 'rxjs/add/observable/throw';
 
-import { objectToURLSearchParams } from 'app/shared/helpers';
+import { objectToURLSearchParams } from '../../../shared/helpers';
 
 @Injectable()
 export class ApiService {

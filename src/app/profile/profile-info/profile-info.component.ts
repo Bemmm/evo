@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Validators, FormBuilder, FormControl } from '@angular/forms';
-import { ValidationService, UserService, AuthService, CarsService } from 'app/core/services';
+import { ValidationService, UserService, AuthService, CarsService } from '../../core/services';
 import { Router } from '@angular/router';
 import {
   MapsAPILoader
@@ -8,8 +8,8 @@ import {
 import {
   Address
 } from 'angular-google-place';
-import { OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES } from 'app/shared/constants/';
-import { TransportCategoryModel, BrandModel, ModelModel } from 'app/shared/models/';
+import { OWNERSHIP_TYPES, UA, USER_ROLES, TAX_FORM_TYPES } from '../../shared/constants';
+import { TransportCategoryModel, BrandModel, ModelModel } from '../../shared/models';
 @Component({
   selector: 'evo-profile-info',
   templateUrl: 'profile-info.component.html',

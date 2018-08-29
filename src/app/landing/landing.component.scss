@@ -8,16 +8,47 @@
     align-items: center;
     justify-content: center;
     height: calc(100vh - 66px);
-    .evo-input {
-      min-width: 720px;
+
+    &__wrapper {
       position: relative;
-      padding: 30px 255px 10px 30px;
-      .evo-button {
+
+      &__sdropdown {
         position: absolute;
-        right: 10px;
-        top: 5px;
+        top: 100%;
+        left: 50px;
+        background: #1f1f1f;
+        color: #fff;
+
+        &__item {
+          padding: 0 10px;
+          font-size: 16px;
+          line-height: 44px;
+          cursor: pointer;
+          background-repeat: no-repeat;
+          padding-left: 43px;
+          background-position: 10px;
+          background-size: 20px;
+          cursor: pointer;
+
+          &:hover {
+            color: #59d389;
+          }
+        }
+      }
+
+      .evo-input {
+        min-width: 720px;
+        position: relative;
+        padding: 30px 255px 10px 30px;
+
+        .evo-button {
+          position: absolute;
+          right: 10px;
+          top: 5px;
+        }
       }
     }
+
     &__title {
       color: rgb(255, 255, 255);
       font-family: "Playfair Display";
@@ -25,6 +56,7 @@
       text-align: center;
       font-size: 4.25rem;
     }
+
     &__description {
       font-size: 1.875rem;
       color: rgb(255, 255, 255);
@@ -33,9 +65,11 @@
       margin-bottom: 30px;
     }
   }
+
   &__hit {
     padding: 100px;
     position: relative;
+
     &:before {
       position: absolute;
       content: 'Як це працює?';
@@ -58,21 +92,26 @@
       border-top-right-radius: 30px;
       font-weight: 600;
     }
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     &__item {
       margin: 0 50px;
       align-items: center;
       display: flex;
       flex-direction: column;
+
       &__image {
         overflow: hidden;
+
         img {
           // width: 100%;
           height: 185px;
         }
       }
+
       &__title {
         font-size: 1.375rem;
         font-family: 'Ubuntu', sans-serif;
@@ -80,12 +119,16 @@
       }
     }
   }
+
   &__trucks {
     max-width: 80%;
-    @media screen and (max-width:1200px){
+
+    @media screen and (max-width: 1200px) {
       max-width: 100%;
     }
+
     margin: auto;
+
     &__title {
       font-size: 3.8rem;
       color: rgb(33, 33, 33);
@@ -94,18 +137,22 @@
       text-align: center;
       margin-bottom: 50px;
     }
+
     &__item {
       img {
         width: 100%;
       }
+
       &__description {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         &__driver {
           padding-right: 7rem;
           position: relative;
           text-align: right;
+
           img {
             width: 6rem;
             height: 6rem;
@@ -115,6 +162,7 @@
             border: 5px solid #fff;
             border-top-left-radius: 10px;
           }
+
           h1 {
             font-size: 1.875rem;
             color: rgb(33, 33, 33);
@@ -123,6 +171,7 @@
             margin: 0;
             margin-top: 10px;
           }
+
           h2 {
             margin: 0;
             font-size: 1rem;
@@ -134,16 +183,20 @@
       }
     }
   }
+
   &__benefits {
     padding: 100px 0;
+
     &__item {
       text-align: center;
+
       &__image {
-        img{
+        img {
           height: 175px;
           // width: 175px;
         }
       }
+
       &__title {
         font-size: 1.375rem;
         color: rgb(33, 33, 33);

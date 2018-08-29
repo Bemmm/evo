@@ -18,7 +18,6 @@ import {
   NavigationEnd,
   ActivatedRoute
 } from '@angular/router';
-import { } from 'googlemaps';
 import {
   Subscription
 } from 'rxjs/Subscription';
@@ -28,23 +27,22 @@ import {
 import {
   MapsAPILoader
 } from '@agm/core/services/maps-api-loader/maps-api-loader';
-import { CarsService, UserService } from 'app/core/services';
-import { mapConstants } from 'app/home/map/map.constants';
+import { CarsService, UserService } from '../../core/services';
+import { trucksConstants } from 'app/home/trucks/trucks.constants';
 
 @Component({
-  selector: 'evo-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  selector: 'evo-trucks',
+  templateUrl: './trucks.component.html',
+  styleUrls: ['./trucks.component.scss']
 })
 
-export class MapComponent implements OnInit {
+export class TrucksComponent implements OnInit {
   searchInput: '';
   loggedUser: any;
   searchForm: FormGroup;
   clearEmitter = new EventEmitter<any>();
   helperModel: any = {
-    styles: mapConstants,
-    label: '',
+    styles: trucksConstants,
     latitude: 0,
     longitude: 0,
     zoom: 4
@@ -63,35 +61,33 @@ export class MapComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private carsService: CarsService,
-    private userService: UserService
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute
   ) {
     this.userService.get()
-    .subscribe((user: any) => {
+      .subscribe((user: any) => {
         this.loggedUser = user;
-    })
+        this.buildRequest();
+      })
 
   }
 
   ngOnInit() {
-    this.getCurrentPosition();
     this.buildForm();
   }
 
 
-  getCurrentPosition() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.helperModel.latitude = position.coords.latitude;
-      this.helperModel.longitude = position.coords.longitude;
-      this.helperModel.zoom = 16;
+  buildRequest() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.helperModel.latitude = params.lat;
+      this.helperModel.longitude = params.lng;
       this.getNearCars();
-    }, (err) => {
-      console.log(err);
-    }, { enableHighAccuracy: true });
-
+    });
   }
+
   getNearCars() {
     this.carsService.getNearCars(this.helperModel.latitude, this.helperModel.longitude).subscribe((res) => {
-      this.trucks =  res.cars;
+      this.trucks = res.cars;
       console.log(this.trucks);
     })
   }
@@ -118,7 +114,7 @@ export class MapComponent implements OnInit {
   }
 
   showTruckInfo(truck: any) {
-    this.carsService.getTruckInfo(truck._id).subscribe((res)=>{
+    this.carsService.getTruckInfo(truck._id).subscribe((res) => {
       this.selectedTruck = res.car;
     });
   }

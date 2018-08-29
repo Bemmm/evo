@@ -1,5 +1,5 @@
 <div class="evo-map">
-  <agm-map [ngClass]="{'disabled':focusedInputClass}" [styles]="helperModel.styles" [(latitude)]="helperModel.latitude" [(longitude)]="helperModel.longitude"
+  <!-- <agm-map [ngClass]="{'disabled':focusedInputClass}" [styles]="helperModel.styles" [(latitude)]="helperModel.latitude" [(longitude)]="helperModel.longitude"
     [zoom]="16">
     <agm-marker [latitude]="helperModel.latitude" [longitude]="helperModel.longitude" [iconUrl]="'https://image.ibb.co/hbLi9c/cursor_1.png'">
     </agm-marker>
@@ -7,10 +7,10 @@
     <agm-marker *ngFor="let truck of trucks" [iconUrl]="'https://image.ibb.co/hrnoQH/800px_COLOURBOX17453850_1.png'" (markerClick)="showTruckInfo(this.truck)"
       [latitude]="truck.address.coordinates[0]" [longitude]="truck.address.coordinates[1]">
     </agm-marker>
-  </agm-map>
+  </agm-map> -->
 
 
-  <form class="evo-map__form" (ngSubmit)="searchTrucks()">
+  <!-- <form class="evo-map__form" (ngSubmit)="searchTrucks()">
     <div class="evo-map__form-search" [ngClass]="{'focused':focusedInputClass && !searchForm.controls.where.controls.label}">
       <div class="evo-map__form-search-button clean" (click)="clearInput()">
         <i class="material-icons">close</i>
@@ -28,15 +28,14 @@
         <div class="evo-map__form-request-wrapper-info">3 евакутора поруч</div>
       </div>
     </div>
-  </form>
-
+  </form> -->
+<!--
   <div class="evo-map__truck" *ngIf="selectedTruck">
     <div class="evo-map__truck-close" (click)="closeTruckInfo()">
       <i class="material-icons">close</i>
     </div>
     <h1 class="evo-map__truck-title">{{selectedTruck.car_attributes.brand.name}} {{selectedTruck.car_attributes.model.name}}</h1>
     <h5 class="evo-map__truck-details">
-      <!-- <span *ngFor="let type of selectedTruck.car_types">{{type.name}} </span> -->
       <span>{{repeatCarTypes(selectedTruck.car_types)}} </span>
       <span> | {{selectedTruck.passengers_count}} місць</span>
     </h5>
@@ -57,4 +56,7 @@
   </div>
 
   <div class="clearfix"></div>
+</div> -->
+<div class="trucks">
+
 </div>

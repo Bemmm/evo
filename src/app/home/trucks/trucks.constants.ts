@@ -1,4 +1,4 @@
-export const mapConstants = [{
+export const trucksConstants = [{
   "featureType": "water",
   "elementType": "geometry",
   "stylers": [{

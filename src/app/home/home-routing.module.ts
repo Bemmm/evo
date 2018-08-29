@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CanActivateGuest, IsUserLoggedIn } from 'app/core/services';
+import { CanActivateGuest, IsUserLoggedIn } from '../core/services';
 
 
 import { HomeComponent } from './home.component';
 import { ErrorComponent } from './error/error.component';
-import { MapComponent } from './map/map.component';
-import { AuthComponent } from 'app/auth/auth.component';
-import { RegisterComponent } from 'app/auth/register/register.component';
-import { LoginComponent } from 'app/auth/login/login.component';
-import { ProfileComponent } from 'app/profile/profile.component';
-import { ProfileInfoComponent } from 'app/profile/profile-info/profile-info.component';
-import { ProfileDriversComponent } from 'app/profile/profile-drivers/profile-drivers.component';
-import { ProfileOrdersComponent } from 'app/profile/profile-orders/profile-orders.component';
-import { ProfileTrucksComponent } from 'app/profile/profile-trucks/profile-trucks.component';
-import { LogoutComponent } from 'app/core/components/logout/logout.component';
-import { LandingComponent } from 'app/landing/landing.component';
+import { TrucksComponent } from './trucks/trucks.component';
+import { AuthComponent } from '../auth/auth.component';
+import { RegisterComponent } from '../auth/register/register.component';
+import { LoginComponent } from '../auth/login/login.component';
+import { ProfileComponent } from '../profile/profile.component';
+import { ProfileInfoComponent } from '../profile/profile-info/profile-info.component';
+import { ProfileDriversComponent } from '../profile/profile-drivers/profile-drivers.component';
+import { ProfileOrdersComponent } from '../profile/profile-orders/profile-orders.component';
+import { ProfileTrucksComponent } from '../profile/profile-trucks/profile-trucks.component';
+import { LogoutComponent } from '../core/components/logout/logout.component';
+import { LandingComponent } from '../landing/landing.component';
 
 const homeRoutes: Routes = [
   {
@@ -24,8 +24,8 @@ const homeRoutes: Routes = [
     component: LandingComponent
   },
   {
-    path: 'map',
-    component: MapComponent
+    path: 'trucks',
+    component: TrucksComponent
   },
   {
     path: 'error',

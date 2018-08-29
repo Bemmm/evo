@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { UserService, ValidationService } from 'app/core/services';
+import { UserService, ValidationService } from '../core/services';
 
 @Component({
     selector: 'evo-profile',

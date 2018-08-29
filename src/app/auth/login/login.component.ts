@@ -18,19 +18,19 @@ import {
 import {
   UserModel,
   CompanyModel
-} from 'app/shared/models';
+} from '../../shared/models';
 import {
   matchValidatorCreate
-} from 'app/shared/validators';
+} from '../../shared/validators';
 import {
   AuthService,
   AuthErrorsService,
   UserService
-} from 'app/core/services';
+} from '../../core/services';
 import {
   successRegistration
-} from 'app/shared/constants/messages';
-import { WarningService } from 'app/core/services/warning/warning.service';
+} from '../../shared/constants/messages';
+import { WarningService } from '../../core/services/warning/warning.service';
 
 @Component({
   selector: 'evo-login',

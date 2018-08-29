@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { UserService, AuthService } from 'app/core/services';
+import { UserService, AuthService } from '../../core/services';
 
 @Component({
   selector: 'evo-profile-orders',

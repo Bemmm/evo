@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { UserService } from 'app/core/services';
+import { UserService } from '..';
 
 @Injectable()
 export class IsUserLoggedIn implements CanActivate {

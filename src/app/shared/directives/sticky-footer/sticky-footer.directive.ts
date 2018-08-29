@@ -1,5 +1,5 @@
 import { Directive, Input, ViewChild, ViewContainerRef, ElementRef, OnInit, AfterViewChecked, HostListener } from '@angular/core';
-import { FooterComponent } from 'app/core/components';
+import { FooterComponent } from '../../../core/components';
 import { Subject } from 'rxjs/Subject';
 
 @Directive({

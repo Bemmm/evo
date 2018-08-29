@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
-import { UserService, AuthService } from 'app/core/services';
+import { UserService, AuthService } from '../../services';
 import { Router } from '@angular/router';
 
 @Component({

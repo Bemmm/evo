@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'app/shared/shared.module';
-import { ProfileComponent } from 'app/profile/profile.component';
-import { ProfileInfoComponent } from 'app/profile/profile-info/profile-info.component';
-import { ProfileOrdersComponent } from 'app/profile/profile-orders/profile-orders.component';
-import { ProfileTrucksComponent } from 'app/profile/profile-trucks/profile-trucks.component';
-import { ProfileDriversComponent } from 'app/profile/profile-drivers/profile-drivers.component';
+import { SharedModule } from '../shared/shared.module';
+import { ProfileComponent } from './profile.component';
+import { ProfileInfoComponent } from './profile-info/profile-info.component';
+import { ProfileOrdersComponent } from './profile-orders/profile-orders.component';
+import { ProfileTrucksComponent } from './profile-trucks/profile-trucks.component';
+import { ProfileDriversComponent } from './profile-drivers/profile-drivers.component';
 
 @NgModule({
   imports: [

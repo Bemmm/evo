@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { UserActions } from 'app/shared/store/user';
-import { LocalStorageService } from 'app/core/services';
+import { UserActions } from '../../../shared/store/user';
+import { LocalStorageService } from '..';
 
 @Injectable()
 export class UserService {

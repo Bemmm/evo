@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl} from '@angular/forms';
-import { UserService, DriversService } from 'app/core/services';
+import { UserService, DriversService } from '../../core/services';
 import { Validators } from '@angular/forms';
-import { UA } from 'app/shared/constants/calendar-local';
+import { UA } from '../../shared/constants/calendar-local';
 import {
   MapsAPILoader
 } from '@agm/core/services/maps-api-loader/maps-api-loader';

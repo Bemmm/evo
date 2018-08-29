@@ -7,7 +7,7 @@ import {
 
 import {
   ApiService,
-} from 'app/core/services';
+} from '..';
 
 @Injectable()
 export class CarsService {

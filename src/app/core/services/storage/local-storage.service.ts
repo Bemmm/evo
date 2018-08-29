@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { encrypt, decrypt } from 'app/shared/helpers';
+import { encrypt, decrypt } from '../../../shared/helpers';
 
 @Injectable()
 export class LocalStorageService {

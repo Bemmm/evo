@@ -1,4 +1,4 @@
-import { Component, NgZone, Input, Output, EventEmitter, ElementRef, ViewEncapsulation, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Component, NgZone, Input, Output, EventEmitter, ElementRef, ViewEncapsulation, ViewChild, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { } from 'googlemaps';
 import { ISubscription } from 'rxjs/Subscription';
@@ -10,10 +10,21 @@ import { ISubscription } from 'rxjs/Subscription';
   encapsulation: ViewEncapsulation.None
 })
 
-export class GooglePlacesComponent implements OnInit,  OnDestroy {
+export class GooglePlacesComponent implements OnInit {
+  private _defaultAddress: string;
   @Input() type: string;
   @Input() label: Object;
-  @Input() defaultAddress: any;
+  // @Input() defaultAddress: any;
+  @Input() set defaultAddress(value: any) {
+    this._defaultAddress = value;
+    if (value.latitude && value.longitude) {
+      this.setCurrentAddress(this.addressElementRef);
+    }
+  }
+  get defaultAddress(): any {
+    return this._defaultAddress;
+
+  };
   @Input() clear: any;
   @Input() placeholder: any;
 
@@ -39,11 +50,6 @@ export class GooglePlacesComponent implements OnInit,  OnDestroy {
       });
     }
   }
-
-  ngOnDestroy(){
-
-  }
-
   focusFunction() {
     this.focused = !this.focused;
     this.focus.emit(this.focused);
@@ -54,20 +60,18 @@ export class GooglePlacesComponent implements OnInit,  OnDestroy {
   }
 
   listenChanges() {
-    console.log('LISTENCHANGES', this.addressElementRef);
     this.mapsAPILoader.load().then(() => {
       this.autocomplete = new google.maps.places.Autocomplete(this.addressElementRef.nativeElement, {
         types: [this.type]
       });
       if (this.defaultAddress && this.defaultAddress.label.value) {
         this.addressElementRef.nativeElement.value = this.defaultAddress.label.value;
-      } else if( this.defaultAddress){
-        this.setCurrentAddress(this.addressElementRef);
+      } else if (this.defaultAddress) {
+        this.setCurrentAddress(this.addressElementRef, this.autocomplete);
       };
 
       this.autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
-
           let place: google.maps.places.PlaceResult = this.autocomplete.getPlace();
           if (place.geometry === undefined || place.geometry === null) {
             return;
@@ -79,13 +83,12 @@ export class GooglePlacesComponent implements OnInit,  OnDestroy {
     })
   }
 
-  setCurrentAddress(element: any) {
+  setCurrentAddress(element: any, autocomplete?:any) {
     let geocoder = new google.maps.Geocoder();
     let latlng = new google.maps.LatLng(this.defaultAddress.latitude, this.defaultAddress.longitude);
     geocoder.geocode({
       'location': latlng
     }, function (results: any, status: any) {
-      console.log('PLACE BY COORDS', results[0]);
       if (status === google.maps.GeocoderStatus.OK) {
         element.nativeElement.value = results[0].formatted_address;
       } else {

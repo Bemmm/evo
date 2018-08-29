@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { UserService } from 'app/core/services';
+import { UserService } from '../core/services';
 
 
 @Component({
