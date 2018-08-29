@@ -15,7 +15,9 @@ import {
   DialogModule,
   MultiSelectModule,
   FileUploadModule,
-  InputTextareaModule
+  InputTextareaModule,
+  SelectButtonModule,
+  SliderModule
 } from 'primeng/primeng';
 import {  TableModule  } from 'primeng/table'
 import { rootReducer } from './store/rootReducer';
@@ -51,6 +53,8 @@ import { mapObjectToArray } from './helpers';
     MultiSelectModule,
     FileUploadModule,
     InputTextareaModule,
+    SelectButtonModule,
+    SliderModule,
     StoreModule.forRoot(rootReducer, {}),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAJDovioj36qSMAHr2LCpy3rmlcPxVevuM',
@@ -85,6 +89,8 @@ import { mapObjectToArray } from './helpers';
     MultiSelectModule,
     FileUploadModule,
     InputTextareaModule,
+    SelectButtonModule,
+    SliderModule,
     StoreModule,
     AgmCoreModule,
     AgmSnazzyInfoWindowModule,

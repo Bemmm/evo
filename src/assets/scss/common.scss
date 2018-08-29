@@ -53,6 +53,23 @@ button {
   }
 }
 
+.pac-container.homepage {
+  z-index: 99999;
+  background: #1f1f1f;  
+  .pac-item {
+    padding: 5px;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+    &-query{
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      color: #fff !important;
+    }    
+  }
+}
+
 .relative {
   position: relative;
 }

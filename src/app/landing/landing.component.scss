@@ -15,15 +15,15 @@
       &__sdropdown {
         position: absolute;
         top: 100%;
-        left: 50px;
+        left: 46px;
         background: #1f1f1f;
+        width: 57.8%;
         color: #fff;
-
+        z-index: 1;
         &__item {
           padding: 0 10px;
           font-size: 16px;
-          line-height: 44px;
-          cursor: pointer;
+          line-height: 41px;
           background-repeat: no-repeat;
           padding-left: 43px;
           background-position: 10px;
@@ -39,8 +39,10 @@
       .evo-input {
         min-width: 720px;
         position: relative;
-        padding: 30px 255px 10px 30px;
-
+        padding: 30px 255px 0px 30px;
+        input{
+          padding-bottom: 10px !important;
+        }
         .evo-button {
           position: absolute;
           right: 10px;

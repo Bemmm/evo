@@ -37,10 +37,12 @@ import { trucksConstants } from 'app/home/trucks/trucks.constants';
 })
 
 export class TrucksComponent implements OnInit {
-  searchInput: '';
   loggedUser: any;
-  searchForm: FormGroup;
-  clearEmitter = new EventEmitter<any>();
+  selectedType:string = 'list';  
+  types:any = [
+    {label: 'Список', value: 'list', icon: 'fa fa-fw fa-list-ul'},
+    {label: 'Карта', value: 'map', icon: 'fa fa-fw fa-map-marker'}
+  ]
   helperModel: any = {
     styles: trucksConstants,
     latitude: 0,
@@ -73,7 +75,6 @@ export class TrucksComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.buildForm();
   }
 
 
@@ -92,26 +93,6 @@ export class TrucksComponent implements OnInit {
     })
   }
 
-  clearInput(event: any) {
-    this.clearEmitter.emit(true);
-  }
-
-  getAddress(event: any, formControl: any) {
-    console.log(event);
-    this.helperModel.longitude = event.geometry.location.lng();
-    this.helperModel.latitude = event.geometry.location.lat();
-    this.searchForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
-    this.searchForm.get(formControl).get('coordinates').setValue([event.geometry.location.lat, event.geometry.location.lng]);
-
-  }
-
-  buildForm() {
-    this.searchForm = this.fb.group(this.searchModel);
-  }
-
-  searchTrucks() {
-    console.log(this.trucks);
-  }
 
   showTruckInfo(truck: any) {
     this.carsService.getTruckInfo(truck._id).subscribe((res) => {

@@ -1,62 +1,24 @@
-<div class="evo-map">
-  <!-- <agm-map [ngClass]="{'disabled':focusedInputClass}" [styles]="helperModel.styles" [(latitude)]="helperModel.latitude" [(longitude)]="helperModel.longitude"
-    [zoom]="16">
-    <agm-marker [latitude]="helperModel.latitude" [longitude]="helperModel.longitude" [iconUrl]="'https://image.ibb.co/hbLi9c/cursor_1.png'">
-    </agm-marker>
-
-    <agm-marker *ngFor="let truck of trucks" [iconUrl]="'https://image.ibb.co/hrnoQH/800px_COLOURBOX17453850_1.png'" (markerClick)="showTruckInfo(this.truck)"
-      [latitude]="truck.address.coordinates[0]" [longitude]="truck.address.coordinates[1]">
-    </agm-marker>
-  </agm-map> -->
-
-
-  <!-- <form class="evo-map__form" (ngSubmit)="searchTrucks()">
-    <div class="evo-map__form-search" [ngClass]="{'focused':focusedInputClass && !searchForm.controls.where.controls.label}">
-      <div class="evo-map__form-search-button clean" (click)="clearInput()">
-        <i class="material-icons">close</i>
+<div class="container trucks">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-4 trucks__side">
+      <p-selectButton class="trucks__side__switchers" [options]="types" [(ngModel)]="selectedType"></p-selectButton>
+      <div class="form-group">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" pInputText>
+          <label for="float-input">Де ви?</label>
+        </span>
       </div>
-      <google-places class="form-control" [type]="'address'" [clear]="clearEmitter" (locationData)="getAddress($event, 'where')" (focus)="focusedInputClass = $event"
-        [(defaultAddress)]="helperModel"></google-places>
-      <div class="evo-map__form-search-button filter">
-        <i class="material-icons">filter_list</i>
+      <div class="form-group">
+        <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
+      </div>
+      <div class="form-group">
+        <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="1" [max]="100"></p-slider>
+      </div>
+      <div class="form-group">
+        <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
       </div>
     </div>
-    <div class="evo-map__form-request" *ngIf="!selectedTruck">
-      <div class="evo-map__form-request-wrapper">
-        <div class="evo-map__form-request-wrapper-space"></div>
-        <button class="evo-button">Шукати</button>
-        <div class="evo-map__form-request-wrapper-info">3 евакутора поруч</div>
-      </div>
-    </div>
-  </form> -->
-<!--
-  <div class="evo-map__truck" *ngIf="selectedTruck">
-    <div class="evo-map__truck-close" (click)="closeTruckInfo()">
-      <i class="material-icons">close</i>
-    </div>
-    <h1 class="evo-map__truck-title">{{selectedTruck.car_attributes.brand.name}} {{selectedTruck.car_attributes.model.name}}</h1>
-    <h5 class="evo-map__truck-details">
-      <span>{{repeatCarTypes(selectedTruck.car_types)}} </span>
-      <span> | {{selectedTruck.passengers_count}} місць</span>
-    </h5>
-    <div class="evo-map__truck-car flex-row center-left">
-      <div class="evo-map__truck-car-image">
-        <img width="100%" src="https://101clipart.com/wp-content/uploads/12/Truck%20Clipart%20Top%20View%2003.jpg" alt="">
-      </div>
-      <div class="evo-map__truck-car-number">{{selectedTruck.registration_number}}</div>
-    </div>
-    <div class="evo-map__truck-driver">
-      <div class="evo-map__truck-driver">{{selectedTruck.owner.name}}:
-        <span class="evo-map__truck-driver-details">{{selectedTruck.description}}</span>
-      </div>
-    </div>
-    <button class="evo-button">
-      <a href="tel:+{{selectedTruck.owner.phone}}">Зателефонувати</a>
-    </button>
+    <div class="col-xs-12 col-sm-8 col-md-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum delectus assumenda dolores asperiores nobis consectetur
+      odit dolor hic odio, nostrum corrupti dicta placeat eveniet. Perspiciatis iure ipsa dicta non eos.</div>
   </div>
-
-  <div class="clearfix"></div>
-</div> -->
-<div class="trucks">
-
 </div>
