@@ -1,4 +1,4 @@
-import { } from 'googlemaps';
+import {} from 'googlemaps';
 import {
   FormGroup,
   Validators,
@@ -23,7 +23,7 @@ import {
 } from 'rxjs/Subscription';
 import {
   FormControl
-} from '@angular/forms/src/model';
+} from '@angular/forms';
 import {
   MapsAPILoader
 } from '@agm/core/services/maps-api-loader/maps-api-loader';
@@ -36,26 +36,46 @@ import { trucksConstants } from 'app/home/trucks/trucks.constants';
   styleUrls: ['./trucks.component.scss']
 })
 
-export class TrucksComponent implements OnInit {
+export class TrucksComponent implements OnInit, OnDestroy {
   loggedUser: any;
-  selectedType:string = 'list';  
-  types:any = [
-    {label: 'Список', value: 'list', icon: 'fa fa-fw fa-list-ul'},
-    {label: 'Карта', value: 'map', icon: 'fa fa-fw fa-map-marker'}
+  selectedType: string = 'list'
+  searchForm: FormGroup;
+  types: any = [
+    { label: 'Список', value: 'list', icon: 'fa fa-fw fa-list-ul' },
+    { label: 'Карта', value: 'map', icon: 'fa fa-fw fa-map-marker' }
+  ];
+  weightTypes: any = [
+    { label: 'Не обрано', value: null },
+    { label: 'до 100', value: 100 },
+    { label: 'до 500', value: 500 },
+    { label: 'до 800', value: 800 },
+    { label: 'до 1000', value: 1000 }
+  ]
+  sortTypes: any = [
+    { label: 'Не обрано', value: null },
+    { label: 'Спочатку найближчі', value: 'nearest' }
   ]
   helperModel: any = {
-    styles: trucksConstants,
-    latitude: 0,
-    longitude: 0,
-    zoom: 4
+    // styles: trucksConstants,
+    where: {
+      latitude: null,
+      longitude: null
+    }
   };
   trucks: any;
   selectedTruck: any = undefined;
   searchModel = {
     where: this.fb.group({
-      label: [''],
-      coordinates: this.fb.array([])
+      label:[''],
+      latitude: [''],
+      longitude: ['']
     }),
+    weight_limit: [''],
+    price: this.fb.array([
+      20,
+      60
+    ]),
+    sort: ['']
   };
   constructor(
     private fb: FormBuilder,
@@ -66,6 +86,8 @@ export class TrucksComponent implements OnInit {
     private userService: UserService,
     private activatedRoute: ActivatedRoute
   ) {
+    this.searchForm = this.fb.group(this.searchModel);
+
     this.userService.get()
       .subscribe((user: any) => {
         this.loggedUser = user;
@@ -76,13 +98,19 @@ export class TrucksComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  ngOnDestroy() {
+    let element = document.getElementsByClassName('pac-container')[0];
+    if (element) element.remove();
+    console.log(element);
+  }
 
   buildRequest() {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.helperModel.latitude = params.lat;
-      this.helperModel.longitude = params.lng;
-      this.getNearCars();
+      this.helperModel.where.latitude = params.lat;
+      this.helperModel.where.longitude = params.lng;
+      // this.helperModel.where.label = params.label;
+      this.searchForm.patchValue(this.helperModel);
+      // this.getNearCars();
     });
   }
 
@@ -109,5 +137,10 @@ export class TrucksComponent implements OnInit {
       return item.name;
     }).join(', ');
   }
-
+  getAddress(event: any, formControl: any) {
+    console.log('BEM desc :: event', event);
+    this.searchForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
+    this.searchForm.get(formControl).get('latitude').setValue(event.geometry.location.lat());
+    this.searchForm.get(formControl).get('longitude').setValue(event.geometry.location.lng());
+  }
 }

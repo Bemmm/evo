@@ -1,8 +1,58 @@
-.trucks{
-  &__side{
-    :host #{"/deep/"} {
-      .ui-button{
-        border: 1px solid green !important;
+.trucks {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  &__side {
+    /deep/ .ui-button {
+      border: 1px solid #59d389 !important;
+      font-size: 1.25rem;
+      color: #59d389;
+      font-family: 'Ubuntu', sans-serif;
+      padding: 5px 9px;
+      outline: none;
+      box-shadow: none;
+
+      &.ui-state-active,
+      &.ui-state-active,
+      &:not(.ui-state-disabled):not(.ui-state-active):hover {
+        background: #59d389;
+        color: #fff;
+        box-shadow: none;
+      }
+    }
+
+    /deep/ {
+      .ui-float-label {
+        .ui-inputtext {
+          border: 0;
+          border-bottom: 1px solid #59d389;
+          border-radius: 0;
+          width: 100%;
+        }
+      }
+
+      .ui-dropdown {
+        width: 100% !important;
+      }
+      .ui-slider{
+        &-handle{
+          border-radius: 50%;
+          border: 1px solid #59d389;
+          background: #fff;
+          width: 20px !important;
+          height: 20px !important;
+          top: -10px !important;
+        }
+        &-range{
+          background: #59d389;
+          height: 3px;
+          top: -1.5px;
+          box-shadow: none;
+        }
+        &-horizontal{
+          height: 1px;
+          background-color:#d3d3d3;
+        }
       }
     }
   }

@@ -1,24 +1,28 @@
-<div class="container trucks">
+<div class="container trucks ">
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-md-4 trucks__side">
-      <p-selectButton class="trucks__side__switchers" [options]="types" [(ngModel)]="selectedType"></p-selectButton>
-      <div class="form-group">
-        <span class="ui-float-label">
-          <input id="float-input" type="text" size="30" pInputText>
-          <label for="float-input">Де ви?</label>
-        </span>
-      </div>
-      <div class="form-group">
-        <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
-      </div>
-      <div class="form-group">
-        <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="1" [max]="100"></p-slider>
-      </div>
-      <div class="form-group">
-        <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
-      </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 trucks__side text-center">
+      <form [formGroup]="searchForm">
+        <p-selectButton class="trucks__side__switchers" [options]="types"></p-selectButton>
+        <div class="form-group">
+          <span class="ui-float-label">
+            <google-places style="width: 100%" [type]="'address'" (locationData)="getAddress($event, 'where')" (focus)="focusedInputClass = $event"
+              [defaultAddress]="searchForm.controls.where.controls"></google-places>
+            <label for="float-input">Де ви?</label>
+          </span>
+        </div>
+        <div class="form-group">
+          <p-dropdown [options]="weightTypes" formControlName="weight_limit"></p-dropdown>
+        </div>
+        <div class="form-group">
+          <!-- <p-slider formControlName="price" [range]="true" [min]="1" [max]="100"></p-slider> -->
+        </div>
+        <div class="form-group">
+          <p-dropdown [options]="sortTypes"></p-dropdown>
+        </div>
+      </form>
     </div>
-    <div class="col-xs-12 col-sm-8 col-md-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum delectus assumenda dolores asperiores nobis consectetur
+    <div class="col-xs-12 col-sm-8 col-md-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum delectus
+      assumenda dolores asperiores nobis consectetur
       odit dolor hic odio, nostrum corrupti dicta placeat eveniet. Perspiciatis iure ipsa dicta non eos.</div>
   </div>
 </div>

@@ -1,7 +1,6 @@
-import { Component, NgZone, Input, Output, EventEmitter, ElementRef, ViewEncapsulation, ViewChild, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, NgZone, Input, Output, EventEmitter, ElementRef, ViewEncapsulation, ViewChild, OnInit, OnDestroy, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { } from 'googlemaps';
-import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'google-places',
@@ -10,7 +9,7 @@ import { ISubscription } from 'rxjs/Subscription';
   encapsulation: ViewEncapsulation.None
 })
 
-export class GooglePlacesComponent implements OnInit {
+export class GooglePlacesComponent implements OnInit, AfterContentInit {
   private _defaultAddress: string;
   @Input() type: string;
   @Input() label: Object;
@@ -39,10 +38,12 @@ export class GooglePlacesComponent implements OnInit {
 
   constructor(private ngZone: NgZone,
     private mapsAPILoader: MapsAPILoader) {
-    this.listenChanges();
+
   };
 
-
+  ngAfterContentInit() {
+    this.listenChanges();
+  }
   ngOnInit() {
     if (this.clear) {
       this.clear.subscribe((res: any) => {
@@ -64,6 +65,7 @@ export class GooglePlacesComponent implements OnInit {
       this.autocomplete = new google.maps.places.Autocomplete(this.addressElementRef.nativeElement, {
         types: [this.type]
       });
+      console.log(this.addressElementRef, this.defaultAddress);
       if (this.defaultAddress && this.defaultAddress.label.value) {
         this.addressElementRef.nativeElement.value = this.defaultAddress.label.value;
       } else if (this.defaultAddress) {
@@ -83,7 +85,7 @@ export class GooglePlacesComponent implements OnInit {
     })
   }
 
-  setCurrentAddress(element: any, autocomplete?:any) {
+  setCurrentAddress(element: any, autocomplete?: any) {
     let geocoder = new google.maps.Geocoder();
     let latlng = new google.maps.LatLng(this.defaultAddress.latitude, this.defaultAddress.longitude);
     geocoder.geocode({

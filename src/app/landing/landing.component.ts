@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, OnDestroy } from '@angular/core';
 import { } from 'googlemaps';
 import { Router } from '@angular/router';
 @Component({
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['landing.component.scss']
 })
 
-export class LandingComponent implements OnInit {
+export class LandingComponent implements OnInit, OnDestroy {
   loggedUser: any;
   searchModel: any = {};
   helperModel: any = {
@@ -72,10 +72,16 @@ export class LandingComponent implements OnInit {
     let element = this._elementRef.nativeElement.querySelector('body');
     console.log(element);
   }
+  ngOnDestroy(){
+    let element = document.getElementsByClassName('pac-container')[0];
+    if (element) element.remove();
+    console.log(element);
+  }
   getAddress(event: any, formControl: any) {
     console.log(event);
     this.helperModel.longitude = event.geometry.location.lng();
     this.helperModel.latitude = event.geometry.location.lat();
-    this.router.navigate(['trucks'], { queryParams: { lat: this.helperModel.latitude, lng: this.helperModel.longitude } });
+    // this.helperModel.label = event.formatted_address;
+    this.router.navigate(['trucks'], { queryParams: { lat: this.helperModel.latitude, lng: this.helperModel.longitude, label: this.helperModel.label } });
   }
 }
