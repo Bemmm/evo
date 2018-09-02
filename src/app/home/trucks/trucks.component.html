@@ -80,7 +80,7 @@
           [zoom]="16">
           <agm-marker [latitude]="mapSettings.latitude" [longitude]="mapSettings.longitude" [iconUrl]="'https://image.ibb.co/hbLi9c/cursor_1.png'">
           </agm-marker>
-          <agm-marker *ngFor="let truck of trucks" [iconUrl]="'https://raw.githubusercontent.com/Bemmm/evo/release/src/app/home/trucks/assets/icon.png'" (markerClick)="showTruckInfo(this.truck)"
+          <agm-marker *ngFor="let truck of trucks" [iconUrl]="'https://raw.githubusercontent.com/Bemmm/evo/release/src/app/home/trucks/assets/iconn.png'" (markerClick)="showTruckInfo(this.truck)"
             [latitude]="truck.address.coordinates[0]" [longitude]="truck.address.coordinates[1]">
           </agm-marker>
         </agm-map>
