@@ -1,7 +1,35 @@
 .trucks {
   padding-top: 2rem;
   padding-bottom: 2rem;
+  &__item{
+   &__description{
+     &__item{
+       p{
+        margin: 0;
+        font-family: 'Ubuntu', sans-serif;
+        font-size:0.875rem;
+       }
+       h4{
+        margin: 0;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 1.25rem;
+        color:#505050;
+       }
+     }
+     &__mark{
+       margin-top: 5px;
+     }
+     &__driver{
+       h2{
 
+         font-size: 30px;
+         font-family: "Playfair Display";
+         font-weight: 600;
+         margin: 0;
+        }
+     }
+   } 
+  }
   &__side {
     /deep/ .ui-button {
       border: 1px solid #59d389 !important;
@@ -55,5 +83,9 @@
         }
       }
     }
+  }
+  agm-map{
+    height: 400px;
+    width: 100%;
   }
 }

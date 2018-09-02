@@ -81,7 +81,7 @@ export class LandingComponent implements OnInit, OnDestroy {
     console.log(event);
     this.helperModel.longitude = event.geometry.location.lng();
     this.helperModel.latitude = event.geometry.location.lat();
-    // this.helperModel.label = event.formatted_address;
+    this.helperModel.label = event.formatted_address;
     this.router.navigate(['trucks'], { queryParams: { lat: this.helperModel.latitude, lng: this.helperModel.longitude, label: this.helperModel.label } });
   }
 }

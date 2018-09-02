@@ -14,6 +14,7 @@ import { LandingModule } from './landing/landing.module';
 import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -22,6 +23,10 @@ import { AppComponent } from './app.component';
     BrowserModule,
     NoopAnimationsModule,
     NgbModule.forRoot(),
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyAJDovioj36qSMAHr2LCpy3rmlcPxVevuM',
+    //   libraries: ['places']
+    // }),
     CoreModule,
     HomeModule,
     AppRoutingModule,

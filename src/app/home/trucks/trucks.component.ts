@@ -1,45 +1,27 @@
-import {} from 'googlemaps';
 import {
-  FormGroup,
-  Validators,
-  FormBuilder
+  FormGroup, FormBuilder
 } from '@angular/forms';
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  ViewChild,
-  ElementRef,
-  NgZone,
-  EventEmitter
-} from '@angular/core';
-import {
-  Router,
-  NavigationEnd,
-  ActivatedRoute
-} from '@angular/router';
-import {
-  Subscription
-} from 'rxjs/Subscription';
-import {
-  FormControl
-} from '@angular/forms';
-import {
-  MapsAPILoader
-} from '@agm/core/services/maps-api-loader/maps-api-loader';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MapsAPILoader } from '@agm/core/services/maps-api-loader/maps-api-loader';
 import { CarsService, UserService } from '../../core/services';
 import { trucksConstants } from 'app/home/trucks/trucks.constants';
-
+import { Address } from 'angular-google-place';
 @Component({
   selector: 'evo-trucks',
   templateUrl: './trucks.component.html',
   styleUrls: ['./trucks.component.scss']
 })
 
-export class TrucksComponent implements OnInit, OnDestroy {
+export class TrucksComponent implements OnInit {
   loggedUser: any;
   selectedType: string = 'list'
   searchForm: FormGroup;
+  mapSettings: any = {
+    latitude: 0,
+    longitude: 0,
+    styles: trucksConstants
+  };
   types: any = [
     { label: 'Список', value: 'list', icon: 'fa fa-fw fa-list-ul' },
     { label: 'Карта', value: 'map', icon: 'fa fa-fw fa-map-marker' }
@@ -56,7 +38,6 @@ export class TrucksComponent implements OnInit, OnDestroy {
     { label: 'Спочатку найближчі', value: 'nearest' }
   ]
   helperModel: any = {
-    // styles: trucksConstants,
     where: {
       latitude: null,
       longitude: null
@@ -66,7 +47,7 @@ export class TrucksComponent implements OnInit, OnDestroy {
   selectedTruck: any = undefined;
   searchModel = {
     where: this.fb.group({
-      label:[''],
+      label: [''],
       latitude: [''],
       longitude: ['']
     }),
@@ -87,7 +68,7 @@ export class TrucksComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute
   ) {
     this.searchForm = this.fb.group(this.searchModel);
-
+    this.getCurrentPosition();
     this.userService.get()
       .subscribe((user: any) => {
         this.loggedUser = user;
@@ -98,24 +79,23 @@ export class TrucksComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
   }
-  ngOnDestroy() {
-    let element = document.getElementsByClassName('pac-container')[0];
-    if (element) element.remove();
-    console.log(element);
-  }
-
+  // ngOnDestroy() {
+  //   let element = document.getElementsByClassName('pac-container')[0];
+  //   if (element) element.remove();
+  //   console.log(element);
+  // }
   buildRequest() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.helperModel.where.latitude = params.lat;
       this.helperModel.where.longitude = params.lng;
-      // this.helperModel.where.label = params.label;
+      this.helperModel.where.label = params.label;
       this.searchForm.patchValue(this.helperModel);
-      // this.getNearCars();
+      this.getNearCars();
     });
   }
 
   getNearCars() {
-    this.carsService.getNearCars(this.helperModel.latitude, this.helperModel.longitude).subscribe((res) => {
+    this.carsService.getNearCars(this.searchForm.get('where').get('latitude').value, this.searchForm.get('where').get('longitude').value).subscribe((res) => {
       this.trucks = res.cars;
       console.log(this.trucks);
     })
@@ -142,5 +122,13 @@ export class TrucksComponent implements OnInit, OnDestroy {
     this.searchForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
     this.searchForm.get(formControl).get('latitude').setValue(event.geometry.location.lat());
     this.searchForm.get(formControl).get('longitude').setValue(event.geometry.location.lng());
+  }
+  getCurrentPosition() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.mapSettings.latitude = position.coords.latitude;
+      this.mapSettings.longitude = position.coords.longitude;
+    }, (err) => {
+      console.log(err);
+    }, { enableHighAccuracy: true });
   }
 }

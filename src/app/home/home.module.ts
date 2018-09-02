@@ -11,8 +11,8 @@ import { ErrorComponent } from './error/error.component';
 
 @NgModule({
     imports: [
-        CoreModule,
         SharedModule,
+        CoreModule,
         HomeRoutingModule
     ],
     declarations: [

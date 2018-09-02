@@ -17,7 +17,9 @@
 .rating-stars ul>li.star.hover>i.fa {
   color: #FFCC36;
 }
-
+.rating-stars.rating-stars-green ul>li.star.selected>i.fa {
+  color: #59d389;
+}
 .rating-stars ul>li.star.selected>i.fa {
   color: #8f63f4;
 }

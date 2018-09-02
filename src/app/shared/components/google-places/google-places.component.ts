@@ -11,6 +11,8 @@ import { } from 'googlemaps';
 
 export class GooglePlacesComponent implements OnInit, AfterContentInit {
   private _defaultAddress: string;
+  @ViewChild("address")
+  public addressElementRef: ElementRef =  null;
   @Input() type: string;
   @Input() label: Object;
   // @Input() defaultAddress: any;
@@ -31,10 +33,6 @@ export class GooglePlacesComponent implements OnInit, AfterContentInit {
   @Output() focus = new EventEmitter<any>();
   autocomplete: any;
   focused: any;
-
-  @ViewChild("address")
-  public addressElementRef: ElementRef;
-
 
   constructor(private ngZone: NgZone,
     private mapsAPILoader: MapsAPILoader) {
@@ -91,7 +89,7 @@ export class GooglePlacesComponent implements OnInit, AfterContentInit {
     geocoder.geocode({
       'location': latlng
     }, function (results: any, status: any) {
-      if (status === google.maps.GeocoderStatus.OK) {
+      if (status === google.maps.GeocoderStatus.OK && element ) {
         element.nativeElement.value = results[0].formatted_address;
       } else {
         console.log('Geocoder failed due to: ' + status);

@@ -1,8 +1,8 @@
 <div class="container trucks ">
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-md-4 trucks__side text-center">
-      <form [formGroup]="searchForm">
-        <p-selectButton class="trucks__side__switchers" [options]="types"></p-selectButton>
+      <p-selectButton class="trucks__side__switchers" [(ngModel)]="selectedType" [options]="types"></p-selectButton>
+        <form [formGroup]="searchForm">
         <div class="form-group">
           <span class="ui-float-label">
             <google-places style="width: 100%" [type]="'address'" (locationData)="getAddress($event, 'where')" (focus)="focusedInputClass = $event"
@@ -21,8 +21,70 @@
         </div>
       </form>
     </div>
-    <div class="col-xs-12 col-sm-8 col-md-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum delectus
-      assumenda dolores asperiores nobis consectetur
-      odit dolor hic odio, nostrum corrupti dicta placeat eveniet. Perspiciatis iure ipsa dicta non eos.</div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+      <ng-container *ngIf="selectedType == 'list'">
+        <div class="trucks__item row" *ngFor="let item of trucks">
+          <div class="col-sm-6">
+            <div class="trucks__item__image">
+              <img width="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_seSfHCFqClUsiGEFQ5t2g9I3bmv_qYarYRMuVwH7OK9TIZe8"
+                alt="">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="trucks__item__description">
+              <div class="trucks__item__description__driver">
+                <h2>Aleh</h2>
+              </div>
+              <div class="trucks__item__description__mark">
+
+                <div class='rating-stars rating-stars-green'>
+                  <ul id='stars'>
+                    <li class='star selected' title='Poor' data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star selected' title='Fair' data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star selected' title='Good' data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star selected' title='Excellent' data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star selected' title='WOW!!!' data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+              <div class="form-group trucks__item__description_item">
+                <p>Населений пункт</p>
+                <h4>{{item.address.label}}</h4>
+              </div>
+              <div class="form-group trucks__item__description_item">
+                <p>Тонаж</p>
+                <h4>asd</h4>
+              </div>
+              <div class="form-group trucks__item__description_item">
+                <p>Ціна за км</p>
+                <h4>asd</h4>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="selectedType == 'map'">
+        <agm-map [ngClass]="{'disabled':focusedInputClass}" [styles]="mapSettings.styles" [(latitude)]="mapSettings.latitude" [(longitude)]="mapSettings.longitude"
+          [zoom]="16">
+          <agm-marker [latitude]="mapSettings.latitude" [longitude]="mapSettings.longitude" [iconUrl]="'https://image.ibb.co/hbLi9c/cursor_1.png'">
+          </agm-marker>
+          <agm-marker *ngFor="let truck of trucks" [iconUrl]="'assets/icons.png'" (markerClick)="showTruckInfo(this.truck)"
+            [latitude]="truck.address.coordinates[0]" [longitude]="truck.address.coordinates[1]">
+          </agm-marker>
+        </agm-map>
+      </ng-container>
+    </div>
   </div>
 </div>
