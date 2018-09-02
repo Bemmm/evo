@@ -123,6 +123,11 @@ export class TrucksComponent implements OnInit {
     this.searchForm.get(formControl).get('latitude').setValue(event.geometry.location.lat());
     this.searchForm.get(formControl).get('longitude').setValue(event.geometry.location.lng());
   }
+  getShortAddress(address: string) {
+    let arr = address.split(',');
+    arr.length = arr.length - 3;
+    return arr.join(',');
+  }
   getCurrentPosition() {
     navigator.geolocation.getCurrentPosition((position) => {
       this.mapSettings.latitude = position.coords.latitude;

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-md-4 trucks__side text-center">
       <p-selectButton class="trucks__side__switchers" [(ngModel)]="selectedType" [options]="types"></p-selectButton>
-        <form [formGroup]="searchForm">
+      <form [formGroup]="searchForm">
         <div class="form-group">
           <span class="ui-float-label">
             <google-places style="width: 100%" [type]="'address'" (locationData)="getAddress($event, 'where')" (focus)="focusedInputClass = $event"
@@ -80,11 +80,98 @@
           [zoom]="16">
           <agm-marker [latitude]="mapSettings.latitude" [longitude]="mapSettings.longitude" [iconUrl]="'https://image.ibb.co/hbLi9c/cursor_1.png'">
           </agm-marker>
-          <agm-marker *ngFor="let truck of trucks" [iconUrl]="'https://raw.githubusercontent.com/Bemmm/evo/release/src/app/home/trucks/assets/iconn.png'" (markerClick)="showTruckInfo(this.truck)"
-            [latitude]="truck.address.coordinates[0]" [longitude]="truck.address.coordinates[1]">
+          <agm-marker *ngFor="let truck of trucks" [iconUrl]="'https://raw.githubusercontent.com/Bemmm/evo/release/src/app/home/trucks/assets/icon.png'"
+            (markerClick)="showTruckInfo(this.truck)" [latitude]="truck.address.coordinates[0]" [longitude]="truck.address.coordinates[1]">
           </agm-marker>
         </agm-map>
       </ng-container>
     </div>
   </div>
 </div>
+
+<p-dialog class="evo-dialog evo-dialog-truck-info" *ngIf="selectedTruck" [(visible)]="selectedTruck" [modal]="true" [responsive]="true"
+  [width]="820" [minWidth]="200" [baseZIndex]="10000">
+  <div class="trucks__item row">
+    <div class="col-sm-6">
+      <div class="trucks__item__image">
+        <img width="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_seSfHCFqClUsiGEFQ5t2g9I3bmv_qYarYRMuVwH7OK9TIZe8"
+          alt="">
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="trucks__item__description">
+        <div class="trucks__item__description__driver">
+          <h2>Aleh</h2>
+        </div>
+        <div class="trucks__item__description__mark">
+
+          <div class='rating-stars rating-stars-green'>
+            <ul id='stars'>
+              <li class='star selected' title='Poor' data-value='1'>
+                <i class='fa fa-star fa-fw'></i>
+              </li>
+              <li class='star selected' title='Fair' data-value='2'>
+                <i class='fa fa-star fa-fw'></i>
+              </li>
+              <li class='star selected' title='Good' data-value='3'>
+                <i class='fa fa-star fa-fw'></i>
+              </li>
+              <li class='star selected' title='Excellent' data-value='4'>
+                <i class='fa fa-star fa-fw'></i>
+              </li>
+              <li class='star selected' title='WOW!!!' data-value='5'>
+                <i class='fa fa-star fa-fw'></i>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="trucks__item__description_item trucks__item__description_item-dialog ">
+          <p>Авто:
+            <b>{{selectedTruck.car_attributes.brand.name}} {{selectedTruck.car_attributes.model.name}} </b>
+          </p>
+        </div>
+        <div class="trucks__item__description_item trucks__item__description_item-dialog">
+          <p>Грузопідйомність:
+            <b>{{selectedTruck.weight_limit}} кг</b>
+          </p>
+        </div>
+        <div class="trucks__item__description_item trucks__item__description_item-dialog">
+          <p>Р.номер:
+            <b>{{selectedTruck.registration_number}}</b>
+          </p>
+        </div>
+        <div class="trucks__item__description_item trucks__item__description_item-dialog">
+          <p>Пасажирських місць:
+            <b>{{selectedTruck.passengers_count}}</b>
+          </p>
+        </div>
+        <div class="trucks__item__description_item trucks__item__description_item-dialog">
+          <p>Ціна:
+            <b>{{selectedTruck.price}} грн/км</b>
+          </p>
+        </div>
+        <div class="trucks__item__description_item trucks__item__description_item-dialog">
+            <p>
+              <b>Є можливість перевезти:</b>
+            </p>
+          </div>        
+      </div>
+
+    </div>
+  </div>
+  <div class="row mt-1">
+    <div class="col-sm-6">
+      <agm-map class="dialog__map" [styles]="mapSettings.styles" [disableDefaultUI]="true" [(latitude)]="selectedTruck.address.coordinates[0]"
+        [(longitude)]="selectedTruck.address.coordinates[1]" [zoom]="16">
+        <agm-info-window [isOpen]="true" [latitude]="selectedTruck.address.coordinates[0]" [longitude]="selectedTruck.address.coordinates[1]">Евакуатор знаходиться:
+          <br>
+          <b>{{getShortAddress(this.selectedTruck.address.label)}}</b>
+        </agm-info-window>
+      </agm-map>
+    </div>
+    <div class="col-sm-6">
+      <p>{{selectedTruck.description}}</p>
+    </div>
+  </div>
+</p-dialog>
