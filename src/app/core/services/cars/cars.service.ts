@@ -48,9 +48,14 @@ export class CarsService {
   deleteTruck(truckId: any, token?: string, role?: string) {
     return this.api.delete(`${role == 'company' ? this.deleteCompanyTruckUrl : this.deleteTruckUrl}/${truckId}`, null, token);
   }
-  getNearCars(lat: any, lng: any) {
-    return this.api.get(`${this.searchNearestCars}`, {coordinates:[lat, lng]});
-  }
+  getNearCars(data:any) {
+    return this.api.get(`${this.searchNearestCars}`, {
+      coordinates:[data.where.longitude, data.where.latitude],
+      price:[data.price[0], data.price[1]],
+      sort:data.sort,
+      weight_limit:data.weight_limit
+    });
+    }
   getTruckInfo(truckId: any){
     return this.api.get(`${this.searchCars}/${truckId}`);
   }

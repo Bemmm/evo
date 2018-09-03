@@ -1,42 +1,79 @@
 .trucks {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  &__item{
-   &__description{
-     &__item{
-       p{
-        margin: 0;
-        font-family: 'Ubuntu', sans-serif;
-        font-size:0.875rem;
-       }
-       h4{
-        margin: 0;
-        font-family: 'Ubuntu', sans-serif;
-        font-size: 1.25rem;
-        color:#505050;
-       }
-     }
-     &__mark{
-       margin-top: 5px;
-     }
-     &__driver{
-       h2{
+  padding: 3.75rem 0;
 
-         font-size: 30px;
-         font-family: "Playfair Display";
-         font-weight: 600;
-         margin: 0;
+  &__item {
+    &__image{
+      position: relative;
+      &-driver{
+        position: absolute;
+        top: -14px;
+        background: #fff;
+        width: 100px;
+        right: -22px;
+        border: 11px solid #fff;
+        border-bottom-left-radius: 20px;
+        overflow: hidden;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+        img{
+          width:100%;
         }
-     }
-   } 
+      }
+    }
+    &__description {
+      &__item {
+        p {
+          margin: 0;
+          font-family: 'Ubuntu', sans-serif;
+          font-size: 0.875rem;
+        }
+
+        h4 {
+          margin: 0;
+          font-family: 'Ubuntu', sans-serif;
+          font-size: 1.25rem;
+          color: #505050;
+        }
+      }
+
+      &__mark {
+        margin-top: 5px;
+      }
+
+      &__driver {
+        h2 {
+          font-size: 30px;
+          font-family: "Playfair Display";
+          font-weight: 600;
+          margin: 0;
+        }
+      }
+    }
   }
+
   &__side {
+    .form-group{
+      margin-bottom: 2rem;
+    }
+    &__dropdown {
+      position: relative;
+      label {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: bold;
+        position: absolute;
+        top: -15px;
+        left: 3px;
+      }
+    }
+
     /deep/ .ui-button {
       border: 1px solid #59d389 !important;
       font-size: 1.25rem;
       color: #59d389;
       font-family: 'Ubuntu', sans-serif;
-      padding: 5px 9px;
+      padding: 10px 30px;
       outline: none;
       box-shadow: none;
 
@@ -56,14 +93,45 @@
           border-bottom: 1px solid #59d389;
           border-radius: 0;
           width: 100%;
+          padding: 0;
+        }
+      }
+
+      .evo-input {
+        border: 0;
+        position: relative;
+        border-radius: 0px;
+        overflow: hidden;
+        padding: 30px 0px 0px 0px;
+        width: 100%;
+        background-color: #fff;
+
+        label {
+          left: 0;
         }
       }
 
       .ui-dropdown {
         width: 100% !important;
+        border: 0;
+        border-bottom: 1px solid #d3d3d3;
+        border-radius: 0;
+
+        label.ui-dropdown-label {
+          text-align: left;
+        }
+
+        &-trigger {
+          border: 0;
+
+          .fa-caret-down:before {
+            content: '\f107';
+          }
+        }
       }
-      .ui-slider{
-        &-handle{
+
+      .ui-slider {
+        &-handle {
           border-radius: 50%;
           border: 1px solid #59d389;
           background: #fff;
@@ -71,27 +139,31 @@
           height: 20px !important;
           top: -10px !important;
         }
-        &-range{
+
+        &-range {
           background: #59d389;
           height: 3px;
           top: -1.5px;
           box-shadow: none;
         }
-        &-horizontal{
+
+        &-horizontal {
           height: 1px;
-          background-color:#d3d3d3;
+          background-color: #d3d3d3;
         }
       }
     }
   }
-  agm-map{
-    height: 400px;
+
+  agm-map {
+    height: 600px;
     width: 100%;
   }
 }
-.dialog{
-  &__map{
-    width:100%;
+
+.dialog {
+  &__map {
+    width: 100%;
     height: 150px;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { Validators, FormBuilder, FormControl } from '@angular/forms';
 import { ValidationService, UserService, AuthService, CarsService } from '../../core/services';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { TransportCategoryModel, BrandModel, ModelModel } from '../../shared/mod
   templateUrl: 'profile-info.component.html',
   styleUrls: ['profile-info.component.scss']
 })
-export class ProfileInfoComponent {
+export class ProfileInfoComponent implements OnDestroy {
   ua = UA;
   ownershipTypes = OWNERSHIP_TYPES;
   selectedCategory: any = null;
@@ -52,7 +52,11 @@ export class ProfileInfoComponent {
     this.userInfoForm.get(formcontrol).get('coordinates').setValue([event.geometry.location.lat(), event.geometry.location.lng()]);
 
   }
-
+  ngOnDestroy() {
+    let element = document.getElementsByClassName('pac-container')[0];
+    if (element) element.remove();
+    console.log(element);
+  }
   updateUser() {
     this.auth.updateUser(this.userInfoForm.value, this.loggedUser._id + '', this.loggedUser['x-access-token']).subscribe(
       res => {

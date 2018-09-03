@@ -12,7 +12,7 @@ import { } from 'googlemaps';
 export class GooglePlacesComponent implements OnInit, AfterContentInit {
   private _defaultAddress: string;
   @ViewChild("address")
-  public addressElementRef: ElementRef =  null;
+  public addressElementRef: ElementRef = null;
   @Input() type: string;
   @Input() label: Object;
   // @Input() defaultAddress: any;
@@ -84,17 +84,21 @@ export class GooglePlacesComponent implements OnInit, AfterContentInit {
   }
 
   setCurrentAddress(element: any, autocomplete?: any) {
-    let geocoder = new google.maps.Geocoder();
-    let latlng = new google.maps.LatLng(this.defaultAddress.latitude, this.defaultAddress.longitude);
-    geocoder.geocode({
-      'location': latlng
-    }, function (results: any, status: any) {
-      if (status === google.maps.GeocoderStatus.OK && element ) {
-        element.nativeElement.value = results[0].formatted_address;
-      } else {
-        console.log('Geocoder failed due to: ' + status);
-      }
-    });
+    let geocoder = null;
+    let latlng = null
+    setTimeout(() => {
+      geocoder = new google.maps.Geocoder();
+      latlng = new google.maps.LatLng(this.defaultAddress.latitude, this.defaultAddress.longitude);
+      geocoder.geocode({
+        'location': latlng
+      }, function (results: any, status: any) {
+        if (status === google.maps.GeocoderStatus.OK && element) {
+          element.nativeElement.value = results[0].formatted_address;
+        } else {
+          console.log('Geocoder failed due to: ' + status);
+        }
+      });
+    }, 100);
   }
 
 }

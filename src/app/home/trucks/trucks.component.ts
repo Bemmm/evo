@@ -17,6 +17,7 @@ export class TrucksComponent implements OnInit {
   loggedUser: any;
   selectedType: string = 'list'
   searchForm: FormGroup;
+  loading: boolean = true;
   mapSettings: any = {
     latitude: 0,
     longitude: 0,
@@ -34,7 +35,6 @@ export class TrucksComponent implements OnInit {
     { label: 'до 1000', value: 1000 }
   ]
   sortTypes: any = [
-    { label: 'Не обрано', value: null },
     { label: 'Спочатку найближчі', value: 'nearest' }
   ]
   helperModel: any = {
@@ -52,11 +52,11 @@ export class TrucksComponent implements OnInit {
       longitude: ['']
     }),
     weight_limit: [''],
-    price: this.fb.array([
+    price: [[
       20,
       60
-    ]),
-    sort: ['']
+    ]],
+    sort: ['nearest']
   };
   constructor(
     private fb: FormBuilder,
@@ -79,25 +79,32 @@ export class TrucksComponent implements OnInit {
 
   ngOnInit() {
   }
-  // ngOnDestroy() {
-  //   let element = document.getElementsByClassName('pac-container')[0];
-  //   if (element) element.remove();
-  //   console.log(element);
-  // }
+
+  ngOnDestroy() {
+    let element = document.getElementsByClassName('pac-container')[0];
+    if (element) element.remove();
+    console.log(element);
+  }
   buildRequest() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.helperModel.where.latitude = params.lat;
       this.helperModel.where.longitude = params.lng;
       this.helperModel.where.label = params.label;
-      this.searchForm.patchValue(this.helperModel);
+      this.buildForm();
       this.getNearCars();
     });
   }
-
+  buildForm() {
+    this.searchForm.patchValue(this.helperModel);
+    this.searchForm.valueChanges.debounceTime(1000).subscribe(val => {
+      this.getNearCars();
+    });
+  }
   getNearCars() {
-    this.carsService.getNearCars(this.searchForm.get('where').get('latitude').value, this.searchForm.get('where').get('longitude').value).subscribe((res) => {
+    this.loading = true;
+    this.carsService.getNearCars(this.searchForm.value).subscribe((res) => {
       this.trucks = res.cars;
-      console.log(this.trucks);
+      this.loading = false;
     })
   }
 
@@ -118,7 +125,6 @@ export class TrucksComponent implements OnInit {
     }).join(', ');
   }
   getAddress(event: any, formControl: any) {
-    console.log('BEM desc :: event', event);
     this.searchForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
     this.searchForm.get(formControl).get('latitude').setValue(event.geometry.location.lat());
     this.searchForm.get(formControl).get('longitude').setValue(event.geometry.location.lng());

@@ -5,32 +5,46 @@
       <form [formGroup]="searchForm">
         <div class="form-group">
           <span class="ui-float-label">
-            <google-places style="width: 100%" [type]="'address'" (locationData)="getAddress($event, 'where')" (focus)="focusedInputClass = $event"
-              [defaultAddress]="searchForm.controls.where.controls"></google-places>
-            <label for="float-input">Де ви?</label>
+            <google-places style="width: 100%" [type]="'address'" [label]="{en:'where', ua:'Де ви?'}" (locationData)="getAddress($event, 'where')"
+              (focus)="focusedInputClass = $event" [defaultAddress]="searchForm.controls.where.controls"></google-places>
           </span>
         </div>
         <div class="form-group">
-          <p-dropdown [options]="weightTypes" formControlName="weight_limit"></p-dropdown>
+          <div class="trucks__side__dropdown">
+            <p-dropdown [options]="weightTypes" formControlName="weight_limit"></p-dropdown>
+            <label for="">Тонаж (грузопідйомність)</label>
+          </div>
         </div>
         <div class="form-group">
-          <!-- <p-slider formControlName="price" [range]="true" [min]="1" [max]="100"></p-slider> -->
+          <p class="text-left">{{searchForm.controls.price.value[0]}}грн - {{searchForm.controls.price.value[1]}}грн</p>
+          <p-slider formControlName="price" [range]="true" [min]="0" [step]="10" [max]="100"></p-slider>
         </div>
         <div class="form-group">
-          <p-dropdown [options]="sortTypes"></p-dropdown>
+          <div class="trucks__side__dropdown">
+            <p-dropdown [options]="sortTypes" formControlName="sort"></p-dropdown>
+            <label for="">Сортування</label>
+          </div>
         </div>
       </form>
     </div>
     <div class="col-xs-12 col-sm-8 col-md-8">
-      <ng-container *ngIf="selectedType == 'list'">
+      <ng-container *ngIf="loading">
+        <div id="loading-bar-spinner" class="spinner">
+          <div class="spinner-icon"></div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="selectedType == 'list' && !loading">
         <div class="trucks__item row" *ngFor="let item of trucks">
-          <div class="col-sm-6">
+          <div class="col-sm-7">
             <div class="trucks__item__image">
               <img width="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_seSfHCFqClUsiGEFQ5t2g9I3bmv_qYarYRMuVwH7OK9TIZe8"
                 alt="">
+              <div class="trucks__item__image-driver">
+                <img src="http://www.clker.com/cliparts/d/L/P/X/z/i/no-image-icon-hi.png" alt="">
+              </div>
             </div>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-5">
             <div class="trucks__item__description">
               <div class="trucks__item__description__driver">
                 <h2>Aleh</h2>
@@ -75,9 +89,9 @@
           </div>
         </div>
       </ng-container>
-      <ng-container *ngIf="selectedType == 'map'">
-        <agm-map [ngClass]="{'disabled':focusedInputClass}" [styles]="mapSettings.styles" [(latitude)]="mapSettings.latitude" [(longitude)]="mapSettings.longitude"
-          [zoom]="16">
+      <ng-container *ngIf="selectedType == 'map' && !loading">
+        <agm-map [ngClass]="{'disabled':focusedInputClass}" [styles]="mapSettings.styles" [(latitude)]="mapSettings.latitude"
+          [(longitude)]="mapSettings.longitude" [zoom]="16">
           <agm-marker [latitude]="mapSettings.latitude" [longitude]="mapSettings.longitude" [iconUrl]="'https://image.ibb.co/hbLi9c/cursor_1.png'">
           </agm-marker>
           <agm-marker *ngFor="let truck of trucks" [iconUrl]="'https://raw.githubusercontent.com/Bemmm/evo/release/src/app/home/trucks/assets/icon.png'"
@@ -89,19 +103,22 @@
   </div>
 </div>
 
-<p-dialog class="evo-dialog evo-dialog-truck-info" *ngIf="selectedTruck" [(visible)]="selectedTruck" [modal]="true" [responsive]="true"
-  [width]="820" [minWidth]="200" [baseZIndex]="10000">
-  <div class="trucks__item row">
+<p-dialog class="evo-dialog evo-dialog-truck-info" *ngIf="selectedTruck" [(visible)]="selectedTruck" [modal]="true"
+  [responsive]="true" [width]="820" [minWidth]="200" [baseZIndex]="10000">
+  <div class="trucks__item trucks__item-dialog row">
     <div class="col-sm-6">
       <div class="trucks__item__image">
         <img width="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_seSfHCFqClUsiGEFQ5t2g9I3bmv_qYarYRMuVwH7OK9TIZe8"
           alt="">
+        <div class="trucks__item__image-driver">
+          <img src="http://www.clker.com/cliparts/d/L/P/X/z/i/no-image-icon-hi.png" alt="">
+        </div>
       </div>
     </div>
     <div class="col-sm-6">
       <div class="trucks__item__description">
         <div class="trucks__item__description__driver">
-          <h2>Aleh</h2>
+          <h2>{{selectedTruck.owner.name}}</h2>
         </div>
         <div class="trucks__item__description__mark">
 
@@ -126,36 +143,36 @@
           </div>
 
         </div>
-        <div class="trucks__item__description_item trucks__item__description_item-dialog ">
+        <div class="trucks__item__description_item ">
           <p>Авто:
             <b>{{selectedTruck.car_attributes.brand.name}} {{selectedTruck.car_attributes.model.name}} </b>
           </p>
         </div>
-        <div class="trucks__item__description_item trucks__item__description_item-dialog">
+        <div class="trucks__item__description_item">
           <p>Грузопідйомність:
             <b>{{selectedTruck.weight_limit}} кг</b>
           </p>
         </div>
-        <div class="trucks__item__description_item trucks__item__description_item-dialog">
+        <div class="trucks__item__description_item">
           <p>Р.номер:
             <b>{{selectedTruck.registration_number}}</b>
           </p>
         </div>
-        <div class="trucks__item__description_item trucks__item__description_item-dialog">
+        <div class="trucks__item__description_item">
           <p>Пасажирських місць:
             <b>{{selectedTruck.passengers_count}}</b>
           </p>
         </div>
-        <div class="trucks__item__description_item trucks__item__description_item-dialog">
+        <div class="trucks__item__description_item">
           <p>Ціна:
             <b>{{selectedTruck.price}} грн/км</b>
           </p>
         </div>
-        <div class="trucks__item__description_item trucks__item__description_item-dialog">
-            <p>
-              <b>Є можливість перевезти:</b>
-            </p>
-          </div>        
+        <div class="trucks__item__description_item">
+          <p>
+            <b>Є можливість перевезти:</b>
+          </p>
+        </div>
       </div>
 
     </div>
@@ -164,7 +181,8 @@
     <div class="col-sm-6">
       <agm-map class="dialog__map" [styles]="mapSettings.styles" [disableDefaultUI]="true" [(latitude)]="selectedTruck.address.coordinates[0]"
         [(longitude)]="selectedTruck.address.coordinates[1]" [zoom]="16">
-        <agm-info-window [isOpen]="true" [latitude]="selectedTruck.address.coordinates[0]" [longitude]="selectedTruck.address.coordinates[1]">Евакуатор знаходиться:
+        <agm-info-window [isOpen]="true" [latitude]="selectedTruck.address.coordinates[0]" [longitude]="selectedTruck.address.coordinates[1]">Евакуатор
+          знаходиться:
           <br>
           <b>{{getShortAddress(this.selectedTruck.address.label)}}</b>
         </agm-info-window>
