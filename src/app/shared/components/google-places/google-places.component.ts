@@ -19,7 +19,7 @@ export class GooglePlacesComponent implements OnInit, AfterContentInit {
   @Input() set defaultAddress(value: any) {
     this._defaultAddress = value;
     if (value.latitude && value.longitude) {
-      this.setCurrentAddress(this.addressElementRef);
+      this.setCurrentAddress(this.addressElementRef, this.autocomplete);
     }
   }
   get defaultAddress(): any {
@@ -93,7 +93,8 @@ export class GooglePlacesComponent implements OnInit, AfterContentInit {
         'location': latlng
       }, function (results: any, status: any) {
         if (status === google.maps.GeocoderStatus.OK && element) {
-          element.nativeElement.value = results[0].formatted_address;
+          autocomplete.set('place', results[0]);
+          // google.maps.event.trigger(autocomplete, 'place_changed');
         } else {
           console.log('Geocoder failed due to: ' + status);
         }
