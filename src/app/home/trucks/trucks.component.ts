@@ -131,8 +131,7 @@ export class TrucksComponent implements OnInit {
   }
   getShortAddress(address: string) {
     let arr = address.split(',');
-    arr.length = arr.length - 3;
-    return arr.join(',');
+    return arr.splice(0,3).join(',');
   }
   getCurrentPosition() {
     navigator.geolocation.getCurrentPosition((position) => {

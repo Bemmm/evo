@@ -39,8 +39,8 @@
             <div class="trucks__item__image">
               <img width="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_seSfHCFqClUsiGEFQ5t2g9I3bmv_qYarYRMuVwH7OK9TIZe8"
                 alt="">
-              <div class="trucks__item__image-driver">
-                <img src="http://www.clker.com/cliparts/d/L/P/X/z/i/no-image-icon-hi.png" alt="">
+              <div class="trucks__item__image-driver" [ngStyle]="{'background-image':'url(http://www.clker.com/cliparts/d/L/P/X/z/i/no-image-icon-hi.png)'}">
+                <!-- <img src="http://www.clker.com/cliparts/d/L/P/X/z/i/no-image-icon-hi.png" alt=""> -->
               </div>
             </div>
           </div>
@@ -72,15 +72,15 @@
                 </div>
 
               </div>
-              <div class="form-group trucks__item__description_item">
+              <div class="form-group trucks__item__description__item">
                 <p>Населений пункт</p>
-                <h4>{{item.address.label}}</h4>
+                <h4>{{getShortAddress(item.address.label)}}</h4>
               </div>
-              <div class="form-group trucks__item__description_item">
+              <div class="form-group trucks__item__description__item">
                 <p>Тонаж</p>
                 <h4>asd</h4>
               </div>
-              <div class="form-group trucks__item__description_item">
+              <div class="form-group trucks__item__description__item">
                 <p>Ціна за км</p>
                 <h4>asd</h4>
               </div>
@@ -110,8 +110,7 @@
       <div class="trucks__item__image">
         <img width="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_seSfHCFqClUsiGEFQ5t2g9I3bmv_qYarYRMuVwH7OK9TIZe8"
           alt="">
-        <div class="trucks__item__image-driver">
-          <img src="http://www.clker.com/cliparts/d/L/P/X/z/i/no-image-icon-hi.png" alt="">
+          <div class="trucks__item__image-driver" [ngStyle]="{'background-image':'url(http://www.clker.com/cliparts/d/L/P/X/z/i/no-image-icon-hi.png)'}">
         </div>
       </div>
     </div>

@@ -2,19 +2,24 @@
   padding: 3.75rem 0;
 
   &__item {
+    margin-bottom: 20px;
     &__image{
       position: relative;
       &-driver{
         position: absolute;
-        top: -14px;
+        background-repeat: no-repeat;
+        top: -12px;
         background: #fff;
-        width: 100px;
-        right: -22px;
+        width: 120px;
+        height: 120px;
+        right: -25px;
         border: 11px solid #fff;
         border-bottom-left-radius: 20px;
         overflow: hidden;
         border-bottom-right-radius: 20px;
         border-top-right-radius: 20px;
+        background-size: cover;
+        background-position: center center;
         img{
           width:100%;
         }

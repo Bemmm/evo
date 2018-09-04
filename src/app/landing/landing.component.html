@@ -5,8 +5,8 @@
     <div class="landing__banner__description">Зручно, вигідно, швидко</div>
     <div class="landing__banner__wrapper col-md-8">
       <div class="evo-input flex-row">
-        <google-places style="width: 100%" [type]="'address'" (locationData)="getAddress($event, 'where')" (focus)="showDropdown = $event"
-          [defaultAddress]="helperModel"></google-places>
+        <google-places style="width: 100%" [type]="searchType.type" (locationData)="getAddress($event, 'where')" (focus)="dropdownFunction($event)" (focusout)="dropdownFunction($event)"
+          [defaultAddress]="helperModel" [placeholder]="searchType.placeholder"></google-places>
         <label for="search">Де ви?</label>
         <div class="evo-button evo-button-green">Знайти евакуатор</div>
       </div>
@@ -155,7 +155,7 @@
       <div class="landing__benefits__item__image">
         <img src="./assets/b1.png" alt="">
       </div>
-      <div class="landing__benefits__item__title">Ппросто</div>
+      <div class="landing__benefits__item__title">просто</div>
     </div>
     <div class="landing__benefits__item col-md-3 col-sm-6 col-xs-12">
       <div class="landing__benefits__item__image">

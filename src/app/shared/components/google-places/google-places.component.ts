@@ -11,11 +11,30 @@ import { } from 'googlemaps';
 
 export class GooglePlacesComponent implements OnInit, AfterContentInit {
   private _defaultAddress: string;
+  private _type: string;
+  private _placeholder: string;
   @ViewChild("address")
   public addressElementRef: ElementRef = null;
-  @Input() type: string;
   @Input() label: Object;
-  // @Input() defaultAddress: any;
+  @Input() clear: any;
+
+  @Input() set type(value: any) {
+  console.log('BEM _type :: value', value);
+    this._type = value;
+    if (this.autocomplete) {
+      this.autocomplete.setTypes([value]);
+      console.log('BEM autocomplete :: this.autocomplete', this.autocomplete);
+    }
+  }
+  get type(): any {
+    return this._type;
+  };
+  @Input() set placeholder(value: any) {
+    this._placeholder = value;
+  }
+  get placeholder(): any {
+    return this._placeholder;
+  };
   @Input() set defaultAddress(value: any) {
     this._defaultAddress = value;
     if (value.latitude && value.longitude) {
@@ -26,8 +45,6 @@ export class GooglePlacesComponent implements OnInit, AfterContentInit {
     return this._defaultAddress;
 
   };
-  @Input() clear: any;
-  @Input() placeholder: any;
 
   @Output() locationData = new EventEmitter<any>();
   @Output() focus = new EventEmitter<any>();
@@ -59,10 +76,14 @@ export class GooglePlacesComponent implements OnInit, AfterContentInit {
   }
 
   listenChanges() {
+    let element = document.getElementsByClassName('pac-container')[0];
+    if (element) element.remove();
     this.mapsAPILoader.load().then(() => {
       this.autocomplete = new google.maps.places.Autocomplete(this.addressElementRef.nativeElement, {
-        types: [this.type]
+        types: [this._type],
+        componentRestrictions: { country: "ua" }
       });
+      console.log('BEM desc :: this.autocomplete', this.autocomplete);
       console.log(this.addressElementRef, this.defaultAddress);
       if (this.defaultAddress && this.defaultAddress.label.value) {
         this.addressElementRef.nativeElement.value = this.defaultAddress.label.value;
@@ -94,7 +115,6 @@ export class GooglePlacesComponent implements OnInit, AfterContentInit {
       }, function (results: any, status: any) {
         if (status === google.maps.GeocoderStatus.OK && element) {
           autocomplete.set('place', results[0]);
-          // google.maps.event.trigger(autocomplete, 'place_changed');
         } else {
           console.log('Geocoder failed due to: ' + status);
         }
