@@ -74,7 +74,18 @@
         }
       }
     }
-
+    .evo-button{
+      margin-top: 20px;
+      max-width: 250px;
+      &:hover{
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+    .callToAction{
+      color: #59d389;
+      cursor: pointer;
+    }
     .trucks__item__description{
       padding-left: 20px;
     }

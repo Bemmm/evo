@@ -142,35 +142,41 @@
           </div>
 
         </div>
-        <div class="trucks__item__description_item ">
+        <div class="trucks__item__description__item ">
           <p>Авто:
             <b>{{selectedTruck.car_attributes.brand.name}} {{selectedTruck.car_attributes.model.name}} </b>
           </p>
         </div>
-        <div class="trucks__item__description_item">
+        <div class="trucks__item__description__item">
           <p>Грузопідйомність:
             <b>{{selectedTruck.weight_limit}} кг</b>
           </p>
         </div>
-        <div class="trucks__item__description_item">
+        <div class="trucks__item__description__item">
           <p>Р.номер:
             <b>{{selectedTruck.registration_number}}</b>
           </p>
         </div>
-        <div class="trucks__item__description_item">
+        <div class="trucks__item__description__item">
           <p>Пасажирських місць:
             <b>{{selectedTruck.passengers_count}}</b>
           </p>
         </div>
-        <div class="trucks__item__description_item">
+        <div class="trucks__item__description__item">
           <p>Ціна:
             <b>{{selectedTruck.price}} грн/км</b>
           </p>
         </div>
-        <div class="trucks__item__description_item">
+        <div class="trucks__item__description__item">
           <p>
             <b>Є можливість перевезти:</b>
           </p>
+          <div class="trucks__item__description__item__list">
+            <div *ngFor="let item of selectedTruck.car_types">
+              <div class="trucks__item__description__item__list__car type{{item.value}}"></div>
+              <div>{{item.name}}</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -189,6 +195,13 @@
     </div>
     <div class="col-sm-6">
       <p>{{selectedTruck.description}}</p>
+    </div>
+  </div>
+  <div class="row text-center">
+    <a class="evo-button evo-button-green" href="tel:{{selectedTruck.owner.phone}}">Зателефонувати</a>
+    <div class="form-group callToAction">
+      <div *ngIf="!showNumber" (click)="showNumber = true">Показати номер телефону</div>
+      <div *ngIf="showNumber">+{{selectedTruck.owner.phone}}</div>
     </div>
   </div>
 </p-dialog>

@@ -3,12 +3,15 @@
     padding: 0 !important;
   }
 }
+
 .add-truck {
   .ui-dialog-content {
     padding: 10px !important;
   }
 }
-.transport-dialog, .add-truck {
+
+.transport-dialog,
+.add-truck {
   &__content {
     &-item {
       text-align: left;
@@ -21,45 +24,108 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+
       &-icon {
         width: 65px;
         height: 40px;
         background: url('~assets/images/transport/sprite.png');
         background-size: 266px 208px;
+
         &.type1 {
           background-position: -134px 0;
         }
+
         &.type2 {
           background-position: -134px -84px;
         }
+
         &.type3 {
           background-position: 0 -168px;
         }
+
         &.type4 {
           background-position: -67px -126px;
         }
+
         &.type5 {
           background-position: -201px 0;
         }
+
         &.type6 {
           background-position: -201px -84px;
         }
+
         &.type7 {
           background-position: 0 -42px;
         }
+
         &.type8 {
           background-position: 0 -84px;
         }
+
         &.type9 {
           background-position: -67px 0;
         }
       }
+
       &.active {
         background-color: $evo-yellow
       }
     }
   }
+
   &__action {
     margin-top: 20px;
+  }
+}
+
+.trucks__item__description__item__list {
+  display: flex;
+  flex-direction: row;
+  &> div{
+    width:33%;
+    text-align: center;
+  }
+  &__car {
+    width: 65px;
+    height: 40px;
+    background: url('~assets/images/transport/sprite.png');
+    background-size: 266px 208px;
+    margin: 0 auto;
+    &.type1 {
+      background-position: -134px 0;
+    }
+
+    &.type2 {
+      background-position: -134px -84px;
+    }
+
+    &.type3 {
+      background-position: 0 -168px;
+    }
+
+    &.type4 {
+      background-position: -67px -126px;
+    }
+
+    &.type5 {
+      background-position: -201px 0;
+    }
+
+    &.type6 {
+      background-position: -201px -84px;
+    }
+
+    &.type7 {
+      background-position: 0 -42px;
+    }
+
+    &.type8 {
+      background-position: 0 -84px;
+    }
+
+    &.type9 {
+      background-position: -67px 0;
+    }
   }
 }
