@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
     height: calc(100vh - 66px);
+    background-position: center center;
 
     &__wrapper {
       position: relative;
@@ -39,7 +40,7 @@
       .evo-input {
         min-width: 720px;
         position: relative;
-        padding: 30px 255px 0px 30px;
+        padding: 25px 255px 0px 30px;
         input{
           padding-bottom: 10px !important;
         }
@@ -47,6 +48,17 @@
           position: absolute;
           right: 10px;
           top: 5px;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        .evo-input  {
+          padding: 25px 30px 0 30px;
+          width: 100%;
+          min-width: 100%;
+          .evo-button{
+            display: none
+          }
+
         }
       }
     }

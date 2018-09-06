@@ -1,13 +1,12 @@
 <div class="evo-header" *ngIf="headerStyle === 'menu'">
 
   <div class="container">
-
+  <div class="evo-header__row evo-header__row-menu" (click)="menuDialog = true">
+      <i class="fa fa-bars"></i>
+  </div>
     <div class="evo-header__row">
       <div class="evo-header__logo ">
-        <div [routerLink]="['/']">Cars
-          <span>Work.
-            <span>com</span>
-          </span>
+        <div [routerLink]="['/']">Cars<span>Work.<span>com</span></span>
         </div>
       </div>
     </div>
@@ -17,12 +16,19 @@
         <div [routerLink]="['/auth/register']">Як додати евакуатор?</div>
       </div>
       <div *ngIf="!user" [routerLink]="['/auth/login']" class="evo-button evo-button-solid">Реєстрація/Вхід</div>
+
+      <div class="evo-header__user evo-header__user-mobile" [routerLink]="['/auth/register']">
+        <div class="evo-header__user__avatar">
+          <i class="fa fa-user"></i>
+        </div>
+      </div>
+
       <div *ngIf="user" class="evo-header__user">
         <div class="evo-header__user__avatar">
           <i class="fa fa-user"></i>
         </div>
         <div class="evo-header__user__name">{{user.name || 'Користувач'}}
-            <i class="fa fa-chevron-down"></i>
+          <i class="fa fa-chevron-down"></i>
         </div>
         <ul class="evo-header__user__dropdown">
           <li [routerLink]="['/profile', user._id]">Особостий кабінет</li>
@@ -33,3 +39,16 @@
   </div>
 
 </div>
+<p-dialog class="evo-dialog-menu" [(visible)]="menuDialog" [modal]="true" [responsive]="true"
+       [baseZIndex]="10000">
+       <h1>Меню</h1>
+        <ul>
+          <li>Як додати евакуатор?</li>
+          <li>Як ми працюємо</li>
+          <li>Новини</li>
+          <li>Співпраця</li>
+          <li>Оферета</li>
+          <li>Блог</li>
+          <li>Підписка</li>
+        </ul>
+</p-dialog>

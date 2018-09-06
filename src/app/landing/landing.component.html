@@ -3,7 +3,7 @@
   <div class="landing__banner">
     <div class="landing__banner__title">Обирайте найближчий евакуатор</div>
     <div class="landing__banner__description">Зручно, вигідно, швидко</div>
-    <div class="landing__banner__wrapper col-md-8">
+    <div class="landing__banner__wrapper col-md-8 col-xs-12" >
       <div class="evo-input flex-row">
         <google-places style="width: 100%" [type]="searchType.type" (locationData)="getAddress($event, 'where')" (focus)="dropdownFunction($event)" (focusout)="dropdownFunction($event)"
           [defaultAddress]="helperModel" [placeholder]="searchType.placeholder"></google-places>

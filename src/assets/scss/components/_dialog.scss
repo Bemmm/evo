@@ -1,4 +1,56 @@
 .evo-dialog{
+  &-menu{
+    .ui-dialog{
+      background-color: rgba(0, 0, 0, 0.603);
+      top:0 !important;
+      left:0 !important;
+      height: 100%;
+      width: 100%;
+      &-titlebar{
+        padding: 1em 1.5em;
+        background: rgba(0, 0, 0, 0.603);
+        a{
+          float:left;
+          &:hover{
+            border-color: transparent;
+            background: inherit;
+          }
+          span{
+            color: #57ce86;
+            &:before{
+              content:url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDYxMiA2MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDYxMiA2MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8ZyBpZD0iY3Jvc3MiPgoJCTxnPgoJCQk8cG9seWdvbiBwb2ludHM9IjYxMiwzNi4wMDQgNTc2LjUyMSwwLjYwMyAzMDYsMjcwLjYwOCAzNS40NzgsMC42MDMgMCwzNi4wMDQgMjcwLjUyMiwzMDYuMDExIDAsNTc1Ljk5NyAzNS40NzgsNjExLjM5NyAgICAgIDMwNiwzNDEuNDExIDU3Ni41MjEsNjExLjM5NyA2MTIsNTc1Ljk5NyAzNDEuNDU5LDMwNi4wMTEgICAgIiBmaWxsPSIjNTdjZTg2Ii8+CgkJPC9nPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+            }
+          }
+        }
+      }
+      &-content{
+        h1{
+          font-size: 5rem;
+          font-family: "Playfair Display";
+          color: #fff;
+          text-align: center;
+          font-weight: 700;
+          margin-bottom: 25px;
+        }
+        ul{
+          text-align: center;
+          list-style: none;
+          padding: 0;
+          width: 100%;
+          li{
+            color: #b7b7b7;
+            padding: 15px 0;
+            cursor: pointer;
+            font-family: 'Ubuntu', sans-serif;
+            &:hover{
+              color: #fff;
+            }
+
+          }
+        }
+      }
+    }
+  }
   .ui-dialog{
     border: 0;
   }
