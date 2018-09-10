@@ -83,8 +83,6 @@ export class GooglePlacesComponent implements OnInit, AfterContentInit {
         types: [this._type],
         componentRestrictions: { country: "ua" }
       });
-      console.log('BEM desc :: this.autocomplete', this.autocomplete);
-      console.log(this.addressElementRef, this.defaultAddress);
       if (this.defaultAddress && this.defaultAddress.label.value) {
         this.addressElementRef.nativeElement.value = this.defaultAddress.label.value;
       } else if (this.defaultAddress) {
@@ -97,7 +95,7 @@ export class GooglePlacesComponent implements OnInit, AfterContentInit {
           if (place.geometry === undefined || place.geometry === null) {
             return;
           };
-
+          this.addressElementRef.nativeElement.value = place.formatted_address;
           this.locationData.emit(place);
         });
       })
@@ -114,6 +112,7 @@ export class GooglePlacesComponent implements OnInit, AfterContentInit {
         'location': latlng
       }, function (results: any, status: any) {
         if (status === google.maps.GeocoderStatus.OK && element) {
+          console.log('BEM desc :: results', results);
           autocomplete.set('place', results[0]);
         } else {
           console.log('Geocoder failed due to: ' + status);
