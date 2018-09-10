@@ -23,6 +23,7 @@ export class CarsService {
   private models: string = 'models';
   private searchNearestCars: string = 'search-nearest-cars';
   private searchCars: string = 'search-cars';
+  private uploadPhotoUrl: string = 'file';
   constructor(
     private api: ApiService
   ) { }
@@ -58,5 +59,8 @@ export class CarsService {
     }
   getTruckInfo(truckId: any){
     return this.api.get(`${this.searchCars}/${truckId}`);
+  }
+  uploadPhoto(data:any){
+    return this.api.post(this.uploadPhotoUrl, data);
   }
 }

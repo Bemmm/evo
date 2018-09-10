@@ -1,19 +1,25 @@
 .page-title {
   margin-bottom: 0;
+
   &-user {
     background-image: url('assets/user.jpg');
+
     .page-title__text {
       padding-bottom: 100px;
     }
   }
+
   &-company {
     background-image: url('assets/company.jpg');
+
     .page-title__text {
       padding-bottom: 100px;
     }
   }
+
   &-driver {
     background-image: url('assets/driver.jpg');
+
     .page-title__text {
       padding-bottom: 100px;
     }
@@ -27,6 +33,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
     &__avatar {
       overflow: hidden;
       border-radius: 50%;
@@ -36,13 +43,33 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center center;
+      position: relative;
+
+      /deep/.ui-button{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.63);
+        padding: 5px 0;
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+        transition: .2s all ease-in;
+        cursor: pointer;
+        border: 0;
+        &:hover {
+          padding: 10px 0;
+        }
+      }
     }
+
     &__name {
       font-size: 2rem;
       font-family: 'Ubuntu', sans-serif;
       text-transform: uppercase;
       color: #212121;
     }
+
     &__type {
       font-size: 1rem;
       color: rgb(80, 80, 80);
@@ -50,11 +77,13 @@
       text-align: center;
     }
   }
+
   &__tabs {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid #e8e8e8;
     margin-top: 50px;
+
     &__item {
       cursor: pointer;
       padding: 10px 50px;
@@ -62,9 +91,11 @@
       color: rgb(33, 33, 33);
       font-family: "Ubuntu", sans-serif;
       text-align: center;
+
       &:focus {
         outline: none;
       }
+
       &.active {
         border-bottom: 3px solid #59d389;
       }

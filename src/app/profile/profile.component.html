@@ -3,7 +3,9 @@
 </div>
 <div class="profile container">
   <div class="profile__user">
-    <div class="profile__user__avatar" style="background-image: url('http://alenakraeva.com/wp-content/uploads/2016/11/hipsteri-eto.jpg')"></div>
+    <div class="profile__user__avatar" style="background-image: url('http://alenakraeva.com/wp-content/uploads/2016/11/hipsteri-eto.jpg')">
+      <p-fileUpload [multiple]="false" name="myfile[]" [chooseLabel]="'Змінити'" mode="basic" (onSelect)="myUploader($event)"></p-fileUpload>
+    </div>
     <div class="profile__user__name">{{loggedUser.name}}</div>
     <div class="profile__user__type">{{getUserType()}}</div>
   </div>

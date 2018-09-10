@@ -34,7 +34,7 @@
         </div>
       </ng-container>
       <ng-container *ngIf="selectedType == 'list' && !loading">
-        <div class="trucks__item row" *ngFor="let item of trucks">
+        <div class="trucks__item trucks__item-list row" *ngFor="let item of trucks" (click)="showTruckInfo(this.item)">
           <div class="col-sm-7">
             <div class="trucks__item__image">
               <img width="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_seSfHCFqClUsiGEFQ5t2g9I3bmv_qYarYRMuVwH7OK9TIZe8"
@@ -47,7 +47,7 @@
           <div class="col-sm-5">
             <div class="trucks__item__description">
               <div class="trucks__item__description__driver">
-                <h2>Aleh</h2>
+                <h2>{{item.driver[0].name}}</h2>
               </div>
               <div class="trucks__item__description__mark">
 

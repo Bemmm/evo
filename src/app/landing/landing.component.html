@@ -8,7 +8,7 @@
         <google-places style="width: 100%" [type]="searchType.type" (locationData)="getAddress($event, 'where')" (focus)="dropdownFunction($event)" (focusout)="dropdownFunction($event)"
           [defaultAddress]="helperModel" [placeholder]="searchType.placeholder"></google-places>
         <label for="search">Де ви?</label>
-        <div class="evo-button evo-button-green">Знайти евакуатор</div>
+        <button class="evo-button evo-button-green" (click)="searchTruck()" [disabled]="!helperModel.label">Знайти евакуатор</button>
       </div>
       <div class="landing__banner__wrapper__sdropdown" *ngIf="showDropdown">
         <div class="landing__banner__wrapper__sdropdown__item" (click)="setSearchType(this.item.value)" [ngStyle]="{'background-image': 'url(' + item.image + ')'}"

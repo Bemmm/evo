@@ -18,7 +18,7 @@ export class AuthService {
   private registerUserAdditionalsUrl: string = 'users/additionals';
   private passwordResetStartUrl: string = 'passwordResetStart';
   private passwordResetUrl: string = 'passwordReset';
-
+  private uploadPhotoUrl: string = 'user/uploadAvatar';
   constructor(
     private api: ApiService,
     private userService: UserService
@@ -69,5 +69,8 @@ export class AuthService {
 
   isLoggedIn(): Observable < any > {
     return this.api.get('/currentUser').map(user => user.id !== -1);
+  }
+  uploadAvatar(data:any, token?:any){
+    return this.api.post(this.uploadPhotoUrl, data, token);
   }
 }

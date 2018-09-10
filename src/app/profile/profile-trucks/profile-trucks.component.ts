@@ -45,7 +45,7 @@ export class ProfileTrucksComponent {
     this.userService.get()
       .subscribe((user: any) => {
         this.loggedUser = user;
-        if(user.role == 'company'){this.getDrivers()};
+        if (user.role == 'company') { this.getDrivers() };
         this.buildTruckForm()
       });
     this.getCategories();
@@ -67,22 +67,36 @@ export class ProfileTrucksComponent {
       })
     });
   }
-  myUploader(event:any) {
-    //event.files == files to upload
-    console.log(event);
+  myUploader(event: any) {
+    const data:any = {
+      name: event.files[0].name,
+      content_type: event.files[0].type,
+      body: null
+    }
+    var reader = new FileReader();
+    reader.readAsDataURL(event.files[0]);
+    reader.onload = () => {
+      data.body = reader.result;
+      this.carsService.uploadPhoto(data).subscribe((resp)=>{
+        console.log(resp);
+      });
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
   }
   getTrucks() {
     this.carsService.getTrucks(this.loggedUser._id, this.loggedUser['x-access-token'], this.loggedUser.role).subscribe((res) => {
-      if(this.loggedUser.role == 'company'){
+      if (this.loggedUser.role == 'company') {
         if (res.results) this.trucks = res.results;
-      } else{
+      } else {
         if (res.cars) this.trucks = res.cars;
       }
     });
   };
-  getDrivers(){
-    this.driversService.getDrivers(this.loggedUser._id, this.loggedUser['x-access-token']).subscribe((res)=>{
-      this.drivers= res.users;
+  getDrivers() {
+    this.driversService.getDrivers(this.loggedUser._id, this.loggedUser['x-access-token']).subscribe((res) => {
+      this.drivers = res.users;
       this.drivers.unshift({
         name: 'Без Водія',
         _id: null
@@ -90,7 +104,7 @@ export class ProfileTrucksComponent {
     })
   }
   carChanged() {
-    if(!this.truckForm.get('car_attributes').get('brand')){return}
+    if (!this.truckForm.get('car_attributes').get('brand')) { return }
     this.carsService.getModels(+this.truckForm.get('car_attributes').get('category').value.value, this.truckForm.get('car_attributes').get('brand').value.value).subscribe(
       res => {
         this.models = res;
@@ -107,21 +121,21 @@ export class ProfileTrucksComponent {
   buildTruckForm() {
     let truckModel = {
       registration_number: ['', [Validators.required]],
-      company_id:[this.loggedUser._id],
-      company_user_id:[''],
+      company_id: [this.loggedUser._id],
+      company_user_id: [''],
       _id: [''],
       car_attributes: this.fb.group({
         category: [{
-          name:'Спецтехника',
-          value:'4'
+          name: 'Спецтехника',
+          value: '4'
         }],
         brand: ['', [Validators.required]],
         model: ['', [Validators.required]]
       }),
       address: this.fb.group({
         label: ['', [Validators.required]],
-        type:['Point'],
-        coordinates:this.fb.array([
+        type: ['Point'],
+        coordinates: this.fb.array([
           new FormControl(),
           new FormControl()
         ])
@@ -144,7 +158,7 @@ export class ProfileTrucksComponent {
   }
   submitCreation(mode: string) {
     console.log(this.truckForm);
-    if(this.truckForm.value.company_user_id){
+    if (this.truckForm.value.company_user_id) {
       this.truckForm.value.company_user_id = this.truckForm.value.company_user_id._id
     }
     if (mode == 'editMode') {
@@ -161,7 +175,7 @@ export class ProfileTrucksComponent {
       })
     }
   }
-  getAddress(event:any, formControl:any){
+  getAddress(event: any, formControl: any) {
     console.log(event);
     this.truckForm.get(formControl).get('label').setValue(`${event.formatted_address}`);
     this.truckForm.get(formControl).get('coordinates').setValue([event.geometry.location.lat(), event.geometry.location.lng()]);
